@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": [
+      "esnext"
+    ],
+    "moduleResolution": "node",
+    "types": [],
+    "strict": false,
+  },
+  "include": [
+    "src/**/*",
+    "typings/**/*"
+  ],
+  "tstl": {
+    "luaTarget": "5.3",
+    "luaPlugins": [
+      {
+        "name": "./plugins/cet.ts"
+      }
+    ],
+    "luaBundleEntry": "src/index.ts",
+    "luaBundle": "dist/bundle.lua"
+  }
+}
