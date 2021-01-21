@@ -1,5 +1,6 @@
 
 ## CET typescript template
+This project enables you to write Cyber Engine Tweaks scripts in Typescript and transpile them into lua for use in the game.
 
 ### setup
 ```
