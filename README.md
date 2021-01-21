@@ -16,6 +16,7 @@ The lua bundle is saved to dist/bundle.lua.
 
 ### usage
 This template contains automatically generated bindings to most functions exposed by the game's scripting language. You can leverage them for auto-completion and error checking.
+I recommend use of VS Code for a good IDE experience.
 
 <img src="https://media.giphy.com/media/XcWYom9J9l4ipCKLnq/giphy.gif">
 
