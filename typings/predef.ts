@@ -80,3 +80,13 @@ function i64(value: number): Int64 {
 function float(value: number): Float {
   return value as Float;
 }
+
+/** @noSelf **/
+declare function registerForEvent(name: String, cb: (delta: number) => void): void;
+
+/** @noSelf **/
+declare function print(str: String): void;
+
+/** @noSelf **/
+/** @tupleReturn */
+declare function GetDisplayResolution(): [number, number];
