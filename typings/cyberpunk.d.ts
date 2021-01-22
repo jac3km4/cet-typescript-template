@@ -12716,7 +12716,12 @@ declare interface Stim_Record extends TweakDBRecord {
   IsReactionStim(): Bool
 }
 
+/** @customConstructor Vector4.new */
 declare class Vector4 {
+  x: number
+  y: number
+  z: number
+  w: number
   constructor(x: number, y: number, z: number, w: number)
   /** @noSelf **/
   Dot2D(a: Vector4, b: Vector4): number
@@ -18655,7 +18660,12 @@ declare interface CombatGadgetHelper extends IScriptable {
   SpawnPhysicalImpulse(source: GameObject, radius: number): void
 }
 
+/** @customConstructor Quaternion.new */
 declare class Quaternion {
+  x: number
+  y: number
+  z: number
+  w: number
   constructor(x: number, y: number, z: number, w: number)
   /** @noSelf **/
   SetIdentity(quat: Quaternion): void
