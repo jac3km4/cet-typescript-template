@@ -1,11 +1,19 @@
-declare const io: io;
+declare const io: IOModule;
 
 /** @noSelf **/
-declare interface io {
-    open(file: String, mode: String)
-    lines(file: String)
-    read()
-    close(file: String)
-    output(file: String)
-    write(string: String, param?: String)
+declare interface IOModule {
+    open(file: String, mode?: String): File
+    input(file: File): void
+    output(file: File): void
+    lines(file: File): Lines
+    read(): String | undefined
+    write(...args: WriteValues): String
+    close(file: File): void
 }
+
+declare interface File { }
+
+type Lines = Iterable<String>;
+
+/** @vararg */
+type WriteValues = String[];
