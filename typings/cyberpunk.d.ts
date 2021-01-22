@@ -2348,7 +2348,7 @@ declare interface GameObject extends GameEntity {
   UnregisterInputListener(listener: IScriptable, name?: CName): void
   GetCurveValue(x: number, y: number, curveName: CName, isDebug: Bool): void
   IsSelectedForDebugging(): Bool
-  GetTracedActionName(): String
+  GetTracedActionName(): string
   IsPlayerControlled(): Bool
   GetOwner(): GameObject
   GetCurrentContext(): CName
@@ -2380,7 +2380,7 @@ declare interface GameObject extends GameEntity {
   RemoveStatusEffectTriggerListener(target: GameObject, listener: StatusEffectTriggerListener): void
   OnAddStatusEffectTriggerListener(evt: AddStatusEffectListenerEvent): Bool
   OnRemoveStatusEffectTriggerListener(evt: RemoveStatusEffectListenerEvent): Bool
-  GetDisplayName(): String
+  GetDisplayName(): string
   OnRequestComponents(ri: EntityRequestComponentsInterface): Bool
   OnTakeControl(ri: EntityResolveComponentsInterface): Bool
   OnGameAttached(): Bool
@@ -2725,7 +2725,7 @@ declare interface GameObject extends GameEntity {
   OnSetGlitchOnUIEvent(evt: SetGlitchOnUIEvent): Bool
   OnCustomUIAnimationEvent(evt: CustomUIAnimationEvent): Bool
   OnSmartGunLockEvent(evt: SmartGunLockEvent): Bool
-  ToString(): String
+  ToString(): string
 }
 
 declare interface PersistentState extends IScriptable {
@@ -2786,8 +2786,8 @@ declare interface DeviceComponentPS extends GameComponentPS {
   GetAncestors(outDevices: DeviceComponentPS[]): void
   HasAnySlave(): Bool
   HasAnyDeviceConnection(): Bool
-  GetDeviceName(): String
-  GetDeviceStatus(): String
+  GetDeviceName(): string
+  GetDeviceStatus(): string
   IsMasterType(): Bool
   HackGetOwner(): Entity
   IsBeingScanned(): Bool
@@ -2796,7 +2796,7 @@ declare interface DeviceComponentPS extends GameComponentPS {
   GetFactToDisableQuestMarkName(): CName
   IsAnyMasterFlaggedAsQuest(): Bool
   GetWidgetTypeName(): CName
-  GetDeviceIconPath(): String
+  GetDeviceIconPath(): string
   GetVirtualSystemType(): EVirtualSystem
   GetDeviceIconID(): CName
   GetDeviceWidget(context: GetActionsContext): SDeviceWidgetPackage
@@ -2872,7 +2872,7 @@ declare interface PersistentID {
   /** @noSelf **/
   GetComponentName(id: PersistentID): CName
   /** @noSelf **/
-  ToDebugString(id: PersistentID): String
+  ToDebugString(id: PersistentID): string
   /** @noSelf **/
   ExtractEntityID(id: PersistentID): EntityID
 }
@@ -2880,27 +2880,27 @@ declare interface PersistentID {
 declare interface MaraudersMapDevicesSink extends IScriptable {
 
   PushName(key: CName, value: CName): void
-  PushString(key: String, value: String): void
-  PushVector4(key: String, value: Vector4): void
-  PushVector2(key: String, value: Vector2): void
-  PushQuaternion(key: String, value: Quaternion): void
-  PushFloat(key: String, value: number): void
-  PushInt32(key: String, value: number): void
-  PushUint32(key: String, value: number): void
-  PushBool(key: String, value: Bool): void
-  BeginCategory(name: String): void
+  PushString(key: string, value: string): void
+  PushVector4(key: string, value: Vector4): void
+  PushVector2(key: string, value: Vector2): void
+  PushQuaternion(key: string, value: Quaternion): void
+  PushFloat(key: string, value: number): void
+  PushInt32(key: string, value: number): void
+  PushUint32(key: string, value: number): void
+  PushBool(key: string, value: Bool): void
+  BeginCategory(name: string): void
   EndCategory(): void
 }
 
 declare interface GemplayObjectiveData extends IScriptable {
 
-  GetObjectiveEntryID(): String
-  SetObjectiveEntryID(objectiveEntryID: String): void
+  GetObjectiveEntryID(): string
+  SetObjectiveEntryID(objectiveEntryID: string): void
   GetOwnerID(): EntityID
   SetOwnerID(requesterID: EntityID): void
-  GetQuestTitle(): String
-  GetObjectiveDescription(): String
-  GetUniqueID(): String
+  GetQuestTitle(): string
+  GetObjectiveDescription(): string
+  GetUniqueID(): string
   CreateUniqueID(entityID: EntityID): void
   IsCreated(): Bool
   SetObjectiveState(state: gameJournalEntryState): void
@@ -2916,9 +2916,9 @@ declare interface EntityID {
   /** @noSelf **/
   IsStatic(id: EntityID): Bool
   /** @noSelf **/
-  ToDebugString(id: EntityID): String
+  ToDebugString(id: EntityID): string
   /** @noSelf **/
-  ToDebugStringDecimal(id: EntityID): String
+  ToDebugStringDecimal(id: EntityID): string
   /** @noSelf **/
   GetHash(id: EntityID): number
 }
@@ -3366,9 +3366,9 @@ declare interface questITutorialManager extends IGameSystem {
 declare interface QuestsSystem extends questIQuestsSystem {
 
   GetFact(factName: CName): number
-  GetFactStr(factName: String): number
+  GetFactStr(factName: string): number
   SetFact(factName: CName, value: number): void
-  SetFactStr(factName: String, value: number): void
+  SetFactStr(factName: string, value: number): void
   RegisterListener(factName: CName, listener: IScriptable, funcName: CName): number
   UnregisterListener(factName: CName, id: number): void
   RegisterEntity(factName: CName, entityId: EntityID): number
@@ -3587,7 +3587,7 @@ declare interface PlayerSystem extends gamePlayerSystem {
   IsInFreeCamera(): Bool
   SetFreeCameraTransform(newTransform: Transform): void
   IsCPOControlSchemeForced(): Bool
-  GetPossessedByJohnnyFactName(): String
+  GetPossessedByJohnnyFactName(): string
   OnGameRestored(game: GameInstance): Bool
   OnLocalPlayerChanged(controlledObject: GameObject): Bool
   OnLocalPlayerPossesionChanged(playerPossesion: gamedataPlayerPossesion): Bool
@@ -3648,20 +3648,20 @@ declare interface TimeDilatable extends GameObject {
 declare interface gamePuppetBase extends TimeDilatable {
 
   GetRecordID(): TweakDBID
-  GetTweakDBDisplayName(useDisplayNameAsFallback: Bool): String
-  GetTweakDBFullDisplayName(useDisplayNameAsFallback: Bool): String
-  GetIntFromCharacterTweak(varName: String, defaultValue?: number): number
-  GetFloatFromCharacterTweak(varName: String, defaultValue?: number): number
-  GetStringFromCharacterTweak(varName: String, defaultValue?: String): String
-  GetBoolFromCharacterTweak(varName: String, defaultValue?: Bool): Bool
-  GetCNameFromCharacterTweak(varName: String, defaultValue?: CName): CName
+  GetTweakDBDisplayName(useDisplayNameAsFallback: Bool): string
+  GetTweakDBFullDisplayName(useDisplayNameAsFallback: Bool): string
+  GetIntFromCharacterTweak(varName: string, defaultValue?: number): number
+  GetFloatFromCharacterTweak(varName: string, defaultValue?: number): number
+  GetStringFromCharacterTweak(varName: string, defaultValue?: string): string
+  GetBoolFromCharacterTweak(varName: string, defaultValue?: Bool): Bool
+  GetCNameFromCharacterTweak(varName: string, defaultValue?: CName): CName
   IsIncapacitated(): Bool
 }
 
 declare interface TDBID {
 
   /** @noSelf **/
-  Create(str: String): TweakDBID
+  Create(str: string): TweakDBID
   /** @noSelf **/
   IsValid(tdbID: TweakDBID): Bool
   /** @noSelf **/
@@ -3673,7 +3673,7 @@ declare interface TDBID {
   /** @noSelf **/
   (): TweakDBID
   /** @noSelf **/
-  ToStringDEBUG(tdbID: TweakDBID): String
+  ToStringDEBUG(tdbID: TweakDBID): string
 }
 
 declare interface TweakDBInterface extends IScriptable {
@@ -3695,13 +3695,13 @@ declare interface TweakDBInterface extends IScriptable {
   /** @noSelf **/
   GetFloatArrayDefault(path: TweakDBID): number[]
   /** @noSelf **/
-  GetString(path: TweakDBID, defaultValue: String): String
+  GetString(path: TweakDBID, defaultValue: string): string
   /** @noSelf **/
-  GetStringArray(path: TweakDBID): String[]
+  GetStringArray(path: TweakDBID): string[]
   /** @noSelf **/
-  GetStringDefault(path: TweakDBID): String
+  GetStringDefault(path: TweakDBID): string
   /** @noSelf **/
-  GetStringArrayDefault(path: TweakDBID): String[]
+  GetStringArrayDefault(path: TweakDBID): string[]
   /** @noSelf **/
   GetBool(path: TweakDBID, defaultValue: Bool): Bool
   /** @noSelf **/
@@ -5557,7 +5557,7 @@ declare interface ObjectAction_Record extends TweakDBRecord {
 
 declare interface ScannableData_Record extends TweakDBRecord {
 
-  FriendlyName(): String
+  FriendlyName(): string
   IconRecord(): UIIcon_Record
   LocalizedDescription(): CName
   LocalizedName(): CName
@@ -5571,7 +5571,7 @@ declare interface IPrereq_Record extends TweakDBRecord {
 
 declare interface WidgetDefinition_Record extends TweakDBRecord {
 
-  LibraryID(): String
+  LibraryID(): string
   Styles(outList: WidgetStyle_Record[]): void
   GetStylesCount(): number
   GetStylesItem(index: number): WidgetStyle_Record
@@ -5607,8 +5607,8 @@ declare interface SenseShape_Record extends TweakDBRecord {
 
 declare interface Attack_Record extends TweakDBRecord {
 
-  AttackName(): String
-  UserDataPath(): String
+  AttackName(): string
+  UserDataPath(): string
   DamageType(): DamageType_Record
   AttackType(): AttackType_Record
   StatModifiers(outList: StatModifier_Record[]): void
@@ -5619,10 +5619,10 @@ declare interface Attack_Record extends TweakDBRecord {
   GetStatusEffectsCount(): number
   GetStatusEffectsItem(index: number): StatusEffectAttackData_Record
   StatusEffectsContains(item: StatusEffectAttackData_Record): Bool
-  HitFlags(): String[]
+  HitFlags(): string[]
   GetHitFlagsCount(): number
-  GetHitFlagsItem(index: number): String
-  HitFlagsContains(item: String): Bool
+  GetHitFlagsItem(index: number): string
+  HitFlagsContains(item: string): Bool
   ClassName(): CName
   Range(): number
   PlayerIncomingDamageMultiplier(): number
@@ -5642,11 +5642,11 @@ declare interface Attack_GameEffect_Record extends Attack_Record {
 
 declare interface Stat_Record extends TweakDBRecord {
 
-  EnumComment(): String
-  LocalizedDescription(): String
-  LocalizedName(): String
-  EnumName(): String
-  LocalizedStatDisplay(): String
+  EnumComment(): string
+  LocalizedDescription(): string
+  LocalizedName(): string
+  EnumName(): string
+  LocalizedStatDisplay(): string
   ImprovementRelation(): ImprovementRelation_Record
   Flags(): CName[]
   GetFlagsCount(): number
@@ -5675,9 +5675,9 @@ declare interface ChoiceCaptionPart_Record extends TweakDBRecord {
 
 declare interface Item_Record extends BaseObject_Record {
 
-  FriendlyName(): String
-  IconPath(): String
-  LocalizedName(): String
+  FriendlyName(): string
+  IconPath(): string
+  LocalizedName(): string
   MovementSound(): EquipmentMovementSound_Record
   DropSettings(): ItemDropSettings_Record
   Crosshair(): Crosshair_Record
@@ -5889,8 +5889,8 @@ declare interface ItemAction_Record extends ObjectAction_Record {
 
 declare interface EquipmentArea_Record extends TweakDBRecord {
 
-  EnumComment(): String
-  LocalizedName(): String
+  EnumComment(): string
+  LocalizedName(): string
   EnumName(): CName
   NumberOfEquipSlots(): number
   Locked(): Bool
@@ -5968,9 +5968,9 @@ declare interface GrenadeDeliveryMethod_Record extends TweakDBRecord {
 
 declare interface InteractionBase_Record extends TweakDBRecord {
 
-  Name(): String
-  Action(): String
-  PrereqID(): String
+  Name(): string
+  Action(): string
+  PrereqID(): string
   CaptionIcon(): ChoiceCaptionIconPart_Record
   Caption(): CName
   Description(): CName
@@ -6074,8 +6074,8 @@ declare interface MappinUIRuntimeProfile_Record extends TweakDBRecord {
 
 declare interface MiniGame_SymbolsWithRarity_Record extends TweakDBRecord {
 
-  Name(): String
-  Symbol(): String
+  Name(): string
+  Symbol(): string
   Probability(): number
 }
 
@@ -6107,8 +6107,8 @@ declare interface PhotoModeItem_Record extends TweakDBRecord {
 
 declare interface ReactionPreset_Record extends TweakDBRecord {
 
-  ReactionGroup(): String
-  EnumComment(): String
+  ReactionGroup(): string
+  EnumComment(): string
   StatModifiers(outList: StatModifier_Record[]): void
   GetStatModifiersCount(): number
   GetStatModifiersItem(index: number): StatModifier_Record
@@ -6148,8 +6148,8 @@ declare interface StatModifierGroup_Record extends TweakDBRecord {
 
 declare interface Character_Record extends SpawnableObject_Record {
 
-  CpoCharacterBuild(): String
-  DevNotes(): String
+  CpoCharacterBuild(): string
+  DevNotes(): string
   VendorID(): Vendor_Record
   Driving(): BaseDrivingParameters_Record
   ThreatTrackingPreset(): ThreatTrackingPresetBase_Record
@@ -6283,7 +6283,7 @@ declare interface BlackboardSystem extends IBlackboardSystem {
   GetLocalInstanced(entityID: EntityID, definition: BlackboardDefinition): IBlackboard
   RegisterLocalBlackboard(blackboard: IBlackboard): void
   UnregisterLocalBlackboard(blackboard: IBlackboard): void
-  RegisterLocalBlackboardForDebugRender(blackboard: IBlackboard, debugName: String): void
+  RegisterLocalBlackboardForDebugRender(blackboard: IBlackboard, debugName: string): void
 }
 
 declare interface AllBlackboardDefinitions extends IScriptable {
@@ -6348,8 +6348,8 @@ declare interface IBlackboard extends IScriptable {
   RegisterListenerFloat(id: BlackboardID_Float, object: IScriptable, func: CName, fireIfValueExist?: Bool): number
   RegisterDelayedListenerFloat(id: BlackboardID_Float, object: IScriptable, func: CName, fireIfValueExist?: Bool): number
   UnregisterListenerFloat(id: BlackboardID_Float, callbackId: number): void
-  GetString(id: BlackboardID_String): String
-  SetString(id: BlackboardID_String, value: String, forceFire?: Bool): void
+  GetString(id: BlackboardID_String): string
+  SetString(id: BlackboardID_String, value: string, forceFire?: Bool): void
   SignalString(id: BlackboardID_String): void
   RegisterListenerString(id: BlackboardID_String, object: IScriptable, func: CName, fireIfValueExist?: Bool): number
   RegisterDelayedListenerString(id: BlackboardID_String, object: IScriptable, func: CName, fireIfValueExist?: Bool): number
@@ -6553,7 +6553,7 @@ declare interface SharedGameplayPS extends DeviceComponentPS {
   IsConnectedToBackdoorDevice(): Bool
   GetBackdoorAccessPoint(): AccessPointControllerPS
   GetAccessPoints(): AccessPointControllerPS[]
-  GetNetworkName(): String
+  GetNetworkName(): string
   CheckMasterConnectedClassTypes(): ConnectedClassTypes
   WasRevealedInNetworkPing(): Bool
   SetRevealedInNetworkPing(wasRevealed: Bool): void
@@ -6582,7 +6582,7 @@ declare interface ScriptableDeviceComponentPS extends SharedGameplayPS {
   IsInitialized(): Bool
   ForceResolveGameplayStateOnAttach(): Bool
   ForceVisibilityInAnimSystemOnLogicReady(): Bool
-  GetDeviceName(): String
+  GetDeviceName(): string
   GetTweakDBRecord(): TweakDBID
   GetTweakDBDescriptionRecord(): TweakDBID
   GetContentAssignmentID(): TweakDBID
@@ -6638,7 +6638,7 @@ declare interface ScriptableDeviceComponentPS extends SharedGameplayPS {
   HasPlaystyle(playstyle: EPlaystyle): Bool
   GetPlaystyles(): EPlaystyle[]
   HasAnyPlaystyle(): Bool
-  PassDeviceName(deviceName: String, dbgDeviceName?: CName): void
+  PassDeviceName(deviceName: string, dbgDeviceName?: CName): void
   DisbaleRPGChecksForAction(actionID: TweakDBID): void
   EnableRPGChecksForAction(actionID: TweakDBID): void
   HasAnyActionsWithDisabledRPGChecks(): Bool
@@ -6675,7 +6675,7 @@ declare interface ScriptableDeviceComponentPS extends SharedGameplayPS {
   IsDisabled(): Bool
   IsPowered(): Bool
   IsUnpowered(): Bool
-  GetDeviceStatus(): String
+  GetDeviceStatus(): string
   GetDeviceStatusAction(): BaseDeviceStatus
   GetScannerStatusRecord(): TweakDBID
   GetDeviceStatusTextData(): inkTextParams
@@ -6698,8 +6698,8 @@ declare interface ScriptableDeviceComponentPS extends SharedGameplayPS {
   CanCreateAnySpiderbotActions(): Bool
   GetSpiderbotActions(outActions: DeviceAction[], context: GetActionsContext): void
   SetInactiveActionsWithExceptions(outActions: DeviceAction[]): void
-  GetActionsRestrictionData(allowedNames: String[], disallowedNames: String[], inactiveReason: String): Bool
-  FindActionInTweakList(actionName: CName, allowedNames: String[]): Bool
+  GetActionsRestrictionData(allowedNames: string[], disallowedNames: string[], inactiveReason: string): Bool
+  FindActionInTweakList(actionName: CName, allowedNames: string[]): Bool
   GetLocalPassword(): CName
   HasAuthorizationModule(): Bool
   IsAuthorizationModuleOn(): Bool
@@ -6802,12 +6802,12 @@ declare interface ScriptableDeviceComponentPS extends SharedGameplayPS {
   OnRevealDevicesGridEvent(evt: RevealDevicesGridEvent): EntityNotificationType
   OnPingNetworkGridEvent(evt: PingNetworkGridEvent): EntityNotificationType
   ShouldDebug(): Bool
-  GetDebugName(): String
+  GetDebugName(): string
   GetDebugPath(): CName
-  GetDebugTags(): String
-  LogActionDetails(action: ScriptableDeviceAction, cachedStatus?: BaseDeviceStatus, context?: String, status?: String, overrideStatus?: Bool): void
+  GetDebugTags(): string
+  LogActionDetails(action: ScriptableDeviceAction, cachedStatus?: BaseDeviceStatus, context?: string, status?: string, overrideStatus?: Bool): void
   GetWidgetTypeName(): CName
-  GetDeviceIconPath(): String
+  GetDeviceIconPath(): string
   GetDeviceIconID(): CName
   OnRequestActionWidgetsUpdate(evt: RequestActionWidgetsUpdateEvent): void
   OnRequestUIRefresh(evt: RequestUIRefreshEvent): void
@@ -6836,7 +6836,7 @@ declare interface ScriptableDeviceComponentPS extends SharedGameplayPS {
   SetInitialStateOperataionPerformed(value: Bool): void
   DetermineInteractionState(interactionComponent: InteractionComponent, context: GetActionsContext): void
   /** @noSelf **/
-  SetActionsInactiveAll(actions: DeviceAction[], reason?: String, exludedAction?: CName): void
+  SetActionsInactiveAll(actions: DeviceAction[], reason?: string, exludedAction?: CName): void
   PushInactiveInteractionChoice(context: GetActionsContext, choices: InteractionChoice[]): void
   DetermineAreaHintIndicatorState(context: GetActionsContext): void
   PushChoicesToInteractionComponent(interactionComponent: InteractionComponent, context: GetActionsContext, choices: InteractionChoice[]): void
@@ -6990,7 +6990,7 @@ declare interface ScriptableDeviceComponentPS extends SharedGameplayPS {
   NotifyParents_Event(): void
   OnNotifyParents(evt: NotifyParentsEvent): EntityNotificationType
   UseNotifier(action: ScriptableDeviceAction): void
-  SendActionFailedEvent(failedAction: ScriptableDeviceAction, whereToSend: EntityID, context?: String): EntityNotificationType
+  SendActionFailedEvent(failedAction: ScriptableDeviceAction, whereToSend: EntityID, context?: string): EntityNotificationType
   WakeUpDevice(): Bool
   PowerDevice(): void
   UnpowerDevice(): void
@@ -7015,7 +7015,7 @@ declare interface ScriptableDeviceComponentPS extends SharedGameplayPS {
   IsUserAlreadyOnTheList(entityID: EntityID): number
   RemoveUser(user: EntityID): Bool
   GetKeycardRecord(record: TweakDBID): Item_Record
-  GetKeycardLocalizedString(record: TweakDBID): String
+  GetKeycardLocalizedString(record: TweakDBID): string
   TurnAuthorizationModuleON(): Bool
   TurnAuthorizationModuleOFF(): void
   ExecutePSAction(action: ScriptableDeviceAction, layerTag?: CName): void
@@ -7381,7 +7381,7 @@ declare interface RPGManager extends IScriptable {
   /** @noSelf **/
   ExtractItemsOfEquipArea(type: gamedataEquipmentArea, input: gameItemData[], output: gameItemData[]): Bool
   /** @noSelf **/
-  GetAmmoCount(owner: GameObject, itemID: ItemID): String
+  GetAmmoCount(owner: GameObject, itemID: ItemID): string
   /** @noSelf **/
   GetAmmoCountValue(owner: GameObject, itemID: ItemID): number
   /** @noSelf **/
@@ -7389,7 +7389,7 @@ declare interface RPGManager extends IScriptable {
   /** @noSelf **/
   GetItemRecord(itemID: ItemID): Item_Record
   /** @noSelf **/
-  GetAttachmentSlotID(slot: String): TweakDBID
+  GetAttachmentSlotID(slot: string): TweakDBID
   /** @noSelf **/
   ForceEquipItemOnPlayer(puppet: GameObject, itemTDBID: TweakDBID, addToInv: Bool): void
   /** @noSelf **/
@@ -7462,7 +7462,7 @@ declare interface gameItemData extends IScriptable {
 
   GetID(): ItemID
   GetName(): CName
-  GetNameAsString(): String
+  GetNameAsString(): string
   GetQuantity(): number
   HasAttachmentSlot(slotID: TweakDBID): Bool
   HasPlacementSlot(slotID: TweakDBID): Bool
@@ -7528,7 +7528,7 @@ declare interface IComponent extends IScriptable {
   IsEnabled(): Bool
   Toggle(on: Bool): void
   QueueEntityEvent(ev: Event): void
-  RegisterRenderDebug(filterName: String, functionName: CName): void
+  RegisterRenderDebug(filterName: string, functionName: CName): void
 }
 
 declare interface IPlacedComponent extends IComponent {
@@ -8101,7 +8101,7 @@ declare interface LinkedFocusClueData {
 
 declare interface ToggleFocusClueEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface FocusCluesSystem extends ScriptableSystem {
@@ -8208,22 +8208,22 @@ declare interface FocusClueStateChangeEvent extends Event {
 
 declare interface ToggleClueConclusionEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface DisableScannerEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface DisableObjectDescriptionEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface SetCustomObjectDescriptionEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
   GetObjectDescription(): ObjectScanningDescription
 }
 
@@ -8242,7 +8242,7 @@ declare interface entSpawnEffectEvent extends Event {
 
 declare interface ToggleGameplayMappinVisibilityEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface entKillEffectEvent extends Event {
@@ -8309,7 +8309,7 @@ declare interface HUDManager extends NativeHudManager {
   OnQuickHackPanelOpened(value: Bool): Bool
   OnBodyCarryStateChanged(value: Bool): Bool
   OnGrappleStateChanged(value: number): Bool
-  OnBreachingNetwork(value: String): Bool
+  OnBreachingNetwork(value: string): Bool
   IsHackingMinigameActive(): Bool
   SendQuickHackPanelStateEvent(isOpened: Bool): void
   /** @noSelf **/
@@ -8401,13 +8401,13 @@ declare interface HUDManager extends NativeHudManager {
   IsRequestLegal(requestToValidate: HUDManagerRequest): Bool
   QueueEntityEvent(entityID: EntityID, evt: Event): void
   GetPlayer(): GameObject
-  HUDLog(message: String): void
+  HUDLog(message: string): void
   /** @noSelf **/
   ShowScannerHint(game: GameInstance): void
   /** @noSelf **/
   HideScannerHint(game: GameInstance): void
   /** @noSelf **/
-  SetScannerHintMessege(game: GameInstance, text: String): void
+  SetScannerHintMessege(game: GameInstance, text: string): void
   GetPulseDuration(): number
   IsPulseActive(): Bool
   CanPulse(): Bool
@@ -8727,7 +8727,7 @@ declare interface StatusEffectBase extends IScriptable {
 
 declare interface ApplyNewStatusEffectEvent extends Event {
 
-  SetEffectID(effectName: String): void
+  SetEffectID(effectName: string): void
 }
 
 declare interface DeviceBase extends GameObject {
@@ -8899,8 +8899,8 @@ declare interface Device extends DeviceBase {
   GetInteractionClearance(): Clearance
   IsPlayerAround(): Bool
   GetInputContextName(): CName
-  GetDeviceName(): String
-  GetDeviceStatusString(): String
+  GetDeviceName(): string
+  GetDeviceStatusString(): string
   GetDeviceState(): EDeviceStatus
   IsDeviceSecured(): Bool
   GetLocalization(): LocalizationStringComponent
@@ -8920,7 +8920,7 @@ declare interface Device extends DeviceBase {
   IsPotentiallyQuickHackable(): Bool
   IsQuickHacksExposed(): Bool
   IsBreached(): Bool
-  GetNetworkSecurityLevel(): String
+  GetNetworkSecurityLevel(): string
   IsControllingDevices(): Bool
   HasAnySlaveDevices(): Bool
   HasImportantInteraction(): Bool
@@ -9013,7 +9013,7 @@ declare interface Device extends DeviceBase {
   ShouldShowScanner(): Bool
   FillObjectDescription(arr: ScanningTooltipElementDef[]): void
   CompileScannerChunks(): Bool
-  GetScannerName(): String
+  GetScannerName(): string
   GetScannerAttitudeTweak(): TweakDBID
   SetScanningProgressBarText(): void
   ShouldShowDamageNumber(): Bool
@@ -9051,8 +9051,8 @@ declare interface Device extends DeviceBase {
   SendQuickhackCommands(shouldOpen: Bool): void
   TranslateActionsIntoQuickSlotCommands(actions: DeviceAction[], commands: QuickhackData[]): void
   GetICELevel(): number
-  GetPlayerCyberDeck(): String[]
-  GetMatchingActionProgramName(actions: DeviceAction[], searchWord: String): number
+  GetPlayerCyberDeck(): string[]
+  GetMatchingActionProgramName(actions: DeviceAction[], searchWord: string): number
   OnUploadProgressStateChanged(evt: UploadProgramProgressEvent): Bool
   ShowQuickHackDuration(action: ScriptableDeviceAction): void
   CanPlayerUseQuickHackVulnerability(data: TweakDBID): Bool
@@ -9148,7 +9148,7 @@ declare interface Device extends DeviceBase {
   ToggleComponentByName(componentName: CName, toggle: Bool): void
   OnPlayBink(evt: PlayBinkEvent): Bool
   GetFxResourceByKey(key: CName): FxResource
-  AddHudButtonHelper(argText: String, argIcon: CName): void
+  AddHudButtonHelper(argText: string, argIcon: CName): void
   RemoveHudButtonHelper(): void
   OnFactChanged(evt: FactChangedEvent): Bool
   IsTechie(): Bool
@@ -9462,7 +9462,7 @@ declare interface FocusForcedHighlightPersistentData extends IScriptable {
 
 declare interface SetPersistentForcedHighlightEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface HighlightEditableData extends IScriptable {
@@ -9513,17 +9513,17 @@ declare interface gameVisionModeUpdateVisuals extends Event {
 
 declare interface SetDefaultHighlightEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface RevealQuestTargetEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface ToggleForcedHighlightEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface InteractiveDevice extends Device {
@@ -9587,7 +9587,7 @@ declare interface EntityResolveComponentsInterface {
 declare interface LocalizationStringComponent extends IComponent {
 
   GetString(key: CName): LocalizationString
-  GetString_DemoOnly(key: CName): String
+  GetString_DemoOnly(key: CName): string
 }
 
 declare interface DisassemblableComponent extends ScriptableComponent {
@@ -9742,8 +9742,8 @@ declare interface PlayerPuppet extends ScriptedPuppet {
   GetZoomBlackboardValues(): Bool
   OnRewardEvent(evt: RewardEvent): Bool
   OnManagePersonalLinkChangeEvent(evt: ManagePersonalLinkChangeEvent): Bool
-  GetPhoneCallFactName(contactName1: CName, contactName2: CName): String
-  TriggerInspect(itemID: String, offset: number, adsOffset: number, timeToScan: number): void
+  GetPhoneCallFactName(contactName1: CName, contactName2: CName): string
+  TriggerInspect(itemID: string, offset: number, adsOffset: number, timeToScan: number): void
   SetInvisible(isInvisible: Bool): void
   OnHeavyFootstepEvent(evt: HeavyFootstepEvent): Bool
   PlayFootstepCameraShakeBasedOnProximity(evt: HeavyFootstepEvent): void
@@ -9825,7 +9825,7 @@ declare interface PlayerPuppet extends ScriptedPuppet {
   IsMovingHorizontally(): Bool
   IsMovingVertically(): Bool
   OnZoneChange(value: Variant): Bool
-  SetWarningMessage(message: String): void
+  SetWarningMessage(message: string): void
   StartProcessingVForVendettaAchievement(deathInstigator: GameObject): void
   CreateVendettaTimeDelayEvent(): void
   OnFinishedVendettaTimeEvent(evt: FinishedVendettaTimeEvent): Bool
@@ -9842,13 +9842,13 @@ declare interface PlayerPuppet extends ScriptedPuppet {
   OnDismembermentInstigated(evt: DismembermentInstigated): Bool
   GetPrimaryTargetingComponent(): TargetingComponent
   /** @noSelf **/
-  SetLevel(inst: GameInstance, stringType: String, stringVal: String, levelGainReason: telemetryLevelGainReason): void
+  SetLevel(inst: GameInstance, stringType: string, stringVal: string, levelGainReason: telemetryLevelGainReason): void
   /** @noSelf **/
-  SetBuild(inst: GameInstance, stringType: String): void
+  SetBuild(inst: GameInstance, stringType: string): void
   ApplyNPCLevelAndProgressionBuild(npc: GameObject, actionName: CName): void
   OnMeleeHitEvent(evt: MeleeHitEvent): Bool
   OnMeleeHitSloMo(evt: MeleeHitSlowMoEvent): Bool
-  FindBuildSpacing(enumType: String, buildNameStringPart: String): number
+  FindBuildSpacing(enumType: string, buildNameStringPart: string): number
   GotKeycardNotification(): void
   OnHackPlayerEvent(evt: HackPlayerEvent): Bool
   OnCarHitPlayer(evt: OnCarHitPlayer): Bool
@@ -9861,7 +9861,7 @@ declare interface PlayerPuppet extends ScriptedPuppet {
   RestoreMinigamePrograms(): void
   GetMinigameBlackboard(): IBlackboard
   InitInterestingFacts(): void
-  ApplyAimAssistSettings(configName?: String): void
+  ApplyAimAssistSettings(configName?: string): void
   RegisterInterestingFactsListeners(): void
   UnregisterInterestingFactsListeners(): void
   SetBlackboardIntVariable(id: BlackboardID_Int, value: number): void
@@ -9918,7 +9918,7 @@ declare interface ScriptedPuppetPS extends GamePuppetPS {
   IsConnectedToAccessPoint(): Bool
   IsConnectedToSecuritySystem(): Bool
   GetNPCsConnectedToThisAPCount(): number
-  GetNetworkName(): String
+  GetNetworkName(): string
   CheckMasterConnectedClassTypes(): ConnectedClassTypes
   GetActiveContexts(): gamedeviceRequestType[]
   HasDirectInteractionChoicesActive(): Bool
@@ -10020,7 +10020,7 @@ declare interface DeviceAction extends Event {
   GetProperties(): DeviceActionProperty[]
   GetPersistentID(): PersistentID
   GetDeviceClassName(): CName
-  GetCurrentDisplayString(): String
+  GetCurrentDisplayString(): string
 }
 
 declare interface CooldownRequest extends IScriptable {
@@ -10060,7 +10060,7 @@ declare interface BaseScriptableAction extends DeviceAction {
   GetGameplayCategoryID(): TweakDBID
   GetGameplayCategoryRecord(): ObjectActionGameplayCategory_Record
   SetObjectActionID(id: TweakDBID): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   GetTweakDBChoiceID(): TweakDBID
   SetIsActionRPGCheckDissabled(value: Bool): void
   GetIsActionRPGCheckDissabled(): Bool
@@ -10117,9 +10117,9 @@ declare interface InteractionChoiceCaption {
   /** @noSelf **/
   AddPartFromRecord(self: InteractionChoiceCaption, record: ChoiceCaptionPart_Record): void
   /** @noSelf **/
-  AddTextPart(self: InteractionChoiceCaption, text: String): void
+  AddTextPart(self: InteractionChoiceCaption, text: string): void
   /** @noSelf **/
-  AddTagPart(self: InteractionChoiceCaption, tag: String): void
+  AddTagPart(self: InteractionChoiceCaption, tag: string): void
   /** @noSelf **/
   AddScriptPart(self: InteractionChoiceCaption, part: InteractionChoiceCaptionScriptPart): void
   /** @noSelf **/
@@ -10168,7 +10168,7 @@ declare interface ObjectActionEffect_Record extends TweakDBRecord {
 
 declare interface ObjectActionReference_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataObjectActionReference
 }
@@ -10310,7 +10310,7 @@ declare interface TransactionSystem extends ITransactionSystem {
   GiveItems(obj: GameObject, itemList: ItemModParams[]): Bool
   GiveItemByItemData(obj: GameObject, itemData: gameItemData): Bool
   GivePreviewItemByItemData(obj: GameObject, itemData: gameItemData): Bool
-  GiveItemByItemQuery(obj: GameObject, itemQueryTDBID: TweakDBID, amount?: number, seed?: number, telemetryLogSource?: String): Bool
+  GiveItemByItemQuery(obj: GameObject, itemQueryTDBID: TweakDBID, amount?: number, seed?: number, telemetryLogSource?: string): Bool
   GiveItemByItemArrayQuery(obj: GameObject, itemQueryTDBID: TweakDBID, seed?: number): Bool
   TransferItem(source: GameObject, target: GameObject, itemID: ItemID, amount: number): Bool
   TransferAllItems(source: GameObject, target: GameObject): Bool
@@ -10481,8 +10481,8 @@ declare interface EquipmentSystem extends ScriptableSystem {
 
   /** @noSelf **/
   GetInstance(owner: GameObject): EquipmentSystem
-  CalculateSuffix(itemId: ItemID, owner: GameObject, suffixRecord: ItemsFactoryAppearanceSuffixBase_Record): String
-  GetHairSuffix(itemId: ItemID, owner: GameObject, suffixRecord: ItemsFactoryAppearanceSuffixBase_Record): String
+  CalculateSuffix(itemId: ItemID, owner: GameObject, suffixRecord: ItemsFactoryAppearanceSuffixBase_Record): string
+  GetHairSuffix(itemId: ItemID, owner: GameObject, suffixRecord: ItemsFactoryAppearanceSuffixBase_Record): string
   OnPlayerAttach(request: PlayerAttachRequest): void
   OnPlayerDetach(request: PlayerDetachRequest): void
   GetPlayerData(owner: GameObject): EquipmentSystemPlayerData
@@ -10559,12 +10559,12 @@ declare interface EquipmentSystem extends ScriptableSystem {
   OnUnequipByContextRequest(request: UnequipByContextRequest): void
   Debug_SetupEquipmentSystemOverlay(dataOwner: GameObject): void
   /** @noSelf **/
-  ComposeSDORootPath(ownerGameObject: GameObject, suffix?: String): String
+  ComposeSDORootPath(ownerGameObject: GameObject, suffix?: string): string
   Debug_SetupESAreaButton(equipArea: SEquipArea, ownerGameObject: GameObject): void
-  Debug_SetupESSlotButton(slotIndex: number, areaStr: String, ownerGameObject: GameObject): void
-  Debug_SetESSlotData(slotIndex: number, areaStr: String, ownerGameObject: GameObject): void
+  Debug_SetupESSlotButton(slotIndex: number, areaStr: string, ownerGameObject: GameObject): void
+  Debug_SetESSlotData(slotIndex: number, areaStr: string, ownerGameObject: GameObject): void
   Debug_FillESSlotData(slotIndex: number, area: gamedataEquipmentArea, itemID: ItemID, ownerGameObject: GameObject): void
-  Debug_FillESSlotData(slotIndex: number, areaStr: String, itemID: ItemID, ownerGameObject: GameObject): void
+  Debug_FillESSlotData(slotIndex: number, areaStr: string, itemID: ItemID, ownerGameObject: GameObject): void
   OnEquipmentSystemWeaponManipulationRequest(request: EquipmentSystemWeaponManipulationRequest): void
   OnSetActiveItemInEquipmentArea(request: SetActiveItemInEquipmentArea): void
   GetInventoryManager(owner: GameObject): InventoryDataManagerV2
@@ -10587,7 +10587,7 @@ declare interface EquipmentSystemPlayerData extends IScriptable {
   InitializeEquipment(): void
   InitializeEquipmentArea(equipAreaRecord: EquipmentArea_Record): void
   InitializeClothingSlotsInfo(): void
-  CreateSlotInfo(area: gamedataEquipmentArea, slot: String, visualTag: CName): SSlotInfo
+  CreateSlotInfo(area: gamedataEquipmentArea, slot: string, visualTag: CName): SSlotInfo
   EquipItem(itemID: ItemID, addToInventory?: Bool, blockActiveSlotsUpdate?: Bool, forceEquipWeapon?: Bool): void
   EquipItem(itemID: ItemID, slotIndex: number, addToInventory?: Bool, blockActiveSlotsUpdate?: Bool, forceEquipWeapon?: Bool): void
   ProcessGadgetsTutorials(item: ItemID): void
@@ -10652,9 +10652,9 @@ declare interface EquipmentSystemPlayerData extends IScriptable {
   DrawItem(itemToDraw: ItemID, drawAnimationType: gameEquipAnimationType): void
   /** @noSelf **/
   UpdateArmSlot(owner: PlayerPuppet, itemToDraw: ItemID, unequip?: Bool): void
-  SaveEquipmentSet(setName: String, setType: EEquipmentSetType): void
-  LoadEquipmentSet(setName: String): void
-  DeleteEquipmentSet(setName: String): void
+  SaveEquipmentSet(setName: string, setType: EEquipmentSetType): void
+  LoadEquipmentSet(setName: string): void
+  DeleteEquipmentSet(setName: string): void
   GetEquipAreaIndex(equipAreaID: TweakDBID): number
   GetEquipAreaIndex(areaType: gamedataEquipmentArea): number
   GetEquipArea(areaType: gamedataEquipmentArea): SEquipArea
@@ -10868,7 +10868,7 @@ declare interface InventoryDataManagerV2 extends IScriptable {
   StatModifiersExcept(statModifiers: StatModifier_Record[], except: StatModifier_Record[]): StatModifier_Record[]
   /** @noSelf **/
   ProcessQuickhackEffects(player: GameObject, statusEffectRecord: StatusEffect_Record, result: DamageEffectUIEntry[]): Bool
-  GetTooltipForEmptySlot(slot: String): MessageTooltipData
+  GetTooltipForEmptySlot(slot: string): MessageTooltipData
   GetPlayerItemStats(itemId: ItemID, compareItemId?: ItemID): ItemViewData
   GetItemStatsByData(itemData: gameItemData, compareWithData?: gameItemData): ItemViewData
   GetSellPrice(owner: GameObject, itemID: ItemID): number
@@ -10883,8 +10883,8 @@ declare interface InventoryDataManagerV2 extends IScriptable {
   GetPlayerArmorStats(statsList: StatViewData[]): void
   GetPlayerHealthStats(statsList: StatViewData[]): void
   GetPlayerOtherStats(statsList: StatViewData[]): void
-  GetPlayerStatsFromMap(statsList: StatViewData[], uiMap: String): void
-  GetLocalizedStatName(statRecord: Stat_Record): String
+  GetPlayerStatsFromMap(statsList: StatViewData[], uiMap: string): void
+  GetLocalizedStatName(statRecord: Stat_Record): string
   SetActiveWeapon(activeWeapon: ItemID): void
   MarkToRebuild(): void
   EquipItem(itemId: ItemID, slot: number): void
@@ -10900,8 +10900,8 @@ declare interface InventoryDataManagerV2 extends IScriptable {
   GetAttachements(owner: GameObject, itemId: ItemID, itemData: gameItemData, attachments: InventoryItemAttachments[], abilities: InventoryItemAbility[]): void
   GetAttachements(owner: GameObject, itemData: gameItemData, usedSlots: TweakDBID[], emptySlots: TweakDBID[], mods: MinimalItemTooltipModData[], dedicatedMods: MinimalItemTooltipModAttachmentData[]): void
   FillSpecialAbilities(itemRecord: Item_Record, abilities: InventoryItemAbility[], itemData?: gameItemData, partItemData?: InnerItemData): void
-  GetStatsUIMapName(itemData: gameItemData): String
-  GetStatsUIMapName(itemId: ItemID): String
+  GetStatsUIMapName(itemData: gameItemData): string
+  GetStatsUIMapName(itemId: ItemID): string
   GetStatsList(mapPath: TweakDBID, itemData: InnerItemData, primeStatsList: StatViewData[], secondStatsList: StatViewData[], compareWithData?: gameItemData): void
   GetStatsList(mapPath: TweakDBID, itemData: gameItemData, primeStatsList: StatViewData[], secondStatsList: StatViewData[], compareWithData?: gameItemData): void
   GetStatsList(mapPath: TweakDBID, itemData: InventoryItemData, primeStatsList: StatViewData[], secondStatsList: StatViewData[], compareWithData: InventoryItemData): void
@@ -10944,7 +10944,7 @@ declare interface InventoryDataManagerV2 extends IScriptable {
   GetCraftingCountForAllCraftingMaterialTypes(): InventoryItemData[]
   GetCommonsCraftingMaterialTypes(): InventoryItemData[]
   GetHackingCraftingMaterialTypes(): InventoryItemData[]
-  GetItemFromRecord(tweakPath: String): InventoryItemData
+  GetItemFromRecord(tweakPath: string): InventoryItemData
   GetItemFromRecord(id: TweakDBID): InventoryItemData
   GetAllCyberwareAbilities(): AbilityData[]
   GetAbilityData(itemId: ItemID): AbilityData
@@ -10952,7 +10952,7 @@ declare interface InventoryDataManagerV2 extends IScriptable {
   GetExternalGameObject(entityId: EntityID): GameObject
   GetExternalItemData(ownerId: EntityID, externalItemId: ItemID, forceShowCurrencyOnHUDTooltip?: Bool): InventoryItemData
   GetExternalItemData(ownerId: EntityID, externalItem: gameItemData, forceShowCurrencyOnHUDTooltip?: Bool): InventoryItemData
-  GetEquipmentAreaLocalizedName(equipmentArea: gamedataEquipmentArea): String
+  GetEquipmentAreaLocalizedName(equipmentArea: gamedataEquipmentArea): string
   GetNumberOfSlots(equipmentArea: gamedataEquipmentArea): number
   SortDataByRarity(items: InventoryItemData[]): InventoryItemData[]
   GetExternalItemStats(ownerId: EntityID, externalItemId: ItemID, compareItemId?: ItemID): ItemViewData
@@ -11187,19 +11187,19 @@ declare interface SWidgetPackageBase {
   /** @noSelf **/
   GetLibraryPath(widgetDef: WidgetDefinition_Record): ResRef
   /** @noSelf **/
-  GetLibraryID(widgetDef: WidgetDefinition_Record, screenTypeDef: DeviceScreenType_Record, styleDef: WidgetStyle_Record): String
+  GetLibraryID(widgetDef: WidgetDefinition_Record, screenTypeDef: DeviceScreenType_Record, styleDef: WidgetStyle_Record): string
   /** @noSelf **/
-  GetLibraryIDPackage(widgetDef: WidgetDefinition_Record, screenTypeDef: DeviceScreenType_Record, styleDef: WidgetStyle_Record): String[]
+  GetLibraryIDPackage(widgetDef: WidgetDefinition_Record, screenTypeDef: DeviceScreenType_Record, styleDef: WidgetStyle_Record): string[]
 }
 
 declare interface WidgetStyle_Record extends TweakDBRecord {
 
-  EnumName(): String
+  EnumName(): string
 }
 
 declare interface WidgetRatio_Record extends TweakDBRecord {
 
-  EnumName(): String
+  EnumName(): string
 }
 
 declare interface AsyncSpawnData extends IScriptable {
@@ -11282,7 +11282,7 @@ declare interface InnerItemData {
 
 declare interface Quality_Record extends TweakDBRecord {
 
-  Name(): String
+  Name(): string
   StatModifier(): StatModifier_Record
   Value(): number
   Type(): gamedataQuality
@@ -11348,8 +11348,8 @@ declare interface SwapItemPart extends ScriptableSystemRequest {
 declare interface UILocalizationMap extends IScriptable {
 
   Init(): void
-  AddRecord(tag: CName, value: String): void
-  Localize(tag: CName): String
+  AddRecord(tag: CName, value: string): void
+  Localize(tag: CName): string
 }
 
 declare interface UILocRecord {
@@ -11401,9 +11401,9 @@ declare interface InventoryItemData {
   /** @noSelf **/
   GetSlotID(self: InventoryItemData): TweakDBID
   /** @noSelf **/
-  SetName(self: InventoryItemData, Name: String): void
+  SetName(self: InventoryItemData, Name: string): void
   /** @noSelf **/
-  GetName(self: InventoryItemData): String
+  GetName(self: InventoryItemData): string
   /** @noSelf **/
   SetQuality(self: InventoryItemData, quality: CName): void
   /** @noSelf **/
@@ -11425,29 +11425,29 @@ declare interface InventoryItemData {
   /** @noSelf **/
   GetItemShape(self: InventoryItemData): EInventoryItemShape
   /** @noSelf **/
-  SetIconPath(self: InventoryItemData, iconPath: String): void
+  SetIconPath(self: InventoryItemData, iconPath: string): void
   /** @noSelf **/
-  GetIconPath(self: InventoryItemData): String
+  GetIconPath(self: InventoryItemData): string
   /** @noSelf **/
-  SetCategoryName(self: InventoryItemData, categoryName: String): void
+  SetCategoryName(self: InventoryItemData, categoryName: string): void
   /** @noSelf **/
-  GetCategoryName(self: InventoryItemData): String
+  GetCategoryName(self: InventoryItemData): string
   /** @noSelf **/
   SetItemType(self: InventoryItemData, itemType: gamedataItemType): void
   /** @noSelf **/
   GetItemType(self: InventoryItemData): gamedataItemType
   /** @noSelf **/
-  SetLocalizedItemType(self: InventoryItemData, localizedItemType: String): void
+  SetLocalizedItemType(self: InventoryItemData, localizedItemType: string): void
   /** @noSelf **/
-  GetLocalizedItemType(self: InventoryItemData): String
+  GetLocalizedItemType(self: InventoryItemData): string
   /** @noSelf **/
-  SetDescription(self: InventoryItemData, description: String): void
+  SetDescription(self: InventoryItemData, description: string): void
   /** @noSelf **/
-  GetDescription(self: InventoryItemData): String
+  GetDescription(self: InventoryItemData): string
   /** @noSelf **/
-  SetAdditionalDescription(self: InventoryItemData, description: String): void
+  SetAdditionalDescription(self: InventoryItemData, description: string): void
   /** @noSelf **/
-  GetAdditionalDescription(self: InventoryItemData): String
+  GetAdditionalDescription(self: InventoryItemData): string
   /** @noSelf **/
   SetPrice(self: InventoryItemData, price: number): void
   /** @noSelf **/
@@ -11613,9 +11613,9 @@ declare interface StatViewData {
 declare interface UIItemsHelper extends IScriptable {
 
   /** @noSelf **/
-  QualityStringToStateName(quality: String): CName
+  QualityStringToStateName(quality: string): CName
   /** @noSelf **/
-  QualityToLocalizationKey(quality: gamedataQuality): String
+  QualityToLocalizationKey(quality: gamedataQuality): string
   /** @noSelf **/
   QualityEnumToName(quality: gamedataQuality): CName
   /** @noSelf **/
@@ -11623,11 +11623,11 @@ declare interface UIItemsHelper extends IScriptable {
   /** @noSelf **/
   QualityEnumToInt(quality: gamedataQuality): number
   /** @noSelf **/
-  QualityEnumToString(quality: gamedataQuality): String
+  QualityEnumToString(quality: gamedataQuality): string
   /** @noSelf **/
   QualityIntToName(quality: number): CName
   /** @noSelf **/
-  QualityStringToInt(quality: String): number
+  QualityStringToInt(quality: string): number
   /** @noSelf **/
   QualityNameToInt(quality: CName): number
   /** @noSelf **/
@@ -11637,7 +11637,7 @@ declare interface UIItemsHelper extends IScriptable {
   /** @noSelf **/
   GetStateNameForDamageType(damageType: gamedataDamageType): CName
   /** @noSelf **/
-  GetIconNameForDamageType(damageType: gamedataDamageType): String
+  GetIconNameForDamageType(damageType: gamedataDamageType): string
   /** @noSelf **/
   GetTweakDBIDForDamageType(damageType: gamedataDamageType): TweakDBID
   /** @noSelf **/
@@ -11663,29 +11663,29 @@ declare interface UIItemsHelper extends IScriptable {
   /** @noSelf **/
   GetLootingtShadowIcon(equipmentArea: gamedataEquipmentArea): CName
   /** @noSelf **/
-  GetSlotName(slotID: TweakDBID, itemType: gamedataItemType, equipmentArea: gamedataEquipmentArea): String
+  GetSlotName(slotID: TweakDBID, itemType: gamedataItemType, equipmentArea: gamedataEquipmentArea): string
   /** @noSelf **/
-  GetSlotName(itemType: gamedataItemType, equipmentArea: gamedataEquipmentArea): String
+  GetSlotName(itemType: gamedataItemType, equipmentArea: gamedataEquipmentArea): string
   /** @noSelf **/
-  GetSlotName(equipmentArea: gamedataEquipmentArea): String
+  GetSlotName(equipmentArea: gamedataEquipmentArea): string
   /** @noSelf **/
-  GetItemTypeKey(itemType: gamedataItemType, weaponEvolutionType: gamedataWeaponEvolution): String
+  GetItemTypeKey(itemType: gamedataItemType, weaponEvolutionType: gamedataWeaponEvolution): string
   /** @noSelf **/
-  GetEvolutionWeaponType(itemType: gamedataItemType): String
+  GetEvolutionWeaponType(itemType: gamedataItemType): string
   /** @noSelf **/
-  GetItemTypeKey(itemType: gamedataItemType): String
+  GetItemTypeKey(itemType: gamedataItemType): string
   /** @noSelf **/
-  GetEmptySlotName(slotId: TweakDBID): String
+  GetEmptySlotName(slotId: TweakDBID): string
   /** @noSelf **/
-  GetTooltipItemName(data: InventoryTooltipData): String
+  GetTooltipItemName(data: InventoryTooltipData): string
   /** @noSelf **/
-  GetTooltipItemName(itemID: TweakDBID, itemData: gameItemData, fallbackName: String): String
+  GetTooltipItemName(itemID: TweakDBID, itemData: gameItemData, fallbackName: string): string
   /** @noSelf **/
-  GetItemName(itemData: InventoryItemData): String
+  GetItemName(itemData: InventoryItemData): string
   /** @noSelf **/
-  GetItemName(itemID: TweakDBID, itemData: gameItemData): String
+  GetItemName(itemID: TweakDBID, itemData: gameItemData): string
   /** @noSelf **/
-  GetItemName(itemRecord: Item_Record, itemData: gameItemData): String
+  GetItemName(itemRecord: Item_Record, itemData: gameItemData): string
 }
 
 declare interface ATooltipData extends IScriptable {
@@ -11718,7 +11718,7 @@ declare interface InventoryTooltipData_StatData {
 
 declare interface DamageType_Record extends TweakDBRecord {
 
-  EnumName(): String
+  EnumName(): string
   AssociatedStat(): Stat_Record
   Resistances(outList: StatDistributionData_Record[]): void
   GetResistancesCount(): number
@@ -11741,7 +11741,7 @@ declare interface RecipeData extends IScriptable {
 
 declare interface WeaponEvolution_Record extends TweakDBRecord {
 
-  Name(): String
+  Name(): string
   Type(): gamedataWeaponEvolution
 }
 
@@ -11798,8 +11798,8 @@ declare interface InventoryItemAbility {
 
 declare interface GameplayLogicPackageUIData_Record extends TweakDBRecord {
 
-  LocalizedDescription(): String
-  LocalizedName(): String
+  LocalizedDescription(): string
+  LocalizedName(): string
   FloatValues(): number[]
   GetFloatValuesCount(): number
   GetFloatValuesItem(index: number): number
@@ -11834,69 +11834,69 @@ declare interface UILocalizationDataPackage extends IScriptable {
 
 declare interface inkTextParams extends IScriptable {
 
-  AddString(value: String): void
-  AddString(key: String, value: String): void
-  UpdateString(index: number, value: String): void
-  UpdateString(key: String, value: String): void
-  AddLocalizedString(valueLocKey: String): void
-  AddLocalizedString(key: String, valueLocKey: String): void
-  UpdateLocalizedString(index: number, valueLocKey: String): void
-  UpdateLocalizedString(key: String, valueLocKey: String): void
+  AddString(value: string): void
+  AddString(key: string, value: string): void
+  UpdateString(index: number, value: string): void
+  UpdateString(key: string, value: string): void
+  AddLocalizedString(valueLocKey: string): void
+  AddLocalizedString(key: string, valueLocKey: string): void
+  UpdateLocalizedString(index: number, valueLocKey: string): void
+  UpdateLocalizedString(key: string, valueLocKey: string): void
   AddLocalizedName(valueLocKey: CName): void
-  AddLocalizedName(key: String, valueLocKey: CName): void
+  AddLocalizedName(key: string, valueLocKey: CName): void
   UpdateLocalizedName(index: number, valueLocKey: CName): void
-  UpdateLocalizedName(key: String, valueLocKey: CName): void
+  UpdateLocalizedName(key: string, valueLocKey: CName): void
   AddNumber(value: number): void
-  AddNumber(key: String, value: number): void
+  AddNumber(key: string, value: number): void
   UpdateNumber(index: number, value: number): void
-  UpdateNumber(key: String, value: number): void
+  UpdateNumber(key: string, value: number): void
   AddNumber(value: number): void
-  AddNumber(key: String, value: number): void
+  AddNumber(key: string, value: number): void
   UpdateNumber(index: number, value: number): void
-  UpdateNumber(key: String, value: number): void
+  UpdateNumber(key: string, value: number): void
   AddMeasurement(value: number, valueUnit: EMeasurementUnit): void
-  AddMeasurement(key: String, value: number, valueUnit: EMeasurementUnit): void
+  AddMeasurement(key: string, value: number, valueUnit: EMeasurementUnit): void
   UpdateMeasurement(index: number, value: number, valueUnit: EMeasurementUnit): void
-  UpdateMeasurement(key: String, value: number, valueUnit: EMeasurementUnit): void
+  UpdateMeasurement(key: string, value: number, valueUnit: EMeasurementUnit): void
   AddTime(valueSeconds: number): void
   AddTime(value: GameTime): void
-  AddTime(key: String, valueSeconds: number): void
-  AddTime(key: String, value: GameTime): void
+  AddTime(key: string, valueSeconds: number): void
+  AddTime(key: string, value: GameTime): void
   UpdateTime(index: number, valueSeconds: number): void
   UpdateTime(index: number, value: GameTime): void
-  UpdateTime(key: String, valueSeconds: number): void
-  UpdateTime(key: String, value: GameTime): void
+  UpdateTime(key: string, valueSeconds: number): void
+  UpdateTime(key: string, value: GameTime): void
   AddNCGameTime(value: GameTime): void
-  AddNCGameTime(key: String, value: GameTime): void
+  AddNCGameTime(key: string, value: GameTime): void
   AddCurrentDate(): void
-  AddCurrentDate(key: String): void
+  AddCurrentDate(key: string): void
   UpdateCurrentDate(index: number): void
-  UpdateCurrentDate(key: String): void
-  Internal_AddString(value: String, key?: String): void
-  Internal_UpdateString(index: number, value: String): void
-  Internal_UpdateStringKey(key: String, value: String): void
-  Internal_AddLocalizedString(valueLocKey: String, key?: String): void
-  Internal_UpdateLocalizedString(index: number, valueLocKey: String): void
-  Internal_UpdateLocalizedStringKey(key: String, valueLocKey: String): void
-  Internal_AddLocalizedName(valueLocKey: CName, key?: String): void
+  UpdateCurrentDate(key: string): void
+  Internal_AddString(value: string, key?: string): void
+  Internal_UpdateString(index: number, value: string): void
+  Internal_UpdateStringKey(key: string, value: string): void
+  Internal_AddLocalizedString(valueLocKey: string, key?: string): void
+  Internal_UpdateLocalizedString(index: number, valueLocKey: string): void
+  Internal_UpdateLocalizedStringKey(key: string, valueLocKey: string): void
+  Internal_AddLocalizedName(valueLocKey: CName, key?: string): void
   Internal_UpdateLocalizedName(index: number, valueLocKey: CName): void
-  Internal_UpdateLocalizedNameKey(key: String, valueLocKey: CName): void
-  Internal_AddInteger(value: number, key?: String): void
+  Internal_UpdateLocalizedNameKey(key: string, valueLocKey: CName): void
+  Internal_AddInteger(value: number, key?: string): void
   Internal_UpdateInteger(index: number, value: number): void
-  Internal_UpdateIntegerKey(key: String, value: number): void
-  Internal_AddFloat(value: number, key?: String): void
+  Internal_UpdateIntegerKey(key: string, value: number): void
+  Internal_AddFloat(value: number, key?: string): void
   Internal_UpdateFloat(index: number, value: number): void
-  Internal_UpdateFloatKey(key: String, value: number): void
-  Internal_AddMeasurement(value: number, valueUnit: EMeasurementUnit, key?: String): void
+  Internal_UpdateFloatKey(key: string, value: number): void
+  Internal_AddMeasurement(value: number, valueUnit: EMeasurementUnit, key?: string): void
   Internal_UpdateMeasurement(index: number, value: number, valueUnit: EMeasurementUnit): void
-  Internal_UpdateMeasurementKey(key: String, value: number, valueUnit: EMeasurementUnit): void
-  Internal_AddTime(valueSeconds: number, key?: String): void
+  Internal_UpdateMeasurementKey(key: string, value: number, valueUnit: EMeasurementUnit): void
+  Internal_AddTime(valueSeconds: number, key?: string): void
   Internal_UpdateTime(index: number, valueSeconds: number): void
-  Internal_UpdateTimeKey(key: String, valueSeconds: number): void
-  Internal_AddNCGameTime(valueSeconds: number, key?: String): void
-  Internal_AddCurrentDate(key?: String): void
+  Internal_UpdateTimeKey(key: string, valueSeconds: number): void
+  Internal_AddNCGameTime(valueSeconds: number, key?: string): void
+  Internal_AddCurrentDate(key?: string): void
   Internal_UpdateCurrentDate(index: number): void
-  Internal_UpdateCurrentDateKey(key: String): void
+  Internal_UpdateCurrentDateKey(key: string): void
 }
 
 declare interface GameTime {
@@ -11920,7 +11920,7 @@ declare interface GameTime {
   /** @noSelf **/
   Days(self: GameTime): number
   /** @noSelf **/
-  ToString(self: GameTime): String
+  ToString(self: GameTime): string
   /** @noSelf **/
   IsAfter(self: GameTime, other: GameTime): Bool
 }
@@ -12031,8 +12031,8 @@ declare interface Vendor extends IScriptable {
 
 declare interface Vendor_Record extends TweakDBRecord {
 
-  LocalizedDescription(): String
-  LocalizedName(): String
+  LocalizedDescription(): string
+  LocalizedName(): string
   Faction(): Affiliation_Record
   VendorType(): VendorType_Record
   VendorFilterTags(): CName[]
@@ -12101,7 +12101,7 @@ declare interface MathHelper extends IScriptable {
 
 declare interface VendorType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataVendorType
 }
@@ -12319,10 +12319,10 @@ declare interface SProficiency {
 
 declare interface Proficiency_Record extends TweakDBRecord {
 
-  Loc_desc_key(): String
-  Loc_name_key(): String
-  EnumComment(): String
-  DisplayName(): String
+  Loc_desc_key(): string
+  Loc_name_key(): string
+  EnumComment(): string
+  DisplayName(): string
   Trait(): Trait_Record
   TiedAttribute(): Stat_Record
   PerkAreas(outList: PerkArea_Record[]): void
@@ -12365,10 +12365,10 @@ declare interface SPerkArea {
 
 declare interface PerkArea_Record extends TweakDBRecord {
 
-  DisplayName(): String
-  Loc_name_key(): String
-  EnumComment(): String
-  Loc_desc_key(): String
+  DisplayName(): string
+  Loc_name_key(): string
+  EnumComment(): string
+  Loc_desc_key(): string
   Requirement(): IPrereq_Record
   Curve(): Curve_Record
   Proficiency(): Proficiency_Record
@@ -12480,10 +12480,10 @@ declare interface AchievementSystem extends IAchievementSystem {
 
 declare interface Achievement_Record extends TweakDBRecord {
 
-  LocalizedDescription(): String
-  GOGKey(): String
-  XB1Key(): String
-  SteamKey(): String
+  LocalizedDescription(): string
+  GOGKey(): string
+  XB1Key(): string
+  SteamKey(): string
   Tags(): CName[]
   GetTagsCount(): number
   GetTagsItem(index: number): CName
@@ -12600,8 +12600,8 @@ declare interface IAttack extends IScriptable {
 
 declare interface AttackType_Record extends TweakDBRecord {
 
-  Name(): String
-  Comment(): String
+  Name(): string
+  Comment(): string
   Type(): gamedataAttackType
 }
 
@@ -12788,9 +12788,9 @@ declare class Vector4 {
   /** @noSelf **/
   Interpolate(v1: Vector4, v2: Vector4, ratio: number): Vector4
   /** @noSelf **/
-  ToString(vec: Vector4): String
+  ToString(vec: Vector4): string
   /** @noSelf **/
-  ToStringPrec(vec: Vector4, precision: number): String
+  ToStringPrec(vec: Vector4, precision: number): string
   /** @noSelf **/
   Zero(self: Vector4): void
   /** @noSelf **/
@@ -12966,7 +12966,7 @@ declare interface AIComponent extends GameComponent {
   IsCommandExecuting(commandName: CName, useInheritance: Bool): Bool
   IsCommandWaiting(commandName: CName, useInheritance: Bool): Bool
   GetCommandState(cmd: AICommand): AICommandState
-  DebugLog(category: CName, message: String): void
+  DebugLog(category: CName, message: string): void
   GetHighLevelState(): gamedataNPCHighLevelState
   GetAIRole(): AIRole
   SetAIRole(role: AIRole): void
@@ -13073,7 +13073,7 @@ declare interface ReactionManagerComponent extends ScriptableComponent {
   CanTriggerReprimandOrder(): Bool
   CanAskToHolsterWeapon(): Bool
   NotifySecuritySystem(stimType: gamedataStimType, stimObject: GameObject): void
-  SetWarningMessage(lockey: String): void
+  SetWarningMessage(lockey: string): void
   OnTriggerDelayedReactionEvent(evt: TriggerDelayedReactionEvent): Bool
   OnExitWorkspotSequenceEvent(evt: ExitWorkspotSequenceEvent): Bool
   OnCrowdSettingsEvent(evt: CrowdSettingsEvent): Bool
@@ -13176,7 +13176,7 @@ declare interface ReactionManagerComponent extends ScriptableComponent {
   ShouldBeDetected(stimType: gamedataStimType): Bool
   SetBaseReactionPreset(ignoreSavedPreset?: Bool): void
   SetReactionPreset(reactionPreset: ReactionPreset_Record): void
-  MapReactionPreset(mappingName: String): void
+  MapReactionPreset(mappingName: string): void
   ReevaluateReactionPreset(ignoreSavedPreset?: Bool): void
   CheckCrowd(): void
   SetDeadBodyVisibleComponent(killer: GameObject): void
@@ -13227,11 +13227,11 @@ declare interface ReactionManagerComponent extends ScriptableComponent {
 declare interface AIActionHelper extends IScriptable {
 
   /** @noSelf **/
-  ActionDebugHelper(entity: Entity, actionName: String): Bool
+  ActionDebugHelper(entity: Entity, actionName: string): Bool
   /** @noSelf **/
-  ActionDebugHelper(actionNameCheck: String, entity: Entity, actionName: String): Bool
+  ActionDebugHelper(actionNameCheck: string, entity: Entity, actionName: string): Bool
   /** @noSelf **/
-  ActionDebugHelper(actionNameCheck: String, actionName: String): Bool
+  ActionDebugHelper(actionNameCheck: string, actionName: string): Bool
   /** @noSelf **/
   SetActionExclusivity(owner: GameObject, active: Bool): void
   /** @noSelf **/
@@ -13281,7 +13281,7 @@ declare interface AIActionHelper extends IScriptable {
   /** @noSelf **/
   SendItemHandling(owner: GameObject, itemRecord: Item_Record, animFeatureName: CName, equipped: Bool): void
   /** @noSelf **/
-  GetReactionPresetGroup(puppet: ScriptedPuppet): String
+  GetReactionPresetGroup(puppet: ScriptedPuppet): string
   /** @noSelf **/
   PlayWeaponEffect(weapon: WeaponObject, effectName: CName, eventTag?: CName): void
   /** @noSelf **/
@@ -13289,7 +13289,7 @@ declare interface AIActionHelper extends IScriptable {
   /** @noSelf **/
   KillWeaponEffect(weapon: WeaponObject, effectName: CName): void
   /** @noSelf **/
-  CheckFlatheadStatPoolRequirements(game: GameInstance, actionName: String): Bool
+  CheckFlatheadStatPoolRequirements(game: GameInstance, actionName: string): Bool
   /** @noSelf **/
   IsCurrentlyCrouching(puppet: ScriptedPuppet): Bool
   /** @noSelf **/
@@ -13489,7 +13489,7 @@ declare interface AIHumanComponent extends AIComponent {
   /** @noSelf **/
   GetScriptContext(puppet: ScriptedPuppet, context: ScriptExecutionContext): Bool
   GetScriptContext(context: ScriptExecutionContext): Bool
-  CheckTweakCondition(ActionConditionName: String): Bool
+  CheckTweakCondition(ActionConditionName: string): Bool
   TryBulletDodgeOpportunity(): Bool
   OnHitAiEventReceived(hitAIEvent: AIEvent): Bool
   UpdateMyAttackBlockedCount(resetBB: Bool): void
@@ -13527,7 +13527,7 @@ declare interface AIRole extends IScriptable {
 
 declare interface AIRole_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   RolePackage(): GameplayLogicPackage_Record
   EnumName(): CName
   Type(): gamedataAIRole
@@ -13623,9 +13623,9 @@ declare interface ScriptExecutionContext {
   /** @noSelf **/
   GetClosestDelegate(context: ScriptExecutionContext): BehaviorDelegate
   /** @noSelf **/
-  CreateActionID(context: ScriptExecutionContext, actionStringName: String, actionPackageType: AIactionParamsPackageTypes): TweakDBID
+  CreateActionID(context: ScriptExecutionContext, actionStringName: string, actionPackageType: AIactionParamsPackageTypes): TweakDBID
   /** @noSelf **/
-  CreateActionParamID(context: ScriptExecutionContext, actionStringName: String, paramName: String): TweakDBID
+  CreateActionParamID(context: ScriptExecutionContext, actionStringName: string, paramName: string): TweakDBID
   /** @noSelf **/
   GetOverriddenNode(context: ScriptExecutionContext, nodeId: TweakDBID, result: AIRecord_Record, lookupDefault: Bool): Bool
   /** @noSelf **/
@@ -13641,7 +13641,7 @@ declare interface ScriptExecutionContext {
   /** @noSelf **/
   GetTweakActionSystem(context: ScriptExecutionContext): AITweakActionSystem
   /** @noSelf **/
-  DebugLog(context: ScriptExecutionContext, category: CName, message: String): void
+  DebugLog(context: ScriptExecutionContext, category: CName, message: string): void
 }
 
 declare interface BehaviorBlackboard extends IScriptable {
@@ -13772,7 +13772,7 @@ declare interface VehicleComponent extends ScriptableDC {
   /** @noSelf **/
   CheckVehicleDesiredTag(gi: GameInstance, owner: GameObject, desiredTag: CName): Bool
   /** @noSelf **/
-  GetVehicleType(gi: GameInstance, owner: GameObject, type: String): Bool
+  GetVehicleType(gi: GameInstance, owner: GameObject, type: string): Bool
   /** @noSelf **/
   GetAttitudeOfPassenger(gi: GameInstance, ownerID: EntityID, slotID: MountingSlotId, attitude: EAIAttitude): Bool
   /** @noSelf **/
@@ -13845,7 +13845,7 @@ declare interface VehicleComponent extends ScriptableDC {
   EvaluatePanzerInteractions(): void
   RegisterToHUDManager(shouldRegister: Bool): void
   OnHUDInstruction(evt: HUDInstruction): Bool
-  GetVehicleStateForScanner(): String
+  GetVehicleStateForScanner(): string
   GetAnySlotAvailable(checkOccupied?: Bool): Bool
   GetAnyDoorAvailable(checkOccupied?: Bool): Bool
   SetVehicleScannerDirty(): void
@@ -14164,7 +14164,7 @@ declare interface VehicleComponentPS extends ScriptableDeviceComponentPS {
   GetDoorState(door: EVehicleDoor): VehicleDoorState
   SetWindowState(door: EVehicleDoor, state: EVehicleWindowState): void
   GetWindowState(door: EVehicleDoor): EVehicleWindowState
-  SetDoorInteractionState(door: EVehicleDoor, state: VehicleDoorInteractionState, source: String): void
+  SetDoorInteractionState(door: EVehicleDoor, state: VehicleDoorInteractionState, source: string): void
   GetDoorInteractionState(door: EVehicleDoor): VehicleDoorInteractionState
   SetTempDoorInteractionState(door: EVehicleDoor, state: VehicleDoorInteractionState): void
   GetTempDoorInteractionState(door: EVehicleDoor): VehicleDoorInteractionState
@@ -14218,11 +14218,11 @@ declare interface VehicleComponentPS extends ScriptableDeviceComponentPS {
   ActionVehicleDumpBody(): VehicleDumpBody
   ActionVehicleTakeBody(): VehicleTakeBody
   ActionPlayerTrunk(): VehiclePlayerTrunk
-  ActionVehicleDoorInteraction(slotName: String, fromInteraction?: Bool, locked?: Bool): VehicleDoorInteraction
-  ActionVehicleDoorInteractionStateChange(doorToChange: EVehicleDoor, desiredState: VehicleDoorInteractionState, source: String): VehicleDoorInteractionStateChange
-  ActionVehicleDoorOpen(slotName: String): VehicleDoorOpen
-  ActionVehicleDoorClose(slotName: String): VehicleDoorClose
-  ActionVehicleForceOccupantOut(slotName: String): VehicleForceOccupantOut
+  ActionVehicleDoorInteraction(slotName: string, fromInteraction?: Bool, locked?: Bool): VehicleDoorInteraction
+  ActionVehicleDoorInteractionStateChange(doorToChange: EVehicleDoor, desiredState: VehicleDoorInteractionState, source: string): VehicleDoorInteractionStateChange
+  ActionVehicleDoorOpen(slotName: string): VehicleDoorOpen
+  ActionVehicleDoorClose(slotName: string): VehicleDoorClose
+  ActionVehicleForceOccupantOut(slotName: string): VehicleForceOccupantOut
   ActionVehicleDoorQuestLocked(): VehicleQuestDoorLocked
   OnVehicleQuestChangeDoorStateEvent(evt: VehicleQuestChangeDoorStateEvent): EntityNotificationType
   OnVehicleQuestChangeWindowStateEvent(evt: vehicleChangeWindowStateEvent): EntityNotificationType
@@ -14308,13 +14308,13 @@ declare interface GameplaySkillCondition extends GameplayConditionBase {
   GetStatType(): gamedataStatType
   SetProperties(sel_skill: EDeviceChallengeSkill, sel_difficulty: EGameplayChallengeLevel): void
   GetDescription(requester: GameObject): Condition
-  GetConditionDescription(gi: GameInstance): String
+  GetConditionDescription(gi: GameInstance): string
 }
 
 declare interface CurveStatModifier_Record extends StatModifier_Record {
 
-  Id(): String
-  Column(): String
+  Id(): string
+  Column(): string
   RefStat(): Stat_Record
   RefObject(): CName
 }
@@ -14496,8 +14496,8 @@ declare interface ScriptableDeviceAction extends BaseScriptableAction {
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  AddDeviceName(deviceName: String): void
-  GetDeviceName(): String
+  AddDeviceName(deviceName: string): void
+  GetDeviceName(): string
   GetInkWidgetLibraryPath(): ResRef
   GetInkWidgetLibraryID(): CName
   SetInkWidgetTweakDBID(id: TweakDBID): void
@@ -14528,15 +14528,15 @@ declare interface ScriptableDeviceAction extends BaseScriptableAction {
   GetSpiderbotLocationOverrideReference(): NodeRef
   GetInteractionChoice(): InteractionChoice
   GetActionWidgetPackage(): SActionWidgetPackage
-  CreateInteraction(actions?: DeviceAction[], alternativeMainChoiceRecord?: String, alternativeMainChoiceTweakDBID?: TweakDBID): void
+  CreateInteraction(actions?: DeviceAction[], alternativeMainChoiceRecord?: string, alternativeMainChoiceTweakDBID?: TweakDBID): void
   HasUI(): Bool
   CreateActionWidgetPackage(actions?: DeviceAction[]): void
   CreateActionWidgetPackage(widgetTweakDBID: TweakDBID, actions?: DeviceAction[]): void
   ResolveActionWidgetTweakDBData(): void
-  CreateCustomInteraction(actions?: DeviceAction[], customName1?: String, customName2?: String, customID1?: TweakDBID, customID2?: TweakDBID): void
-  SetInactiveWithReason(isActiveIf: Bool, reason: String): void
-  SetInactiveReason(reasonStr: String): void
-  GetInactiveReason(): String
+  CreateCustomInteraction(actions?: DeviceAction[], customName1?: string, customName2?: string, customID1?: TweakDBID, customID2?: TweakDBID): void
+  SetInactiveWithReason(isActiveIf: Bool, reason: string): void
+  SetInactiveReason(reasonStr: string): void
+  GetInactiveReason(): string
   SetInactiveReasonAsCaption(): void
   GetDurationFromTDBRecord(record: TweakDBID): number
 }
@@ -14575,7 +14575,7 @@ declare interface QuickHackUploadListener extends ActionUploadListener {
 
 declare interface ObjectActionType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataObjectActionType
 }
@@ -14627,7 +14627,7 @@ declare interface StatPoolCost_Record extends ObjectActionCost_Record {
 
 declare interface StatPool_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   Stat(): Stat_Record
   Regen(): PoolValueModifier_Record
   Decay(): PoolValueModifier_Record
@@ -14639,8 +14639,8 @@ declare interface StatPool_Record extends TweakDBRecord {
 
 declare interface HackCategory_Record extends TweakDBRecord {
 
-  EnumComment(): String
-  LocalizedDescription(): String
+  EnumComment(): string
+  LocalizedDescription(): string
   EnumName(): CName
 }
 
@@ -14659,7 +14659,7 @@ declare interface DeviceHelper {
   /** @noSelf **/
   IsDebugModeON(gameInstance: GameInstance): Bool
   /** @noSelf **/
-  DebugLog(gameInstance: GameInstance, message: String): void
+  DebugLog(gameInstance: GameInstance, message: string): void
   /** @noSelf **/
   ExtractSpecificStateClass(states: PersistentState[], desiredClassName: CName, extractedStates: PersistentState[]): Bool
   /** @noSelf **/
@@ -14680,14 +14680,14 @@ declare interface DeviceHelper {
 
 declare interface ActivityLogSystem extends IActivityLogSystem {
 
-  AddLog(logEntry: String): void
-  AddLogFromParts(textpart1: String, textpart2?: String, textpart3?: String, textpart4?: String, textpart5?: String): void
+  AddLog(logEntry: string): void
+  AddLogFromParts(textpart1: string, textpart2?: string, textpart3?: string, textpart4?: string, textpart5?: string): void
 }
 
 declare interface ActionInt extends ScriptableDeviceAction {
 
   GetProperties(): DeviceActionProperty[]
-  GetCurrentDisplayString(): String
+  GetCurrentDisplayString(): string
 }
 
 declare interface DeviceActionProperty extends IScriptable {
@@ -14701,7 +14701,7 @@ declare interface ActionEnum extends ActionInt {
 declare interface BaseDeviceStatus extends ActionEnum {
 
   SetProperties(deviceRef: ScriptableDeviceComponentPS): void
-  GetCurrentDisplayString(): String
+  GetCurrentDisplayString(): string
   GetScannerStatusRecord(): TweakDBID
   GetStatusValue(): number
   /** @noSelf **/
@@ -14712,7 +14712,7 @@ declare interface BaseDeviceStatus extends ActionEnum {
   IsClearanceValid(requesterClearancer: Clearance): Bool
   /** @noSelf **/
   IsContextValid(context: GetActionsContext): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface DeviceActionPropertyFunctions extends IScriptable {
@@ -14740,17 +14740,17 @@ declare interface DeviceActionPropertyFunctions extends IScriptable {
   /** @noSelf **/
   GetProperty_Name(prop: DeviceActionProperty, value: CName): Bool
   /** @noSelf **/
-  SetUpProperty_RadioStatus(propertyName: CName, deviceStatus: number, stationName: String): DeviceActionProperty
+  SetUpProperty_RadioStatus(propertyName: CName, deviceStatus: number, stationName: string): DeviceActionProperty
   /** @noSelf **/
-  GetProperty_RadioStatus(prop: DeviceActionProperty, deviceStatus: number, stationName: String): Bool
+  GetProperty_RadioStatus(prop: DeviceActionProperty, deviceStatus: number, stationName: string): Bool
   /** @noSelf **/
-  SetUpProperty_TvStatus(propertyName: CName, deviceStatus: number, stationName: String): DeviceActionProperty
+  SetUpProperty_TvStatus(propertyName: CName, deviceStatus: number, stationName: string): DeviceActionProperty
   /** @noSelf **/
-  GetProperty_TvStatus(prop: DeviceActionProperty, deviceStatus: number, stationName: String): Bool
+  GetProperty_TvStatus(prop: DeviceActionProperty, deviceStatus: number, stationName: string): Bool
   /** @noSelf **/
-  SetUpProperty_MediaStatus(propertyName: CName, deviceStatus: number, stationName: String): DeviceActionProperty
+  SetUpProperty_MediaStatus(propertyName: CName, deviceStatus: number, stationName: string): DeviceActionProperty
   /** @noSelf **/
-  GetProperty_MediaStatus(prop: DeviceActionProperty, deviceStatus: number, stationName: String): Bool
+  GetProperty_MediaStatus(prop: DeviceActionProperty, deviceStatus: number, stationName: string): Bool
   /** @noSelf **/
   SetUpProperty_ElevatorInt(propertyName: CName, value: number, displayValue: number): DeviceActionProperty
   /** @noSelf **/
@@ -14843,7 +14843,7 @@ declare interface DefaultActionsParametersHolder extends IScriptable {
 
 declare interface MinigameAction_Record extends ObjectAction_Record {
 
-  JournalEntry(): String
+  JournalEntry(): string
   Type(): MinigameActionType_Record
   Category(): MinigameCategory_Record
   Reward(): RewardBase_Record
@@ -14858,10 +14858,10 @@ declare interface MinigameAction_Record extends ObjectAction_Record {
 declare interface ActionBool extends ScriptableDeviceAction {
 
   GetProperties(): DeviceActionProperty[]
-  GetCurrentDisplayString(): String
+  GetCurrentDisplayString(): string
   GetValue(): Bool
   OverrideInteractionRecord(newRecordforTrue: TweakDBID, newRecordForFalse: TweakDBID): void
-  CreateCustomInteraction(actions?: DeviceAction[], customName1?: String, customName2?: String, customID1?: TweakDBID, customID2?: TweakDBID): void
+  CreateCustomInteraction(actions?: DeviceAction[], customName1?: string, customName2?: string, customID1?: TweakDBID, customID2?: TweakDBID): void
   CreateActionWidgetPackage(actions?: DeviceAction[]): void
 }
 
@@ -14904,7 +14904,7 @@ declare interface TogglePersonalLink extends ActionBool {
   /** @noSelf **/
   IsContextValid(context: GetActionsContext): Bool
   ShouldConnect(): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   GetInteractionIcon(): ChoiceCaptionIconPart_Record
 }
 
@@ -14917,7 +14917,7 @@ declare interface DisassembleDevice extends ActionBool {
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface DisassembleOptions {
@@ -14937,7 +14937,7 @@ declare interface ToggleJuryrigTrap extends ActionBool {
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
   IsContextValid(context: GetActionsContext): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface ActionScavenge extends ActionInt {
@@ -14947,7 +14947,7 @@ declare interface ActionScavenge extends ActionInt {
   IsDefaultConditionMet(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface SetAuthorizationModuleON extends ActionBool {
@@ -15010,7 +15010,7 @@ declare interface ToggleZoomInteraction extends ActionBool {
   /** @noSelf **/
   IsContextValid(context: GetActionsContext): Bool
   ShouldConnect(): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface OpenFullscreenUI extends ActionBool {
@@ -15025,7 +15025,7 @@ declare interface OpenFullscreenUI extends ActionBool {
   /** @noSelf **/
   IsContextValid(context: GetActionsContext): Bool
   ShouldConnect(): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface SetDeviceON extends ActionBool {
@@ -15094,7 +15094,7 @@ declare interface SecurityAreaData {
 
 declare interface NPCRarity_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   StatModifiers(outList: StatModifier_Record[]): void
   GetStatModifiersCount(): number
   GetStatModifiersItem(index: number): StatModifier_Record
@@ -15120,7 +15120,7 @@ declare interface SecuritySystemInput extends SecurityAreaEvent {
   IsSharingRestricted(): Bool
   GetStimTypeTriggeredAlarm(): gamedataStimType
   GetPuppetCharRecord(): Character_Record
-  GetPuppetDisplayName(): String
+  GetPuppetDisplayName(): string
   SetAsReprimendLeader(isLeader: Bool): void
   SetID(id: number): void
   AttachCustomRecipientsList(list: EntityID[]): void
@@ -15283,14 +15283,14 @@ declare interface SecuritySystemControllerPS extends DeviceSystemBaseControllerP
   QuestBlacklistPlayer(evt: BlacklistPlayer): void
   DebugGetOutputsCount(): number
   DebugGetInputsCount(): number
-  Debug(instructionAdded: Bool, inputAdded: Bool, trace: String, instruction?: EReprimandInstructions, input?: SecuritySystemInput): void
+  Debug(instructionAdded: Bool, inputAdded: Bool, trace: string, instruction?: EReprimandInstructions, input?: SecuritySystemInput): void
   OnMaraudersMapDeviceDebug(sink: MaraudersMapDevicesSink): void
   Debug_GetReprimandID(): number
   Debug_GetPlayerBlacklistReason(): BlacklistReason
   Debug_GetPlayerWarningCount(): number
-  GetDebugTags(): String
+  GetDebugTags(): string
   IsUnderStrictQuestControl(): Bool
-  SecuritySystemLog(message: String): void
+  SecuritySystemLog(message: string): void
   SecuritySystemLog(evt: ReprimandUpdate): void
   GetDeviceIconTweakDBID(): TweakDBID
   GetBackgroundTextureTweakDBID(): TweakDBID
@@ -15415,7 +15415,7 @@ declare interface SecurityAreaControllerPS extends MasterControllerPS {
   GetTurrets(turrets: SecurityTurretControllerPS[]): void
   IsDisableAllowed(turrets: SecurityTurretControllerPS[]): Bool
   UpdateMiniMapRepresentation(): void
-  GetDeviceName(): String
+  GetDeviceName(): string
   AreaEntered(evt: AreaEnteredEvent): void
   AreaExited(obj: GameObject): void
   ProcessOnEnterRequest(objectToProcess: GameObject): void
@@ -15458,7 +15458,7 @@ declare interface SecurityAreaControllerPS extends MasterControllerPS {
   OnFullSystemRestart(evt: FullSystemRestart): EntityNotificationType
   /** @noSelf **/
   SecurityAreaTypeEnumToName(type: ESecurityAreaType): CName
-  GetDebugTags(): String
+  GetDebugTags(): string
   OnMaraudersMapDeviceDebug(sink: MaraudersMapDevicesSink): void
   GetDeviceIconTweakDBID(): TweakDBID
   GetBackgroundTextureTweakDBID(): TweakDBID
@@ -15470,7 +15470,7 @@ declare interface MappinSystem extends IMappinSystem {
   SetMappinActive(id: NewMappinID, active: Bool): void
   SetMappinPosition(id: NewMappinID, position: Vector4): void
   SetMappinScriptData(id: NewMappinID, scriptData: MappinScriptData): void
-  SetMappinDebugCaption(id: NewMappinID, caption: String): void
+  SetMappinDebugCaption(id: NewMappinID, caption: string): void
   RegisterMappin(data: MappinData, position: Vector4): NewMappinID
   RegisterMappinWithObject(data: MappinData, object: GameObject, slotName?: CName, offset?: Vector3): NewMappinID
   RegisterGrenadeMappin(data: MappinData, grenadeObject: GameObject): NewMappinID
@@ -15482,7 +15482,7 @@ declare interface MappinSystem extends IMappinSystem {
   OnAreaEntered(evt: AreaEnteredEvent): void
   OnAreaExited(obj: GameObject, triggerId: EntityID): void
   OnAreaTypeChanged(entityID: EntityID, areaType: CName): void
-  UpdateCurrentLocationName(locationName: String, isNewLocation: Bool): void
+  UpdateCurrentLocationName(locationName: string, isNewLocation: Bool): void
   GetPointOfInterestMappinSavedState(hash: number, mappinPhase: number, mappinVariant: number, active: Bool): Bool
   GetQuestMappinPositionsByObjective(objectiveHash: number, positions: Vector3[]): Bool
   GetQuestMappinPosition(mappinHash: number, position: Vector3): Bool
@@ -15576,7 +15576,7 @@ declare interface SAreaEffectTargetData {
 declare interface SpiderbotDistractDevice extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   /** @noSelf **/
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
@@ -15625,7 +15625,7 @@ declare interface AccessPointControllerPS extends MasterControllerPS {
   IsMainframe(): Bool
   GetClearance(): Clearance
   SetIsBreached(isBreached: Bool): void
-  GetNetworkName(): String
+  GetNetworkName(): string
   GetNetworkSizeCount(): number
   IsNetworkBreached(): Bool
   IsBreached(): Bool
@@ -15902,7 +15902,7 @@ declare interface EngineTime {
   /** @noSelf **/
   ToFloat(self: EngineTime): number
   /** @noSelf **/
-  ToString(self: EngineTime): String
+  ToString(self: EngineTime): string
 }
 
 declare interface ChatterHelper extends IScriptable {
@@ -16083,8 +16083,8 @@ declare interface WeaponObject extends ItemObject {
   SetCurrentMeleeTrailEffect(damageType: gamedataDamageType): void
   OnUpdateMeleeTrailEffect(evt: UpdateMeleeTrailEffectEvent): Bool
   StartIdleMeleeEffect(damageType: gamedataDamageType): void
-  StartCurrentMeleeTrailEffect(attackSide?: String): void
-  StopCurrentMeleeTrailEffect(attackSide?: String): void
+  StartCurrentMeleeTrailEffect(attackSide?: string): void
+  StopCurrentMeleeTrailEffect(attackSide?: string): void
   /** @noSelf **/
   TriggerWeaponEffects(weaponOwner: GameObject, weapon: WeaponObject, fxAction: gamedataFxAction, fxBlackboard?: worldEffectBlackboard): void
   /** @noSelf **/
@@ -16189,9 +16189,9 @@ declare interface TDB extends TweakDBInterface {
   /** @noSelf **/
   GetFloatArray(path: TweakDBID): number[]
   /** @noSelf **/
-  GetString(path: TweakDBID): String
+  GetString(path: TweakDBID): string
   /** @noSelf **/
-  GetStringArray(path: TweakDBID): String[]
+  GetStringArray(path: TweakDBID): string[]
   /** @noSelf **/
   GetBool(path: TweakDBID): Bool
   /** @noSelf **/
@@ -16596,14 +16596,14 @@ declare interface WeaponVFXAction_Record extends TweakDBRecord {
 
 declare interface FxAction_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataFxAction
 }
 
 declare interface FxActionType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataFxActionType
 }
@@ -16641,10 +16641,10 @@ declare interface AudioSystem extends gameIGameAudioSystem {
   Switch(switchName: CName, switchValue: CName, entityID?: EntityID, emitterName?: CName): void
   Parameter(parameterName: CName, parameterValue: number, entityID?: EntityID, emitterName?: CName): void
   PlayImpact(impactContext: CName, position: Vector4, object: GameObject): void
-  State(stateGroup: String, state: String): void
+  State(stateGroup: string, state: string): void
   GlobalParameter(parameterName: CName, parameterValue: number): void
-  LoadBank(bankName: String): void
-  UnloadBank(bankName: String): void
+  LoadBank(bankName: string): void
+  UnloadBank(bankName: string): void
   PlayShockwave(shockwaveType: CName, position: Vector4): void
   OpenAcousticPortal(object: GameObject): void
   CloseAcousticPortal(object: GameObject): void
@@ -16719,9 +16719,9 @@ declare interface StimBroadcasterComponent extends ScriptableComponent {
   GenerateRequestID(id: number, valid: Bool): StimRequestID
   DetermineHowManyRepeats(request: StimRequest): number
   OnStatusEffectApplied(evt: ApplyStatusEffectEvent): Bool
-  LogStimuliBroadcast(stim: StimuliEvent, request?: StimRequest, context?: String): void
+  LogStimuliBroadcast(stim: StimuliEvent, request?: StimRequest, context?: string): void
   LogStimuliRemoval(stim: StimuliEvent, request?: StimRequest): void
-  GetStimuliData(path: String, stimToProcess: StimuliEvent): void
+  GetStimuliData(path: string, stimToProcess: StimuliEvent): void
   GetStimuliData(stimID: TweakDBID, stimToProcess: StimuliEvent): void
   /** @noSelf **/
   nameToStimEnum(stimName: CName, stimType: gamedataStimType): void
@@ -16738,14 +16738,14 @@ declare interface stimInvestigateData {
 
 declare interface StimPriority_Record extends TweakDBRecord {
 
-  Comment(): String
+  Comment(): string
   EnumName(): CName
   Type(): gamedataStimPriority
 }
 
 declare interface StimPropagation_Record extends TweakDBRecord {
 
-  Comment(): String
+  Comment(): string
   EnumName(): CName
   Type(): gamedataStimPropagation
 }
@@ -16774,7 +16774,7 @@ declare interface EffectData {
   /** @noSelf **/
   SetName(ctx: EffectData, id: BlackboardID_Name, value: CName): Bool
   /** @noSelf **/
-  SetString(ctx: EffectData, id: BlackboardID_String, value: String): Bool
+  SetString(ctx: EffectData, id: BlackboardID_String, value: string): Bool
   /** @noSelf **/
   SetVector(ctx: EffectData, id: BlackboardID_Vector4, value: Vector4): Bool
   /** @noSelf **/
@@ -16794,7 +16794,7 @@ declare interface EffectData {
   /** @noSelf **/
   GetName(ctx: EffectData, id: BlackboardID_Name, value: CName): Bool
   /** @noSelf **/
-  GetString(ctx: EffectData, id: BlackboardID_String, value: String): Bool
+  GetString(ctx: EffectData, id: BlackboardID_String, value: string): Bool
   /** @noSelf **/
   GetVector(ctx: EffectData, id: BlackboardID_Vector4, value: Vector4): Bool
   /** @noSelf **/
@@ -16817,9 +16817,9 @@ declare interface EffectInstance extends IEffect {
   GetSharedData(): EffectData
   /** @noSelf **/
   GetBlackboard(): IBlackboard
-  GetLastError(): String
+  GetLastError(): string
   GetExecutionInfo(): void
-  RegisterCallbackEntity(entity: Entity, tag: String): void
+  RegisterCallbackEntity(entity: Entity, tag: string): void
 }
 
 declare interface EffectSharedDataDef extends BlackboardDefinition {
@@ -16944,7 +16944,7 @@ declare interface ProjectileComponent extends IPlacedComponent {
   ToggleAxisRotation(enabled: Bool): void
   AddAxisRotation(axis: Vector4, value: number): void
   SetCollisionEvaluator(collisionEvaluator: gameprojectileScriptCollisionEvaluator): void
-  LogDebugVariable(key: CName, value: String): void
+  LogDebugVariable(key: CName, value: string): void
   LockOrientation(enable: Bool): void
   SetSpiral(params: SpiralControllerParams): void
 }
@@ -16978,7 +16978,7 @@ declare interface FxResourceMapData {
 
 declare interface Grenade_Record extends Gadget_Record {
 
-  DetonationSound(): String
+  DetonationSound(): string
   DetonationStimType(): StimType_Record
   NpcHitReactionAttack(): Attack_Record
   Attack(): Attack_Record
@@ -17024,7 +17024,7 @@ declare interface gameprojectileSetUpEvent extends Event {
 
 declare interface GrenadeDeliveryMethodType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataGrenadeDeliveryMethodType
 }
@@ -17074,7 +17074,7 @@ declare interface NPCPuppet extends ScriptedPuppet {
   IsAboutToBeDefeated(): Bool
   IsDefeatMechanicActive(): Bool
   SetIsDefeatMechanicActive(isDefeatMechanicActive: Bool, isInitialisation?: Bool): void
-  GetAffiliation(): String
+  GetAffiliation(): string
   OnGodModeChanged(): void
   CanEnableRagdollComponent(): Bool
   OnDisableRagdollComponentEvent(evt: DisableRagdollComponentEvent): Bool
@@ -17455,7 +17455,7 @@ declare interface SubCharacterSystem extends ScriptableSystem {
 
 declare interface SubCharacter_Record extends Character_Record {
 
-  EnumComment(): String
+  EnumComment(): string
   StartingEquippedItems(outList: Item_Record[]): void
   GetStartingEquippedItemsCount(): number
   GetStartingEquippedItemsItem(index: number): Item_Record
@@ -17509,31 +17509,31 @@ declare interface SSlotActiveItems {
 declare interface SDOSink {
 
   /** @noSelf **/
-  SetRoot(sink: SDOSink, rootPath: String): void
+  SetRoot(sink: SDOSink, rootPath: string): void
   /** @noSelf **/
-  SetKeyColor(sink: SDOSink, key: String, color: Color): void
+  SetKeyColor(sink: SDOSink, key: string, color: Color): void
   /** @noSelf **/
-  PushName(sink: SDOSink, key: String, value: CName): void
+  PushName(sink: SDOSink, key: string, value: CName): void
   /** @noSelf **/
-  PushString(sink: SDOSink, key: String, value: String): void
+  PushString(sink: SDOSink, key: string, value: string): void
   /** @noSelf **/
-  PushVector4(sink: SDOSink, key: String, value: Vector4): void
+  PushVector4(sink: SDOSink, key: string, value: Vector4): void
   /** @noSelf **/
-  PushVector2(sink: SDOSink, key: String, value: Vector2): void
+  PushVector2(sink: SDOSink, key: string, value: Vector2): void
   /** @noSelf **/
-  PushQuaternion(sink: SDOSink, key: String, value: Quaternion): void
+  PushQuaternion(sink: SDOSink, key: string, value: Quaternion): void
   /** @noSelf **/
-  PushFloat(sink: SDOSink, key: String, value: number): void
+  PushFloat(sink: SDOSink, key: string, value: number): void
   /** @noSelf **/
-  PushInt32(sink: SDOSink, key: String, value: number): void
+  PushInt32(sink: SDOSink, key: string, value: number): void
   /** @noSelf **/
-  PushUint32(sink: SDOSink, key: String, value: number): void
+  PushUint32(sink: SDOSink, key: string, value: number): void
   /** @noSelf **/
-  PushBool(sink: SDOSink, key: String, value: Bool): void
+  PushBool(sink: SDOSink, key: string, value: Bool): void
   /** @noSelf **/
-  ClearKey(sink: SDOSink, key: String): void
+  ClearKey(sink: SDOSink, key: string): void
   /** @noSelf **/
-  RegisterListener_OnClicked(sink: SDOSink, system: ScriptableSystem, key: String): CName
+  RegisterListener_OnClicked(sink: SDOSink, system: ScriptableSystem, key: string): CName
   /** @noSelf **/
   UnregisterListener_OnClicked(sink: SDOSink, system: ScriptableSystem, fullPath: CName): void
 }
@@ -17746,7 +17746,7 @@ declare interface TelemetrySystem extends ITelemetrySystem {
   LogPlayerReachedCriticalHealth(healthIsCritical: Bool): void
   LogPlayerDeathEvent(evt: gameDeathEvent): void
   LogLevelGained(evt: TelemetryLevelGained): void
-  LogDistrictChanged(districtName: String, isNew: Bool): void
+  LogDistrictChanged(districtName: string, isNew: Bool): void
   LogRewardGiven(rewardName: CName, rewardTDBID: TweakDBID, rewardMoney: number): void
   LogAttributeUpgraded(attributeType: gamedataStatType, lvl: number): void
   LogPerkUpgraded(perkUpgraded: gamedataPerkType, lvl: number): void
@@ -17757,7 +17757,7 @@ declare interface TelemetrySystem extends ITelemetrySystem {
   LogItemTransaction(buyer: GameObject, seller: GameObject, telemetryInventoryItem: TelemetryInventoryItem, pricePerItem: number, itemQuantity: number, totalPrice: number): void
   LogVendorMenuState(vendorid: TweakDBID, isOpening: Bool): void
   LogSkillbookUsed(telemetryInventoryItem: TelemetryInventoryItem): void
-  LogItemAcquired(itemTDBID: TweakDBID, meanOfAcquisition: String): void
+  LogItemAcquired(itemTDBID: TweakDBID, meanOfAcquisition: string): void
   LogItemDrop(owner: GameObject, itemID: ItemID): void
   LogItemCrafting(telemetryInventoryItem: TelemetryInventoryItem, craftingAction: CName): void
   LogItemDisassembled(telemetryInventoryItem: TelemetryInventoryItem): void
@@ -17832,16 +17832,16 @@ declare interface Transform {
 declare interface ReadAction extends BaseItemAction {
 
   CompleteAction(gameInstance: GameInstance): void
-  GetJournalEntryFromAction(): String
+  GetJournalEntryFromAction(): string
   /** @noSelf **/
-  GetJournalEntryFromAction(actionID: TweakDBID): String
+  GetJournalEntryFromAction(actionID: TweakDBID): string
   IsVisible(context: GetActionsContext, objectActionsCallbackController?: gameObjectActionsCallbackController): Bool
 }
 
 declare interface JournalEntry extends IScriptable {
 
-  GetId(): String
-  GetEditorName(): String
+  GetId(): string
+  GetEditorName(): string
 }
 
 declare interface JournalManager extends IJournalManager {
@@ -17863,7 +17863,7 @@ declare interface JournalManager extends IJournalManager {
   GetRandomChildren(parentEntry: JournalEntry, filter: JournalRequestStateFilter, childCount: number, childEntries: JournalEntry[]): void
   GetParentEntry(childEntry: JournalEntry): JournalEntry
   GetEntry(hash: number): JournalEntry
-  GetEntryByString(uniquePath: String, className: String): JournalEntry
+  GetEntryByString(uniquePath: string, className: string): JournalEntry
   GetEntryState(entry: JournalEntry): gameJournalEntryState
   GetEntryTimestamp(entry: JournalEntry): GameTime
   IsEntryVisited(entry: JournalEntry): Bool
@@ -17873,7 +17873,7 @@ declare interface JournalManager extends IJournalManager {
   IsEntryTracked(entry: JournalEntry): Bool
   TrackEntry(entry: JournalEntry): void
   TrackPrevNextEntry(next: Bool): void
-  ChangeEntryState(uniquePath: String, className: String, state: gameJournalEntryState, notifyOption: JournalNotifyOption): Bool
+  ChangeEntryState(uniquePath: string, className: string, state: gameJournalEntryState, notifyOption: JournalNotifyOption): Bool
   ChangeEntryStateByHash(hash: number, state: gameJournalEntryState, notifyOption: JournalNotifyOption): void
   HasAnyDelayedStateChanges(): Bool
   GetObjectiveCurrentCounter(entry: JournalQuestObjective): number
@@ -17886,13 +17886,13 @@ declare interface JournalManager extends IJournalManager {
   RegisterScriptCallback(obj: IScriptable, functionName: CName, type: gameJournalListenerType): void
   UnregisterScriptCallback(obj: IScriptable, functionName: CName): void
   DebugShowAllPoiMappins(): void
-  CreateScriptedQuestFromTemplate(templateQuestEntryId: String, uniqueId: String, title: String): Bool
-  DeleteScriptedQuest(templateQuestEntryId: String, uniqueId: String): Bool
-  SetScriptedQuestEntryState(templateQuestEntryId: String, uniqueId: String, templatePhaseAndObjectivePath: String, state: gameJournalEntryState, notifyOption: JournalNotifyOption, track: Bool): void
-  SetScriptedQuestObjectiveDescription(templateQuestEntryId: String, uniqueId: String, templatePhaseAndObjectivePath: String, description: String): Bool
-  SetScriptedQuestMappinEntityID(templateQuestEntryId: String, uniqueId: String, templatePhaseObjectiveAndMappinPath: String, entityID: EntityID): Bool
-  SetScriptedQuestMappinSlotName(templateQuestEntryId: String, uniqueId: String, templatePhaseObjectiveAndMappinPath: String, recordID: TweakDBID): Bool
-  SetScriptedQuestMappinData(templateQuestEntryId: String, uniqueId: String, templatePhaseObjectiveAndMappinPath: String, mappinData: MappinData): Bool
+  CreateScriptedQuestFromTemplate(templateQuestEntryId: string, uniqueId: string, title: string): Bool
+  DeleteScriptedQuest(templateQuestEntryId: string, uniqueId: string): Bool
+  SetScriptedQuestEntryState(templateQuestEntryId: string, uniqueId: string, templatePhaseAndObjectivePath: string, state: gameJournalEntryState, notifyOption: JournalNotifyOption, track: Bool): void
+  SetScriptedQuestObjectiveDescription(templateQuestEntryId: string, uniqueId: string, templatePhaseAndObjectivePath: string, description: string): Bool
+  SetScriptedQuestMappinEntityID(templateQuestEntryId: string, uniqueId: string, templatePhaseObjectiveAndMappinPath: string, entityID: EntityID): Bool
+  SetScriptedQuestMappinSlotName(templateQuestEntryId: string, uniqueId: string, templatePhaseObjectiveAndMappinPath: string, recordID: TweakDBID): Bool
+  SetScriptedQuestMappinData(templateQuestEntryId: string, uniqueId: string, templatePhaseObjectiveAndMappinPath: string, mappinData: MappinData): Bool
   OnQuestEntryTracked(entry: JournalEntry): Bool
   OnQuestEntryUntracked(entry: JournalEntry): Bool
   GetContactDataArray(includeUnknown: Bool): IScriptable[]
@@ -17910,7 +17910,7 @@ declare interface JournalFileEntry extends JournalContainerEntry {
 
 declare interface JournalQuestObjectiveBase extends JournalContainerEntry {
 
-  GetDescription(): String
+  GetDescription(): string
   HasCounter(): Bool
   IsOptional(): Bool
   GetItemID(): TweakDBID
@@ -17918,7 +17918,7 @@ declare interface JournalQuestObjectiveBase extends JournalContainerEntry {
 
 declare interface JournalQuest extends JournalFileEntry {
 
-  GetTitle(journalManager: IJournalManager): String
+  GetTitle(journalManager: IJournalManager): string
   GetType(): gameJournalQuestType
   GetRecommendedLevel(): number
   GetRecommendedLevelID(): TweakDBID
@@ -17949,7 +17949,7 @@ declare interface JournalQuestCodexLink extends JournalEntry {
 
 declare interface JournalContact extends JournalFileEntry {
 
-  GetLocalizedName(journalManager: IJournalManager): String
+  GetLocalizedName(journalManager: IJournalManager): string
   IsKnown(journalManager: IJournalManager): Bool
   GetAvatarID(journalManager: IJournalManager): TweakDBID
   GetType(): gameContactType
@@ -17962,7 +17962,7 @@ declare interface ContactData extends IScriptable {
 
 declare interface JournalPhoneMessage extends JournalEntry {
 
-  GetText(): String
+  GetText(): string
   GetSender(): gameMessageSender
   GetAttachmentPathHash(): number
   GetImageID(): TweakDBID
@@ -17970,7 +17970,7 @@ declare interface JournalPhoneMessage extends JournalEntry {
 
 declare interface JournalPhoneChoiceEntry extends JournalEntry {
 
-  GetText(): String
+  GetText(): string
   IsQuestImportant(): Bool
 }
 
@@ -17995,23 +17995,23 @@ declare interface QuestLogUtils extends IScriptable {
   /** @noSelf **/
   GetLevelState(playerLevel: number, targetLevel: number): CName
   /** @noSelf **/
-  GetThreatText(playerLevel: number, targetLevel: number): String
+  GetThreatText(playerLevel: number, targetLevel: number): string
 }
 
 declare interface JournalQuestMapPinBase extends JournalContainerEntry {
 
-  GetCaption(): String
+  GetCaption(): string
 }
 
 declare interface JournalQuestDescription extends JournalEntry {
 
-  GetDescription(): String
+  GetDescription(): string
 }
 
 declare interface JournalOnscreen extends JournalEntry {
 
-  GetTitle(): String
-  GetDescription(): String
+  GetTitle(): string
+  GetDescription(): string
   GetIconID(): TweakDBID
 }
 
@@ -18200,9 +18200,9 @@ declare interface SenseComponent extends IPlacedComponent {
   GetOwnerDevice(): SensorDevice
   GetOwnerPuppet(): ScriptedPuppet
   /** @noSelf **/
-  RequestMainPresetChange(obj: GameObject, presetName: String): void
+  RequestMainPresetChange(obj: GameObject, presetName: string): void
   /** @noSelf **/
-  RequestSecondaryPresetChange(obj: GameObject, presetName: String): void
+  RequestSecondaryPresetChange(obj: GameObject, presetName: string): void
   /** @noSelf **/
   RequestSecondaryPresetChange(obj: GameObject, presetID: TweakDBID): void
   /** @noSelf **/
@@ -18358,7 +18358,7 @@ declare interface PSChangedEvent extends Event {
 declare interface SpiderbotExplodeExplosiveDevice extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   /** @noSelf **/
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
@@ -18385,7 +18385,7 @@ declare interface SpiderbotExplodeExplosiveDevicePerformed extends ActionBool {
 declare interface SpiderbotDistractExplosiveDevice extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   /** @noSelf **/
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
@@ -18432,7 +18432,7 @@ declare interface QuickHackToggleON extends ActionBool {
   GetBaseCost(): number
   GetInteractionIcon(): ChoiceCaptionIconPart_Record
   SetProperties(status: EDeviceStatus): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface QuestForceEnabled extends ActionBool {
@@ -18523,7 +18523,7 @@ declare interface QuestForceJuryrigTrapDeactivated extends ActionBool {
 declare interface QuestForceCameraZoom extends ActionBool {
 
   SetProperties(value: Bool): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   UseWorkspot(): Bool
   SetUseWorkspot(useWorkspot: Bool): void
 }
@@ -18541,7 +18541,7 @@ declare interface WorkspotGameSystem extends IWorkspotGameSystem {
   StopNpcInWorkspot(actor: GameObject): void
   IsActorInWorkspot(actor: GameObject): Bool
   GetExtendedInfo(actor: GameObject): ExtendedWorkspotInfo
-  SendDebugCommand(mode: workWorkspotDebugMode, entId: String): void
+  SendDebugCommand(mode: workWorkspotDebugMode, entId: string): void
   SendDebugCommandEnt(mode: workWorkspotDebugMode, obj: GameObject): void
   SendDebugCommandFunctionalTests(mode: workWorkspotDebugMode, obj: GameObject, redscript: IScriptable): void
   SendFastExitSignal(actor: GameObject, dirLS?: Vector3, stayInWorkspotIfFailed?: Bool, playSlowExitIfFailed?: Bool, instant?: Bool, tryBlendToWalk?: Bool): void
@@ -18571,7 +18571,7 @@ declare interface ActionSkillCheck extends ActionBool {
   CreateSkillcheckInfo(requester: GameObject): UIInteractionSkillCheck
   GetPlayerStateMachine(requester: GameObject): IBlackboard
   GetSkillcheckInfo(): UIInteractionSkillCheck
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   WasPassed(): Bool
   AvailableOnUnpowered(): Bool
   SetAvailableOnUnpowered(): void
@@ -19247,7 +19247,7 @@ declare interface SetAnyTargetIsLocked extends Event {
 declare interface ActionEntityReference extends ScriptableDeviceAction {
 
   GetProperties(): DeviceActionProperty[]
-  GetCurrentDisplayString(): String
+  GetCurrentDisplayString(): string
 }
 
 declare interface QuestFollowTarget extends ActionEntityReference {
@@ -19275,7 +19275,7 @@ declare interface QuestStopLookAtTarget extends ActionBool {
 declare interface ActionName extends ScriptableDeviceAction {
 
   GetProperties(): DeviceActionProperty[]
-  GetCurrentDisplayString(): String
+  GetCurrentDisplayString(): string
 }
 
 declare interface QuestForceAttitude extends ActionName {
@@ -19302,7 +19302,7 @@ declare interface ForceIgnoreTargets extends ActionBool {
 declare interface SetDeviceTagKillMode extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   GetInteractionIcon(): ChoiceCaptionIconPart_Record
 }
 
@@ -19403,12 +19403,12 @@ declare interface DeviceTakeControlDef extends BlackboardDefinition {
 
 declare interface LockTakeControlAction extends ScriptableSystemRequest {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface LockDeviceChainCreation extends ScriptableSystemRequest {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface DeviceStartPlayerCameraControlEvent extends Event {
@@ -19701,7 +19701,7 @@ declare interface PreventionSystem extends ScriptableSystem {
   CalculateDeescalationPercent(): number
   GetTimeBetweenStamp(previousStamp: number): number
   /** @noSelf **/
-  ShowMessage(gameInstance: GameInstance, message: String, time: number): void
+  ShowMessage(gameInstance: GameInstance, message: string, time: number): void
   OnRefreshDistrict(request: RefreshDistrictRequest): void
   RestoreDefaultConfig(): void
   OnRegisterUnit(request: RegisterUnitRequest): void
@@ -19866,9 +19866,9 @@ declare interface District extends IScriptable {
 
 declare interface District_Record extends TweakDBRecord {
 
-  EnumComment(): String
-  LocalizedName(): String
-  EnumName(): String
+  EnumComment(): string
+  LocalizedName(): string
+  EnumName(): string
   PreventionPreset(): DistrictPreventionData_Record
   ParentDistrict(): District_Record
   Gangs(outList: Affiliation_Record[]): void
@@ -19979,9 +19979,9 @@ declare interface FastTRavelSystemDef extends BlackboardDefinition {
 declare interface FastTravelPointData extends IScriptable {
 
   IsValid(): Bool
-  GetPointDisplayName(): String
-  GetPointDisplayDescription(): String
-  GetDistrictDisplayName(): String
+  GetPointDisplayName(): string
+  GetPointDisplayDescription(): string
+  GetDistrictDisplayName(): string
   ShouldShowMappinOnWorldMap(): Bool
   ShouldShowMappinInWorld(): Bool
   GetPointRecord(): TweakDBID
@@ -19993,8 +19993,8 @@ declare interface FastTravelPointData extends IScriptable {
 
 declare interface FastTravelPoint_Record extends TweakDBRecord {
 
-  Description(): String
-  DisplayName(): String
+  Description(): string
+  DisplayName(): string
   District(): District_Record
   ShowOnWorldMap(): Bool
   ShowInWorld(): Bool
@@ -20029,12 +20029,12 @@ declare interface FPPCameraComponent extends CameraComponent {
 
 declare interface RegisterFastTravelPointsRequest extends ScriptableSystemRequest {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface EnableFastTravelRequest extends ScriptableSystemRequest {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface RegisterFastTravelPointRequest extends ScriptableSystemRequest {
@@ -20212,23 +20212,23 @@ declare interface InkImageUtils extends IScriptable {
   /** @noSelf **/
   RequestSetImage(controller: inkIGameController, target: inkImageRef, iconID: CName, callbackFunction?: CName): void
   /** @noSelf **/
-  RequestSetImage(controller: inkIGameController, target: inkImageRef, iconID: String, callbackFunction?: CName): void
+  RequestSetImage(controller: inkIGameController, target: inkImageRef, iconID: string, callbackFunction?: CName): void
   /** @noSelf **/
   RequestSetImage(controller: inkIGameController, target: inkImageRef, iconID: TweakDBID, callbackFunction?: CName): void
   /** @noSelf **/
   RequestSetImage(controller: inkIGameController, target: inkImage, iconID: CName, callbackFunction?: CName): void
   /** @noSelf **/
-  RequestSetImage(controller: inkIGameController, target: inkImage, iconID: String, callbackFunction?: CName): void
+  RequestSetImage(controller: inkIGameController, target: inkImage, iconID: string, callbackFunction?: CName): void
   /** @noSelf **/
   RequestSetImage(controller: inkIGameController, target: inkImage, iconID: TweakDBID, callbackFunction?: CName): void
   /** @noSelf **/
-  RequestSetImage(controller: inkLogicController, target: inkImageRef, iconID: String, callbackFunction?: CName): void
+  RequestSetImage(controller: inkLogicController, target: inkImageRef, iconID: string, callbackFunction?: CName): void
   /** @noSelf **/
   RequestSetImage(controller: inkLogicController, target: inkImageRef, iconID: CName, callbackFunction?: CName): void
   /** @noSelf **/
   RequestSetImage(controller: inkLogicController, target: inkImageRef, iconID: TweakDBID, callbackFunction?: CName): void
   /** @noSelf **/
-  RequestSetImage(controller: inkLogicController, target: inkImage, iconID: String, callbackFunction?: CName): void
+  RequestSetImage(controller: inkLogicController, target: inkImage, iconID: string, callbackFunction?: CName): void
   /** @noSelf **/
   RequestSetImage(controller: inkLogicController, target: inkImage, iconID: CName, callbackFunction?: CName): void
   /** @noSelf **/
@@ -20518,8 +20518,8 @@ declare interface PreventionDelayedSpawnRequest extends ScriptableSystemRequest 
 
 declare interface Vehicle_Record extends SpawnableObject_Record {
 
-  Traffic_audio_resource(): String
-  Player_audio_resource(): String
+  Traffic_audio_resource(): string
+  Player_audio_resource(): string
   VehPassL_ProceduralFPPCameraParams(): VehicleProceduralFPPCameraParams_Record
   Driving(): BaseDrivingParameters_Record
   Type(): VehicleType_Record
@@ -20875,7 +20875,7 @@ declare interface NotifyHighlightedDevice extends Event {
 
 declare interface SetAsQuestImportantEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
   IsImportant(): Bool
   SetImportant(important: Bool): void
   PropagateToSlaves(): Bool
@@ -20946,7 +20946,7 @@ declare interface GameplayQuestSystem extends ScriptableSystem {
   OnSetObjectiveState(request: SetGameplayObjectiveStateRequest): void
   AddObjective(objectiveData: GemplayObjectiveData): void
   SetObjectiveState(objectiveData: GemplayObjectiveData, objectiveState: gameJournalEntryState): void
-  HasQuest(questUniqueId: String): Bool
+  HasQuest(questUniqueId: string): Bool
   GetQuestData(objectiveData: GemplayObjectiveData): GamplayQuestData
   CreateQuest(objectiveData: GemplayObjectiveData): GamplayQuestData
   EvaluateQuest(questData: GamplayQuestData): void
@@ -20956,20 +20956,20 @@ declare interface GameplayQuestSystem extends ScriptableSystem {
 
 declare interface GamplayQuestData extends IScriptable {
 
-  GetFreeObjectivePath(): String
-  GetbjectivePath(objectiveData: GemplayObjectiveData): String
-  GetFreeObjectiveEntryID(): String
+  GetFreeObjectivePath(): string
+  GetbjectivePath(objectiveData: GemplayObjectiveData): string
+  GetFreeObjectiveEntryID(): string
   AddObjective(objectiveData: GemplayObjectiveData, journal: JournalManager): void
   HasObjective(objectiveData: GemplayObjectiveData): Bool
   GetObjective(objectiveData: GemplayObjectiveData): GemplayObjectiveData
   CreateObjective(objectiveData: GemplayObjectiveData, journal: JournalManager): Bool
   SetObjectiveState(objectiveData: GemplayObjectiveData, journal: JournalManager, state: gameJournalEntryState): void
   IsCompleted(): Bool
-  GetQuestEntryID(): String
-  GetPhaseEntryID(): String
-  GetBaseObjectiveEntryID(): String
-  GetMappinEntryID(): String
-  GetFreeQuestMappinPath(): String
+  GetQuestEntryID(): string
+  GetPhaseEntryID(): string
+  GetBaseObjectiveEntryID(): string
+  GetMappinEntryID(): string
+  GetFreeQuestMappinPath(): string
 }
 
 declare interface RegisterGameplayObjectiveRequest extends ScriptableSystemRequest {
@@ -21027,8 +21027,8 @@ declare interface LiftDevice extends InteractiveMasterDevice {
   PlayRadioStation(): void
   UpdateAnimState(isOpenFront: Bool, isOpenLeft: Bool, isOpenRight: Bool): void
   RefreshSpeaker(): void
-  SendLiftDataToUIBlackboard(displayFloor: String, force?: Bool): void
-  GetProperDisplayFloorNumber(floor: number): String
+  SendLiftDataToUIBlackboard(displayFloor: string, force?: Bool): void
+  GetProperDisplayFloorNumber(floor: number): string
   SetMovementState(movementState: gamePlatformMovementState): void
   SetIsPlayerInsideLift(value: Bool): void
   SetIsPausedBlackboard(value: Bool): void
@@ -21095,7 +21095,7 @@ declare interface LiftControllerPS extends MasterControllerPS {
   Initialize(): void
   GameAttached(): void
   InitializeRadioStations(): void
-  CreateRadioStation(SoundEvt: CName, ChannelName: String): RadioStationsMap
+  CreateRadioStation(SoundEvt: CName, ChannelName: string): RadioStationsMap
   GetStationByIndex(index: number): RadioStationsMap
   IsPlayerAuthorized(): Bool
   GetInkWidgetTweakDBID(context: GetActionsContext): TweakDBID
@@ -21124,7 +21124,7 @@ declare interface LiftControllerPS extends MasterControllerPS {
   SetIsPlayerInsideLift(state: Bool): void
   IsPlayerInsideLift(): Bool
   ChangeActiveFloor(newFloor: number): void
-  ActionGoToFloor(numberOfFloors: number, currentFloor: number, floor: number, displayFloor: String, IsAuthorized: Bool): GoToFloor
+  ActionGoToFloor(numberOfFloors: number, currentFloor: number, floor: number, displayFloor: string, IsAuthorized: Bool): GoToFloor
   ActionCallElevator(isElevatorAtThisFloor: Bool, destination: number): CallElevator
   ActionQuickHackAuthorization(): QuickHackAuthorization
   ActionQuestShowFloor(): QuestShowFloor
@@ -21175,11 +21175,11 @@ declare interface LiftControllerPS extends MasterControllerPS {
   OnLiftStatus(evt: LiftStatus): EntityNotificationType
   SyncDataWithFloorTerminal(terminalNumber: number): void
   GetActiveFloor(): number
-  GetActiveFloorDisplayName(): String
+  GetActiveFloorDisplayName(): string
   IsAtFloor(floorNumber: number): Bool
   IsMoving(): Bool
   IsFloorSelected(floor: number): Bool
-  GetDeviceIconPath(): String
+  GetDeviceIconPath(): string
   GetBlackboardDef(): ElevatorDeviceBlackboardDef
   GetMovementState(): gamePlatformMovementState
   SetTimeWhenPaused(time: number): void
@@ -21215,14 +21215,14 @@ declare interface RadioStationsMap {
 declare interface ElevatorFloorSetup {
 
   /** @noSelf **/
-  GetFloorName(self: ElevatorFloorSetup): String
+  GetFloorName(self: ElevatorFloorSetup): string
 }
 
 declare interface GoToFloor extends ActionBool {
 
   SetProperties(floor: number): void
-  GetCurrentDisplayString(): String
-  GetProperDisplayFloorNumber(floor: number): String
+  GetCurrentDisplayString(): string
+  GetProperDisplayFloorNumber(floor: number): string
   /** @noSelf **/
   IsDefaultConditionMet(device: ScriptableDeviceComponentPS, context: GetActionsContext): Bool
   /** @noSelf **/
@@ -21231,7 +21231,7 @@ declare interface GoToFloor extends ActionBool {
   IsClearanceValid(clearance: Clearance): Bool
   /** @noSelf **/
   IsContextValid(context: GetActionsContext): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   GetInkWidgetLibraryPath(): ResRef
 }
 
@@ -21244,12 +21244,12 @@ declare interface CallElevator extends ActionBool {
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface QuickHackAuthorization extends ActionBool {
 
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface QuestShowFloor extends ActionInt {
@@ -21320,7 +21320,7 @@ declare interface QuestResumeElevator extends ActionBool {
 declare interface ActionFloat extends ScriptableDeviceAction {
 
   GetProperties(): DeviceActionProperty[]
-  GetCurrentDisplayString(): String
+  GetCurrentDisplayString(): string
 }
 
 declare interface QuestSetLiftSpeed extends ActionFloat {
@@ -21364,7 +21364,7 @@ declare interface ResolveActionData extends IScriptable {
 declare interface SetExposeQuickHacks extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   /** @noSelf **/
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
@@ -21442,7 +21442,7 @@ declare interface VirtualSystemPS extends MasterControllerPS {
 
   GetDeviceWidget(context: GetActionsContext): SDeviceWidgetPackage
   GetDeviceWidget(context: GetActionsContext, data: SDeviceWidgetPackage[]): void
-  GetDeviceStatus(): String
+  GetDeviceStatus(): string
   GetInkWidgetTweakDBID(context: GetActionsContext): TweakDBID
   ActionThumbnailUI(): ThumbnailUI
   GetActions(outActions: DeviceAction[], context: GetActionsContext): Bool
@@ -21465,8 +21465,8 @@ declare interface TerminalSystemCustomData extends WidgetCustomData {
 declare interface ThumbnailUI extends ActionBool {
 
   SetProperties(): void
-  CreateThumbnailWidgetPackage(status?: String): void
-  CreateThumbnailWidgetPackage(widgetTweakDBID: TweakDBID, status?: String): void
+  CreateThumbnailWidgetPackage(status?: string): void
+  CreateThumbnailWidgetPackage(widgetTweakDBID: TweakDBID, status?: string): void
   GetInkWidgetLibraryPath(): ResRef
   GetInkWidgetLibraryID(): CName
   GetInkWidgetTweakDBID(): TweakDBID
@@ -21512,7 +21512,7 @@ declare interface ToggleOpen extends ActionBool {
   IsAvailable(device: DoorControllerPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   GetInkWidgetTweakDBID(): TweakDBID
 }
 
@@ -21567,7 +21567,7 @@ declare interface DoorControllerPS extends ScriptableDeviceComponentPS {
   DetermineGameplayViability(context: GetActionsContext, hasActiveActions: Bool): Bool
   GetInkWidgetTweakDBID(context: GetActionsContext): TweakDBID
   GetWidgetTypeName(): CName
-  GetDeviceIconPath(): String
+  GetDeviceIconPath(): string
   GetDeviceIconTweakDBID(): TweakDBID
   GetBackgroundTextureTweakDBID(): TweakDBID
   GetWidgetVisualState(): EWidgetState
@@ -21652,7 +21652,7 @@ declare interface DoorControllerPS extends ScriptableDeviceComponentPS {
   ToggleSealOnDoor(): Bool
   AddToken(id: EntityID): Bool
   DepleteToken(id: EntityID): Bool
-  LogActionDetails(action: ScriptableDeviceAction, cachedStatus: BaseDeviceStatus, context?: String, status?: String, overrideStatus?: Bool): void
+  LogActionDetails(action: ScriptableDeviceAction, cachedStatus: BaseDeviceStatus, context?: string, status?: string, overrideStatus?: Bool): void
   PushPersistentData(data: DoorPersistentData): void
 }
 
@@ -21664,7 +21664,7 @@ declare interface ElevatorFloorTerminalControllerPS extends TerminalControllerPS
 
   GameAttached(): void
   GetElevatorFloorSetup(): ElevatorFloorSetup
-  GetAuthorizationTextOverride(): String
+  GetAuthorizationTextOverride(): string
   IsElevatorAtThisFloor(): Bool
   EvaluateFloor(): void
   Initialize(): void
@@ -21710,14 +21710,14 @@ declare interface ToggleON extends ActionBool {
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   GetInkWidgetTweakDBID(): TweakDBID
   GetActivationTime(): number
 }
 
 declare interface QuickHackCallElevator extends ActionBool {
 
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface ToggleLock extends ActionBool {
@@ -21729,7 +21729,7 @@ declare interface ToggleLock extends ActionBool {
   IsDefaultConditionMet(device: DoorControllerPS, context: GetActionsContext): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   GetInkWidgetTweakDBID(): TweakDBID
 }
 
@@ -21750,7 +21750,7 @@ declare interface LiftFloorSyncDataEvent extends Event {
 declare interface DoorStatus extends BaseDeviceStatus {
 
   SetProperties(deviceRef: ScriptableDeviceComponentPS): void
-  GetCurrentDisplayString(): String
+  GetCurrentDisplayString(): string
   GetStatusValue(): number
   /** @noSelf **/
   IsDefaultConditionMet(device: ScriptableDeviceComponentPS, context: GetActionsContext): Bool
@@ -21758,7 +21758,7 @@ declare interface DoorStatus extends BaseDeviceStatus {
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface DoorViabilityInterpreter extends IScriptable {
@@ -21782,7 +21782,7 @@ declare interface PlayerUnauthorized extends ActionBool {
   IsAvailable(device: DoorControllerPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface TogglePower extends ActionBool {
@@ -21795,7 +21795,7 @@ declare interface TogglePower extends ActionBool {
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface ToggleSeal extends ActionBool {
@@ -21807,7 +21807,7 @@ declare interface ToggleSeal extends ActionBool {
   IsAvailable(device: DoorControllerPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   GetInkWidgetTweakDBID(): TweakDBID
 }
 
@@ -21820,13 +21820,13 @@ declare interface ForceOpen extends ActionBool {
   IsAvailable(device: DoorControllerPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface SetOpened extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   /** @noSelf **/
   IsDefaultConditionMet(device: DoorControllerPS, context: GetActionsContext): Bool
   /** @noSelf **/
@@ -21837,15 +21837,15 @@ declare interface SetOpened extends ActionBool {
 
 declare interface ActionRestrictionGroup_Record extends TweakDBRecord {
 
-  InactiveReason(): String
-  AllowedActionNames(): String[]
+  InactiveReason(): string
+  AllowedActionNames(): string[]
   GetAllowedActionNamesCount(): number
-  GetAllowedActionNamesItem(index: number): String
-  AllowedActionNamesContains(item: String): Bool
-  DisallowedActionNames(): String[]
+  GetAllowedActionNamesItem(index: number): string
+  AllowedActionNamesContains(item: string): Bool
+  DisallowedActionNames(): string[]
   GetDisallowedActionNamesCount(): number
-  GetDisallowedActionNamesItem(index: number): String
-  DisallowedActionNamesContains(item: String): Bool
+  GetDisallowedActionNamesItem(index: number): string
+  DisallowedActionNamesContains(item: string): Bool
 }
 
 declare interface Pay extends ActionBool {
@@ -21869,7 +21869,7 @@ declare interface QuickHackToggleOpen extends ActionBool {
   IsAvailable(device: DoorControllerPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface QuestForceOpen extends ActionBool {
@@ -21920,7 +21920,7 @@ declare interface QuestForceUnseal extends ActionBool {
 declare interface DoorOpeningToken extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   /** @noSelf **/
   IsDefaultConditionMet(device: DoorControllerPS, context: GetActionsContext): Bool
   /** @noSelf **/
@@ -21932,7 +21932,7 @@ declare interface DoorOpeningToken extends ActionBool {
 declare interface SetClosed extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   /** @noSelf **/
   IsDefaultConditionMet(device: DoorControllerPS, context: GetActionsContext): Bool
   /** @noSelf **/
@@ -21958,7 +21958,7 @@ declare interface ResolveSkillchecksEvent extends Event {
 
 declare interface SetDoorType extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface SecuritySystemClearanceEntry {
@@ -21988,7 +21988,7 @@ declare interface MediaSystemUIPS extends VirtualSystemPS {
 declare interface ResRef {
 
   /** @noSelf **/
-  FromString(path: String): ResRef
+  FromString(path: string): ResRef
   /** @noSelf **/
   FromHash(hash: number): ResRef
   /** @noSelf **/
@@ -22026,14 +22026,14 @@ declare interface GlitchScreen extends ActionBool {
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   GetAttachedProgramTweakDBID(): TweakDBID
 }
 
 declare interface ToggleNetrunnerDive extends ActionBool {
 
   SetProperties(terminateDive: Bool, skipMinigame: Bool, attempt: number, isRemote: Bool): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   ShouldTerminate(): Bool
   /** @noSelf **/
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
@@ -22194,7 +22194,7 @@ declare interface RemoveFromBlacklistEvent extends Event {
 
 declare interface NPCType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataNPCType
 }
@@ -22246,7 +22246,7 @@ declare interface TogglePreventionSystem extends ScriptableSystemRequest {
 
 declare interface Affiliation_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   AnimWrappers(): CName[]
   GetAnimWrappersCount(): number
   GetAnimWrappersItem(index: number): CName
@@ -22346,7 +22346,7 @@ declare interface Matrix {
 declare interface DebugDrawer {
 
   /** @noSelf **/
-  TestDebugFilterMask(debugDrawer: DebugDrawer, debugFilterName: String): Bool
+  TestDebugFilterMask(debugDrawer: DebugDrawer, debugFilterName: string): Bool
 }
 
 declare interface SimpleTargetManager extends ScriptableComponent {
@@ -22401,7 +22401,7 @@ declare interface LookAtAddEvent extends AnimTargetAddEvent {
   SetOutTransitionStyle(outTransitionStyle: animLookAtStyle): void
   SetLimits(softLimitDegreesType: animLookAtLimitDegreesType, hardLimitDegreesType: animLookAtLimitDegreesType, hardLimitDistanceType: animLookAtLimitDistanceType, backLimitDegreesType: animLookAtLimitDegreesType): void
   SetAdditionalPartsArray(additionalParts: LookAtPartRequest[]): void
-  SetDebugInfo(debugInfo: String): void
+  SetDebugInfo(debugInfo: string): void
 }
 
 declare interface LookAtRequest {
@@ -22470,8 +22470,8 @@ declare interface DebugVisualizerSystem extends gameIDebugVisualizerSystem {
   DrawRect(position: Vector4, size: Vector4, color?: Color, lifetime?: number): number
   DrawLine(start: Vector4, end: Vector4, color?: Color, lifetime?: number): number
   DrawLine3D(start: Vector4, end: Vector4, color?: Color, lifetime?: number): number
-  DrawText(position: Vector4, text: String, textAlignment?: gameDebugViewETextAlignment, color?: Color, lifetime?: number): number
-  DrawText3D(position: Vector4, text: String, color?: Color, lifetime?: number): number
+  DrawText(position: Vector4, text: string, textAlignment?: gameDebugViewETextAlignment, color?: Color, lifetime?: number): number
+  DrawText3D(position: Vector4, text: string, color?: Color, lifetime?: number): number
   DrawWireBox(boxMin: Vector4, boxMax: Vector4, color?: Color, lifetime?: number): number
   DrawWireSphere(position: Vector4, radius: number, color?: Color, lifetime?: number): number
   DrawArrow(start: Vector4, end: Vector4, color?: Color, lifetime?: number): number
@@ -22797,7 +22797,7 @@ declare interface AISquadHelper extends IScriptable {
   /** @noSelf **/
   LeaveAllSquads(obj: GameObject): Bool
   /** @noSelf **/
-  PlayerSquadOrderStringToEnum(playerSquadOrderName: String): EAIPlayerSquadOrder
+  PlayerSquadOrderStringToEnum(playerSquadOrderName: string): EAIPlayerSquadOrder
   /** @noSelf **/
   SendStimFromSquadTargetToMember(member: Entity, actionName: CName): void
   /** @noSelf **/
@@ -22805,7 +22805,7 @@ declare interface AISquadHelper extends IScriptable {
   /** @noSelf **/
   SquadRingTypeToTicketName(type: gamedataAIRingType): CName
   /** @noSelf **/
-  SquadRingTypeToTicketString(type: gamedataAIRingType): String
+  SquadRingTypeToTicketString(type: gamedataAIRingType): string
   /** @noSelf **/
   NotifySquadOnIncapacitated(puppet: ScriptedPuppet): void
   /** @noSelf **/
@@ -22900,7 +22900,7 @@ declare interface AIScriptSquad extends IScriptable {
   /** @noSelf **/
   GetTicketRecord(ticketName: CName, squadRecord: AISquadParams_Record, ticketRecord: AITicket_Record): Bool
   /** @noSelf **/
-  TicketDebugHelper(ticketNameCheck: String, entity: Entity, ticketRecord: AITicket_Record): Bool
+  TicketDebugHelper(ticketNameCheck: string, entity: Entity, ticketRecord: AITicket_Record): Bool
   /** @noSelf **/
   CanPerformTicket(context: ScriptExecutionContext, actionType: AITicketType_Record): Bool
   /** @noSelf **/
@@ -22963,7 +22963,7 @@ declare interface AISquadParams_Record extends TweakDBRecord {
 
 declare interface AITicketType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataAITicketType
 }
@@ -23642,7 +23642,7 @@ declare interface Attack_Melee_Record extends Attack_GameEffect_Record {
 
 declare interface AttackSubtype_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataAttackSubtype
 }
@@ -23847,7 +23847,7 @@ declare interface SecurityTurret extends SensorDevice {
   OnGameAttached(): Bool
   OnDetach(): Bool
   IsTurret(): Bool
-  GetScannerName(): String
+  GetScannerName(): string
   PushPersistentData(): void
   GetController(): SecurityTurretController
   GetDevicePS(): SecurityTurretControllerPS
@@ -23942,8 +23942,8 @@ declare interface SecurityTurretControllerPS extends SensorDeviceControllerPS {
   GetIsUnderControl(): Bool
   GetLaserGameEffectRef(): EffectRef
   GetDeviceStatusAction(): SecurityTurretStatus
-  GetVfxNameOnShoot(): String
-  GetWeaponItemRecordString(): String
+  GetVfxNameOnShoot(): string
+  GetWeaponItemRecordString(): string
   ActionSecurityTurretStatus(): SecurityTurretStatus
   GetQuestActions(actions: DeviceAction[], context: GetActionsContext): void
   ActionRipOff(): RipOff
@@ -23981,7 +23981,7 @@ declare interface SecurityTurretControllerPS extends SensorDeviceControllerPS {
 declare interface SecurityTurretStatus extends BaseDeviceStatus {
 
   SetProperties(deviceRef: ScriptableDeviceComponentPS): void
-  GetCurrentDisplayString(): String
+  GetCurrentDisplayString(): string
   /** @noSelf **/
   IsDefaultConditionMet(device: ScriptableDeviceComponentPS, context: GetActionsContext): Bool
   /** @noSelf **/
@@ -23990,7 +23990,7 @@ declare interface SecurityTurretStatus extends BaseDeviceStatus {
   IsClearanceValid(clearance: Clearance): Bool
   /** @noSelf **/
   IsContextValid(context: GetActionsContext): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface QuestForceTakeControlOverCamera extends ActionBool {
@@ -24021,14 +24021,14 @@ declare interface QuestRemoveWeapon extends ActionBool {
 declare interface RipOff extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface ToggleTakeOverControl extends ActionBool {
 
   GetBaseCost(): number
   SetProperties(isDeviceUnderControl: Bool, createdAsQuickHack?: Bool): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   /** @noSelf **/
   IsDefaultConditionMet(device: ScriptableDeviceComponentPS, context: GetActionsContext): Bool
   /** @noSelf **/
@@ -24203,7 +24203,7 @@ declare interface AIShootingDataDef extends AIBlackboardDef {
 
 declare interface TriggerMode_Record extends TweakDBRecord {
 
-  Name(): String
+  Name(): string
   Type(): gamedataTriggerMode
 }
 
@@ -24230,7 +24230,7 @@ declare interface TargetShootComponent extends IComponent {
   HandleWeaponShoot(weaponOwner: GameObject, weapon: WeaponObject, shootAtPoint: Vector4, maxSpread: number, coefficientMultiplier: number, miss: Bool): Vector4
   HandleWeaponShoot(weaponOwner: GameObject, weapon: WeaponObject, shootAtPoint: Vector4, maxSpread: number, coefficientMultiplier: number): Vector4
   CalculateMissOffset(weaponOwner: GameObject, weapon: WeaponObject, shootAtPointWS: Vector4, maxSpread: number, useForcedMissZOffset: Bool, forcedMissZOffset: number): Vector4
-  GetPackageName(): String
+  GetPackageName(): string
   GetDifficultyLevelCoefficient(): number
   GetGroupCoefficient(weaponOwner: GameObject): number
   GetPlayersNumCoefficient(weaponOwner: GameObject): number
@@ -24248,7 +24248,7 @@ declare interface SourceShootComponent extends IComponent {
 
   GetContinuousLineOfSightToTarget(target: GameObject, continuousLineOfSight: number): Bool
   ClearDebugInformation(): void
-  AppendDebugInformation(lineToAppend: String): void
+  AppendDebugInformation(lineToAppend: string): void
   SetDebugParameters(params: TimeBetweenHitsParameters): void
 }
 
@@ -24762,7 +24762,7 @@ declare interface AIActionTarget extends IScriptable {
 
 declare interface AIActionTarget_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   TrackingMode(): TrackingMode_Record
   BehaviorArgumentName(): CName
   EnumName(): CName
@@ -24784,8 +24784,8 @@ declare interface AITweakActionSystem extends IGameSystem {
 
 declare interface TrackingMode_Record extends TweakDBRecord {
 
-  EnumName(): String
-  EnumComment(): String
+  EnumName(): string
+  EnumComment(): string
   Type(): gamedataTrackingMode
 }
 
@@ -24799,11 +24799,11 @@ declare interface SurveillanceCamera extends SensorDevice {
   GetController(): SurveillanceCameraController
   GetDevicePS(): SurveillanceCameraControllerPS
   IsSurveillanceCamera(): Bool
-  GetScannerName(): String
+  GetScannerName(): string
   SetAsIntrestingTarget(target: GameObject): Bool
   OnValidTargetAppears(target: GameObject): void
   OnCurrentTargetAppears(target: GameObject): void
-  SetWarningMessage(lockey: String): void
+  SetWarningMessage(lockey: string): void
   OnValidTargetDisappears(target: GameObject): void
   OnAllValidTargetsDisappears(): void
   OnEnterShapeEvent(evt: EnterShapeEvent): Bool
@@ -24883,7 +24883,7 @@ declare interface SurveillanceCameraControllerPS extends SensorDeviceControllerP
   IsDetectingDebug(): Bool
   GetVirtualSystemType(): EVirtualSystem
   GetWidgetTypeName(): CName
-  GetDeviceIconPath(): String
+  GetDeviceIconPath(): string
   GetBackgroundTextureTweakDBID(): TweakDBID
   GetDeviceIconTweakDBID(): TweakDBID
   GetDeviceWidget(context: GetActionsContext): SDeviceWidgetPackage
@@ -24892,7 +24892,7 @@ declare interface SurveillanceCameraControllerPS extends SensorDeviceControllerP
   ThreatDetected(isDetected: Bool): void
   OnTCSTakeOverControlDeactivate(evt: TCSTakeOverControlDeactivate): EntityNotificationType
   GetFakeToggleStreamAction(startStream: Bool, whoIsReceiving: EntityID): ToggleStreamFeed
-  LogActionDetails(action: ScriptableDeviceAction, cachedStatus: BaseDeviceStatus, context?: String, status?: String, overrideStatus?: Bool): void
+  LogActionDetails(action: ScriptableDeviceAction, cachedStatus: BaseDeviceStatus, context?: string, status?: string, overrideStatus?: Bool): void
   ActionEngineering(context: GetActionsContext): ActionEngineering
   OnActionEngineering(evt: ActionEngineering): EntityNotificationType
   Override(action: ScriptableDeviceAction): void
@@ -24911,7 +24911,7 @@ declare interface CameraQuestProperties {
 declare interface SurveillanceCameraStatus extends BaseDeviceStatus {
 
   SetProperties(deviceRef: ScriptableDeviceComponentPS): void
-  GetCurrentDisplayString(): String
+  GetCurrentDisplayString(): string
   GetStatusValue(): number
   /** @noSelf **/
   IsDefaultConditionMet(device: ScriptableDeviceComponentPS, context: GetActionsContext): Bool
@@ -24921,7 +24921,7 @@ declare interface SurveillanceCameraStatus extends BaseDeviceStatus {
   IsClearanceValid(clearance: Clearance): Bool
   /** @noSelf **/
   IsContextValid(context: GetActionsContext): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface ToggleStreamFeed extends ActionBool {
@@ -24936,7 +24936,7 @@ declare interface ToggleStreamFeed extends ActionBool {
   IsClearanceValid(clearance: Clearance): Bool
   /** @noSelf **/
   IsContextValid(context: GetActionsContext): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface CameraSetup {
@@ -25132,8 +25132,8 @@ declare interface AIStatusEffectCond_Record extends AIActionSubCondition_Record 
 
 declare interface StatusEffectType_Record extends TweakDBRecord {
 
-  EnumName(): String
-  EnumComment(): String
+  EnumName(): string
+  EnumComment(): string
   Type(): gamedataStatusEffectType
 }
 
@@ -25393,7 +25393,7 @@ declare interface AITacticTicket_Record extends AITicket_Record {
 
 declare interface AISectorType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
 }
 
@@ -25613,7 +25613,7 @@ declare interface AIReactionData extends IScriptable {
 
 declare interface StimType_Record extends TweakDBRecord {
 
-  Comment(): String
+  Comment(): string
   EnumName(): CName
   Type(): gamedataStimType
 }
@@ -25691,7 +25691,7 @@ declare interface AIActionTargetStates {
 declare interface AIActionParams extends IScriptable {
 
   /** @noSelf **/
-  CreateActionID(context: ScriptExecutionContext, puppet: ScriptedPuppet, actionStringName: String, actionPackageType: AIactionParamsPackageTypes, actionName: CName): TweakDBID
+  CreateActionID(context: ScriptExecutionContext, puppet: ScriptedPuppet, actionStringName: string, actionPackageType: AIactionParamsPackageTypes, actionName: CName): TweakDBID
   /** @noSelf **/
   TempGetIsValid(actionID: TweakDBID): Bool
   /** @noSelf **/
@@ -25731,25 +25731,25 @@ declare interface AIActionParams extends IScriptable {
 declare interface AITweakParams extends IScriptable {
 
   /** @noSelf **/
-  GetStringFromTweak(actionID: TweakDBID, paramName: String): String
+  GetStringFromTweak(actionID: TweakDBID, paramName: string): string
   /** @noSelf **/
-  GetStringArrayFromTweak(actionID: TweakDBID, paramName: String): String[]
+  GetStringArrayFromTweak(actionID: TweakDBID, paramName: string): string[]
   /** @noSelf **/
-  GetCNameFromTweak(actionID: TweakDBID, paramName: String): CName
+  GetCNameFromTweak(actionID: TweakDBID, paramName: string): CName
   /** @noSelf **/
-  GetCNameArrayFromTweak(actionID: TweakDBID, paramName: String): CName[]
+  GetCNameArrayFromTweak(actionID: TweakDBID, paramName: string): CName[]
   /** @noSelf **/
-  GetFloatFromTweak(actionID: TweakDBID, paramName: String): number
+  GetFloatFromTweak(actionID: TweakDBID, paramName: string): number
   /** @noSelf **/
-  GetFloatArrayFromTweak(actionID: TweakDBID, paramName: String): number[]
+  GetFloatArrayFromTweak(actionID: TweakDBID, paramName: string): number[]
   /** @noSelf **/
-  GetIntFromTweak(actionID: TweakDBID, paramName: String): number
+  GetIntFromTweak(actionID: TweakDBID, paramName: string): number
   /** @noSelf **/
-  GetIntArrayFromTweak(actionID: TweakDBID, paramName: String): number[]
+  GetIntArrayFromTweak(actionID: TweakDBID, paramName: string): number[]
   /** @noSelf **/
-  GetVectorFromTweak(actionID: TweakDBID, paramName: String): Vector3
+  GetVectorFromTweak(actionID: TweakDBID, paramName: string): Vector3
   /** @noSelf **/
-  GetBoolFromTweak(actionID: TweakDBID, paramName: String): Bool
+  GetBoolFromTweak(actionID: TweakDBID, paramName: string): Bool
 }
 
 declare interface AIIsOnNavmeshCond_Record extends AIActionSubCondition_Record {
@@ -25803,7 +25803,7 @@ declare interface AIOptimalDistanceCond_Record extends AIActionSubCondition_Reco
 
 declare interface AIRingType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Distance(): number
   Tolerance(): number
@@ -26011,7 +26011,7 @@ declare interface AITargetCond_Record extends AIActionSubCondition_Record {
 
 declare interface AIAdditionalTraceType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataAIAdditionalTraceType
 }
@@ -26038,7 +26038,7 @@ declare interface AISecurityCond_Record extends AIActionSubCondition_Record {
 
 declare interface AIActionSecurityAreaType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataAIActionSecurityAreaType
 }
@@ -26073,7 +26073,7 @@ declare interface SecuritySystemData {
 
 declare interface SuppressNPCInSecuritySystem extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface NPCBreachEvent extends Event {
@@ -26086,7 +26086,7 @@ declare interface ExecutePuppetActionEvent extends Event {
 
 declare interface PuppetAction extends ScriptableDeviceAction {
 
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   GetTweakDBChoiceID(): TweakDBID
   GetObjectActionRecord(): ObjectAction_Record
 }
@@ -26172,7 +26172,7 @@ declare interface AutoKillDelayEvent extends Event {
 
 declare interface ManagePersonalLinkChangeEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface gameTargetHitEvent extends gameHitEvent {
@@ -26351,7 +26351,7 @@ declare interface AttackDirection_Record extends TweakDBRecord {
 
 declare interface MeleeAttackDirection_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataMeleeAttackDirection
 }
@@ -26359,13 +26359,13 @@ declare interface MeleeAttackDirection_Record extends TweakDBRecord {
 declare interface DismembermentComponent extends IComponent {
 
   ReportExplosion(hitPosition: Vector4, strength: number): void
-  DoDismemberment(bodyPart: gameDismBodyPart, woundType: gameDismWoundType, strength?: number, isCritical?: Bool, debrisPath?: String, debrisStrength?: number): void
-  SpawnGutsFromLastHit(resourcePath: String, strength: number): void
+  DoDismemberment(bodyPart: gameDismBodyPart, woundType: gameDismWoundType, strength?: number, isCritical?: Bool, debrisPath?: string, debrisStrength?: number): void
+  SpawnGutsFromLastHit(resourcePath: string, strength: number): void
   GetDismemberedLimbCount(): DismemberedLimbCount
   /** @noSelf **/
-  RequestGutsFromLastHit(obj: GameObject, resourcePath: String, strength: number): void
+  RequestGutsFromLastHit(obj: GameObject, resourcePath: string, strength: number): void
   /** @noSelf **/
-  RequestDismemberment(obj: GameObject, bodyPart: gameDismBodyPart, woundType: gameDismWoundType, hitPosition?: Vector4, isCritical?: Bool, debrisPath?: String, debrisStrength?: number): void
+  RequestDismemberment(obj: GameObject, bodyPart: gameDismBodyPart, woundType: gameDismWoundType, hitPosition?: Vector4, isCritical?: Bool, debrisPath?: string, debrisStrength?: number): void
   OnDismemberment(evt: DismembermentEvent): Bool
   OnDismembermentExplosion(evt: DismembermentExplosionEvent): Bool
   OnDismembermentDebris(evt: DismembermentDebrisEvent): Bool
@@ -26410,7 +26410,7 @@ declare interface ClearHitStimEvent extends Event {
 
 declare interface AIExposureMethodType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   Priority(): number[]
   GetPriorityCount(): number
   GetPriorityItem(index: number): number
@@ -26536,17 +26536,17 @@ declare interface BossHealthStatListener extends ScriptStatPoolsListener {
 declare interface inkTextRef extends inkLeafRef {
 
   /** @noSelf **/
-  GetText(self: inkTextRef): String
+  GetText(self: inkTextRef): string
   /** @noSelf **/
-  SetText(self: inkTextRef, displayText: String, textParams?: inkTextParams): void
+  SetText(self: inkTextRef, displayText: string, textParams?: inkTextParams): void
   /** @noSelf **/
-  SetTextDirect(self: inkTextRef, displayText: String): void
+  SetTextDirect(self: inkTextRef, displayText: string): void
   /** @noSelf **/
   SetLocalizedText(self: inkTextRef, locKey: CName, textParams?: inkTextParams): void
   /** @noSelf **/
-  SetLocalizedTextString(self: inkTextRef, locKey: String, textParams?: inkTextParams): void
+  SetLocalizedTextString(self: inkTextRef, locKey: string, textParams?: inkTextParams): void
   /** @noSelf **/
-  SetLocalizedTextScript(self: inkTextRef, locKey: String, textParams?: inkTextParams): void
+  SetLocalizedTextScript(self: inkTextRef, locKey: string, textParams?: inkTextParams): void
   /** @noSelf **/
   SetLocalizedTextScript(self: inkTextRef, locKey: CName, textParams?: inkTextParams): void
   /** @noSelf **/
@@ -26558,11 +26558,11 @@ declare interface inkTextRef extends inkLeafRef {
   /** @noSelf **/
   SetLocalizationKey(self: inkTextRef, displayText: CName): void
   /** @noSelf **/
-  SetLocalizationKeyString(self: inkTextRef, displayText: String): void
+  SetLocalizationKeyString(self: inkTextRef, displayText: string): void
   /** @noSelf **/
   UpdateLanguageResources(self: inkTextRef, applyFontModifiers?: Bool): void
   /** @noSelf **/
-  SetTextFromParts(self: inkTextRef, textpart1: String, textpart2?: String, textpart3?: String): void
+  SetTextFromParts(self: inkTextRef, textpart1: string, textpart2?: string, textpart3?: string): void
   /** @noSelf **/
   GetVerticalAlignment(self: inkTextRef): textVerticalAlignment
   /** @noSelf **/
@@ -26576,7 +26576,7 @@ declare interface inkTextRef extends inkLeafRef {
   /** @noSelf **/
   GetHorizontalAlignmentEnumValue(self: inkTextRef, nameValue: CName): textHorizontalAlignment
   /** @noSelf **/
-  SetFontFamily(self: inkTextRef, fontFamilyPath: String, fontStyle?: CName): void
+  SetFontFamily(self: inkTextRef, fontFamilyPath: string, fontStyle?: CName): void
   /** @noSelf **/
   GetFontStyle(self: inkTextRef): CName
   /** @noSelf **/
@@ -26649,7 +26649,7 @@ declare interface ReactionOutput {
 
 declare interface Output_Record extends TweakDBRecord {
 
-  OutputName(): String
+  OutputName(): string
   Priority(): number
   AIPriority(): number
   Type(): gamedataOutput
@@ -26881,7 +26881,7 @@ declare interface Bounty_Record extends TweakDBRecord {
 
 declare interface RewardBase_Record extends TweakDBRecord {
 
-  Name(): String
+  Name(): string
   Recipes(outList: Item_Record[]): void
   GetRecipesCount(): number
   GetRecipesItem(index: number): Item_Record
@@ -26932,7 +26932,7 @@ declare interface CurrencyReward_Record extends TweakDBRecord {
 
 declare interface Transgression_Record extends TweakDBRecord {
 
-  LocalizedDescription(): String
+  LocalizedDescription(): string
   DrawWeight(): number
   Severity(): number
 }
@@ -26947,7 +26947,7 @@ declare interface BountyCompletionEvent extends Event {
 
 declare interface SetBountyEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface PlayerDetectionChangedEvent extends Event {
@@ -26995,7 +26995,7 @@ declare interface DEBUG_VisualizerComponent extends ScriptableComponent {
   VisualizeDisplayName(scale: number): void
   VisualizeImmortality(scale: number): void
   VisualizeAttitude(scale: number): void
-  ShowText(offset: Vector4, str: String, color: Color, scale: number): void
+  ShowText(offset: Vector4, str: string, color: Color, scale: number): void
   OnGameAttach(): void
   OnUpdate(dt: number): void
   ToggleShowWeaponsStreaming(): void
@@ -27086,7 +27086,7 @@ declare interface AISignalHandlerComponent extends IComponent {
 
 declare interface AccessBreach extends PuppetAction {
 
-  SetProperties(networkName: String, npcCount: number, attemptsCount: number, isRemote: Bool, isSuicide: Bool): void
+  SetProperties(networkName: string, npcCount: number, attemptsCount: number, isRemote: Bool, isSuicide: Bool): void
   SetAttemptCount(amount: number): void
   StartUpload(gameInstance: GameInstance): void
   CompleteAction(gameInstance: GameInstance): void
@@ -27149,7 +27149,7 @@ declare interface UncontrolledMovementStartEvent extends Event {
 
 declare interface StatusEffectAIBehaviorFlag_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataStatusEffectAIBehaviorFlag
 }
@@ -27188,7 +27188,7 @@ declare interface CacheStatusEffectAnimEvent extends Event {
 
 declare interface RemoveStatusEffectEvent extends Event {
 
-  SetEffectID(effectName: String): void
+  SetEffectID(effectName: string): void
 }
 
 declare interface RemoveAllStatusEffectOfTypeEvent extends Event {
@@ -27207,7 +27207,7 @@ declare interface CacheStatusEffectFXEvent extends Event {
 
 declare interface SpawnableObjectPriority_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataSpawnableObjectPriority
 }
@@ -27426,9 +27426,9 @@ declare interface ScannerModuleVisibilityPreset_Record extends TweakDBRecord {
 
 declare interface ScannerName extends ScannerChunk {
 
-  GetDisplayName(): String
+  GetDisplayName(): string
   GetTextParams(): inkTextParams
-  Set(_displayName: String): void
+  Set(_displayName: string): void
   SetTextParams(_params: inkTextParams): void
   SetArchetype(has: Bool): void
   HasArchetype(): Bool
@@ -27437,7 +27437,7 @@ declare interface ScannerName extends ScannerChunk {
 
 declare interface ArchetypeType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   LocalizedName(): CName
   EnumName(): CName
   Type(): gamedataArchetypeType
@@ -27469,8 +27469,8 @@ declare interface ScannerRarity extends ScannerChunk {
 
 declare interface ScannerFaction extends ScannerChunk {
 
-  GetFaction(): String
-  Set(f: String): void
+  GetFaction(): string
+  Set(f: string): void
   GetType(): ScannerDataType
 }
 
@@ -27499,7 +27499,7 @@ declare interface ScannerBountySystem extends ScannerChunk {
 declare interface BountyUI {
 
   /** @noSelf **/
-  AddTransgression(self: BountyUI, transgression: String): void
+  AddTransgression(self: BountyUI, transgression: string): void
 }
 
 declare interface ScannerWeaponDetailed extends ScannerWeaponBasic {
@@ -27523,7 +27523,7 @@ declare interface Vulnerability {
 
 declare interface ChoiceCaptionIconPart_Record extends ChoiceCaptionPart_Record {
 
-  Comment(): String
+  Comment(): string
   TexturePartID(): UIIcon_Record
   MappinVariant(): MappinVariant_Record
   EnumName(): CName
@@ -27713,7 +27713,7 @@ declare interface GrenadeTrackerTargetLostEvent extends Event {
 
 declare interface StimTargetsEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface StimTargetData {
@@ -27817,7 +27817,7 @@ declare interface QuickHackDurationListener extends ActionUploadListener {
 declare interface SpiderbotEnableAccessPoint extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   /** @noSelf **/
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
@@ -27944,7 +27944,7 @@ declare interface Transition extends Event {
 
 declare interface QuestAddTransition extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface RegisterTimeListeners extends Event {
@@ -27953,12 +27953,12 @@ declare interface RegisterTimeListeners extends Event {
 
 declare interface QuestRemoveTransition extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface QuestExecuteTransition extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface RevealPlayerSettings {
@@ -27967,12 +27967,12 @@ declare interface RevealPlayerSettings {
 
 declare interface QuestIllegalActionAreaNotification extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface QuestCombatActionAreaNotification extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface QuestModifyFilters extends Event {
@@ -27990,7 +27990,7 @@ declare interface SecuritySystemOutputData {
 declare interface SecuritySystemStatus extends BaseDeviceStatus {
 
   SetProperties(deviceRef: ScriptableDeviceComponentPS): void
-  GetCurrentDisplayString(): String
+  GetCurrentDisplayString(): string
   GetStatusValue(): number
   /** @noSelf **/
   IsDefaultConditionMet(device: ScriptableDeviceComponentPS, context: GetActionsContext): Bool
@@ -27998,7 +27998,7 @@ declare interface SecuritySystemStatus extends BaseDeviceStatus {
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface MadnessDebuff extends Event {
@@ -28148,27 +28148,27 @@ declare interface SpawnerData {
 
 declare interface SetSecuritySystemState extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface AuthorizePlayerInSecuritySystem extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface BlacklistPlayer extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface SuppressSecuritySystemStateChange extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface QuestChangeSecuritySystemAttitudeGroup extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface AreaEffectVisualisationRequest extends Event {
@@ -28187,7 +28187,7 @@ declare interface HackingContainer extends BaseSkillCheckContainer {
 declare interface ForceDisableCarAlarm extends ActionBool {
 
   SetProperties(isAlarmTriggered: Bool): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface VehicleActionsContext {
@@ -28200,22 +28200,22 @@ declare interface TemporaryDoorState {
 
 declare interface VehicleDoorInteraction extends ActionBool {
 
-  SetProperties(slotString: String, source?: Bool, locked?: Bool): void
+  SetProperties(slotString: string, source?: Bool, locked?: Bool): void
 }
 
 declare interface VehicleDoorInteractionStateChange extends ActionBool {
 
-  SetProperties(doorToChange: EVehicleDoor, desiredState: VehicleDoorInteractionState, reason: String): void
+  SetProperties(doorToChange: EVehicleDoor, desiredState: VehicleDoorInteractionState, reason: string): void
 }
 
 declare interface VehicleDoorOpen extends ActionBool {
 
-  SetProperties(slotString: String, autoClose?: Bool, autoCloseDelay?: number): void
+  SetProperties(slotString: string, autoClose?: Bool, autoCloseDelay?: number): void
 }
 
 declare interface VehicleDoorClose extends ActionBool {
 
-  SetProperties(slotString: String): void
+  SetProperties(slotString: string): void
 }
 
 declare interface VehicleQuestDoorLocked extends ActionBool {
@@ -28225,12 +28225,12 @@ declare interface VehicleQuestDoorLocked extends ActionBool {
 
 declare interface VehicleWindowOpen extends ActionBool {
 
-  SetProperties(slotString: String): void
+  SetProperties(slotString: string): void
 }
 
 declare interface VehicleWindowClose extends ActionBool {
 
-  SetProperties(slotString: String): void
+  SetProperties(slotString: string): void
 }
 
 declare interface VehicleBodyDisposalPerformedEvent extends Event {
@@ -28298,23 +28298,23 @@ declare interface ForceCarAlarm extends ActionBool {
   IsAvailable(device: VehicleComponentPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface ToggleVehicle extends ActionBool {
 
   SetProperties(toggleOn: Bool): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface VehicleForceOccupantOut extends ActionBool {
 
-  SetProperties(slotString: String): void
+  SetProperties(slotString: string): void
 }
 
 declare interface VehicleQuestChangeDoorStateEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface vehicleChangeWindowStateEvent extends Event {
@@ -28331,17 +28331,17 @@ declare interface VehicleSeatReservationEvent extends Event {
 
 declare interface VehicleQuestCrystalDomeEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface VehicleQuestSirenEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface VehicleQuestAVThrusterEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface ForwardVehicleQuestEnableUIEvent extends Event {
@@ -28350,7 +28350,7 @@ declare interface ForwardVehicleQuestEnableUIEvent extends Event {
 
 declare interface VehicleQuestEnableUIEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface ForwardVehicleQuestUIEffectEvent extends Event {
@@ -28359,7 +28359,7 @@ declare interface ForwardVehicleQuestUIEffectEvent extends Event {
 
 declare interface VehicleQuestUIEffectEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface ForwardVehicleRaceUIEvent extends Event {
@@ -28368,12 +28368,12 @@ declare interface ForwardVehicleRaceUIEvent extends Event {
 
 declare interface VehicleRaceQuestEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface VehiclePanzerBootupUIQuestEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface CrowdMemberBaseComponent extends CrowdMemberComponent {
@@ -28411,37 +28411,37 @@ declare interface UnmountingRequest extends IScriptable {
 
 declare interface ScannerVehicleName extends ScannerChunk {
 
-  GetDisplayName(): String
-  Set(vehName: String): void
+  GetDisplayName(): string
+  Set(vehName: string): void
   GetType(): ScannerDataType
 }
 
 declare interface ScannerVehicleManufacturer extends ScannerChunk {
 
-  GetVehicleManufacturer(): String
-  Set(vehManName: String): void
+  GetVehicleManufacturer(): string
+  Set(vehManName: string): void
   GetType(): ScannerDataType
 }
 
 declare interface VehicleManufacturer_Record extends TweakDBRecord {
 
-  EnumName(): String
-  EnumComment(): String
+  EnumName(): string
+  EnumComment(): string
   Type(): gamedataVehicleManufacturer
 }
 
 declare interface ScannerVehicleProdYears extends ScannerChunk {
 
-  GetProdYears(): String
-  Set(vehProdYears: String): void
+  GetProdYears(): string
+  Set(vehProdYears: string): void
   GetType(): ScannerDataType
 }
 
 declare interface VehicleUIData_Record extends TweakDBRecord {
 
-  DriveLayout(): String
-  ProductionYear(): String
-  Info(): String
+  DriveLayout(): string
+  ProductionYear(): string
+  Info(): string
   Mass(): number
   Horsepower(): number
 }
@@ -28490,8 +28490,8 @@ declare interface MeasurementUtils {
 
 declare interface ScannerVehicleInfo extends ScannerChunk {
 
-  GetVehicleInfo(): String
-  Set(vehInfo: String): void
+  GetVehicleInfo(): string
+  Set(vehInfo: string): void
   GetType(): ScannerDataType
 }
 
@@ -28513,15 +28513,15 @@ declare interface ScannerVehicleHorsepower extends ScannerChunk {
 
 declare interface ScannerVehicleState extends ScannerChunk {
 
-  GetVehicleState(): String
-  Set(vehState: String): void
+  GetVehicleState(): string
+  Set(vehState: string): void
   GetType(): ScannerDataType
 }
 
 declare interface ScannerVehicleDriveLayout extends ScannerChunk {
 
-  GetDriveLayout(): String
-  Set(vehDriveLayout: String): void
+  GetDriveLayout(): string
+  Set(vehDriveLayout: string): void
   GetType(): ScannerDataType
 }
 
@@ -28552,7 +28552,7 @@ declare interface VehicleDamageStageTurnOffEvent extends Event {
 
 declare interface VehicleRadioEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface VehicleDefaultState_Record extends TweakDBRecord {
@@ -28657,8 +28657,8 @@ declare interface UI_ActiveVehicleDataDef extends BlackboardDefinition {
 
 declare interface VehicleType_Record extends TweakDBRecord {
 
-  EnumName(): String
-  EnumComment(): String
+  EnumName(): string
+  EnumComment(): string
   Type(): gamedataVehicleType
 }
 
@@ -28786,11 +28786,11 @@ declare interface ConfigGroup extends IScriptable {
 
 declare interface ConfigVarListString extends ConfigVar {
 
-  GetValueFor(index: number): String
-  GetValue(): String
-  GetDefaultValue(): String
-  GetValues(): String[]
-  GetIndexFor(value: String): number
+  GetValueFor(index: number): string
+  GetValue(): string
+  GetDefaultValue(): string
+  GetValues(): string[]
+  GetIndexFor(value: string): number
   GetIndex(): number
   GetDefaultIndex(): number
   SetIndex(index: number): void
@@ -28830,7 +28830,7 @@ declare interface gameinteractionsActiveLayerData {
 
 declare interface VehicleQuestVisualDestructionEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface AIEvents extends IScriptable {
@@ -28958,12 +28958,12 @@ declare interface SummonStartedEvent extends Event {
 
 declare interface VehicleLightQuestToggleEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface VehicleQuestHornEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface SummonFinishedEvent extends Event {
@@ -28980,7 +28980,7 @@ declare interface VehicleOnPartDetachedEvent extends Event {
 
 declare interface VehicleRadioTierEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface VehicleHornOffDelayEvent extends Event {
@@ -28989,7 +28989,7 @@ declare interface VehicleHornOffDelayEvent extends Event {
 
 declare interface VehicleQuestWindowDestructionEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface FactChangedEvent extends Event {
@@ -29011,7 +29011,7 @@ declare interface VehicleForwardRaceClockUpdateEvent extends Event {
 
 declare interface VehicleQuestToggleEngineEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface SetIgnoreAutoDoorCloseEvent extends Event {
@@ -29079,27 +29079,27 @@ declare interface AIScriptActionDelegate extends ScriptBehaviorDelegate {
 declare interface TweakAIActionRecord extends IScriptable {
 
   /** @noSelf **/
-  GetFriendlyName(record: TweakDBID, nodeName: String): String
+  GetFriendlyName(record: TweakDBID, nodeName: string): string
   /** @noSelf **/
-  GetDebugActionNameFromRecord(record: TweakDBID, debugStringName: String): Bool
+  GetDebugActionNameFromRecord(record: TweakDBID, debugStringName: string): Bool
   /** @noSelf **/
   GetHeldItemType(context: ScriptExecutionContext, heldItemType: gamedataItemType): Bool
   /** @noSelf **/
   IsArchetypeAction(record: TweakDBID): Bool
   /** @noSelf **/
-  GetActionRecord(context: ScriptExecutionContext, actionID: TweakDBID, actionDebugName: String, actionRecord: AIAction_Record): Bool
+  GetActionRecord(context: ScriptExecutionContext, actionID: TweakDBID, actionDebugName: string, actionRecord: AIAction_Record): Bool
   /** @noSelf **/
-  GetSelectorRecord(context: ScriptExecutionContext, selectorID: TweakDBID, selectorDebugName: String, selectorRecord: AIActionSelector_Record): Bool
+  GetSelectorRecord(context: ScriptExecutionContext, selectorID: TweakDBID, selectorDebugName: string, selectorRecord: AIActionSelector_Record): Bool
   /** @noSelf **/
-  GetSequenceRecord(context: ScriptExecutionContext, sequenceID: TweakDBID, sequenceDebugName: String, sequenceRecord: AIActionSequence_Record): Bool
+  GetSequenceRecord(context: ScriptExecutionContext, sequenceID: TweakDBID, sequenceDebugName: string, sequenceRecord: AIActionSequence_Record): Bool
   /** @noSelf **/
-  GetSmartCompositeRecord(context: ScriptExecutionContext, smartCompositeID: TweakDBID, smartCompositeDebugName: String, smartCompositeRecord: AIActionSmartComposite_Record): Bool
+  GetSmartCompositeRecord(context: ScriptExecutionContext, smartCompositeID: TweakDBID, smartCompositeDebugName: string, smartCompositeRecord: AIActionSmartComposite_Record): Bool
   /** @noSelf **/
-  GetActionRecordFromSelector(context: ScriptExecutionContext, selectorRecord: AIActionSelector_Record, actionDebugName: String, actionRecord: AIAction_Record, nodeIterator: number, shouldCallAgain: Bool): Bool
+  GetActionRecordFromSelector(context: ScriptExecutionContext, selectorRecord: AIActionSelector_Record, actionDebugName: string, actionRecord: AIAction_Record, nodeIterator: number, shouldCallAgain: Bool): Bool
   /** @noSelf **/
   IsThisLastActionInSelector(selectorRecord: AIActionSelector_Record, nodeIterator: number): Bool
   /** @noSelf **/
-  GetActionRecordFromSequence(context: ScriptExecutionContext, sequenceRecord: AIActionSequence_Record, actionDebugName: String, actionRecord: AIAction_Record, sequenceIterator: number, shouldCallAgain: Bool): Bool
+  GetActionRecordFromSequence(context: ScriptExecutionContext, sequenceRecord: AIActionSequence_Record, actionDebugName: string, actionRecord: AIAction_Record, sequenceIterator: number, shouldCallAgain: Bool): Bool
   /** @noSelf **/
   IsThisLastActionInSequence(sequenceRecord: AIActionSequence_Record, sequenceIterator: number): Bool
   /** @noSelf **/
@@ -29152,7 +29152,7 @@ declare interface AIActionSmartComposite_Record extends AIRecord_Record {
 
 declare interface AISmartCompositeType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   HasMemory(): Bool
   IncrementIteratorOnDeactivation(): Bool
@@ -29163,9 +29163,9 @@ declare interface AISmartCompositeType_Record extends TweakDBRecord {
 declare interface TimeDilationHelper extends IScriptable {
 
   /** @noSelf **/
-  GetTimeDilationParameters(timeDilationParameters: TimeDilationParameters, profileName: String): void
+  GetTimeDilationParameters(timeDilationParameters: TimeDilationParameters, profileName: string): void
   /** @noSelf **/
-  SetTimeDilationWithProfile(requester: GameObject, profileName: String, enable: Bool): Bool
+  SetTimeDilationWithProfile(requester: GameObject, profileName: string, enable: Bool): Bool
   /** @noSelf **/
   SetTimeDilation(requester: GameObject, reason: CName, timeDilation: number, duration?: number, easeInCurve?: CName, easeOutCurve?: CName, listener?: TimeDilationListener): Bool
   /** @noSelf **/
@@ -29177,9 +29177,9 @@ declare interface TimeDilationHelper extends IScriptable {
   /** @noSelf **/
   UnsetIndividualTimeDilation(target: GameObject, easeOutCurve?: CName): Bool
   /** @noSelf **/
-  GetFloatFromTimeSystemTweak(tweakDBPath: String, paramName: String): number
+  GetFloatFromTimeSystemTweak(tweakDBPath: string, paramName: string): number
   /** @noSelf **/
-  GetCNameFromTimeSystemTweak(tweakDBPath: String, paramName: String): CName
+  GetCNameFromTimeSystemTweak(tweakDBPath: string, paramName: string): CName
   /** @noSelf **/
   GetSandevistanKey(): CName
   /** @noSelf **/
@@ -29359,7 +29359,7 @@ declare interface AnimFeature_CrowdRunningAway extends AnimFeature {
 declare interface SceneSystem extends ISceneSystem {
 
   GetScriptInterface(): SceneSystemInterface
-  GetPeerIdDialogChoiceFactName(): String
+  GetPeerIdDialogChoiceFactName(): string
 }
 
 declare interface SceneSystemInterface extends IScriptable {
@@ -29454,7 +29454,7 @@ declare interface SetBodyPositionEvent extends Event {
 
 declare interface PresetMapper_Record extends TweakDBRecord {
 
-  MappingName(): String
+  MappingName(): string
   Preset(): ReactionPreset_Record
 }
 
@@ -29520,9 +29520,9 @@ declare interface TakedownActionDataTrackingRequest extends PlayerScriptableSyst
 
 declare interface Trait_Record extends TweakDBRecord {
 
-  Loc_desc_key(): String
-  EnumComment(): String
-  Loc_name_key(): String
+  Loc_desc_key(): string
+  EnumComment(): string
+  Loc_name_key(): string
   Requirement(): IPrereq_Record
   BaseTraitData(): TraitData_Record
   InfiniteTraitData(): TraitData_Record
@@ -29553,18 +29553,18 @@ declare interface StatPrereqListener extends ScriptStatsListener {
 
 declare interface TraitData_Record extends TweakDBRecord {
 
-  Loc_name_key(): String
-  Loc_desc_key(): String
+  Loc_name_key(): string
+  Loc_desc_key(): string
   StatusEffect(): StatusEffect_Record
   DataPackage(): GameplayLogicPackage_Record
 }
 
 declare interface Perk_Record extends TweakDBRecord {
 
-  Loc_desc_key(): String
-  DisplayName(): String
-  EnumComment(): String
-  Loc_name_key(): String
+  Loc_desc_key(): string
+  DisplayName(): string
+  EnumComment(): string
+  Loc_name_key(): string
   Utility(): PerkUtility_Record
   Levels(outList: PerkLevelData_Record[]): void
   GetLevelsCount(): number
@@ -29582,8 +29582,8 @@ declare interface SPerk {
 
 declare interface PerkLevelData_Record extends TweakDBRecord {
 
-  Loc_name_key(): String
-  Loc_desc_key(): String
+  Loc_name_key(): string
+  Loc_desc_key(): string
   DataPackage(): GameplayLogicPackage_Record
   UiData(): PerkLevelUIData_Record
 }
@@ -29682,7 +29682,7 @@ declare interface ModifySkillCheckPrereq extends PlayerScriptableSystemRequest {
 
 declare interface ProgressionBuild_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   PerkSet(): BuildPerkSet_Record
   ProficiencySet(): BuildProficiencySet_Record
   LifePath(): LifePath_Record
@@ -29815,7 +29815,7 @@ declare interface BuildCyberware_Record extends TweakDBRecord {
 
 declare interface LifePath_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   CaptionIcon(): ChoiceCaptionIconPart_Record
   DisplayName(): CName
   NewGameSpawnTag(): CName
@@ -30099,7 +30099,7 @@ declare interface DelayHackedEvent extends Event {
 
 declare interface DispenseFreeSpecificItem extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface StopShortGlitchEvent extends Event {
@@ -30146,7 +30146,7 @@ declare interface DropPointController extends ScriptableDC {
 declare interface DropPointControllerPS extends BasicDistractionDeviceControllerPS {
 
   IsRewardCollected(): Bool
-  GetVendorRecordPath(): String
+  GetVendorRecordPath(): string
   ActionDepositQuestItems(executor: GameObject): DepositQuestItems
   OnDepositQuestItems(evt: DepositQuestItems): EntityNotificationType
   ActionOpenVendorUI(executor: GameObject): OpenVendorUI
@@ -30223,12 +30223,12 @@ declare interface DropPointRequest extends ScriptableSystemRequest {
   Record(): TweakDBID
   Status(): DropPointPackageStatus
   Holder(): PersistentID
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface ToggleDropPointSystemRequest extends ScriptableSystemRequest {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface RegisterDropPointMappinRequest extends ScriptableSystemRequest {
@@ -30259,28 +30259,28 @@ declare interface CollectDropPointRewards extends ActionBool {
 
 declare interface ReserveItemToThisDropPoint extends ScriptableDeviceAction {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface AddItemForPlayerToPickUp extends ScriptableDeviceAction {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface AddItemToVendorRequest extends ScriptableSystemRequest {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface SetVendorPriceMultiplierRequest extends ScriptableSystemRequest {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface AttachmentSlot_Record extends TweakDBRecord {
 
-  EntitySlotName(): String
-  LocalizedName(): String
+  EntitySlotName(): string
+  LocalizedName(): string
   TagsForActiveItemCycling(): CName[]
   GetTagsForActiveItemCyclingCount(): number
   GetTagsForActiveItemCyclingItem(index: number): CName
@@ -30290,7 +30290,7 @@ declare interface AttachmentSlot_Record extends TweakDBRecord {
 
 declare interface SlotItemPartListElement_Record extends TweakDBRecord {
 
-  OptionalProbabilityCurveName(): String
+  OptionalProbabilityCurveName(): string
   Slot(): AttachmentSlot_Record
   ItemPartList(outList: ItemPartListElement_Record[]): void
   GetItemPartListCount(): number
@@ -30544,8 +30544,8 @@ declare interface QuickSlotsManager extends ScriptableComponent {
   GetNumberOfItemsPerWheel(): number
   IsKeyboardActionAvaliable(actionIndex: number): Bool
   GetKeyboardCommandAtSlot(argIndex: number): QuickSlotCommand
-  CreateQuickSlotCommand(actionType: QuickSlotActionType, imageAtlasPath: CName, actionName: CName, maxTier: number, vehicleState: number, isLocked: Bool, isSlotUnlocked: Bool, intData?: number, argTitle?: String, argType?: String): QuickSlotCommand
-  CreateQuickSlotItemCommand(itemID: ItemID, argActionType: QuickSlotActionType, argIcon: CName, argTitle: String, argType: String, argDesc: String): QuickSlotCommand
+  CreateQuickSlotCommand(actionType: QuickSlotActionType, imageAtlasPath: CName, actionName: CName, maxTier: number, vehicleState: number, isLocked: Bool, isSlotUnlocked: Bool, intData?: number, argTitle?: string, argType?: string): QuickSlotCommand
+  CreateQuickSlotItemCommand(itemID: ItemID, argActionType: QuickSlotActionType, argIcon: CName, argTitle: string, argType: string, argDesc: string): QuickSlotCommand
   GetActionData(): QuickSlotCommand
   InitializeCommandsData(): void
   GetWheelCommands(direction: EDPadSlot): QuickSlotCommand[]
@@ -30628,7 +30628,7 @@ declare interface VehicleSystem extends IVehicleSystem {
   SpawnPlayerVehicle(vehicleType?: gamedataVehicleType): void
   ToggleSummonMode(): void
   DespawnPlayerVehicle(vehicleID: GarageVehicleID): void
-  EnablePlayerVehicle(vehicle: String, enable: Bool, despawnIfDisabling?: Bool): Bool
+  EnablePlayerVehicle(vehicle: string, enable: Bool, despawnIfDisabling?: Bool): Bool
   EnableAllPlayerVehicles(): void
   GetPlayerVehicles(vehicles: PlayerVehicle[]): void
   GetPlayerUnlockedVehicles(unlockedVehicles: PlayerVehicle[]): void
@@ -30666,8 +30666,8 @@ declare interface QuickSlotButtonHoldStartEvent extends Event {
 
 declare interface VehicleModel_Record extends TweakDBRecord {
 
-  EnumName(): String
-  EnumComment(): String
+  EnumName(): string
+  EnumComment(): string
   Type(): gamedataVehicleModel
 }
 
@@ -30697,7 +30697,7 @@ declare interface PhoneSystem extends ScriptableSystem {
   OnAttach(): void
   OnDetach(): void
   IsPhoneAvailable(): Bool
-  GetPhoneCallFactName(contactName1: CName, contactName2: CName): String
+  GetPhoneCallFactName(contactName1: CName, contactName2: CName): string
 }
 
 declare interface UI_ComDeviceDef extends BlackboardDefinition {
@@ -30755,7 +30755,7 @@ declare interface InspectionComponent extends ScriptableComponent {
   ToggleExitInspect(): void
   LootInspectItem(): void
   ToggleInspectObject(show: Bool): void
-  PlaceItemInInspectSlot(itemTDBIDString: String, offset: number): void
+  PlaceItemInInspectSlot(itemTDBIDString: string, offset: number): void
   CleanupInspectSlot(wasLooted: Bool): void
   EmptyInspectSlot(): void
   RemoveInspectedItem(): void
@@ -31262,7 +31262,7 @@ declare interface AnimFeature_SceneGameplayOverrides extends AnimFeature {
 
 declare interface SceneForceWeaponSafe extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface EnableFields extends ScriptableSystemRequest {
@@ -31271,7 +31271,7 @@ declare interface EnableFields extends ScriptableSystemRequest {
 
 declare interface EnableBraindanceActions extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface BraindanceSystem extends ScriptableSystem {
@@ -31326,17 +31326,17 @@ declare interface SetIsInBraindance extends ScriptableSystemRequest {
 
 declare interface BraindanceInputChangeEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface DisableBraindanceActions extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface ForceBraindanceCameraToggle extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface SendPauseBraindanceRequest extends ScriptableSystemRequest {
@@ -31402,7 +31402,7 @@ declare interface StateMachineIdentifier {
 
 declare interface RegisterFastTravelPointsEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface MeleeHitSlowMoEvent extends Event {
@@ -31657,7 +31657,7 @@ declare interface AIApproachingAreaResponseEvent extends Event {
 
 declare interface SetCloseItself extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface RegisterDebuggerCanditateEvent extends Event {
@@ -31678,7 +31678,7 @@ declare interface InteractionResetChoicesEvent extends Event {
 
 declare interface ToggleUIInteractivity extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface EMPEnded extends Event {
@@ -31764,7 +31764,7 @@ declare interface DisposalDeviceControllerPS extends ScriptableDeviceComponentPS
   ActionDisposeBody(interactionTweak: TweakDBID): DisposeBody
   ActionTakedownAndDisposeBody(interactionTweak: TweakDBID): TakedownAndDisposeBody
   ActionNonlethalTakedownAndDisposeBody(interactionTweak: TweakDBID): NonlethalTakedownAndDisposeBody
-  ActionSpiderbotExplosion(interactionName: String): SpiderbotExplodeExplosiveDevice
+  ActionSpiderbotExplosion(interactionName: string): SpiderbotExplodeExplosiveDevice
   ActionSpiderbotExplodeExplosiveDevicePerformed(): SpiderbotExplodeExplosiveDevicePerformed
   ActionSpiderbotDistractionPerformed(): SpiderbotDistractionPerformed
   ActionOverchargeDevice(): OverchargeDevice
@@ -31827,7 +31827,7 @@ declare interface NonlethalTakedownAndDisposeBody extends ActionDisposal {
 declare interface SpiderbotDistraction extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   /** @noSelf **/
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
@@ -31848,7 +31848,7 @@ declare interface OverchargeDevice extends ActionBool {
   SetProperties(action_name: CName): void
   /** @noSelf **/
   IsDefaultConditionMet(device: ScriptableDeviceComponentPS, context: GetActionsContext): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface PhysicalMeshComponent extends MeshComponent {
@@ -31893,7 +31893,7 @@ declare interface PhysicalBodyInterface extends IScriptable {
 
 declare interface SetGameplayRoleEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface GameplayRoleChangeNotification extends Event {
@@ -31985,9 +31985,9 @@ declare interface DeviceInkGameControllerBase extends inkGameController {
   GoDown(element: SBreadcrumbElementData): void
   ResolveBreadcrumbLevel(): void
   GetCurrentBreadcrumbElement(): SBreadcrumbElementData
-  GetCurrentBreadcrumbElementName(): String
+  GetCurrentBreadcrumbElementName(): string
   GetActiveBreadcrumbElement(): SBreadcrumbElementData
-  GetActiveBreadcrumbElementName(): String
+  GetActiveBreadcrumbElementName(): string
   SetActiveBreadcrumbElement(element: SBreadcrumbElementData): void
   SetUICameraZoomState(hasUICameraZoom: Bool): void
   RequestActionWidgetsUpdate(): void
@@ -32062,7 +32062,7 @@ declare interface inkEvent extends Event {
   Handle(): void
   GetCurrentTarget(): inkWidget
   GetTarget(): inkWidget
-  GetDebugString(): String
+  GetDebugString(): string
 }
 
 declare interface inkInputEvent extends inkEvent {
@@ -32224,10 +32224,10 @@ declare interface ScannerNetworkLevel extends ScannerChunk {
 
 declare interface ScannerDeviceStatus extends ScannerChunk {
 
-  GetDeviceStatus(): String
-  GetDeviceStatusFriendlyName(): String
-  Set(status: String): void
-  SetFriendlyName(status: String): void
+  GetDeviceStatus(): string
+  GetDeviceStatusFriendlyName(): string
+  Set(status: string): void
+  SetFriendlyName(status: string): void
   GetType(): ScannerDataType
 }
 
@@ -32331,7 +32331,7 @@ declare interface ComputerQuickHackData {
 
 declare interface FactQuickHack extends ActionBool {
 
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   GetTweakDBChoiceID(): TweakDBID
   SetProperties(properties: ComputerQuickHackData): void
 }
@@ -32345,7 +32345,7 @@ declare interface ToggleOpenComputer extends ActionBool {
   IsAvailable(device: ComputerControllerPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   GetInkWidgetTweakDBID(): TweakDBID
 }
 
@@ -32393,8 +32393,8 @@ declare interface gameJournalPath extends IScriptable {
 
 declare interface JournalFile extends JournalEntry {
 
-  GetTitle(): String
-  GetContent(): String
+  GetTitle(): string
+  GetContent(): string
   GetVideoResourcePath(): ResRef
   GetImageTweak(): TweakDBID
 }
@@ -32405,10 +32405,10 @@ declare interface SDocumentWidgetPackage extends SWidgetPackage {
 
 declare interface JournalEmail extends JournalEntry {
 
-  GetSender(): String
-  GetAddressee(): String
-  GetTitle(): String
-  GetContent(): String
+  GetSender(): string
+  GetAddressee(): string
+  GetTitle(): string
+  GetContent(): string
   GetVideoResourcePath(): ResRef
   GetImageTweak(): TweakDBID
 }
@@ -32482,7 +32482,7 @@ declare interface GenericDeviceControllerPS extends ScriptableDeviceComponentPS 
   ActionQuestToggleCustomAction(enable: Bool): QuestToggleCustomAction
   ActionCustom(actionData: SDeviceActionCustomData): CustomDeviceAction
   GetActions(actions: DeviceAction[], context: GetActionsContext): Bool
-  GetRecordName(inputAction: DeviceAction): String
+  GetRecordName(inputAction: DeviceAction): string
   GetQuestActions(actions: DeviceAction[], context: GetActionsContext): void
   CanCreateAnyQuickHackActions(): Bool
   GetQuickHackActions(actions: DeviceAction[], context: GetActionsContext): void
@@ -32510,7 +32510,7 @@ declare interface GenericDeviceControllerPS extends ScriptableDeviceComponentPS 
   ActionDemolition(context: GetActionsContext): ActionDemolition
   OnActionDemolition(evt: ActionDemolition): EntityNotificationType
   OnActivateDevice(evt: ActivateDevice): EntityNotificationType
-  GetSkillCheckActionDisplayName(skillAction: ActionSkillCheck): String
+  GetSkillCheckActionDisplayName(skillAction: ActionSkillCheck): string
   ResolveSkillCheckAction(skillAction: ActionSkillCheck): void
   GetInkWidgetTweakDBID(context: GetActionsContext): TweakDBID
   GetThumbnailWidget(): SThumbnailWidgetPackage
@@ -32530,13 +32530,13 @@ declare interface QuestToggleCustomAction extends ActionName {
 declare interface SDeviceActionData {
 
   /** @noSelf **/
-  GetCurrentDisplayName(self: SDeviceActionData): String
+  GetCurrentDisplayName(self: SDeviceActionData): string
 }
 
 declare interface SDeviceActionCustomData extends SDeviceActionData {
 
   /** @noSelf **/
-  GetCurrentDisplayName(self: SDeviceActionCustomData): String
+  GetCurrentDisplayName(self: SDeviceActionCustomData): string
 }
 
 declare interface CustomDeviceAction extends ActionBool {
@@ -32552,7 +32552,7 @@ declare interface CustomDeviceAction extends ActionBool {
 declare interface SDeviceActionBoolData extends SDeviceActionData {
 
   /** @noSelf **/
-  GetCurrentDisplayName(self: SDeviceActionBoolData): String
+  GetCurrentDisplayName(self: SDeviceActionBoolData): string
 }
 
 declare interface SGenericDeviceActionsData {
@@ -32773,17 +32773,17 @@ declare interface CommunicationEvent extends Event {
 
 declare interface SetSkillcheckEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface ChangeLoopCurveEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface DisableRPGRequirementsForDeviceActions extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface OverloadDevice extends ActionBool {
@@ -32791,7 +32791,7 @@ declare interface OverloadDevice extends ActionBool {
   SetProperties(): void
   GetKillDelay(): number
   SetKillDelay(delay: number): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface AddActiveContextEvent extends Event {
@@ -32845,7 +32845,7 @@ declare interface StatusEffectPlayerData_Record extends TweakDBRecord {
 
 declare interface StatusEffectVariation_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataStatusEffectVariation
 }
@@ -32860,7 +32860,7 @@ declare interface LockQHackInput extends ScriptableSystemRequest {
 
 declare interface QuickHackScreenOpen extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface PlayerTargetChangedRequest extends ScriptableSystemRequest {
@@ -33069,7 +33069,7 @@ declare interface TelemetryEnemyDown {
 declare interface TakedownGameEffectHelper extends IScriptable {
 
   /** @noSelf **/
-  FillTakedownData(executionOwner: GameObject, activator: GameObject, target: GameObject, effectName: CName, effectTag: CName, statusEffect?: String): Bool
+  FillTakedownData(executionOwner: GameObject, activator: GameObject, target: GameObject, effectName: CName, effectTag: CName, statusEffect?: string): Bool
 }
 
 declare interface BlackBoardRequestEvent extends Event {
@@ -33122,7 +33122,7 @@ declare interface InteractionChoiceCaptionStringPart extends InteractionChoiceCa
 
 declare interface ObjectActionPrereq_Record extends TweakDBRecord {
 
-  FailureExplanation(): String
+  FailureExplanation(): string
   FailureConditionPrereq(outList: IPrereq_Record[]): void
   GetFailureConditionPrereqCount(): number
   GetFailureConditionPrereqItem(index: number): IPrereq_Record
@@ -33150,7 +33150,7 @@ declare interface PauseResumePhoneCallEvent extends Event {
 
 declare interface PlayerBuild_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   CaptionIcon(): ChoiceCaptionIconPart_Record
   Proficiencies(outList: Proficiency_Record[]): void
   GetProficienciesCount(): number
@@ -33212,7 +33212,7 @@ declare interface ToggleAlarm extends ActionBool {
   IsDefaultConditionMet(device: ScriptableDeviceComponentPS, context: GetActionsContext): Bool
   /** @noSelf **/
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface QuestForceSecuritySystemSafe extends ActionBool {
@@ -33234,7 +33234,7 @@ declare interface SecurityAlarmBreachResponse extends ActionBool {
 declare interface SecurityAlarmEscalate extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface CityLightSystem extends ScriptableSystem {
@@ -33301,7 +33301,7 @@ declare interface CLSWeatherListener extends WeatherScriptListener {
 
 declare interface ForceCLSStateRequest extends ScriptableSystemRequest {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface WeatherSystem extends IScriptable {
@@ -33372,7 +33372,7 @@ declare interface ToggleActivate extends ActionBool {
 
   SetProperties(activationStatus: EActivationState): void
   SetProperties(isActive: Bool, nameOnTrue: TweakDBID, nameOnFalse: TweakDBID): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   /** @noSelf **/
   IsDefaultConditionMet(device: ScriptableDeviceComponentPS, context: GetActionsContext): Bool
 }
@@ -33382,7 +33382,7 @@ declare interface ActivateDevice extends ActionBool {
   SetProperties(action_name?: CName): void
   /** @noSelf **/
   IsDefaultConditionMet(device: ScriptableDeviceComponentPS, context: GetActionsContext): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface DeactivateDevice extends ActionBool {
@@ -33416,7 +33416,7 @@ declare interface SetDevicePowered extends ActionBool {
 
 declare interface SetCustomPersonalLinkReason extends ScriptableDeviceAction {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface FixDevice extends ActionBool {
@@ -33428,13 +33428,13 @@ declare interface FixDevice extends ActionBool {
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface QuestResetDeviceToInitialState extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface QuestForceSecuritySystemAlarmed extends ActionBool {
@@ -33456,7 +33456,7 @@ declare interface SetDeviceAttitude extends ActionBool {
 
   GetBaseCost(): number
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   GetInteractionIcon(): ChoiceCaptionIconPart_Record
 }
 
@@ -33524,7 +33524,7 @@ declare interface DebugOutlineEvent extends Event {
 
 declare interface TagObjectEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface EvaluateMappinsVisualStateEvent extends Event {
@@ -33550,12 +33550,12 @@ declare interface MenuEventBlackboardDef extends BlackboardDefinition {
 
 declare interface SetGlitchOnUIEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface CustomUIAnimationEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface SmartGunLockEvent extends Event {
@@ -33624,7 +33624,7 @@ declare interface GenericHitPrereqState extends PrereqState {
   SetHitEvent(hitEvent: gameHitEvent): void
   GetHitEvent(): gameHitEvent
   Evaluate(hitEvent: gameHitEvent): Bool
-  GetObjectToCheck(obj: String, hitEvent: gameHitEvent): GameObject
+  GetObjectToCheck(obj: string, hitEvent: gameHitEvent): GameObject
 }
 
 declare interface HitCallback extends ScriptedDamageSystemListener {
@@ -33654,8 +33654,8 @@ declare interface PipelineProcessedCallback extends HitCallback {
 
 declare interface HitPrereq_Record extends IPrereq_Record {
 
-  CallbackType(): String
-  PipelineStage(): String
+  CallbackType(): string
+  PipelineStage(): string
   Conditions(outList: HitPrereqCondition_Record[]): void
   GetConditionsCount(): number
   GetConditionsItem(index: number): HitPrereqCondition_Record
@@ -33812,7 +33812,7 @@ declare interface PlayerStateMachinePrereq extends IScriptablePrereq {
 
   Evaluate(owner: GameObject, newValue: number, prevValue: number): Bool
   Initialize(recordID: TweakDBID): void
-  GetStateMachineEnum(): String
+  GetStateMachineEnum(): string
   GetCurrentPSMStateIndex(bb: IBlackboard): number
   OnApplied(state: PrereqState, game: GameInstance, context: IScriptable): void
   IsFulfilled(game: GameInstance, context: IScriptable): Bool
@@ -33828,7 +33828,7 @@ declare interface NPCStatePrereq extends IScriptablePrereq {
   Evaluate(owner: GameObject, newValue: number, prevValue: number): Bool
   Initialize(recordID: TweakDBID): void
   OnApplied(state: PrereqState, game: GameInstance, context: IScriptable): void
-  GetStateName(recordID: TweakDBID): String
+  GetStateName(recordID: TweakDBID): string
   GetStateToCheck(): number
 }
 
@@ -33867,7 +33867,7 @@ declare interface HitTriggeredPrereq extends GenericHitPrereq {
 declare interface ScriptConditionTypeBase extends IScriptable {
 
   Evaluate(playerObject: GameObject): Bool
-  ToString(): String
+  ToString(): string
 }
 
 declare interface Ref_1_3_2_2_BaseStruct {
@@ -33879,7 +33879,7 @@ declare interface Ref_1_3_2_2_BaseStruct {
 declare interface JournalInternetBase extends IScriptable {
 
   GetName(): CName
-  GetLinkAddress(): String
+  GetLinkAddress(): string
   GetColor(): Color
   GetHoverColor(): Color
 }
@@ -33902,34 +33902,34 @@ declare interface inkButtonAnimatedController extends inkButtonController {
 
   OnInitialize(): Bool
   OnUnitialize(): Bool
-  SetButtonText(argValue: String): void
-  GetButtonText(): String
+  SetButtonText(argValue: string): void
+  GetButtonText(): string
   GetButton(): inkText
   OnButtonStateChanged(controller: inkButtonController, oldState: inkEButtonState, newState: inkEButtonState): Bool
 }
 
 declare interface inkText extends inkLeafWidget {
 
-  GetText(): String
-  SetText(displayText: String, textParams?: inkTextParams): void
-  SetTextDirect(displayText: String): void
+  GetText(): string
+  SetText(displayText: string, textParams?: inkTextParams): void
+  SetTextDirect(displayText: string): void
   SetLocalizedText(locKey: CName, textParams?: inkTextParams): void
-  SetLocalizedTextString(locKey: String, textParams?: inkTextParams): void
-  SetLocalizedTextScript(locKey: String, textParams?: inkTextParams): void
+  SetLocalizedTextString(locKey: string, textParams?: inkTextParams): void
+  SetLocalizedTextScript(locKey: string, textParams?: inkTextParams): void
   SetLocalizedTextScript(locKey: CName, textParams?: inkTextParams): void
   GetTextParameters(): inkTextParams
   SetTextParameters(textParams: inkTextParams): void
   GetLocalizationKey(): CName
   SetLocalizationKey(displayText: CName): void
-  SetLocalizationKeyString(displayText: String): void
-  SetTextFromParts(textpart1: String, textpart2?: String, textpart3?: String): void
+  SetLocalizationKeyString(displayText: string): void
+  SetTextFromParts(textpart1: string, textpart2?: string, textpart3?: string): void
   GetVerticalAlignment(): textVerticalAlignment
   SetVerticalAlignment(verticalAlignment: textVerticalAlignment): void
   GetVerticalAlignmentEnumValue(nameValue: CName): textVerticalAlignment
   GetHorizontalAlignment(): textHorizontalAlignment
   SetHorizontalAlignment(horizontalAlignment: textHorizontalAlignment): void
   GetHorizontalAlignmentEnumValue(nameValue: CName): textHorizontalAlignment
-  SetFontFamily(fontFamilyPath: String, fontStyle?: CName): void
+  SetFontFamily(fontFamilyPath: string, fontStyle?: CName): void
   GetFontStyle(): CName
   SetFontStyle(fontStyle: CName): void
   GetFontSize(): number
@@ -34009,8 +34009,8 @@ declare interface inkBasePanelRef extends inkCompoundRef {
 
 declare interface AIBehaviorScriptBase extends IScriptable {
 
-  ToString(): String
-  GetDescription(context: ScriptExecutionContext): String
+  ToString(): string
+  GetDescription(context: ScriptExecutionContext): string
   /** @noSelf **/
   GetPuppet(context: ScriptExecutionContext): ScriptedPuppet
   /** @noSelf **/
@@ -34200,10 +34200,10 @@ declare interface CompareBuilder extends IScriptable {
   Reset(): void
   Get(): number
   GetBool(): Bool
-  StringAsc(a: String, b: String): CompareBuilder
-  StringDesc(a: String, b: String): CompareBuilder
-  UnicodeStringAsc(a: String, b: String): CompareBuilder
-  UnicodeStringDesc(a: String, b: String): CompareBuilder
+  StringAsc(a: string, b: string): CompareBuilder
+  StringDesc(a: string, b: string): CompareBuilder
+  UnicodeStringAsc(a: string, b: string): CompareBuilder
+  UnicodeStringDesc(a: string, b: string): CompareBuilder
   IntAsc(a: number, b: number): CompareBuilder
   IntDesc(a: number, b: number): CompareBuilder
   FloatAsc(a: number, b: number): CompareBuilder
@@ -34285,10 +34285,10 @@ declare interface inkRadioGroupController extends inkLogicController {
 
 declare interface SelectorController extends inkLogicController {
 
-  AddValues(values: String[]): void
-  AddValue(value: String): void
+  AddValues(values: string[]): void
+  AddValue(value: string): void
   Clear(): void
-  GetValues(): String[]
+  GetValues(): string[]
   GetValuesCount(): number
   IsCyclical(): Bool
   GetCurrIndex(): number
@@ -34296,9 +34296,9 @@ declare interface SelectorController extends inkLogicController {
   SetCurrIndexWithDirection(index: number, changeDirection: inkSelectorChangeDirection): void
   Next(): number
   Prior(): void
-  SetLabel(label: String): void
+  SetLabel(label: string): void
   OnInitialize(): Bool
-  OnUpdateValue(value: String, index: number, changeDirection: inkSelectorChangeDirection): Bool
+  OnUpdateValue(value: string, index: number, changeDirection: inkSelectorChangeDirection): Bool
   OnLeft(e: inkPointerEvent): Bool
   OnRight(e: inkPointerEvent): Bool
 }
@@ -34350,7 +34350,7 @@ declare interface animationPlayer extends inkLogicController {
 
 declare interface inkWidgetsSet extends IScriptable {
 
-  Select(widget: inkWidget, selectionRule?: inkSelectionRule, param?: String): inkWidgetsSet
+  Select(widget: inkWidget, selectionRule?: inkSelectionRule, param?: string): inkWidgetsSet
   FromSet(other: inkWidgetsSet): inkWidgetsSet
   Get(): inkWidget[]
 }
@@ -34382,7 +34382,7 @@ declare interface IMappin extends IVisualObject {
   IsQuestAreaMappin(): Bool
   IsPlayerTracked(): Bool
   GetWorldPosition(): Vector4
-  GetDisplayName(): String
+  GetDisplayName(): string
   GetDistanceToPlayer(): number
   GetVerticalRelationToPlayer(): gamemappinsVerticalPositioning
   GetEntityID(): EntityID
@@ -34446,7 +34446,7 @@ declare interface gameuiGenericNotificationGameController extends inkGameControl
 declare interface GenericNotificationBaseAction extends IScriptable {
 
   Execute(data: IScriptable): Bool
-  GetLabel(): String
+  GetLabel(): string
 }
 
 declare interface QuestUpdateNotificationViewData extends GenericNotificationViewData {
@@ -34532,7 +34532,7 @@ declare interface inkAnimTextOffset extends inkAnimTextInterpolator {
 
 declare interface ABaseWrapper extends IScriptable {
 
-  ToString(): String
+  ToString(): string
 }
 
 declare interface AJournalEntryWrapper extends ABaseWrapper {
@@ -34544,14 +34544,14 @@ declare interface AJournalEntryWrapper extends ABaseWrapper {
 declare interface ABaseQuestObjectiveWrapper extends AJournalEntryWrapper {
 
   Init(questObjective: JournalQuestObjectiveBase, objectiveStatus: gameJournalEntryState, isTracked: Bool, uniqueId: number, currentCounter: number, totalCounter: number): void
-  GetDescription(): String
+  GetDescription(): string
   GetIsOptional(): Bool
   GetStatus(): gameJournalEntryState
   IsActive(): Bool
   GetQuestObjective(): JournalQuestObjectiveBase
   IsTracked(): Bool
   IsTrackedInHierarchy(): Bool
-  GetCounterText(): String
+  GetCounterText(): string
 }
 
 declare interface ConfigNotificationListener extends IScriptable {
@@ -34647,7 +34647,7 @@ declare interface hubSelectorSingleCarouselController extends SelectorController
   SetupMenu(data: MenuData[], startIdentifier: number): void
   ScrollTo(data: MenuData): void
   UpdateArrowsVisibility(): void
-  OnUpdateValue(value: String, index: number, changeDirection: inkSelectorChangeDirection): Bool
+  OnUpdateValue(value: string, index: number, changeDirection: inkSelectorChangeDirection): Bool
   GetLoopedValue(value: number, limit: number): number
   SetFinishedValues(selectedIndex: number): void
   OnArrangeChildrenComplete(): Bool
@@ -34872,7 +34872,7 @@ declare interface InventoryItemDisplayController extends BaseButtonView {
   Setup(itemData: InventoryItemData, slotIndex?: number): void
   Setup(recipeData: RecipeData, displayContext?: ItemDisplayContext): void
   Setup(itemData: InventoryItemData, displayContext: ItemDisplayContext, enoughMoney?: Bool, owned?: Bool): void
-  Setup(itemData: InventoryItemData, equipmentArea: gamedataEquipmentArea, slotName?: String, slotIndex?: number, displayContext?: ItemDisplayContext): void
+  Setup(itemData: InventoryItemData, equipmentArea: gamedataEquipmentArea, slotName?: string, slotIndex?: number, displayContext?: ItemDisplayContext): void
   Bind(inventoryDataManager: InventoryDataManagerV2, equipmentArea: gamedataEquipmentArea, slotIndex?: number, displayContext?: ItemDisplayContext): void
   SetParentItem(parentItemData: gameItemData): void
   BindComparisonAndScriptableSystem(uiScriptableSystem: UIScriptableSystem, comparisonResolver: ItemPreferredComparisonResolver): void
@@ -34886,7 +34886,7 @@ declare interface InventoryItemDisplayController extends BaseButtonView {
   UpdateItemsCounter(item?: InventoryItemData, slotID?: TweakDBID, itemType?: gamedataItemType, equipmentArea?: gamedataEquipmentArea, force?: Bool): Bool
   IsInRestrictedNewArea(equipmentArea: gamedataEquipmentArea): Bool
   UpdateNewItemsIndicator(item?: InventoryItemData, slotID?: TweakDBID, itemType?: gamedataItemType, equipmentArea?: gamedataEquipmentArea, force?: Bool): Bool
-  SetDefaultShadowIcon(textureAtlasPart: CName, textureAtlas?: String): void
+  SetDefaultShadowIcon(textureAtlasPart: CName, textureAtlas?: string): void
   RefreshUI(): void
   UpdateEmptyWidgets(): void
   UpdateLocked(): void
@@ -34900,7 +34900,7 @@ declare interface InventoryItemDisplayController extends BaseButtonView {
   UpdateEquipped(): void
   UpdateQuantity(): void
   UpdateItemName(): void
-  GetPriceText(): String
+  GetPriceText(): string
   UpdatePrice(): void
   UpdateIcon(): void
   UpdateRecipeIcon(): void
@@ -34910,17 +34910,17 @@ declare interface InventoryItemDisplayController extends BaseButtonView {
   SetBuybackStack(value: Bool): void
   SetIsNew(value: Bool, parrentWrappedDataObject?: WrappedInventoryItemData): void
   GetShadowIconFromEquipmentArea(equipmentArea: gamedataEquipmentArea): CName
-  GetShadowIconAtlas(equipmentArea: gamedataEquipmentArea): String
+  GetShadowIconAtlas(equipmentArea: gamedataEquipmentArea): string
   GetMods(onlyGeneric: Bool): InventoryItemAttachments[]
   UpdateMods(): void
   Unselect(): void
   Select(): void
   GetItemData(): InventoryItemData
   GetItemID(): ItemID
-  GetItemCategory(): String
+  GetItemCategory(): string
   GetItemType(): gamedataItemType
   GetEquipmentArea(): gamedataEquipmentArea
-  GetSlotName(): String
+  GetSlotName(): string
   GetSlotIndex(): number
   SelectItem(): void
   UnselectItem(): void
@@ -34936,7 +34936,7 @@ declare interface InventoryItemDisplayController extends BaseButtonView {
 
 declare interface ItemLabelContainerController extends inkLogicController {
 
-  Add(type: ItemLabelType, params?: String): void
+  Add(type: ItemLabelType, params?: string): void
   Remove(type: ItemLabelType): void
   Has(type: ItemLabelType): Bool
   Clear(): void
@@ -34945,10 +34945,10 @@ declare interface ItemLabelContainerController extends inkLogicController {
 
 declare interface ItemLabelController extends inkLogicController {
 
-  Setup(type: ItemLabelType, params?: String): void
+  Setup(type: ItemLabelType, params?: string): void
   GetType(): ItemLabelType
   /** @noSelf **/
-  GetLabelKey(type: ItemLabelType): String
+  GetLabelKey(type: ItemLabelType): string
   /** @noSelf **/
   GetState(type: ItemLabelType): CName
 }
@@ -35031,7 +35031,7 @@ declare interface RadialSlot extends IScriptable {
   IsCyclable(): Bool
   CanCycle(): Bool
   GetAngle(): number
-  GetDebugInfo(info: String[]): void
+  GetDebugInfo(info: string[]): void
   Activate(): void
   Deactivate(): void
   SetTargetAngle(precalculatedAngle: number): void
@@ -35048,7 +35048,7 @@ declare interface WeaponRadialSlot extends RadialSlot {
   GetEquipmentArea(): gamedataEquipmentArea
   GetIndex(): number
   SetIndex(i: number): void
-  GetDebugInfo(info: String[]): void
+  GetDebugInfo(info: string[]): void
 }
 
 declare interface BaseSubtitlesGameController extends inkProjectedHUDGameController {
@@ -35111,10 +35111,10 @@ declare interface inkISystemRequestsHandler extends IScriptable {
   RequestTelemetryConsent(fromSettings: Bool): void
   RequestLocalStorageSave(): void
   ShouldDisplayGog(): Bool
-  GetGameDefCategories(): String[]
-  GetGameDefinitions(categoryId: number): String[]
-  GetWorlds(): String[]
-  GetGenders(): String[]
+  GetGameDefCategories(): string[]
+  GetGameDefinitions(categoryId: number): string[]
+  GetWorlds(): string[]
+  GetGenders(): string[]
   IsOnline(): Bool
   RunUiFunctionalTestWorld(): void
   StartGameDefinition(categoryId: number, gamedefId: number, genderId: number): void
@@ -35127,23 +35127,23 @@ declare interface inkISystemRequestsHandler extends IScriptable {
   LoadLastCheckpoint(): void
   DeleteSavedGame(saveId: number): void
   QuickSave(): void
-  ManualSave(saveName: String): void
-  HasFreeSaveSlot(saveName: String): Bool
+  ManualSave(saveName: string): void
+  HasFreeSaveSlot(saveName: string): Bool
   OverrideSave(saveId: number): void
   RequestSavedGameScreenshot(saveId: number, imageWidget: inkImage): void
   CancelSavedGameScreenshotRequests(): void
   GetLatestSaveMetadata(): LatestSaveMetadataInfo
   RequestLANServers(): void
   RequestInternetServers(): void
-  CloudQuickmatch(groupToken: String): void
+  CloudQuickmatch(groupToken: string): void
   JoinServer(serverId: number): void
-  GetMultiplayerWorlds(): String[]
-  GetPlayerRecordIds(): String[]
-  GetSessionTypes(): String[]
-  GetSessionTimeLimits(): String[]
-  GetSessionPlayersLimits(): String[]
-  GetRecords(): String[]
-  PlayRecord(filename: String): void
+  GetMultiplayerWorlds(): string[]
+  GetPlayerRecordIds(): string[]
+  GetSessionTypes(): string[]
+  GetSessionTimeLimits(): string[]
+  GetSessionPlayersLimits(): string[]
+  GetRecords(): string[]
+  PlayRecord(filename: string): void
   GotoMainMenu(): void
   PauseGame(): void
   UnpauseGame(): void
@@ -35220,7 +35220,7 @@ declare interface MinimalItemTooltipData extends ATooltipData {
   /** @noSelf **/
   GetModsDataPackages(itemData: gameItemData, itemRecord: Item_Record, displayContext: InventoryTooltipDisplayContext, parentItemData?: gameItemData, slotID?: TweakDBID, mods?: MinimalItemTooltipModData[]): void
   /** @noSelf **/
-  GetDefaultModAttachmentData(isEmpty: Bool, qualityName: CName, slotID: TweakDBID, itemName: String, abilities: InventoryItemAbility[], type: InventoryItemAttachmentType): MinimalItemTooltipModAttachmentData
+  GetDefaultModAttachmentData(isEmpty: Bool, qualityName: CName, slotID: TweakDBID, itemName: string, abilities: InventoryItemAbility[], type: InventoryItemAttachmentType): MinimalItemTooltipModAttachmentData
   /** @noSelf **/
   GetDefaultModAttachmentData(data: InventoryTooltipData, index: number, type: InventoryItemAttachmentType): MinimalItemTooltipModAttachmentData
   /** @noSelf **/
@@ -35240,7 +35240,7 @@ declare interface MinimalItemTooltipDataRequirements extends IScriptable {
 declare interface UILocalizationHelper extends IScriptable {
 
   /** @noSelf **/
-  GetStatNameLockey(statRecord: Stat_Record): String
+  GetStatNameLockey(statRecord: Stat_Record): string
   /** @noSelf **/
   IsStatProficiency(statType: gamedataStatType): Bool
   /** @noSelf **/
@@ -35494,7 +35494,7 @@ declare interface LcdScreenControllerPS extends ScriptableDeviceComponentPS {
 
 declare interface SetMessageRecordEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface ScreenMessageSelector extends TweakDBIDSelector {
@@ -35611,7 +35611,7 @@ declare interface inkVideoRef extends inkLeafRef {
   /** @noSelf **/
   GetVideoWidgetSummary(self: inkVideoRef): VideoWidgetSummary
   /** @noSelf **/
-  PreloadNextVideo(self: inkVideoRef, videoPath: String): void
+  PreloadNextVideo(self: inkVideoRef, videoPath: string): void
   /** @noSelf **/
   IsPlayingVideo(self: inkVideoRef): Bool
   /** @noSelf **/
@@ -35692,17 +35692,17 @@ declare interface SetDocumentStateEvent extends Event {
 
 declare interface GoToMenuEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface OpenDocumentEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface EnableDocumentEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface ComputerMainLayoutWidgetController extends inkLogicController {
@@ -35728,14 +35728,14 @@ declare interface ComputerMainLayoutWidgetController extends inkLogicController 
   ShowFiles(): void
   ShowDevices(): void
   ShowMainMenu(): void
-  ShowInternet(startingPage: String): void
-  ShowWindow(header: String, menuType: EComputerMenuType): void
+  ShowInternet(startingPage: string): void
+  ShowWindow(header: string, menuType: EComputerMenuType): void
   OnWindowOpened(e: inkAnimProxy): Bool
   HideWindow(): void
   OnWindowClosed(e: inkAnimProxy): Bool
   ResolveWindowClose(): void
   MarkManuButtonAsSelected(controller: ComputerMenuButtonController): void
-  MarkManuButtonAsSelected(menuID: String): void
+  MarkManuButtonAsSelected(menuID: string): void
   DeselectAllManuButtons(): void
   GetWindowContainer(): inkWidget
   GetWindowHeader(): inkText
@@ -35783,7 +35783,7 @@ declare interface ComputerMenuButtonController extends DeviceButtonLogicControll
   OnInitialize(): Bool
   Initialize(gameController: ComputerInkGameController, widgetData: SComputerMenuButtonWidgetPackage): void
   RegisterMenuCallback(gameController: ComputerInkGameController): void
-  GetMenuID(): String
+  GetMenuID(): string
 }
 
 declare interface inkVerticalPanel extends inkBasePanel {
@@ -35854,7 +35854,7 @@ declare interface ComputerInkGameController extends DeviceInkGameControllerBase 
   OnDevicesMenuSpawned(widget: inkWidget, userData: IScriptable): Bool
   IsDevicesManuSpawned(): Bool
   IsDevicesManuSpawnRequested(): Bool
-  GetComputerInkLibraryPath(screenDefinition: ScreenDefinitionPackage): String
+  GetComputerInkLibraryPath(screenDefinition: ScreenDefinitionPackage): string
   GetTerminalInkLibraryPath(screenDefinition: ScreenDefinitionPackage): ResRef
   Refresh(state: EDeviceStatus): void
   RegisterBlackboardCallbacks(blackboard: IBlackboard): void
@@ -35885,10 +35885,10 @@ declare interface ComputerInkGameController extends DeviceInkGameControllerBase 
   TurnOn(): void
   TurnOff(): void
   ResolveBreadcrumbLevel(): void
-  ShowMenuByName(elementName: String): void
-  HideMenuByName(elementName: String): void
-  GoToMenu(menuID: String): void
-  GetMenuName(menuType: EComputerMenuType): String
+  ShowMenuByName(elementName: string): void
+  HideMenuByName(elementName: string): void
+  GoToMenu(menuID: string): void
+  GetMenuName(menuType: EComputerMenuType): string
   OpenDocument(documentType: EDocumentType, adress: SDocumentAdress): void
   OpenDocument(controller: ComputerDocumentThumbnailWidgetController): void
   GetForceOpenDocumentType(): EDocumentType
@@ -36002,13 +36002,13 @@ declare interface BrowserController extends inkLogicController {
 
   Init(gameController: BrowserGameController): void
   SetWebsiteData(pageEntries: JournalEntry[]): void
-  SetDefaultPage(startingPage: String): void
-  GetDefaultpage(): String
+  SetDefaultPage(startingPage: string): void
+  GetDefaultpage(): string
   SetDefaultContent(): void
-  TryGetWebsiteData(address: String): JournalInternetPage
+  TryGetWebsiteData(address: string): JournalInternetPage
   OnProcessLinkPressed(e: inkWidget): Bool
   OnHomeButtonPressed(e: inkPointerEvent): void
-  LoadWebPage(address: String, journalManager: JournalManager): void
+  LoadWebPage(address: string, journalManager: JournalManager): void
   SetFacts(page: JournalInternetPage): void
   UnloadCurrentWebsite(): void
   GetOwnerGameObject(): Computer
@@ -36018,30 +36018,30 @@ declare interface LinkController extends inkButtonController {
 
   OnInitialize(): Bool
   OnButtonStateChanged(controller: inkButtonController, oldState: inkEButtonState, newState: inkEButtonState): Bool
-  GetLinkAddress(): String
-  SetLinkAddress(link: String): void
+  GetLinkAddress(): string
+  SetLinkAddress(link: string): void
   SetColors(color: Color, hoverColor: Color): void
 }
 
 declare interface WebPage extends inkLogicController {
 
   FillPage(page: JournalInternetPage, journalManager: JournalManager): void
-  FillPageFromScripts(address: String, journalManager: JournalManager): void
-  SetSlot(number: number, shortName: String, pageAddress: String, iconAtlasPath: ResRef, iconTexturePart: CName): void
+  FillPageFromScripts(address: string, journalManager: JournalManager): void
+  SetSlot(number: number, shortName: string, pageAddress: string, iconAtlasPath: ResRef, iconTexturePart: CName): void
   ClearSlot(number: number): Bool
-  GetRefName(prefix: String, number: number): CName
+  GetRefName(prefix: string, number: number): CName
   GetTextRef(instanceName: CName): inkTextRef
   GetImageRef(instanceName: CName): inkImageRef
   FillPageFromJournal(page: JournalInternetPage): void
-  AddLink(widget: inkWidgetRef, address: String): void
+  AddLink(widget: inkWidgetRef, address: string): void
   AddLink(widget: inkWidgetRef, baseElement: JournalInternetBase): void
   OnLinkCallback(e: inkPointerEvent): void
-  GetLastLinkClicked(): String
+  GetLastLinkClicked(): string
 }
 
 declare interface JournalInternetPage extends JournalEntry {
 
-  GetAddress(): String
+  GetAddress(): string
   GetFactsToSet(): JournalFactNameValue[]
   GetWidgetPath(): ResRef
   GetScale(): number
@@ -36054,7 +36054,7 @@ declare interface JournalInternetPage extends JournalEntry {
 
 declare interface JournalInternetText extends JournalInternetBase {
 
-  GetText(): String
+  GetText(): string
 }
 
 declare interface JournalInternetImage extends JournalInternetBase {
@@ -36070,7 +36070,7 @@ declare interface JournalInternetVideo extends JournalInternetBase {
 
 declare interface JournalInternetSite extends JournalFileEntry {
 
-  GetShortName(): String
+  GetShortName(): string
   IsIgnoredAtDesktop(): Bool
   GetAtlasPath(): ResRef
   GetTexturePart(): CName
@@ -36186,7 +36186,7 @@ declare interface ActivatedDeviceAnimSetup {
 declare interface SpiderbotActivateActivator extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   /** @noSelf **/
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
@@ -36292,23 +36292,23 @@ declare interface MediaDeviceControllerPS extends ScriptableDeviceComponentPS {
   GetDeviceStatusAction(): MediaDeviceStatus
   GetPreviousStationIndex(): number
   GetActiveStationIndex(): number
-  GetActiveStationName(): String
+  GetActiveStationName(): string
   SetActiveStationIndex(stationIDX: number): void
-  PassChannelName(channelName: String): void
+  PassChannelName(channelName: string): void
   PushPersistentData(data: MediaDeviceData): void
 }
 
 declare interface MediaDeviceStatus extends BaseDeviceStatus {
 
   SetProperties(deviceRef: ScriptableDeviceComponentPS): void
-  GetCurrentDisplayString(): String
+  GetCurrentDisplayString(): string
   /** @noSelf **/
   IsDefaultConditionMet(device: ScriptableDeviceComponentPS, context: GetActionsContext): Bool
   /** @noSelf **/
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface NextStation extends ActionBool {
@@ -36320,7 +36320,7 @@ declare interface NextStation extends ActionBool {
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface PreviousStation extends ActionBool {
@@ -36332,7 +36332,7 @@ declare interface PreviousStation extends ActionBool {
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface QuestSetChannel extends ActionInt {
@@ -36368,7 +36368,7 @@ declare interface ToggleGlassTint extends ActionBool {
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface TVController extends MediaDeviceController {
@@ -36404,11 +36404,11 @@ declare interface TVControllerPS extends MediaDeviceControllerPS {
   GetActiveChannelTweakDBID(): TweakDBID
   GlobalTVChannelIDToEnum(id: TweakDBID): ETVChannel
   GlobalTVChannelIDToInt(id: TweakDBID): number
-  GetChannelName(index: number): String
-  GetChannelID(channelName: String): number
+  GetChannelName(index: number): string
+  GetChannelID(channelName: string): number
   GetChannelData(channelIndex: number): STvChannel
   DetermineGameplayViability(context: GetActionsContext, hasActiveActions: Bool): Bool
-  GetDeviceIconPath(): String
+  GetDeviceIconPath(): string
   GetInkWidgetTweakDBID(context: GetActionsContext): TweakDBID
   GetDeviceWidget(context: GetActionsContext): SDeviceWidgetPackage
   GetBlackboardDef(): TVDeviceBlackboardDef
@@ -36441,9 +36441,9 @@ declare interface TVBase_Record extends Device_Record {
 
 declare interface ChannelData_Record extends TweakDBRecord {
 
-  LocalizedName(): String
-  DynamicTexturePath(): String
-  OverlayWidgetPath(): String
+  LocalizedName(): string
+  DynamicTexturePath(): string
+  OverlayWidgetPath(): string
   ChannelWidget(): CName
   AudioEvent(): CName
   OrderID(): number
@@ -36518,7 +36518,7 @@ declare interface ToggleBlockade extends ActionBool {
   IsAvailable(device: RoadBlockControllerPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface MusicSettings extends IScriptable {
@@ -36708,16 +36708,16 @@ declare interface ClimbParametersBase extends IScriptable {
 
 declare interface StateFunctor extends IScriptable {
 
-  GetStaticBoolParameter(parameterName: String): StateResultBool
-  GetStaticIntParameter(parameterName: String): StateResultInt
-  GetStaticFloatParameter(parameterName: String): StateResultFloat
-  GetStaticCNameParameter(parameterName: String): StateResultCName
-  GetStaticStringParameter(parameterName: String): StateResultString
-  GetStaticBoolArrayParameter(parameterName: String): Bool[]
-  GetStaticIntArrayParameter(parameterName: String): number[]
-  GetStaticFloatArrayParameter(parameterName: String): number[]
-  GetStaticStringArrayParameter(parameterName: String): String[]
-  GetStaticCNameArrayParameter(parameterName: String): CName[]
+  GetStaticBoolParameter(parameterName: string): StateResultBool
+  GetStaticIntParameter(parameterName: string): StateResultInt
+  GetStaticFloatParameter(parameterName: string): StateResultFloat
+  GetStaticCNameParameter(parameterName: string): StateResultCName
+  GetStaticStringParameter(parameterName: string): StateResultString
+  GetStaticBoolArrayParameter(parameterName: string): Bool[]
+  GetStaticIntArrayParameter(parameterName: string): number[]
+  GetStaticFloatArrayParameter(parameterName: string): number[]
+  GetStaticStringArrayParameter(parameterName: string): string[]
+  GetStaticCNameArrayParameter(parameterName: string): CName[]
   GetStateMachineName(): CName
   GetStateName(): CName
   GetInStateTime(): number
@@ -36839,12 +36839,12 @@ declare interface gameLootContainerBasePS extends GameObjectPS {
 
 declare interface SetContainerStateEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface ToggleContainerLockEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface Effector extends IScriptable {
@@ -36857,9 +36857,9 @@ declare interface Effector extends IScriptable {
   GetPrereqState(): PrereqState
   GetRecord(): TweakDBID
   GetParentRecord(): TweakDBID
-  GetApplicationTargetAsStatsObjectID(effectorOwner: GameObject, applicationTarget: String, targetID: StatsObjectID): Bool
-  GetApplicationTarget(effectorOwner: GameObject, applicationTarget: String, targetID: EntityID): Bool
-  GetApplicationTarget(effectorOwner: GameObject, applicationTarget: String, target: GameObject): Bool
+  GetApplicationTargetAsStatsObjectID(effectorOwner: GameObject, applicationTarget: string, targetID: StatsObjectID): Bool
+  GetApplicationTarget(effectorOwner: GameObject, applicationTarget: string, targetID: EntityID): Bool
+  GetApplicationTarget(effectorOwner: GameObject, applicationTarget: string, target: GameObject): Bool
 }
 
 declare interface ModifyAttackEffector extends Effector {
@@ -36967,7 +36967,7 @@ declare interface ArmorEquipGameController extends gameuiMenuGameController {
 
   OnInitialize(): Bool
   CreateTooltip(tooltipController: InventorySlotTooltip): void
-  HelperAddPaperdollButton(argTitle: String, containerSlot: inkCanvas, equipArea: gamedataEquipmentArea, slotIndex: number, areaTags: CName[]): void
+  HelperAddPaperdollButton(argTitle: string, containerSlot: inkCanvas, equipArea: gamedataEquipmentArea, slotIndex: number, areaTags: CName[]): void
   HelperAddInventoryButton(itemData: gameItemData, slotId: number): void
   HelperClearButton(slotId: number): void
   OnInventoryChange(value: Variant): void
@@ -37013,11 +37013,11 @@ declare interface InventoryDataManager extends IScriptable {
   GetPlayerItemData(externalItemId: ItemID): gameItemData
   GetExternalItemStats(ownerId: EntityID, externalItemId: ItemID, compareItemId?: ItemID): ItemViewData
   GetPlayerItemStats(itemId: ItemID, compareItemId?: ItemID): ItemViewData
-  QualityEnumToName(qualityStatValue: gamedataQuality): String
+  QualityEnumToName(qualityStatValue: gamedataQuality): string
   CanCompareItems(itemId: ItemID, compareItemId: ItemID): Bool
   GetItemStatsByData(itemData: gameItemData, compareWithData?: gameItemData): ItemViewData
-  GetStatsUIMapName(itemData: gameItemData): String
-  GetStatsUIMapName(itemId: ItemID): String
+  GetStatsUIMapName(itemData: gameItemData): string
+  GetStatsUIMapName(itemId: ItemID): string
   GetStatsList(mapPath: TweakDBID, itemData: gameItemData, primeStatsList: StatViewData[], secondStatsList: StatViewData[], compareWithData?: gameItemData): void
   FillStatsList(itemData: gameItemData, statRecords: Stat_Record[], statList: StatViewData[], canCompare: Bool, compareStatRecords: Stat_Record[], compareWithData?: gameItemData): void
   GetPlayerStats(statsList: StatViewData[]): void
@@ -37026,7 +37026,7 @@ declare interface InventoryDataManager extends IScriptable {
 declare interface PaperDollSlotController extends inkButtonDpadSupportedController {
 
   OnInitialize(): Bool
-  SetButtonDetails(argText: String, equipArea: gamedataEquipmentArea, slotIndex: number, areaTags: CName[]): void
+  SetButtonDetails(argText: string, equipArea: gamedataEquipmentArea, slotIndex: number, areaTags: CName[]): void
   SetItemInSlot(itemID: ItemID): void
   SetSlotLocked(slotTweak: TweakDBID): void
   IsLocked(): Bool
@@ -37035,7 +37035,7 @@ declare interface PaperDollSlotController extends inkButtonDpadSupportedControll
   GetAreaTags(): CName[]
   GetEquipArea(): gamedataEquipmentArea
   GetSlotIndex(): number
-  GetSlotName(): String
+  GetSlotName(): string
 }
 
 declare interface inkRectangle extends inkBaseShapeWidget {
@@ -37168,8 +37168,8 @@ declare interface gameuiMenuItemListGameController extends gameuiSaveHandlingCon
   PopulateMenuItemList(): void
   HandleMenuItemActivate(data: PauseMenuListItemData): Bool
   ShouldAllowExitGameMenuItem(): Bool
-  AddMenuItem(label: String, spawnEvent: CName): void
-  AddMenuItem(label: String, action: PauseMenuAction): void
+  AddMenuItem(label: string, spawnEvent: CName): void
+  AddMenuItem(label: string, action: PauseMenuAction): void
   Clear(): void
   ShowActionsList(): void
   OnMenuItemActivated(index: number, target: ListItemController): Bool
@@ -37298,10 +37298,10 @@ declare interface GenericNotificationController extends gameuiGenericNotificatio
 
 declare interface inkTextReplaceController extends inkTextAnimationController {
 
-  GetBaseText(): String
-  SetBaseText(text: String): void
-  GetTargetText(): String
-  SetTargetText(text: String): void
+  GetBaseText(): string
+  SetBaseText(text: string): void
+  GetTargetText(): string
+  SetTargetText(text: string): void
   GetTimeSkip(): number
   SetTimeSkip(timeSkipValue: number): void
 }
@@ -37321,10 +37321,10 @@ declare interface ListenerActionConsumer {
 declare interface TabButtonController extends inkToggleController {
 
   OnInitialize(): Bool
-  SetToggleData(data: number, label?: String, icon?: String): void
+  SetToggleData(data: number, label?: string, icon?: string): void
   GetData(): number
-  GetLabelKey(): String
-  GetIcon(): String
+  GetLabelKey(): string
+  GetIcon(): string
   OnTabSelected(e: inkPointerEvent): Bool
   OnTabHoverOver(e: inkPointerEvent): Bool
   OnTabHoverOut(e: inkPointerEvent): Bool
@@ -37362,15 +37362,15 @@ declare interface PreGameSubMenuGameController extends inkGameController {
   OnSetMenuEventDispatcher(menuEventDispatcher: inkMenuEventDispatcher): Bool
   InitializeMenuName(menuName: inkText): void
   InitializeButtons(buttonsList: inkVerticalPanel): void
-  AddButton(buttonsList: inkVerticalPanel, text: String, callBackName: CName): void
-  AddBigButton(buttonsList: inkCompoundWidget, text: String, callBackName: CName): void
-  AddSelector(selectorsList: inkVerticalPanel, label: String, values?: String[]): SelectorController
+  AddButton(buttonsList: inkVerticalPanel, text: string, callBackName: CName): void
+  AddBigButton(buttonsList: inkCompoundWidget, text: string, callBackName: CName): void
+  AddSelector(selectorsList: inkVerticalPanel, label: string, values?: string[]): SelectorController
 }
 
 declare interface BaseGOGProfileController extends inkGameController {
 
   RequestStop(): void
-  OpenProfileUrl(url: String): void
+  OpenProfileUrl(url: string): void
 }
 
 declare interface MainMenuGameController extends gameuiMenuItemListGameController {
@@ -37388,7 +37388,7 @@ declare interface CodexImageButton extends CodexListItemController {
 
 declare interface JournalCodexCategory extends JournalFileEntry {
 
-  GetCategoryName(): String
+  GetCategoryName(): string
 }
 
 declare interface JournalOnscreensStructuredGroup extends IScriptable {
@@ -37901,9 +37901,9 @@ declare interface TV extends InteractiveDevice {
   TurnOffDevice(): void
   ToggleSoundEmmiter(mute: Bool): void
   SelectChannel(currentChannelIDX: number): void
-  GetChannelName(index: number): String
-  SelectChannel(channelName: String): void
-  GetChannelId(channelName: String): number
+  GetChannelName(index: number): string
+  SelectChannel(channelName: string): void
+  GetChannelId(channelName: string): number
   GetChannelData(channelIDX: number): STvChannel
   TurnOffScreen(): void
   TurnOnScreen(): void
@@ -37929,12 +37929,12 @@ declare interface TVDeviceBlackboardDef extends DeviceBaseBlackboardDef {
 
 declare interface SetGlobalTvChannel extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface SetGlobalTvOnly extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface ProximityDetector extends Device {
@@ -38034,7 +38034,7 @@ declare interface BaseProjectile extends ItemObject {
   GetObject(hitInstance: gameprojectileHitInstance): GameObject
   GetObjectWorldPosition(object: GameObject): Vector4
   GetLeftHandCyberwareAction(user: GameObject): EActionType
-  GetProjectileTweakDBFloatParameter(param: String): number
+  GetProjectileTweakDBFloatParameter(param: string): number
   SetInitialVelocityBasedOnActionType(user: GameObject): void
   TriggerSingleStimuli(hitInstance: gameprojectileHitInstance, stimToSend: gamedataStimType): void
   TriggerActiveStimuliWithLifetime(hitInstance: gameprojectileHitInstance, stimToSend: gamedataStimType, lifetime: number, radius: number): void
@@ -38061,8 +38061,8 @@ declare interface ProjectileHelper extends IScriptable {
 
 declare interface IDebugDrawHistorySystem extends IGameSystem {
 
-  DrawWireSphere(position: Vector4, radius: number, color?: Color, tag?: String): void
-  DrawArrow(position: Vector4, direction: Vector4, color?: Color, tag?: String): void
+  DrawWireSphere(position: Vector4, radius: number, color?: Color, tag?: string): void
+  DrawArrow(position: Vector4, direction: Vector4, color?: Color, tag?: string): void
 }
 
 declare interface ProjectileLaunchHelper extends IScriptable {
@@ -38199,17 +38199,17 @@ declare interface DefaultTransition extends StateFunctor {
   StartStatPoolDecay(scriptInterface: StateGameScriptInterface, statPoolType: gamedataStatPoolType): void
   StopStatPoolDecayAndRegenerate(scriptInterface: StateGameScriptInterface, statPoolType: gamedataStatPoolType): void
   /** @noSelf **/
-  UppercaseFirstChar(stringToChange: String): void
+  UppercaseFirstChar(stringToChange: string): void
   /** @noSelf **/
   GetOwnerGameObject(scriptInterface: StateGameScriptInterface): GameObject
   /** @noSelf **/
   GetPlayerPuppet(scriptInterface: StateGameScriptInterface): PlayerPuppet
   /** @noSelf **/
-  PlayRumble(scriptInterface: StateGameScriptInterface, presetName: String): void
+  PlayRumble(scriptInterface: StateGameScriptInterface, presetName: string): void
   /** @noSelf **/
-  PlayRumbleLoop(scriptInterface: StateGameScriptInterface, intensity: String): void
+  PlayRumbleLoop(scriptInterface: StateGameScriptInterface, intensity: string): void
   /** @noSelf **/
-  StopRumbleLoop(scriptInterface: StateGameScriptInterface, intensity: String): void
+  StopRumbleLoop(scriptInterface: StateGameScriptInterface, intensity: string): void
   /** @noSelf **/
   RemoveAllBreathingEffects(scriptInterface: StateGameScriptInterface): void
   /** @noSelf **/
@@ -38314,8 +38314,8 @@ declare interface DefaultTransition extends StateFunctor {
   GetRightHandItemFromParam(stateContext: StateContext): ItemID
   IsLookingAtEnemyNPC(scriptInterface: StateGameScriptInterface): Bool
   GetHudManager(scriptInterface: StateGameScriptInterface): HUDManager
-  SetGameplayCameraParameters(scriptInterface: StateGameScriptInterface, tweakDBPath: String): void
-  GetGameplayCameraParameters(cameraParameters: GameplayCameraData, tweakDBPath: String): void
+  SetGameplayCameraParameters(scriptInterface: StateGameScriptInterface, tweakDBPath: string): void
+  GetGameplayCameraParameters(cameraParameters: GameplayCameraData, tweakDBPath: string): void
   /** @noSelf **/
   DEBUG_IsSwimmingForced(stateContext: StateContext, scriptInterface: StateGameScriptInterface): Bool
   /** @noSelf **/
@@ -38396,7 +38396,7 @@ declare interface DefaultTransition extends StateFunctor {
   ThreatsOnPlayerThreatList(scriptInterface: StateGameScriptInterface): Bool
   IsPlayerInSecuritySystem(scriptInterface: StateGameScriptInterface): Bool
   IsInStealthLocomotion(stateContext: StateContext): Bool
-  ShowInputHint(scriptInterface: StateGameScriptInterface, actionName: CName, source: CName, label: String, holdIndicationType?: inkInputHintHoldIndicationType, enableHoldAnimation?: Bool): void
+  ShowInputHint(scriptInterface: StateGameScriptInterface, actionName: CName, source: CName, label: string, holdIndicationType?: inkInputHintHoldIndicationType, enableHoldAnimation?: Bool): void
   RemoveInputHint(scriptInterface: StateGameScriptInterface, actionName: CName, source: CName): void
   RemoveInputHintsBySource(scriptInterface: StateGameScriptInterface, source: CName): void
   IsDisplayingInputHintBlocked(scriptInterface: StateGameScriptInterface, actionName: CName): Bool
@@ -38783,10 +38783,10 @@ declare interface LocomotionTransition extends DefaultTransition {
 
   OnForcedExit(stateContext: StateContext, scriptInterface: StateGameScriptInterface): void
   InternalEnterCondition(stateContext: StateContext, scriptInterface: StateGameScriptInterface): Bool
-  AddModifierGroupWithName(scriptInterface: StateGameScriptInterface, modifierTDBName: String): void
+  AddModifierGroupWithName(scriptInterface: StateGameScriptInterface, modifierTDBName: string): void
   AddModifierGroupForState(scriptInterface: StateGameScriptInterface): void
   RemoveModifierGroupForState(scriptInterface: StateGameScriptInterface): void
-  ShowDebugText(text: String, scriptInterface: StateGameScriptInterface, layerId: number): void
+  ShowDebugText(text: string, scriptInterface: StateGameScriptInterface, layerId: number): void
   ClearDebugText(layerId: number, scriptInterface: StateGameScriptInterface): void
   AddImpulseInMovingDirection(stateContext: StateContext, scriptInterface: StateGameScriptInterface, impulse: number): void
   AddImpulse(stateContext: StateContext, impulse: Vector4): void
@@ -39160,7 +39160,7 @@ declare interface MeleeTransition extends DefaultTransition {
   RemoveThrowAttackGameplayRestrictions(stateContext: StateContext, scriptInterface: StateGameScriptInterface): void
   IsWeaponReady(stateContext: StateContext, scriptInterface: StateGameScriptInterface): Bool
   HasWeaponStatFlag(scriptInterface: StateGameScriptInterface, flag: gamedataStatType): Bool
-  DrawDebugText(scriptInterface: StateGameScriptInterface, textLayerId: number, text: String): void
+  DrawDebugText(scriptInterface: StateGameScriptInterface, textLayerId: number, text: string): void
   ClearDebugText(scriptInterface: StateGameScriptInterface, textLayerId: number): void
   GetPerfectAimSnapParams(): AimRequest
   GetBlockLookAtParams(): AimRequest
@@ -39170,9 +39170,9 @@ declare interface MeleeTransition extends DefaultTransition {
   GetMeleeMovementDirection(stateContext: StateContext, scriptInterface: StateGameScriptInterface): meleeMoveDirection
   /** @noSelf **/
   GetWeaponObject(scriptInterface: StateGameScriptInterface): WeaponObject
-  GetAttackDataFromStateName(stateContext: StateContext, scriptInterface: StateGameScriptInterface, stateName: String, attackNumber: number, outgoingStruct: MeleeAttackData): Bool
-  HasAttackRecord(scriptInterface: StateGameScriptInterface, stateName: String, attackNumber?: number): Bool
-  GetAttackRecord(scriptInterface: StateGameScriptInterface, stateName: String, attackNumber: number, attackRecord: Attack_Melee_Record): Bool
+  GetAttackDataFromStateName(stateContext: StateContext, scriptInterface: StateGameScriptInterface, stateName: string, attackNumber: number, outgoingStruct: MeleeAttackData): Bool
+  HasAttackRecord(scriptInterface: StateGameScriptInterface, stateName: string, attackNumber?: number): Bool
+  GetAttackRecord(scriptInterface: StateGameScriptInterface, stateName: string, attackNumber: number, attackRecord: Attack_Melee_Record): Bool
   SpawnMeleeWeaponProjectile(scriptInterface: StateGameScriptInterface): void
   GetActiveMeleeWeaponItemID(scriptInterface: StateGameScriptInterface): TweakDBID
   GetProjectileTemplateNameFromWeaponDefinition(weaponTweak: TweakDBID): CName
@@ -39252,7 +39252,7 @@ declare interface UpperBodyTransition extends DefaultTransition {
   StopEffectOnHeldItems(scriptInterface: StateGameScriptInterface, effectName: CName): void
   BreakEffectLoopOnHeldItems(scriptInterface: StateGameScriptInterface, effectName: CName): void
   ShouldAim(stateContext: StateContext, scriptInterface: StateGameScriptInterface): Bool
-  SendDOFData(scriptInterface: StateGameScriptInterface, dofSetting: String): void
+  SendDOFData(scriptInterface: StateGameScriptInterface, dofSetting: string): void
   SetWeaponHolster(scriptInterface: StateGameScriptInterface, newState: Bool): void
   ProcessWeaponSlotInput(scriptInterface: StateGameScriptInterface): Bool
   CheckRangedAttackInput(scriptInterface: StateGameScriptInterface): Bool
@@ -39427,7 +39427,7 @@ declare interface WeaponTransition extends DefaultTransition {
   SetupStandardShootingSequence(stateContext: StateContext, scriptInterface: StateGameScriptInterface): void
   IsSemiAutoAction(weaponObject: WeaponObject, stateContext: StateContext, scriptInterface: StateGameScriptInterface): Bool
   IsFullAutoAction(weaponObject: WeaponObject, stateContext: StateContext, scriptInterface: StateGameScriptInterface): Bool
-  ShowDebugText(textToShow: String, scriptInterface: StateGameScriptInterface, layerId: number): void
+  ShowDebugText(textToShow: string, scriptInterface: StateGameScriptInterface, layerId: number): void
   ClearDebugText(layerId: number, scriptInterface: StateGameScriptInterface): void
   GetWeaponObject(scriptInterface: StateGameScriptInterface): WeaponObject
   PlayEffect(effectName: CName, scriptInterface: StateGameScriptInterface, eventTag?: CName): void
@@ -39499,7 +39499,7 @@ declare interface AIActionLookatParams {
 
 declare interface AIActionHelperTask extends AIbehaviortaskScript {
 
-  GetActionStringName(context: ScriptExecutionContext): String
+  GetActionStringName(context: ScriptExecutionContext): string
   GetActionPackageType(context: ScriptExecutionContext): AIactionParamsPackageTypes
   Initialize(context: ScriptExecutionContext): void
   GetActionID(): TweakDBID
@@ -39576,8 +39576,8 @@ declare interface TweakAIActionConditionAbstract extends AIbehaviorconditionScri
   Activate(context: ScriptExecutionContext): void
   Deactivate(context: ScriptExecutionContext): void
   StartInitCooldowns(context: ScriptExecutionContext): Bool
-  GetDescription(context: ScriptExecutionContext): String
-  GetActionRecord(context: ScriptExecutionContext, actionDebugName: String, actionRecord: AIAction_Record): Bool
+  GetDescription(context: ScriptExecutionContext): string
+  GetActionRecord(context: ScriptExecutionContext, actionDebugName: string, actionRecord: AIAction_Record): Bool
 }
 
 declare interface TweakAIActionAbstract extends AIbehaviortaskScript {
@@ -39635,8 +39635,8 @@ declare interface TweakAIActionAbstract extends AIbehaviortaskScript {
   ChangeNPCState(context: ScriptExecutionContext): void
   ResetNPCState(context: ScriptExecutionContext): void
   StartCooldowns(context: ScriptExecutionContext): void
-  GetDescription(context: ScriptExecutionContext): String
-  GetActionRecord(context: ScriptExecutionContext, actionDebugName: String, actionRecord: AIAction_Record, shouldCallAgain: Bool): Bool
+  GetDescription(context: ScriptExecutionContext): string
+  GetActionRecord(context: ScriptExecutionContext, actionDebugName: string, actionRecord: AIAction_Record, shouldCallAgain: Bool): Bool
 }
 
 declare interface AIActionLookat extends IScriptable {
@@ -39802,20 +39802,20 @@ declare interface AnimFeature_WeaponOverride extends AnimFeature {
 
 declare interface TweakAIAction extends TweakAIActionAbstract {
 
-  GetActionRecord(context: ScriptExecutionContext, actionDebugName: String, actionRecord: AIAction_Record, shouldCallAgain: Bool): Bool
-  GetFriendlyName(): String
+  GetActionRecord(context: ScriptExecutionContext, actionDebugName: string, actionRecord: AIAction_Record, shouldCallAgain: Bool): Bool
+  GetFriendlyName(): string
 }
 
 declare interface TweakAIActionCondition extends TweakAIActionConditionAbstract {
 
-  GetActionRecord(context: ScriptExecutionContext, actionDebugName: String, actionRecord: AIAction_Record): Bool
-  GetFriendlyName(): String
+  GetActionRecord(context: ScriptExecutionContext, actionDebugName: string, actionRecord: AIAction_Record): Bool
+  GetFriendlyName(): string
 }
 
 declare interface TweakAIActionSelector extends TweakAIActionAbstract {
 
-  GetActionRecord(context: ScriptExecutionContext, actionDebugName: String, actionRecord: AIAction_Record, shouldCallAgain: Bool): Bool
-  GetFriendlyName(): String
+  GetActionRecord(context: ScriptExecutionContext, actionDebugName: string, actionRecord: AIAction_Record, shouldCallAgain: Bool): Bool
+  GetFriendlyName(): string
   Update(context: ScriptExecutionContext): AIbehaviorUpdateOutcome
   Deactivate(context: ScriptExecutionContext): void
   RunNextAction(context: ScriptExecutionContext): AIbehaviorUpdateOutcome
@@ -39823,8 +39823,8 @@ declare interface TweakAIActionSelector extends TweakAIActionAbstract {
 
 declare interface TweakAIActionSequence extends TweakAIActionAbstract {
 
-  GetActionRecord(context: ScriptExecutionContext, actionDebugName: String, actionRecord: AIAction_Record, shouldCallAgain: Bool): Bool
-  GetFriendlyName(): String
+  GetActionRecord(context: ScriptExecutionContext, actionDebugName: string, actionRecord: AIAction_Record, shouldCallAgain: Bool): Bool
+  GetFriendlyName(): string
   Update(context: ScriptExecutionContext): AIbehaviorUpdateOutcome
   Deactivate(context: ScriptExecutionContext): void
   ResetSequence(): void
@@ -39834,10 +39834,10 @@ declare interface TweakAIActionSequence extends TweakAIActionAbstract {
 declare interface TweakAIActionSmartComposite extends TweakAIActionAbstract {
 
   ResetComposite(): void
-  GetSmartCompositeRecord(context: ScriptExecutionContext, smartCompositeID: TweakDBID, smartCompositeStringName: String, smartCompositeRecord: AIActionSmartComposite_Record): Bool
-  GetActionRecord(context: ScriptExecutionContext, actionDebugName: String, actionRecord: AIAction_Record, shouldCallAgain: Bool): Bool
+  GetSmartCompositeRecord(context: ScriptExecutionContext, smartCompositeID: TweakDBID, smartCompositeStringName: string, smartCompositeRecord: AIActionSmartComposite_Record): Bool
+  GetActionRecord(context: ScriptExecutionContext, actionDebugName: string, actionRecord: AIAction_Record, shouldCallAgain: Bool): Bool
   RandomizeGracefulInterruptionConditionCheckInterval(): void
-  GetFriendlyName(): String
+  GetFriendlyName(): string
   CheckGracefulInterruptionConditions(context: ScriptExecutionContext): Bool
   Update(context: ScriptExecutionContext): AIbehaviorUpdateOutcome
   Deactivate(context: ScriptExecutionContext): void
@@ -39851,19 +39851,19 @@ declare interface TweakAIActionSmartComposite extends TweakAIActionAbstract {
 declare interface IdleActionsCondition extends AIbehaviorconditionScript {
 
   Check(context: ScriptExecutionContext): AIbehaviorConditionOutcomes
-  GetFriendlyName(): String
+  GetFriendlyName(): string
 }
 
 declare interface IdleActions extends TweakAIActionSmartComposite {
 
-  GetSmartCompositeRecord(context: ScriptExecutionContext, smartCompositeID: TweakDBID, smartCompositeDebugName: String, smartCompositeRecord: AIActionSmartComposite_Record): Bool
-  GetFriendlyName(): String
+  GetSmartCompositeRecord(context: ScriptExecutionContext, smartCompositeID: TweakDBID, smartCompositeDebugName: string, smartCompositeRecord: AIActionSmartComposite_Record): Bool
+  GetFriendlyName(): string
 }
 
 declare interface PatrolAction extends TweakAIActionSmartComposite {
 
-  GetSmartCompositeRecord(context: ScriptExecutionContext, smartCompositeID: TweakDBID, smartCompositeDebugName: String, smartCompositeRecord: AIActionSmartComposite_Record): Bool
-  GetFriendlyName(): String
+  GetSmartCompositeRecord(context: ScriptExecutionContext, smartCompositeID: TweakDBID, smartCompositeDebugName: string, smartCompositeRecord: AIActionSmartComposite_Record): Bool
+  GetFriendlyName(): string
 }
 
 declare interface AIPatrolDef extends AIBlackboardDef {
@@ -39872,8 +39872,8 @@ declare interface AIPatrolDef extends AIBlackboardDef {
 
 declare interface PatrolSpotAction extends TweakAIActionSmartComposite {
 
-  GetSmartCompositeRecord(context: ScriptExecutionContext, smartCompositeID: TweakDBID, smartCompositeDebugName: String, smartCompositeRecord: AIActionSmartComposite_Record): Bool
-  GetFriendlyName(): String
+  GetSmartCompositeRecord(context: ScriptExecutionContext, smartCompositeID: TweakDBID, smartCompositeDebugName: string, smartCompositeRecord: AIActionSmartComposite_Record): Bool
+  GetFriendlyName(): string
 }
 
 declare interface AIDelegateAttrRef {
@@ -40018,13 +40018,13 @@ declare interface AIUnequipCommand extends AICommand {
 
 declare interface AIAssignRoleCommandParams extends ScriptedAICommandParams {
 
-  GetCommandName(): String
+  GetCommandName(): string
   CreateCommand(): AICommand
 }
 
 declare interface AIClearRoleCommandParams extends ScriptedAICommandParams {
 
-  GetCommandName(): String
+  GetCommandName(): string
   CreateCommand(): AICommand
 }
 
@@ -40042,19 +40042,19 @@ declare interface AISetCombatPresetCommand extends AICombatRelatedCommand {
 
 declare interface AISetCombatPresetCommandParams extends ScriptedAICommandParams {
 
-  GetCommandName(): String
+  GetCommandName(): string
   CreateCommand(): AICommand
 }
 
 declare interface AIInjectCombatThreatCommandParams extends ScriptedAICommandParams {
 
-  GetCommandName(): String
+  GetCommandName(): string
   CreateCommand(): AICommand
 }
 
 declare interface AIMeleeAttackCommandParams extends ScriptedAICommandParams {
 
-  GetCommandName(): String
+  GetCommandName(): string
   CreateCommand(): AICommand
 }
 
@@ -40076,7 +40076,7 @@ declare interface AIShootCommand extends AICombatRelatedCommand {
 
 declare interface AIForceShootCommandParams extends ScriptedAICommandParams {
 
-  GetCommandName(): String
+  GetCommandName(): string
   CreateCommand(): AICommand
 }
 
@@ -40086,7 +40086,7 @@ declare interface AIAimAtTargetCommand extends AICommand {
 
 declare interface AIAimAtTargetCommandParams extends ScriptedAICommandParams {
 
-  GetCommandName(): String
+  GetCommandName(): string
   CreateCommand(): AICommand
 }
 
@@ -40104,7 +40104,7 @@ declare interface AIHoldPositionCommand extends AIMoveCommand {
 
 declare interface AIHoldPositionCommandParams extends ScriptedAICommandParams {
 
-  GetCommandName(): String
+  GetCommandName(): string
   CreateCommand(): AICommand
 }
 
@@ -40114,7 +40114,7 @@ declare interface AIMoveToCoverCommand extends AIMoveCommand {
 
 declare interface AIMoveToCoverCommandParams extends ScriptedAICommandParams {
 
-  GetCommandName(): String
+  GetCommandName(): string
   CreateCommand(): AICommand
 }
 
@@ -40124,7 +40124,7 @@ declare interface AIStopCoverCommand extends AICommand {
 
 declare interface AIStopCoverCommandParams extends ScriptedAICommandParams {
 
-  GetCommandName(): String
+  GetCommandName(): string
   CreateCommand(): AICommand
 }
 
@@ -40134,7 +40134,7 @@ declare interface AIJoinTargetsSquad extends AICommand {
 
 declare interface AIJoinTargetsSquadCommandParams extends ScriptedAICommandParams {
 
-  GetCommandName(): String
+  GetCommandName(): string
   CreateCommand(): AICommand
 }
 
@@ -40144,7 +40144,7 @@ declare interface AIFollowerCombatCommand extends AIFollowerCommand {
 
 declare interface AIFollowerTakedownCommandParams extends ScriptedAICommandParams {
 
-  GetCommandName(): String
+  GetCommandName(): string
   CreateCommand(): AICommand
 }
 
@@ -40154,7 +40154,7 @@ declare interface AIFlatheadSetSoloModeCommand extends AIFollowerCommand {
 
 declare interface AIFlatheadSetSoloModeCommandParams extends ScriptedAICommandParams {
 
-  GetCommandName(): String
+  GetCommandName(): string
   CreateCommand(): AICommand
 }
 
@@ -40164,7 +40164,7 @@ declare interface AIScanTargetCommand extends AICommand {
 
 declare interface AIScanTargetCommandParams extends ScriptedAICommandParams {
 
-  GetCommandName(): String
+  GetCommandName(): string
   CreateCommand(): AICommand
 }
 
@@ -40183,7 +40183,7 @@ declare interface TestStackScript extends AIbehaviortaskStackScript {
   OnActivate(context: ScriptExecutionContext, data: TestStackScriptData): void
   OnDeactivate(context: ScriptExecutionContext, data: TestStackScriptData): void
   OnUpdate(context: ScriptExecutionContext, data: TestStackScriptData): AIbehaviorUpdateOutcome
-  GetDescription(data: TestStackScriptData): String
+  GetDescription(data: TestStackScriptData): string
 }
 
 declare interface AIbehaviorPassiveExpressionDefinition extends IScriptable {
@@ -41579,7 +41579,7 @@ declare interface RefreshClueScanningDataEvent extends Event {
 
 declare interface ClearCustomObjectDescriptionEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface ClueScannedEvent extends Event {
@@ -42672,7 +42672,7 @@ declare interface AISubActionSecuritySystemNotification_Record extends AISubActi
 
 declare interface AIActionSecurityNotificationType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataAIActionSecurityNotificationType
 }
@@ -43285,16 +43285,16 @@ declare interface WrappedEntIDArray {
 
 declare interface InfoBox extends IScriptable {
 
-  AddCategory(category: String, color?: Color): void
-  AddStringValue(name: String, value: String): void
-  AddVector4Value(name: String, value: Vector4): void
-  AddVector2Value(name: String, value: Vector2): void
-  AddQuatValue(name: String, value: Quaternion): void
-  AddColorValue(name: String, value: Color, coloredValue?: Bool): void
-  AddFloatValue(name: String, value: number): void
-  AddIntValue(name: String, value: number): void
-  AddUintValue(name: String, value: number): void
-  AddBoolValue(name: String, value: Bool): void
+  AddCategory(category: string, color?: Color): void
+  AddStringValue(name: string, value: string): void
+  AddVector4Value(name: string, value: Vector4): void
+  AddVector2Value(name: string, value: Vector2): void
+  AddQuatValue(name: string, value: Quaternion): void
+  AddColorValue(name: string, value: Color, coloredValue?: Bool): void
+  AddFloatValue(name: string, value: number): void
+  AddIntValue(name: string, value: number): void
+  AddUintValue(name: string, value: number): void
+  AddBoolValue(name: string, value: Bool): void
 }
 
 declare interface UnequipStart extends AttachmentSlotEvent {
@@ -43527,7 +43527,7 @@ declare interface SendAIBheaviorReactionStim extends AIbehaviortaskScript {
 
 declare interface StimuliSquadActionEvent extends BaseStimuliEvent {
 
-  GetDescription(): String
+  GetDescription(): string
 }
 
 declare interface AreaEnteredEvent extends TriggerEvent {
@@ -43601,21 +43601,21 @@ declare interface GameplayPerkCondition extends GameplayConditionBase {
   GetRequiredLevel(): number
   GetPerkType(): gamedataPerkType
   GetDescription(requester: GameObject): Condition
-  GetConditionDescription(): String
+  GetConditionDescription(): string
 }
 
 declare interface GameplayItemCondition extends GameplayConditionBase {
 
   Evaluate(requester: GameObject): Bool
   GetDescription(requester: GameObject): Condition
-  GetConditionDescription(): String
+  GetConditionDescription(): string
 }
 
 declare interface GameplayCyberwareCondition extends GameplayConditionBase {
 
   Evaluate(requester: GameObject): Bool
   GetDescription(requester: GameObject): Condition
-  GetConditionDescription(): String
+  GetConditionDescription(): string
 }
 
 declare interface GameplayFactCondition extends GameplayConditionBase {
@@ -43631,7 +43631,7 @@ declare interface GameplayStatCondition extends GameplayConditionBase {
   GetPlayerStat(requester: GameObject): number
   GetStatType(): gamedataStatType
   GetDescription(requester: GameObject): Condition
-  GetConditionDescription(gi: GameInstance): String
+  GetConditionDescription(gi: GameInstance): string
   SetProperties(sel_stat: EDeviceChallengeAttribute, sel_difficulty: EGameplayChallengeLevel): void
 }
 
@@ -43665,7 +43665,7 @@ declare interface EffectScriptContext {
   /** @noSelf **/
   GetGameInstance(ctx: EffectScriptContext): GameInstance
   /** @noSelf **/
-  ReportError(ctx: EffectScriptContext, error: String): void
+  ReportError(ctx: EffectScriptContext, error: string): void
   /** @noSelf **/
   GetSharedData(ctx: EffectScriptContext): EffectData
   /** @noSelf **/
@@ -43729,8 +43729,8 @@ declare interface ForceDismembermentEffector extends Effector {
 
 declare interface ForceDismembermentEffector_Record extends Effector_Record {
 
-  WoundType(): String
-  BodyPart(): String
+  WoundType(): string
+  BodyPart(): string
   DismembermentChance(): number
   ShouldKillNPC(): Bool
   SkipDeathAnim(): Bool
@@ -43748,8 +43748,8 @@ declare interface ModifyStatPoolModifierEffector extends Effector {
 
 declare interface ModifyStatPoolModifierEffector_Record extends Effector_Record {
 
-  ModificationType(): String
-  StatPoolType(): String
+  ModificationType(): string
+  StatPoolType(): string
   PoolModifier(): PoolValueModifier_Record
 }
 
@@ -43783,7 +43783,7 @@ declare interface ApplyEffectorEffector extends Effector {
 
 declare interface ApplyEffectorEffector_Record extends Effector_Record {
 
-  ApplicationTarget(): String
+  ApplicationTarget(): string
   EffectorToApply(): Effector_Record
 }
 
@@ -43845,7 +43845,7 @@ declare interface ApplyStatGroupEffector extends Effector {
 
 declare interface ApplyStatGroupEffector_Record extends Effector_Record {
 
-  ApplicationTarget(): String
+  ApplicationTarget(): string
   StatGroup(): StatModifierGroup_Record
 }
 
@@ -43861,7 +43861,7 @@ declare interface ApplyStatusEffectByChanceEffector extends Effector {
 
 declare interface ApplyStatusEffectEffector_Record extends Effector_Record {
 
-  ApplicationTarget(): String
+  ApplicationTarget(): string
   StatusEffect(): StatusEffect_Record
   Count(): number
   Inverted(): Bool
@@ -44283,7 +44283,7 @@ declare interface TriggerHackingMinigameEffector extends Effector {
 
 declare interface TriggerHackingMinigameEffector_Record extends Effector_Record {
 
-  JournalEntry(): String
+  JournalEntry(): string
   Reward(): RewardBase_Record
 }
 
@@ -44506,7 +44506,7 @@ declare interface EffectInputParameter_CName {
 declare interface EffectInputParameter_String {
 
   /** @noSelf **/
-  Get(ctx: EffectInputParameter_String, bb: IBlackboard): String
+  Get(ctx: EffectInputParameter_String, bb: IBlackboard): string
 }
 
 declare interface EffectInputParameter_Vector {
@@ -44554,7 +44554,7 @@ declare interface EffectOutputParameter_CName {
 declare interface EffectOutputParameter_String {
 
   /** @noSelf **/
-  Set(ctx: EffectOutputParameter_String, bb: IBlackboard, value: String): void
+  Set(ctx: EffectOutputParameter_String, bb: IBlackboard, value: string): void
 }
 
 declare interface EffectOutputParameter_Vector {
@@ -45341,7 +45341,7 @@ declare interface OnOffPrereq extends IScriptablePrereq {
 
 declare interface AIActionType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataAIActionType
 }
@@ -45393,7 +45393,7 @@ declare interface BodyCarryingPSMPrereq extends PlayerStateMachinePrereq {
 
   OnRegister(state: PrereqState, game: GameInstance, context: IScriptable): Bool
   OnUnregister(state: PrereqState, game: GameInstance, context: IScriptable): void
-  GetStateMachineEnum(): String
+  GetStateMachineEnum(): string
   GetCurrentPSMStateIndex(bb: IBlackboard): number
 }
 
@@ -45405,7 +45405,7 @@ declare interface BodyDisposalPSMPrereq extends PlayerStateMachinePrereq {
 
   OnRegister(state: PrereqState, game: GameInstance, context: IScriptable): Bool
   OnUnregister(state: PrereqState, game: GameInstance, context: IScriptable): void
-  GetStateMachineEnum(): String
+  GetStateMachineEnum(): string
   GetCurrentPSMStateIndex(bb: IBlackboard): number
 }
 
@@ -45451,7 +45451,7 @@ declare interface CombatPSMPrereq extends PlayerStateMachinePrereq {
 
   OnRegister(state: PrereqState, game: GameInstance, context: IScriptable): Bool
   OnUnregister(state: PrereqState, game: GameInstance, context: IScriptable): void
-  GetStateMachineEnum(): String
+  GetStateMachineEnum(): string
   GetCurrentPSMStateIndex(bb: IBlackboard): number
 }
 
@@ -45469,7 +45469,7 @@ declare interface DetailedLocomotionPSMPrereq extends PlayerStateMachinePrereq {
 
   OnRegister(state: PrereqState, game: GameInstance, context: IScriptable): Bool
   OnUnregister(state: PrereqState, game: GameInstance, context: IScriptable): void
-  GetStateMachineEnum(): String
+  GetStateMachineEnum(): string
   GetCurrentPSMStateIndex(bb: IBlackboard): number
 }
 
@@ -45504,7 +45504,7 @@ declare interface FallPSMPrereq extends PlayerStateMachinePrereq {
 
   OnRegister(state: PrereqState, game: GameInstance, context: IScriptable): Bool
   OnUnregister(state: PrereqState, game: GameInstance, context: IScriptable): void
-  GetStateMachineEnum(): String
+  GetStateMachineEnum(): string
   GetCurrentPSMStateIndex(bb: IBlackboard): number
 }
 
@@ -45521,7 +45521,7 @@ declare interface HighLevelPSMPrereq extends PlayerStateMachinePrereq {
 
   OnRegister(state: PrereqState, game: GameInstance, context: IScriptable): Bool
   OnUnregister(state: PrereqState, game: GameInstance, context: IScriptable): void
-  GetStateMachineEnum(): String
+  GetStateMachineEnum(): string
   GetCurrentPSMStateIndex(bb: IBlackboard): number
 }
 
@@ -45538,7 +45538,7 @@ declare interface IsInWorkspotPSMPrereq extends PlayerStateMachinePrereq {
 
   OnRegister(state: PrereqState, game: GameInstance, context: IScriptable): Bool
   OnUnregister(state: PrereqState, game: GameInstance, context: IScriptable): void
-  GetStateMachineEnum(): String
+  GetStateMachineEnum(): string
   GetCurrentPSMStateIndex(bb: IBlackboard): number
 }
 
@@ -45550,7 +45550,7 @@ declare interface LocomotionPSMPrereq extends PlayerStateMachinePrereq {
 
   OnRegister(state: PrereqState, game: GameInstance, context: IScriptable): Bool
   OnUnregister(state: PrereqState, game: GameInstance, context: IScriptable): void
-  GetStateMachineEnum(): String
+  GetStateMachineEnum(): string
   GetCurrentPSMStateIndex(bb: IBlackboard): number
 }
 
@@ -45571,7 +45571,7 @@ declare interface MeleePSMPrereq extends PlayerStateMachinePrereq {
 
   OnRegister(state: PrereqState, game: GameInstance, context: IScriptable): Bool
   OnUnregister(state: PrereqState, game: GameInstance, context: IScriptable): void
-  GetStateMachineEnum(): String
+  GetStateMachineEnum(): string
   GetCurrentPSMStateIndex(bb: IBlackboard): number
 }
 
@@ -45583,7 +45583,7 @@ declare interface MeleeWeaponPSMPrereq extends PlayerStateMachinePrereq {
 
   OnRegister(state: PrereqState, game: GameInstance, context: IScriptable): Bool
   OnUnregister(state: PrereqState, game: GameInstance, context: IScriptable): void
-  GetStateMachineEnum(): String
+  GetStateMachineEnum(): string
   GetCurrentPSMStateIndex(bb: IBlackboard): number
 }
 
@@ -45595,7 +45595,7 @@ declare interface RangedWeaponPSMPrereq extends PlayerStateMachinePrereq {
 
   OnRegister(state: PrereqState, game: GameInstance, context: IScriptable): Bool
   OnUnregister(state: PrereqState, game: GameInstance, context: IScriptable): void
-  GetStateMachineEnum(): String
+  GetStateMachineEnum(): string
   GetCurrentPSMStateIndex(bb: IBlackboard): number
 }
 
@@ -45607,7 +45607,7 @@ declare interface SwimmingPSMPrereq extends PlayerStateMachinePrereq {
 
   OnRegister(state: PrereqState, game: GameInstance, context: IScriptable): Bool
   OnUnregister(state: PrereqState, game: GameInstance, context: IScriptable): void
-  GetStateMachineEnum(): String
+  GetStateMachineEnum(): string
   GetCurrentPSMStateIndex(bb: IBlackboard): number
 }
 
@@ -45619,7 +45619,7 @@ declare interface TakedownPSMPrereq extends PlayerStateMachinePrereq {
 
   OnRegister(state: PrereqState, game: GameInstance, context: IScriptable): Bool
   OnUnregister(state: PrereqState, game: GameInstance, context: IScriptable): void
-  GetStateMachineEnum(): String
+  GetStateMachineEnum(): string
   GetCurrentPSMStateIndex(bb: IBlackboard): number
 }
 
@@ -45646,7 +45646,7 @@ declare interface TimeDilationPSMPrereq extends PlayerStateMachinePrereq {
 
   OnRegister(state: PrereqState, game: GameInstance, context: IScriptable): Bool
   OnUnregister(state: PrereqState, game: GameInstance, context: IScriptable): void
-  GetStateMachineEnum(): String
+  GetStateMachineEnum(): string
   GetCurrentPSMStateIndex(bb: IBlackboard): number
 }
 
@@ -45658,7 +45658,7 @@ declare interface UpperBodyPSMPrereq extends PlayerStateMachinePrereq {
 
   OnRegister(state: PrereqState, game: GameInstance, context: IScriptable): Bool
   OnUnregister(state: PrereqState, game: GameInstance, context: IScriptable): void
-  GetStateMachineEnum(): String
+  GetStateMachineEnum(): string
   GetCurrentPSMStateIndex(bb: IBlackboard): number
 }
 
@@ -45671,7 +45671,7 @@ declare interface UsingCoverPSMPrereq extends PlayerStateMachinePrereq {
 
   OnRegister(state: PrereqState, game: GameInstance, context: IScriptable): Bool
   OnUnregister(state: PrereqState, game: GameInstance, context: IScriptable): void
-  GetStateMachineEnum(): String
+  GetStateMachineEnum(): string
   GetCurrentPSMStateIndex(bb: IBlackboard): number
   Initialize(recordID: TweakDBID): void
 }
@@ -45684,7 +45684,7 @@ declare interface VehiclePSMPrereq extends PlayerStateMachinePrereq {
 
   OnRegister(state: PrereqState, game: GameInstance, context: IScriptable): Bool
   OnUnregister(state: PrereqState, game: GameInstance, context: IScriptable): void
-  GetStateMachineEnum(): String
+  GetStateMachineEnum(): string
   GetCurrentPSMStateIndex(bb: IBlackboard): number
 }
 
@@ -45696,7 +45696,7 @@ declare interface ZonesPSMPrereq extends PlayerStateMachinePrereq {
 
   OnRegister(state: PrereqState, game: GameInstance, context: IScriptable): Bool
   OnUnregister(state: PrereqState, game: GameInstance, context: IScriptable): void
-  GetStateMachineEnum(): String
+  GetStateMachineEnum(): string
   GetCurrentPSMStateIndex(bb: IBlackboard): number
 }
 
@@ -45795,7 +45795,7 @@ declare interface NPCLocomotionTypePrereq extends IScriptablePrereq {
 
 declare interface AISquadType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataAISquadType
 }
@@ -45997,7 +45997,7 @@ declare interface IsPlayerMovingPrereq extends PlayerStateMachinePrereq {
 
   OnRegister(state: PrereqState, game: GameInstance, context: IScriptable): Bool
   OnUnregister(state: PrereqState, game: GameInstance, context: IScriptable): void
-  GetStateMachineEnum(): String
+  GetStateMachineEnum(): string
   GetCurrentPSMStateIndex(bb: IBlackboard): number
   Initialize(recordID: TweakDBID): void
 }
@@ -46143,7 +46143,7 @@ declare interface StatPoolSpentPrereq extends IScriptablePrereq {
 
 declare interface AITacticType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataAITacticType
 }
@@ -46246,14 +46246,14 @@ declare interface Advertisement_Record extends TweakDBRecord {
 
 declare interface AdvertisementFormatDef_Record extends TweakDBRecord {
 
-  Format(): String
-  LibraryName(): String
+  Format(): string
+  LibraryName(): string
   LocalizationKeyOverride(): CName
 }
 
 declare interface AdvertisementFormatsEnum_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
 }
 
@@ -46391,7 +46391,7 @@ declare interface AimAssistTargetData_Record extends TweakDBRecord {
 
 declare interface AimAssistType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataAimAssistType
 }
@@ -46504,7 +46504,7 @@ declare interface Attack_Projectile_Record extends Attack_Record {
 
 declare interface Attitude_Record extends TweakDBRecord {
 
-  Value(): String
+  Value(): string
   Group1(): AttitudeGroup_Record
   Group2(): AttitudeGroup_Record
 }
@@ -46569,7 +46569,7 @@ declare interface CPOItemCategoryBase_Record extends TweakDBRecord {
 
 declare interface CPOLoadoutBase_Record extends TweakDBRecord {
 
-  DisplayName(): String
+  DisplayName(): string
   Items(outList: InventoryItem_Record[]): void
   GetItemsCount(): number
   GetItemsItem(index: number): InventoryItem_Record
@@ -46644,14 +46644,14 @@ declare interface ChatterHelperRadius_Record extends TweakDBRecord {
 
 declare interface ChoiceCaptionPartType_Record extends TweakDBRecord {
 
-  Comment(): String
+  Comment(): string
   EnumName(): CName
   Type(): gamedataChoiceCaptionPartType
 }
 
 declare interface ChoiceCaptionTagPart_Record extends ChoiceCaptionPart_Record {
 
-  TagLocId(): String
+  TagLocId(): string
 }
 
 declare interface ClearLineOfSightCoverSelectionParameters_Record extends CoverSelectionParameters_Record {
@@ -46704,13 +46704,13 @@ declare interface CodexRecord_Record extends TweakDBRecord {
 
 declare interface CodexRecordPart_Record extends TweakDBRecord {
 
-  PartContent(): String
+  PartContent(): string
   PartName(): CName
 }
 
 declare interface CompanionDistancePreset_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Distance(): number
   Tolerance(): number
@@ -46719,10 +46719,10 @@ declare interface CompanionDistancePreset_Record extends TweakDBRecord {
 
 declare interface CompoundSelectionPreset_Record extends TweakDBRecord {
 
-  Presets(): String[]
+  Presets(): string[]
   GetPresetsCount(): number
-  GetPresetsItem(index: number): String
-  PresetsContains(item: String): Bool
+  GetPresetsItem(index: number): string
+  PresetsContains(item: string): Bool
   GatherRadius(): number
 }
 
@@ -46762,18 +46762,18 @@ declare interface CoverHealthCoverSelectionParameters_Record extends CoverSelect
 declare interface CoverSelectionPreset_Record extends TweakDBRecord {
 
   CombatRing(): AIRingType_Record
-  Scoring(): String[]
+  Scoring(): string[]
   GetScoringCount(): number
-  GetScoringItem(index: number): String
-  ScoringContains(item: String): Bool
-  PostFiltering(): String[]
+  GetScoringItem(index: number): string
+  ScoringContains(item: string): Bool
+  PostFiltering(): string[]
   GetPostFilteringCount(): number
-  GetPostFilteringItem(index: number): String
-  PostFilteringContains(item: String): Bool
-  Filtering(): String[]
+  GetPostFilteringItem(index: number): string
+  PostFilteringContains(item: string): Bool
+  Filtering(): string[]
   GetFilteringCount(): number
-  GetFilteringItem(index: number): String
-  FilteringContains(item: String): Bool
+  GetFilteringItem(index: number): string
+  FilteringContains(item: string): Bool
   DismissedCoverTimer(): number
   GatherRadius(): number
   UsesLineOfSight(): Bool
@@ -46878,7 +46878,7 @@ declare interface CyberwareArea_Record extends EquipmentArea_Record {
 
 declare interface DefenseMode_Record extends TweakDBRecord {
 
-  Comment(): String
+  Comment(): string
   EnumName(): CName
   Type(): gamedataDefenseMode
 }
@@ -46899,7 +46899,7 @@ declare interface DetectionCurve_Record extends TweakDBRecord {
 
 declare interface DevelopmentPoint_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataDevelopmentPointType
 }
@@ -47002,7 +47002,7 @@ declare interface EthnicNames_Record extends TweakDBRecord {
 
 declare interface Ethnicity_Record extends TweakDBRecord {
 
-  Comment(): String
+  Comment(): string
   EnumName(): CName
   Type(): gamedataEthnicity
 }
@@ -47092,7 +47092,7 @@ declare interface RectF {
 
 declare interface Gender_Record extends TweakDBRecord {
 
-  Comment(): String
+  Comment(): string
   EnumName(): CName
   Type(): gamedataGender
 }
@@ -47109,15 +47109,15 @@ declare interface GenderEntity_Record extends TweakDBRecord {
 
 declare interface GenericHighwaySign_Record extends BaseSign_Record {
 
-  DistrictName(): String
-  SubDistrictName(): String
+  DistrictName(): string
+  SubDistrictName(): string
   IconName(): CName
 }
 
 declare interface GenericMetroSign_Record extends BaseSign_Record {
 
-  SubDistrictName(): String
-  StationName(): String
+  SubDistrictName(): string
+  StationName(): string
   MetroLineName(): CName[]
   GetMetroLineNameCount(): number
   GetMetroLineNameItem(index: number): CName
@@ -47127,9 +47127,9 @@ declare interface GenericMetroSign_Record extends BaseSign_Record {
 
 declare interface GenericStreetNameSign_Record extends BaseSign_Record {
 
-  DistrictName(): String
-  SubDistrictName(): String
-  StreetName(): String
+  DistrictName(): string
+  SubDistrictName(): string
+  StreetName(): string
 }
 
 declare interface Sphere {
@@ -47154,38 +47154,38 @@ declare interface HackingMiniGame_Record extends TweakDBRecord {
   GetAllowedTrapsCount(): number
   GetAllowedTrapsItem(index: number): Trap_Record
   AllowedTrapsContains(item: Trap_Record): Bool
-  PredefinedNetworkPrograms(): String[]
+  PredefinedNetworkPrograms(): string[]
   GetPredefinedNetworkProgramsCount(): number
-  GetPredefinedNetworkProgramsItem(index: number): String
-  PredefinedNetworkProgramsContains(item: String): Bool
-  PredefinedBasicAccess(): String[]
+  GetPredefinedNetworkProgramsItem(index: number): string
+  PredefinedNetworkProgramsContains(item: string): Bool
+  PredefinedBasicAccess(): string[]
   GetPredefinedBasicAccessCount(): number
-  GetPredefinedBasicAccessItem(index: number): String
-  PredefinedBasicAccessContains(item: String): Bool
-  PredefinedEnemyPrograms(): String[]
+  GetPredefinedBasicAccessItem(index: number): string
+  PredefinedBasicAccessContains(item: string): Bool
+  PredefinedEnemyPrograms(): string[]
   GetPredefinedEnemyProgramsCount(): number
-  GetPredefinedEnemyProgramsItem(index: number): String
-  PredefinedEnemyProgramsContains(item: String): Bool
-  Symbols(): String[]
+  GetPredefinedEnemyProgramsItem(index: number): string
+  PredefinedEnemyProgramsContains(item: string): Bool
+  Symbols(): string[]
   GetSymbolsCount(): number
-  GetSymbolsItem(index: number): String
-  SymbolsContains(item: String): Bool
-  PredefinedGrid(): String[]
+  GetSymbolsItem(index: number): string
+  SymbolsContains(item: string): Bool
+  PredefinedGrid(): string[]
   GetPredefinedGridCount(): number
-  GetPredefinedGridItem(index: number): String
-  PredefinedGridContains(item: String): Bool
-  PredefinedCyberdeckPrograms(): String[]
+  GetPredefinedGridItem(index: number): string
+  PredefinedGridContains(item: string): Bool
+  PredefinedCyberdeckPrograms(): string[]
   GetPredefinedCyberdeckProgramsCount(): number
-  GetPredefinedCyberdeckProgramsItem(index: number): String
-  PredefinedCyberdeckProgramsContains(item: String): Bool
-  SymbolProbabilities(): String[]
+  GetPredefinedCyberdeckProgramsItem(index: number): string
+  PredefinedCyberdeckProgramsContains(item: string): Bool
+  SymbolProbabilities(): string[]
   GetSymbolProbabilitiesCount(): number
-  GetSymbolProbabilitiesItem(index: number): String
-  SymbolProbabilitiesContains(item: String): Bool
-  SymbolProbabilitiesAlternative(): String[]
+  GetSymbolProbabilitiesItem(index: number): string
+  SymbolProbabilitiesContains(item: string): Bool
+  SymbolProbabilitiesAlternative(): string[]
   GetSymbolProbabilitiesAlternativeCount(): number
-  GetSymbolProbabilitiesAlternativeItem(index: number): String
-  SymbolProbabilitiesAlternativeContains(item: String): Bool
+  GetSymbolProbabilitiesAlternativeItem(index: number): string
+  SymbolProbabilitiesAlternativeContains(item: string): Bool
   NetworkLevel(): number
   EnemyNetrunnerLevel(): number
   Dimension(): number
@@ -47234,7 +47234,7 @@ declare interface IconsGeneratorContext_Record extends TweakDBRecord {
 
 declare interface ImprovementRelation_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataImprovementRelation
 }
@@ -47359,7 +47359,7 @@ declare interface ItemStructure_Record extends TweakDBRecord {
 declare interface ResourceMetricsReportGenerator extends IScriptable {
 
   /** @noSelf **/
-  WriteReportToFile(fileName: String): void
+  WriteReportToFile(fileName: string): void
 }
 
 declare interface ItemsFactoryAppearanceSuffixBase_Record extends TweakDBRecord {
@@ -47422,7 +47422,7 @@ declare interface LoadingTipsGroup_Record extends TweakDBRecord {
 
 declare interface LocomotionMode_Record extends TweakDBRecord {
 
-  Comment(): String
+  Comment(): string
   EnumName(): CName
   Type(): gamedataLocomotionMode
 }
@@ -47434,7 +47434,7 @@ declare interface LootItem_Record extends LootTableElement_Record {
 
 declare interface LootTable_Record extends TweakDBRecord {
 
-  LootGenerationType(): String
+  LootGenerationType(): string
   LootItems(outList: LootItem_Record[]): void
   GetLootItemsCount(): number
   GetLootItemsItem(index: number): LootItem_Record
@@ -47490,7 +47490,7 @@ declare interface MappinDefinition_Record extends Base_MappinDefinition_Record {
 
 declare interface MappinPhase_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataMappinPhase
 }
@@ -47638,7 +47638,7 @@ declare interface Ref_2_1_BaseClass extends IScriptable {
 
 declare interface MappinVariant_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataMappinVariant
 }
@@ -47695,8 +47695,8 @@ declare interface Ref_2_2_6_Class extends IScriptable {
 
 declare interface MetaQuest_Record extends TweakDBRecord {
 
-  EnumName(): String
-  EnumComment(): String
+  EnumName(): string
+  EnumComment(): string
   Type(): gamedataMetaQuest
 }
 
@@ -47748,19 +47748,19 @@ declare interface Ref_2_3_2_Derived extends Ref_2_3_2_Base {
 
 declare interface MinigameActionType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
 }
 
 declare interface MinigameCategory_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
 }
 
 declare interface MinigameTrapType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
 }
 
@@ -47829,7 +47829,7 @@ declare interface Ref_3_1_Class extends IScriptable {
 
 declare interface MovementParam_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   MaxSpeed(): number
   Acceleration(): number
@@ -47925,7 +47925,7 @@ declare interface Ref_4_1_2_ClassVariables extends IScriptable {
 
 declare interface NPCBehaviorState_Record extends TweakDBRecord {
 
-  Comment(): String
+  Comment(): string
   EnumName(): CName
   Type(): gamedataNPCBehaviorState
 }
@@ -48011,28 +48011,28 @@ declare interface Ref_6_ReplicatedVariables {
 
 declare interface NPCHighLevelState_Record extends TweakDBRecord {
 
-  Comment(): String
+  Comment(): string
   EnumName(): CName
   Type(): gamedataNPCHighLevelState
 }
 
 declare interface NPCQuestAffiliation_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataNPCQuestAffiliation
 }
 
 declare interface NPCStanceState_Record extends TweakDBRecord {
 
-  Comment(): String
+  Comment(): string
   EnumName(): CName
   Type(): gamedataNPCStanceState
 }
 
 declare interface NPCUpperBodyState_Record extends TweakDBRecord {
 
-  Comment(): String
+  Comment(): string
   EnumName(): CName
   Type(): gamedataNPCUpperBodyState
 }
@@ -48106,7 +48106,7 @@ declare interface OwnerThreatCoverSelectionParameters_Record extends CoverSelect
 
 declare interface ParentAttachmentType_Record extends TweakDBRecord {
 
-  Name(): String
+  Name(): string
   Type(): gamedataParentAttachmentType
 }
 
@@ -48183,8 +48183,8 @@ declare interface PerkLevelUIData_Record extends TweakDBRecord {
 
 declare interface PerkUtility_Record extends TweakDBRecord {
 
-  EnumName(): String
-  EnumComment(): String
+  EnumName(): string
+  EnumComment(): string
   UtilityType(): gamedataPerkUtility
 }
 
@@ -48257,7 +48257,7 @@ declare interface Pierce_Record extends ProjectileCollision_Record {
 
 declare interface Ping_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   WorldIconName(): CName
   MinimapIconName(): CName
   VoTriggerName(): CName
@@ -48269,15 +48269,15 @@ declare interface Ping_Record extends TweakDBRecord {
 
 declare interface PlayerPossesion_Record extends TweakDBRecord {
 
-  EnumName(): String
-  EnumComment(): String
+  EnumName(): string
+  EnumComment(): string
   Type(): gamedataPlayerPossesion
 }
 
 declare interface Prereq_Record extends TweakDBRecord {
 
-  Name(): String
-  DevNotes(): String
+  Name(): string
+  DevNotes(): string
   Checks(outList: PrereqCheck_Record[]): void
   GetChecksCount(): number
   GetChecksItem(index: number): PrereqCheck_Record
@@ -48287,9 +48287,9 @@ declare interface Prereq_Record extends TweakDBRecord {
 
 declare interface PrereqCheck_Record extends TweakDBRecord {
 
-  PrereqType(): String
-  ComparisonType(): String
-  ContextObject(): String
+  PrereqType(): string
+  ComparisonType(): string
+  ContextObject(): string
   ValueToCompare(): number
 }
 
@@ -48305,21 +48305,21 @@ declare interface Program_Record extends TweakDBRecord {
 
 declare interface ProjectileLaunchMode_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataProjectileLaunchMode
 }
 
 declare interface ProjectileOnCollisionAction_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataProjectileOnCollisionAction
 }
 
 declare interface Prop_Record extends SpawnableObject_Record {
 
-  FriendlyName(): String
+  FriendlyName(): string
 }
 
 declare interface DebugCheatsSystem extends IDebugCheatsSystem {
@@ -48343,10 +48343,10 @@ declare interface QuestRestrictionMode_Record extends TweakDBRecord {
 
 declare interface QuestSystemSetup_Record extends TweakDBRecord {
 
-  CustomTooltipActions(): String[]
+  CustomTooltipActions(): string[]
   GetCustomTooltipActionsCount(): number
-  GetCustomTooltipActionsItem(index: number): String
-  CustomTooltipActionsContains(item: String): Bool
+  GetCustomTooltipActionsItem(index: number): string
+  CustomTooltipActionsContains(item: string): Bool
   ContentTokenSpawnMinCooldown(): number
   ContentTokenSpawnMaxCooldown(): number
 }
@@ -48391,7 +48391,7 @@ declare interface RaceCheckpoint_Record extends LCDScreen_Record {
 
 declare interface RadioStation_Record extends TweakDBRecord {
 
-  DisplayName(): String
+  DisplayName(): string
   Icon(): UIIcon_Record
   Index(): number
 }
@@ -48555,8 +48555,8 @@ declare interface SceneCameraDoF_Record extends TweakDBRecord {
 
 declare interface ScreenMessageData_Record extends TweakDBRecord {
 
-  FriendlyName(): String
-  FontPath(): String
+  FriendlyName(): string
+  FontPath(): string
   BackgroundTextureID(): UIIcon_Record
   MessageGroup(): ScreenMessagesList_Record
   TextColor(): number[]
@@ -48609,7 +48609,7 @@ declare interface SectorSelector_Record extends TweakDBRecord {
 
 declare interface SenseObjectType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataSenseObjectType
 }
@@ -48740,17 +48740,17 @@ declare interface StatsList_Record extends TweakDBRecord {
 
 declare interface StatusEffectAIBehaviorType_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataStatusEffectAIBehaviorType
 }
 
 declare interface StatusEffectUIData_Record extends TweakDBRecord {
 
-  DisplayName(): String
-  Description(): String
-  FluffText(): String
-  IconPath(): String
+  DisplayName(): string
+  Description(): string
+  FluffText(): string
+  IconPath(): string
   FloatValues(): number[]
   GetFloatValuesCount(): number
   GetFloatValuesItem(index: number): number
@@ -48923,7 +48923,7 @@ declare interface ThumbnailWidgetDefinition_Record extends WidgetDefinition_Reco
 
 declare interface Time_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
 }
 
@@ -48941,7 +48941,7 @@ declare interface Tracking_Record extends ProjectileLaunch_Record {
 
 declare interface Trap_Record extends TweakDBRecord {
 
-  Name(): String
+  Name(): string
   Type(): TrapType_Record
   Probability(): number
 }
@@ -48960,8 +48960,8 @@ declare interface UIAnimation_Record extends TweakDBRecord {
 
 declare interface UICharacterCreationAttribute_Record extends TweakDBRecord {
 
-  Description(): String
-  Shortcut(): String
+  Description(): string
+  Shortcut(): string
   Attribute(): Stat_Record
   IconPath(): CName
   Value(): number
@@ -48977,7 +48977,7 @@ declare interface UICharacterCreationAttributesPreset_Record extends TweakDBReco
 
 declare interface UICondition_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   IsCustom(): Bool
   Type(): gamedataUICondition
@@ -48993,7 +48993,7 @@ declare interface UIElement_Record extends TweakDBRecord {
 
 declare interface UIIconCensorFlag_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataUIIconCensorFlag
 }
@@ -49018,7 +49018,7 @@ declare interface UINameplate_Record extends TweakDBRecord {
 
 declare interface UINameplateDisplayType_Record extends TweakDBRecord {
 
-  Comment(): String
+  Comment(): string
   EnumName(): CName
   Type(): gamedataUINameplateDisplayType
 }
@@ -49287,7 +49287,7 @@ declare interface VehicleFxCollision_Record extends TweakDBRecord {
 
 declare interface mpPlayerManager extends gameIPlayerManager {
 
-  GetPlayerNicknameByGameObject(gameObject: GameObject): String
+  GetPlayerNicknameByGameObject(gameObject: GameObject): string
 }
 
 declare interface VehicleFxCollisionMaterial_Record extends TweakDBRecord {
@@ -49313,8 +49313,8 @@ declare interface VehicleFxWheelsDecals_Record extends TweakDBRecord {
 
 declare interface gameIGameRulesSystem extends IGameSystem {
 
-  SendChat(chat: String): void
-  IsPlayerReady(PeerID: String): Bool
+  SendChat(chat: string): void
+  IsPlayerReady(PeerID: string): Bool
   IsGameVictorious(): Bool
   IsGameUnsuccessful(): Bool
   GetHeistStatus(): grsHeistStatus
@@ -49424,7 +49424,7 @@ declare interface VehicleSurfaceBinding_Record extends TweakDBRecord {
 
 declare interface VehicleSurfaceType_Record extends TweakDBRecord {
 
-  DisplayName(): String
+  DisplayName(): string
   MaterialNames(): CName[]
   GetMaterialNamesCount(): number
   GetMaterialNamesItem(index: number): CName
@@ -49592,7 +49592,7 @@ declare interface VehicleWheelsFrictionMap_Record extends TweakDBRecord {
 
 declare interface VehicleWheelsFrictionPreset_Record extends TweakDBRecord {
 
-  DisplayName(): String
+  DisplayName(): string
   FrictionCurveSet(): ResRef
   LooseSurfaceLongDriveResistanceCoeff(): number
   LooseSurfaceLongSpeedMax(): number
@@ -49621,7 +49621,7 @@ declare interface GOGRewardsSystem extends IScriptable {
   FindRewardRecordByRewardToken(token: number): GOGReward_Record
   IsRewardUnlocked(rewardRecord: GOGReward_Record): Bool
   GetUnlockedRewardPacks(): GOGRewardPack[]
-  GetRegistrationUrl(): String
+  GetRegistrationUrl(): string
 }
 
 declare interface VendorCraftable_Record extends VendorWare_Record {
@@ -49691,13 +49691,13 @@ declare interface PUPPET_ACtor extends HUDActor {
 
 declare interface WeaponManufacturer_Record extends TweakDBRecord {
 
-  Name(): String
+  Name(): string
   Type(): gamedataWeaponManufacturer
 }
 
 declare interface Weather_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
 }
 
@@ -49708,7 +49708,7 @@ declare interface WeatherPreset_Record extends SpawnableObject_Record {
 
 declare interface Website_Record extends TweakDBRecord {
 
-  Url(): String
+  Url(): string
   WidgetPath(): ResRef
 }
 
@@ -49720,14 +49720,14 @@ declare interface WeightedCharacter_Record extends TweakDBRecord {
 
 declare interface WorkspotActionType_Record extends TweakDBRecord {
 
-  Comment(): String
+  Comment(): string
   EnumName(): CName
   Type(): gamedataWorkspotActionType
 }
 
 declare interface WorkspotCategory_Record extends TweakDBRecord {
 
-  Comment(): String
+  Comment(): string
   EnumName(): CName
   Type(): gamedataWorkspotCategory
 }
@@ -49744,7 +49744,7 @@ declare interface WorkspotStatusEffect_Record extends StatusEffect_Record {
 
 declare interface WorldMapFilter_Record extends TweakDBRecord {
 
-  EnumComment(): String
+  EnumComment(): string
   EnumName(): CName
   Type(): gamedataWorldMapFilter
 }
@@ -49873,7 +49873,7 @@ declare interface JournalPhoneChoiceGroup extends JournalContainerEntry {
 
 declare interface JournalPhoneConversation extends JournalContainerEntry {
 
-  GetTitle(): String
+  GetTitle(): string
 }
 
 declare interface JournalBriefingMapSection extends JournalBriefingBaseSection {
@@ -49898,26 +49898,26 @@ declare interface JournalTarot extends JournalEntry {
 
   GetIndex(): number
   GetImagePart(): CName
-  GetName(): String
-  GetDescription(): String
+  GetName(): string
+  GetDescription(): string
 }
 
 declare interface JournalCodexGroup extends JournalContainerEntry {
 
-  GetGroupName(): String
+  GetGroupName(): string
 }
 
 declare interface JournalCodexEntry extends JournalContainerEntry {
 
-  GetTitle(): String
+  GetTitle(): string
   GetImageID(): TweakDBID
   GetLinkImageID(): TweakDBID
 }
 
 declare interface JournalCodexDescription extends JournalEntry {
 
-  GetSubTitle(): String
-  GetTextContent(): String
+  GetSubTitle(): string
+  GetTextContent(): string
 }
 
 declare interface EnteredPathWithDoors extends Event {
@@ -49950,14 +49950,14 @@ declare interface JournalFileGroup extends JournalFileEntry {
 
 declare interface JournalMetaQuestObjective extends JournalEntry {
 
-  GetDescription(): String
+  GetDescription(): string
   GetProgressPercent(): number
   GetIconID(): TweakDBID
 }
 
 declare interface JournalMetaQuest extends JournalFileEntry {
 
-  GetTitle(): String
+  GetTitle(): string
 }
 
 declare interface JournalMetaQuestScriptedData {
@@ -49973,7 +49973,7 @@ declare interface PhotoModeEnableEvent extends Event {
 declare interface PrereqManager extends IPrereqManager {
 
   MeetsPrerequisite(prereqData: PrereqData, params: PrereqParams): Bool
-  MeetsPrerequisiteByID(prereqID: String, params: PrereqParams): Bool
+  MeetsPrerequisiteByID(prereqID: string, params: PrereqParams): Bool
 }
 
 declare interface PreventionSystemConfig {
@@ -50111,7 +50111,7 @@ declare interface gameuiIUIObjectsLoaderSystem extends IGameSystem {
 declare interface GarageVehicleID {
 
   /** @noSelf **/
-  Resolve(vehicleID: String): GarageVehicleID
+  Resolve(vehicleID: string): GarageVehicleID
 }
 
 declare interface IWatchdogSystem extends IGameSystem {
@@ -50206,7 +50206,7 @@ declare interface HasRangedWeaponEquippedCondition extends WorkspotCondition {
 
 declare interface inkAnimController extends IScriptable {
 
-  Select(widget: inkWidget, selectionRule?: inkSelectionRule, param?: String): inkAnimController
+  Select(widget: inkWidget, selectionRule?: inkSelectionRule, param?: string): inkAnimController
   FromSet(other: inkWidgetsSet): inkAnimController
   Caller(caller: inkWidget): inkAnimController
   PlayOffset(offset: number): inkAnimController
@@ -50337,8 +50337,8 @@ declare interface ToggleController extends inkToggleController {
 
   SetToggleData(data: number): void
   GetData(): number
-  GetLabelKey(): String
-  GetIcon(): String
+  GetLabelKey(): string
+  GetIcon(): string
 }
 
 declare interface inkEntityPreviewCameraSettings {
@@ -50492,7 +50492,7 @@ declare interface inkInputKeyData {
 
 declare interface LabelInputDisplayController extends inkInputDisplayController {
 
-  SetInputActionLabel(actionName: CName, label: String): void
+  SetInputActionLabel(actionName: CName, label: string): void
 }
 
 declare interface inkLinePattern extends inkImage {
@@ -50784,8 +50784,8 @@ declare interface LatestSaveMetadataInfo extends IScriptable {
 
 declare interface inkTextOffsetController extends inkTextAnimationController {
 
-  GetBaseText(): String
-  SetBaseText(text: String): void
+  GetBaseText(): string
+  SetBaseText(text: string): void
   GetTimeSkip(): number
   SetTimeSkip(timeSkipValue: number): void
   GetGlitchComplexity(): number
@@ -50805,14 +50805,14 @@ declare interface WeakScriptableDataView extends BaseWeakScriptableDataSource {
 
 declare interface inkTextKiroshiAnimController extends inkTextAnimationController {
 
-  GetNativeText(): String
-  SetNativeText(text: String, language: scnDialogLineLanguage): void
-  GetTargetText(): String
-  SetTargetText(text: String): void
-  GetPreTranslatedText(): String
-  SetPreTranslatedText(text: String): void
-  GetPostTranslatedText(): String
-  SetPostTranslatedText(text: String): void
+  GetNativeText(): string
+  SetNativeText(text: string, language: scnDialogLineLanguage): void
+  GetTargetText(): string
+  SetTargetText(text: string): void
+  GetPreTranslatedText(): string
+  SetPreTranslatedText(text: string): void
+  GetPostTranslatedText(): string
+  SetPostTranslatedText(text: string): void
   GetTimeSkip(): number
   SetTimeSkip(timeSkipValue: number): void
   SetupFontSettings(fontSize: number): void
@@ -50833,14 +50833,14 @@ declare interface inkTextValueProgressController extends inkTextAnimationControl
 declare interface inkTextMotherTongueController extends inkLogicController {
 
   ApplyTexts(): void
-  GetNativeText(): String
-  SetNativeText(text: String, language: scnDialogLineLanguage): void
-  GetTranslatedText(): String
-  SetTranslatedText(text: String): void
-  GetPreTranslatedText(): String
-  SetPreTranslatedText(text: String): void
-  GetPostTranslatedText(): String
-  SetPostTranslatedText(text: String): void
+  GetNativeText(): string
+  SetNativeText(text: string, language: scnDialogLineLanguage): void
+  GetTranslatedText(): string
+  SetTranslatedText(text: string): void
+  GetPreTranslatedText(): string
+  SetPreTranslatedText(text: string): void
+  GetPostTranslatedText(): string
+  SetPostTranslatedText(text: string): void
 }
 
 declare interface UIAudioHandler extends IScriptable {
@@ -50904,7 +50904,7 @@ declare interface VariantDataView extends BaseVariantDataSource {
 
 declare interface inkVectorGraphicWidget extends inkLeafWidget {
 
-  LoadSVG(svgPath: String): void
+  LoadSVG(svgPath: string): void
 }
 
 declare interface AnimateAnchorOnHoverView extends inkLogicController {
@@ -50976,7 +50976,7 @@ declare interface SettingsSelectorControllerKeyBinding extends SettingsSelectorC
   StopListeningForInput(): void
   TriggerActionFeedback(): void
   /** @noSelf **/
-  PrepareInputTag(keyName: CName, groupName: CName, actionName: CName): String
+  PrepareInputTag(keyName: CName, groupName: CName, actionName: CName): string
   OnInitialize(): Bool
   OnUninitialize(): Bool
   OnKeyBindingEvent(e: KeyBindingEvent): Bool
@@ -51148,8 +51148,8 @@ declare interface CentaurShieldController extends AICustomComponents {
   UpdateBlackbaord(): void
   ApplyShieldDestroyedStats(): void
   PlayShieldDestroyedVoiceOver(): void
-  GetFloatFromCharacterTweak(varName: String, defaultValue?: number): number
-  GetStringFromCharacterTweak(varName: String, defaultValue?: String): String
+  GetFloatFromCharacterTweak(varName: string, defaultValue?: number): number
+  GetStringFromCharacterTweak(varName: string, defaultValue?: string): string
   TriggerShieldControllerExplosion(): void
   OnStatusEffectApplied(evt: ApplyStatusEffectEvent): Bool
   OnEventReceived(stimEvent: StimuliEvent): Bool
@@ -51432,7 +51432,7 @@ declare interface activityLogGameController extends inkHUDGameController {
 
   OnInitialize(): Bool
   OnUninitialize(): Bool
-  AddNewEntry(value: String): void
+  AddNewEntry(value: string): void
   OnNewEntries(value: Variant): Bool
   OnTypingFinished(widget: inkWidget): Bool
   OnDisappeared(widget: inkWidget): Bool
@@ -51442,7 +51442,7 @@ declare interface activityLogGameController extends inkHUDGameController {
 declare interface activityLogEntryLogicController extends inkLogicController {
 
   OnInitialize(): Bool
-  SetText(displayText: String): void
+  SetText(displayText: string): void
   Reset(): void
   IsAvailable(): Bool
   OnTyping(proxy: inkAnimProxy): Bool
@@ -51453,10 +51453,10 @@ declare interface activityLogEntryLogicController extends inkLogicController {
 declare interface ButtonHints extends inkLogicController {
 
   OnInitialize(): Bool
-  AddButtonHint(icon: EInputKey, label: String): void
+  AddButtonHint(icon: EInputKey, label: string): void
   AddButtonHint(action: CName, label: CName, holdInteraction: Bool): void
   AddButtonHint(action: CName, label: CName): void
-  AddButtonHint(action: CName, label: String): void
+  AddButtonHint(action: CName, label: string): void
   AddCharacterRoatateButtonHint(): void
   RemoveButtonHint(action: CName): void
   ClearButtonHints(): void
@@ -51471,8 +51471,8 @@ declare interface ButtonHintListItem extends inkLogicController {
 
   OnInitialize(): Bool
   CheckAction(action: CName): Bool
-  SetData(action: CName, label: String): void
-  SetData(icon: EInputKey, label: String): void
+  SetData(action: CName, label: string): void
+  SetData(icon: EInputKey, label: string): void
 }
 
 declare interface InkAnimHelper extends IScriptable {
@@ -51507,7 +51507,7 @@ declare interface SceneScreen extends GameObject {
 
 declare interface ChangeUIAnimEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface SceneScreenUIAnimationsData extends IScriptable {
@@ -51528,7 +51528,7 @@ declare interface GenericMessageNotification extends inkGameController {
 
   OnInitialize(): Bool
   OnUninitialize(): Bool
-  AddButtonHints(actionName: CName, label: String): void
+  AddButtonHints(actionName: CName, label: string): void
   OnHandlePressInput(evt: inkPointerEvent): Bool
   OnConfirmClick(evt: inkPointerEvent): Bool
   OnCancelClick(evt: inkPointerEvent): Bool
@@ -51544,21 +51544,21 @@ declare interface GenericMessageNotification extends inkGameController {
   /** @noSelf **/
   GetBaseData(): GenericMessageNotificationData
   /** @noSelf **/
-  Show(controller: worlduiIGameController, title: String, message: String): inkGameNotificationToken
+  Show(controller: worlduiIGameController, title: string, message: string): inkGameNotificationToken
   /** @noSelf **/
-  Show(controller: worlduiIGameController, identifier: number, title: String, message: String): inkGameNotificationToken
+  Show(controller: worlduiIGameController, identifier: number, title: string, message: string): inkGameNotificationToken
   /** @noSelf **/
-  Show(controller: worlduiIGameController, message: String): inkGameNotificationToken
+  Show(controller: worlduiIGameController, message: string): inkGameNotificationToken
   /** @noSelf **/
-  Show(controller: worlduiIGameController, identifier: number, message: String): inkGameNotificationToken
+  Show(controller: worlduiIGameController, identifier: number, message: string): inkGameNotificationToken
   /** @noSelf **/
-  Show(controller: worlduiIGameController, title: String, message: String, type: GenericMessageNotificationType): inkGameNotificationToken
+  Show(controller: worlduiIGameController, title: string, message: string, type: GenericMessageNotificationType): inkGameNotificationToken
   /** @noSelf **/
-  Show(controller: worlduiIGameController, identifier: number, title: String, message: String, type: GenericMessageNotificationType): inkGameNotificationToken
+  Show(controller: worlduiIGameController, identifier: number, title: string, message: string, type: GenericMessageNotificationType): inkGameNotificationToken
   /** @noSelf **/
-  Show(controller: worlduiIGameController, message: String, type: GenericMessageNotificationType): inkGameNotificationToken
+  Show(controller: worlduiIGameController, message: string, type: GenericMessageNotificationType): inkGameNotificationToken
   /** @noSelf **/
-  Show(controller: worlduiIGameController, identifier: number, message: String, type: GenericMessageNotificationType): inkGameNotificationToken
+  Show(controller: worlduiIGameController, identifier: number, message: string, type: GenericMessageNotificationType): inkGameNotificationToken
 }
 
 declare interface GenericMessageNotificationData extends inkGameNotificationData {
@@ -51709,7 +51709,7 @@ declare interface PlayerDevelopmentDataManager extends IScriptable {
   GetAttributePoints(): number
   GetPerkLevel(type: gamedataPerkType): number
   /** @noSelf **/
-  PerkUtilityToString(utility: gamedataPerkUtility): String
+  PerkUtilityToString(utility: gamedataPerkUtility): string
   UpdateData(): void
   NotifyAttributeUpdate(attributeId: TweakDBID): void
   UpgradePerk(data: PerkDisplayData): void
@@ -51993,8 +51993,8 @@ declare interface VendorDataManager extends IScriptable {
   GetVendorInstance(): GameObject
   GetVendorID(): TweakDBID
   GetLocalPlayer(): PlayerPuppet
-  GetVendorName(): String
-  GetVendorDescription(): String
+  GetVendorName(): string
+  GetVendorDescription(): string
   GetLocalPlayerCurrencyAmount(): number
   GetSpecialOffers(): gameItemData[]
   GetVendorSpecialOffers(): VendorGameItemData[]
@@ -52130,7 +52130,7 @@ declare interface WeaponRosterInfo {
 
 declare interface HolocallStartEvent extends Event {
 
-  GetVideoPath(): String
+  GetVideoPath(): string
   ShouldForceFrameRate(): Bool
 }
 
@@ -52143,7 +52143,7 @@ declare interface BackpackEquipSlotChooserPopup extends inkGameController {
   OnSlotClick(e: inkPointerEvent): Bool
   OnUninitialize(): Bool
   SetButtonHints(): void
-  AddButtonHints(actionName: CName, label: String): void
+  AddButtonHints(actionName: CName, label: string): void
   OnHandlePressInput(evt: inkPointerEvent): Bool
   OnOkClick(controller: inkButtonController): Bool
   OnCancelClick(controller: inkButtonController): Bool
@@ -52202,7 +52202,7 @@ declare interface BackpackFilterButtonController extends inkLogicController {
   /** @noSelf **/
   GetLabelKey(filterType: ItemFilterCategory): CName
   /** @noSelf **/
-  GetIcon(filterType: ItemFilterCategory): String
+  GetIcon(filterType: ItemFilterCategory): string
 }
 
 declare interface ItemFilterCategories extends IScriptable {
@@ -52212,9 +52212,9 @@ declare interface ItemFilterCategories extends IScriptable {
   /** @noSelf **/
   GetLabelKey(filterType: ItemFilterCategory): CName
   /** @noSelf **/
-  GetIcon(filterType: number): String
+  GetIcon(filterType: number): string
   /** @noSelf **/
-  GetIcon(filterType: ItemFilterCategory): String
+  GetIcon(filterType: ItemFilterCategory): string
 }
 
 declare interface ItemFilters extends IScriptable {
@@ -52224,9 +52224,9 @@ declare interface ItemFilters extends IScriptable {
   /** @noSelf **/
   GetLabelKey(filterType: ItemFilterType): CName
   /** @noSelf **/
-  GetIcon(filterType: number): String
+  GetIcon(filterType: number): string
   /** @noSelf **/
-  GetIcon(filterType: ItemFilterType): String
+  GetIcon(filterType: ItemFilterType): string
 }
 
 declare interface ItemCategoryFliterManager extends IScriptable {
@@ -52258,7 +52258,7 @@ declare interface CrafringMaterialItemController extends BaseButtonView {
   SetHighlighted(quantityChanged?: number): void
   GetItemID(): ItemID
   GetQuantity(): number
-  GetMateialDisplayName(): String
+  GetMateialDisplayName(): string
 }
 
 declare interface DropdownButtonController extends inkLogicController {
@@ -52282,10 +52282,10 @@ declare interface DropdownItemController extends BaseButtonView {
 declare interface BriefingScreen extends inkHUDGameController {
 
   OnInitialize(): Bool
-  OnBriefingOpenerCalled(value: String): Bool
+  OnBriefingOpenerCalled(value: string): Bool
   OnBriefingSizeCalled(value: Variant): Bool
   OnBriefingAlignmentCalled(value: Variant): Bool
-  FindEntry(toFind: String, entries: JournalEntry[]): JournalEntry
+  FindEntry(toFind: string, entries: JournalEntry[]): JournalEntry
   OnUninitialize(): Bool
 }
 
@@ -52368,7 +52368,7 @@ declare interface BackpackMainGameController extends gameuiMenuGameController {
   OnInventoryRequestTooltip(displayingData: InventoryItemData, widget: inkWidget, iconErrorInfo: DEBUG_IconErrorInfo): void
   SetInventoryItemButtonHintsHoverOver(displayingData: InventoryItemData): void
   SetInventoryItemButtonHintsHoverOut(): void
-  SetWarningMessage(message: String): void
+  SetWarningMessage(message: string): void
 }
 
 declare interface BackpackInventoryListenerCallback extends InventoryScriptCallback {
@@ -52520,21 +52520,21 @@ declare interface CodexUtils extends IScriptable {
   /** @noSelf **/
   GetTutorialsData(journal: JournalManager, activeDataSync: CodexListSyncData, offset: number): VirutalNestedListData[]
   /** @noSelf **/
-  AppendTutorialEntries(journal: JournalManager, path: String, output: JournalEntry[]): Bool
+  AppendTutorialEntries(journal: JournalManager, path: string, output: JournalEntry[]): Bool
   /** @noSelf **/
   SetCodexData(journal: JournalManager, codexList: JournalEntry[]): void
   /** @noSelf **/
   JournalToRepresentationArray(journal: JournalManager, entries: JournalEntry[]): JournalRepresentationData[]
   /** @noSelf **/
-  GetLocalizedTag(tag: CName): String
+  GetLocalizedTag(tag: CName): string
   /** @noSelf **/
-  GetShardTitleString(isCrypted: Bool, titleString: String): String
+  GetShardTitleString(isCrypted: Bool, titleString: string): string
   /** @noSelf **/
-  GetShardTextString(isCrypted: Bool, textString: String): String
+  GetShardTextString(isCrypted: Bool, textString: string): string
   /** @noSelf **/
-  GetCategoryTypeFromId(id: String): CodexCategoryType
+  GetCategoryTypeFromId(id: string): CodexCategoryType
   /** @noSelf **/
-  GetCodexFilterIcon(category: CodexCategoryType): String
+  GetCodexFilterIcon(category: CodexCategoryType): string
 }
 
 declare interface ShardEntryData extends GenericCodexEntryData {
@@ -52855,7 +52855,7 @@ declare interface CreditsGameController extends gameuiCreditsController {
 declare interface CyberEquipGameController extends ArmorEquipGameController {
 
   OnInitialize(): Bool
-  CreateButton(title: String, btnPath: String, area: gamedataEquipmentArea, numSlots: number): void
+  CreateButton(title: string, btnPath: string, area: gamedataEquipmentArea, numSlots: number): void
   GetPartialViewData(itemID: ItemID): ItemViewData
   RefreshInventoryList(): void
   RemovedEverythingButCyberware(items: gameItemData[]): gameItemData[]
@@ -52874,7 +52874,7 @@ declare interface CyberwareAttributesSkills extends inkGameController {
   OnInitialize(): Bool
   SyncWithPlayerDevSystem(): void
   SyncProficiencies(): void
-  HelperGetStatText(currStatType: gamedataStatType, statsSystem: StatsSystem): String
+  HelperGetStatText(currStatType: gamedataStatType, statsSystem: StatsSystem): string
   SyncStats(): void
   OnSomeResistanceChanged(value: number): Bool
   SyncDevPoints(): void
@@ -52890,7 +52890,7 @@ declare interface CyberwareAttributes_Logic extends inkLogicController {
   OnInitialize(): Bool
   OnButtonHoverOver(e: inkPointerEvent): Bool
   OnButtonHoverOut(e: inkPointerEvent): Bool
-  SetAttributeValue(value: String): void
+  SetAttributeValue(value: string): void
 }
 
 declare interface RequestStats extends Event {
@@ -52997,7 +52997,7 @@ declare interface CraftingMainGameController extends gameuiMenuGameController {
 
 declare interface TabRadioGroup extends inkRadioGroupController {
 
-  SetData(enumCount: number, tooltipsManager?: gameuiTooltipsManager, labelList?: String[], iconList?: String[]): void
+  SetData(enumCount: number, tooltipsManager?: gameuiTooltipsManager, labelList?: string[], iconList?: string[]): void
   OnHoverOver(evt: inkPointerEvent): Bool
   OnHoverOut(evt: inkPointerEvent): Bool
 }
@@ -53021,7 +53021,7 @@ declare interface ProgressBarButton extends inkLogicController {
   OnInitialize(): Bool
   OnCraftingHoldButton(evt: inkPointerEvent): Bool
   OnReleaseButton(evt: inkPointerEvent): Bool
-  SetupProgressButton(label: String, progressController: ProgressBarsController): void
+  SetupProgressButton(label: string, progressController: ProgressBarsController): void
   SetAvaibility(available: Bool): void
   OnUnitialize(): Bool
 }
@@ -53212,7 +53212,7 @@ declare interface SubMenuPanelLogicController extends inkLogicController {
   SetRepacerMode(): void
   SetActive(isActive: Bool, hideSubmenu?: Bool): void
   OnButtonRelease(evt: inkPointerEvent): Bool
-  OnMenuChanged(index: number, value: String): Bool
+  OnMenuChanged(index: number, value: string): Bool
   OpenModsTabExternal(request: CyberwareTabModsRequest): void
   AddMenus(selectedMenu: MenuData, menuDataArray: MenuData[], subMenuData?: MenuData, forceRefreshLines?: Bool): void
   HandleCharacterLevelUpdated(value: number): void
@@ -53287,7 +53287,7 @@ declare interface DeathMenuGameController extends gameuiMenuItemListGameControll
   HandleMenuItemActivate(data: PauseMenuListItemData): Bool
   OnListRelease(e: inkPointerEvent): Bool
   OnGlobalRelease(e: inkPointerEvent): Bool
-  OnSavesReady(saves: String[]): Bool
+  OnSavesReady(saves: string[]): Bool
 }
 
 declare interface DeathMenuUserData extends IScriptable {
@@ -53344,7 +53344,7 @@ declare interface DebugHubMenuGameController extends gameuiMenuGameController {
   OnUninitialize(): Bool
   OnSetMenuEventDispatcher(menuEventDispatcher: inkMenuEventDispatcher): Bool
   OnButtonRelease(evt: inkPointerEvent): Bool
-  OnMenuChanged(index: number, value: String): Bool
+  OnMenuChanged(index: number, value: string): Bool
 }
 
 declare interface DebugHubMenuLogicController extends inkLogicController {
@@ -53353,7 +53353,7 @@ declare interface DebugHubMenuLogicController extends inkLogicController {
   GetSelectorController(): hubSelectorController
   SetDefaultMenu(defaultMenu: CName): void
   GetEventNameByIndex(index: number): CName
-  AddMenuItem(menuLabel: String, eventName: CName, menuName: CName): void
+  AddMenuItem(menuLabel: string, eventName: CName, menuName: CName): void
 }
 
 declare interface hubSelectorController extends SelectorController {
@@ -53364,11 +53364,11 @@ declare interface hubSelectorController extends SelectorController {
   RegisterToMenuTabCallback(eventName: CName, object: IScriptable, functionName: CName): void
   CycleInRange(index: number, range: number): number
   GetNearestWidgetsData(index: number): MenuData[]
-  OnUpdateValue(value: String, index: number, changeDirection: inkSelectorChangeDirection): Bool
+  OnUpdateValue(value: string, index: number, changeDirection: inkSelectorChangeDirection): Bool
   OnLeft(e: inkPointerEvent): Bool
   OnRight(e: inkPointerEvent): Bool
   OnMenuLabelClick(e: inkPointerEvent): Bool
-  FindLabel(label: String): HubMenuLabelController
+  FindLabel(label: string): HubMenuLabelController
   DetermineIndex(controller: HubMenuLabelController): number
 }
 
@@ -53457,7 +53457,7 @@ declare interface gameuiInGameMenuGameController extends gameuiBaseMenuGameContr
   OnHandleMenuInput(evt: inkPointerEvent): Bool
   OnRequestHubMenu(evt: StartHubMenuEvent): Bool
   OnForceCloseHubMenuEvent(evt: ForceCloseHubMenuEvent): Bool
-  OnBreachingNetwork(value: String): Bool
+  OnBreachingNetwork(value: string): Bool
   OnOpenStorage(value: Variant): Bool
   OnTriggerMenuEvent(value: CName): Bool
   OnDisplayDeathMenu(value: Bool): Bool
@@ -53606,7 +53606,7 @@ declare interface MinimapContainerController extends MappinsContainerController 
   OnPlayerAttach(playerGameObject: GameObject): Bool
   InitializePlayer(playerPuppet: GameObject): void
   OnPlayerDetach(playerGameObject: GameObject): Bool
-  OnLocationUpdated(value: String): Bool
+  OnLocationUpdated(value: string): Bool
   OnPSMCombatChanged(psmCombat: gamePSMCombat): Bool
   OnSecurityDataChange(value: Variant): Bool
   SecurityZoneUpdate(zone: ESecurityAreaType): void
@@ -54048,7 +54048,7 @@ declare interface CodexPopupGameController extends inkGameController {
   OnUninitialize(): Bool
   OnRelease(evt: inkPointerEvent): Bool
   SetupData(): void
-  AddButtonHints(actionName: CName, label: String): void
+  AddButtonHints(actionName: CName, label: string): void
 }
 
 declare interface CraftingNotificationViewData extends GenericNotificationViewData {
@@ -54090,7 +54090,7 @@ declare interface ItemsNotificationQueue extends gameuiGenericNotificationGameCo
   OnVendorBoughtItemEvent(evt: VendorBoughtItemEvent): Bool
   OnCharacterProficiencyUpdated(evt: ProficiencyProgressEvent): Bool
   OnNewTarotCardAdded(evt: TarotCardAdded): Bool
-  PushXPNotification(value: number, remainingPointsToLevelUp: number, delta: number, notificationColorTheme: CName, notificationName: String, type: gamedataProficiencyType, currentLevel: number, isLevelMaxed: Bool): void
+  PushXPNotification(value: number, remainingPointsToLevelUp: number, delta: number, notificationColorTheme: CName, notificationName: string, type: gamedataProficiencyType, currentLevel: number, isLevelMaxed: Bool): void
   PushCurrencyNotification(diff: number, total: number): void
   PushItemNotification(itemID: ItemID, itemRarity: CName): void
   RegisterPSMListeners(playerObject: GameObject): void
@@ -54125,7 +54125,7 @@ declare interface TarotCardAdded extends Event {
 declare interface OpenTarotCollectionNotificationAction extends GenericNotificationBaseAction {
 
   Execute(data: IScriptable): Bool
-  GetLabel(): String
+  GetLabel(): string
   ShowTarotCollection(): void
 }
 
@@ -54228,14 +54228,14 @@ declare interface LevelUpNotificationQueue extends gameuiGenericNotificationGame
 declare interface OpenPerksNotificationAction extends GenericNotificationBaseAction {
 
   Execute(data: IScriptable): Bool
-  GetLabel(): String
+  GetLabel(): string
   ShowPerks(): void
 }
 
 declare interface OpenWorldMapNotificationAction extends GenericNotificationBaseAction {
 
   Execute(data: IScriptable): Bool
-  GetLabel(): String
+  GetLabel(): string
   ShowWorldMap(): void
 }
 
@@ -54336,8 +54336,8 @@ declare interface JournalNotificationQueue extends gameuiGenericNotificationGame
   ShowNewMessage(entry: JournalEntry, state: gameJournalEntryState): void
   PushQuestNotification(questEntry: JournalQuest, state: gameJournalEntryState): void
   PushObjectiveQuestNotification(entry: JournalEntry): void
-  PushNotification(title: String, text: String, widget: CName, animation: CName, action?: GenericNotificationBaseAction): void
-  PushNewContactNotification(title: String, text: String, widget: CName, animation: CName, action?: GenericNotificationBaseAction): void
+  PushNotification(title: string, text: string, widget: CName, animation: CName, action?: GenericNotificationBaseAction): void
+  PushNewContactNotification(title: string, text: string, widget: CName, animation: CName, action?: GenericNotificationBaseAction): void
   PushSMSNotification(msgEntry: JournalPhoneMessage, action?: GenericNotificationBaseAction): void
   PushNotification(entry: JournalOnscreen): void
   GetShardNotificationData(entry: JournalOnscreen): ShardCollectedNotificationViewData
@@ -54358,7 +54358,7 @@ declare interface ShardCollectedNotificationViewData extends GenericNotification
 
 declare interface OpenShardNotificationAction extends GenericNotificationBaseAction {
 
-  GetLabel(): String
+  GetLabel(): string
 }
 
 declare interface CustomQuestNotificationData {
@@ -54368,14 +54368,14 @@ declare interface CustomQuestNotificationData {
 declare interface TrackQuestNotificationAction extends GenericNotificationBaseAction {
 
   Execute(data: IScriptable): Bool
-  GetLabel(): String
+  GetLabel(): string
   TrackFirstObjective(questEntry: JournalEntry): Bool
 }
 
 declare interface OpenMessengerNotificationAction extends GenericNotificationBaseAction {
 
   Execute(data: IScriptable): Bool
-  GetLabel(): String
+  GetLabel(): string
   ShowMessenger(): void
 }
 
@@ -54386,7 +54386,7 @@ declare interface CustomNotificationEvent extends Event {
 declare interface ItemNotificationAction extends GenericNotificationBaseAction {
 
   Execute(data: IScriptable): Bool
-  GetLabel(): String
+  GetLabel(): string
   ShowInventory(): void
 }
 
@@ -54645,7 +54645,7 @@ declare interface StatsStreetCredReward extends inkLogicController {
 declare interface StatsStreetCredRewardItem extends inkButtonController {
 
   SetData(data: LevelRewardDisplayData, state?: CName): void
-  GetDescription(): String
+  GetDescription(): string
   GetDescriptionLocalizationPackage(): UILocalizationDataPackage
 }
 
@@ -54756,7 +54756,7 @@ declare interface PerksPointsDisplayController extends inkLogicController {
   OnInitialize(): Bool
   Setup(type: CharacterScreenType): void
   SetValues(value1: number, value2: number): void
-  SetDescriptions(desc1: String, desc2: String): void
+  SetDescriptions(desc1: string, desc2: string): void
   SetIcons(part1: CName, part2: CName): void
 }
 
@@ -54783,7 +54783,7 @@ declare interface PerksMenuAttributeItemController extends inkLogicController {
 declare interface ProficiencyButtonController extends inkButtonController {
 
   OnInitialize(): Bool
-  SetLabel(value: String): void
+  SetLabel(value: string): void
   SetLevel(value: number): void
   SetIndex(value: number): void
   GetIndex(): number
@@ -54806,7 +54806,7 @@ declare interface PerksMenuAttributeDisplayController extends BaseButtonView {
   UpdateConnections(): void
   GetTopConnectionState(attribute: PerkMenuAttribute): CName
   GetBottomConnectionState(attribute: PerkMenuAttribute): CName
-  GetName(attribute: PerkMenuAttribute): String
+  GetName(attribute: PerkMenuAttribute): string
   GetIconAtlasPart(attribute: PerkMenuAttribute): CName
   PlayHoverAnimation(value: Bool): void
   PlayAnimation(animation: CName): inkAnimProxy
@@ -54858,7 +54858,7 @@ declare interface PerkDisplayTooltipController extends AGenericTooltipController
   Refresh(): void
   SetData(tooltipData: ATooltipData): void
   GetUiLocalizationData(levelDataRecord: PerkLevelData_Record): UILocalizationDataPackage
-  GetLevelDescription(perkData: PerkDisplayData, levelDataRecord: PerkLevelData_Record): String
+  GetLevelDescription(perkData: PerkDisplayData, levelDataRecord: PerkLevelData_Record): string
   RefreshTooltip(data: PerkTooltipData): void
   RefreshTooltip(data: TraitTooltipData): void
   UpdateType(perkRecord?: Perk_Record): void
@@ -54956,20 +54956,20 @@ declare interface PerkMenuTooltipController extends AGenericTooltipController {
   PlayVideo(data: BasePerksMenuTooltipData): void
   SetupCustom(data: AttributeTooltipData): void
   SetupCustom(data: SkillTooltipData): void
-  SetTitle(value: String): void
-  SetType(value: String): void
-  SetDesc1(value: String): void
-  SetDesc2(value: String): void
+  SetTitle(value: string): void
+  SetType(value: string): void
+  SetDesc1(value: string): void
+  SetDesc2(value: string): void
   SetCanUpgrade(value: Bool): void
   SetCanOpenPerks(value: Bool): void
-  AppendLine(outString: String, line: String): void
-  AppendNewLine(outString: String): void
+  AppendLine(outString: string, line: string): void
+  AppendNewLine(outString: string): void
 }
 
 declare interface MessangerItemRenderer extends JournalEntryListItemController {
 
   OnJournalEntryUpdated(entry: JournalEntry, extraData: IScriptable): void
-  SetMessageView(txt: String, type: MessageViewType, contactName: String): void
+  SetMessageView(txt: string, type: MessageViewType, contactName: string): void
 }
 
 declare interface PhotoModeCameraLocation extends inkLogicController {
@@ -55054,7 +55054,7 @@ declare interface gameuiPhotoModeMenuController extends inkGameController {
   OnUpdate(timeDelta: number): Bool
   OnSetCurrentMenuPage(page: number): Bool
   OnTopBarValueChanged(controller: inkRadioGroupController, selectedIndex: number): Bool
-  OnAddMenuItem(labelText: String, attributeKey: number, page: number): Bool
+  OnAddMenuItem(labelText: string, attributeKey: number, page: number): Bool
   AddConsoleScreenshotInput(screenshotVersion: number): void
   OnAddingMenuItemsFinished(): Bool
   OnForceAttributeVaulue(attribute: number, value: number): Bool
@@ -55071,7 +55071,7 @@ declare interface gameuiPhotoModeMenuController extends inkGameController {
   GetMenuItem(attributeKey: number): PhotoModeMenuListItem
   AddMenuPage(): ListController
   GetMenuPage(pageIndex: number): ListController
-  AddMenuItem(label: String, attributeKey: number, page: number): void
+  AddMenuItem(label: string, attributeKey: number, page: number): void
   GetCurrentSelectedMenuListItem(): PhotoModeMenuListItem
   OnPMButtonRelease(evt: inkPointerEvent): Bool
   OnPMButtonHold(evt: inkPointerEvent): Bool
@@ -55168,7 +55168,7 @@ declare interface characterCreationBodyMorphImageThumbnail extends inkButtonAnim
 declare interface characterCreationGenderBackstoryBtn extends inkButtonController {
 
   OnInitialize(): Bool
-  Refresh(newName: String, gender: Bool): void
+  Refresh(newName: string, gender: Bool): void
   OnHoverOver(e: inkPointerEvent): Bool
   OnHoverOut(e: inkPointerEvent): Bool
 }
@@ -55375,7 +55375,7 @@ declare interface characterCreationBodyMorphOptionColorPicker extends inkLogicCo
 
   OnColorSelected(widget: inkWidget): Bool
   GetOption(): CharacterCustomizationOption
-  SetTitle(title: String): void
+  SetTitle(title: string): void
   GetSelectedIndex(): number
   FillGrid(option: CharacterCustomizationOption): void
 }
@@ -55446,7 +55446,7 @@ declare interface CharacterCreationGenderBackstoryPathHeader extends inkLogicCon
   OnInitialize(): Bool
   Select(): void
   UnSelect(): void
-  SetData(title: String, desc: String): void
+  SetData(title: string, desc: string): void
 }
 
 declare interface gameuiCharacterCustomizationSystem_OnInitializeOptionsListEvent extends Event {
@@ -55527,7 +55527,7 @@ declare interface CharacterCreationPersistantElements extends inkLogicController
   OnUninitialize(): Bool
   ChangeSelectedHeader(selectedIndex: number): void
   ChangeNavigationButtonVisibility(previousBtnAvailable: Bool, nextBtnAvailable: Bool): void
-  CreateHeader(label: String, icon: CName): void
+  CreateHeader(label: string, icon: CName): void
   OnChangeToHeader_00(e: inkWidget): Bool
   OnAxisInput(e: inkPointerEvent): Bool
   OnRelativeInput(e: inkPointerEvent): Bool
@@ -55538,7 +55538,7 @@ declare interface CharacterCreationTopBarHeader extends inkButtonController {
 
   OnInitialize(): Bool
   OnUninitialize(): Bool
-  SetData(label: String, icon: CName): void
+  SetData(label: string, icon: CName): void
   Select(): void
   Unselect(): void
   PlayAnim(animName: CName): void
@@ -55591,7 +55591,7 @@ declare interface CharacterCreationStatsMenu extends BaseCharacterCreationContro
   CanBeIncremented(currValue: number): Bool
   ReachedLimit(currValue: number): Bool
   CanBeDecremented(currValue: number): Bool
-  FillAttributeData(label: String, value: number, desc: String): CharacterCreationAttributeData
+  FillAttributeData(label: string, value: number, desc: string): CharacterCreationAttributeData
   PrepareTooltips(): void
   OnBtnHoverOver(e: inkWidget): Bool
   OnBtnHoverOut(e: inkWidget): Bool
@@ -55627,7 +55627,7 @@ declare interface FindServersMenuGameController extends PreGameSubMenuGameContro
   ReInitializeButtons(): void
   AddButtons(buttonsList: inkVerticalPanel): void
   Deactivate(widget: inkWidget): void
-  GetButton(buttonsList: inkVerticalPanel, name: String): inkWidget
+  GetButton(buttonsList: inkVerticalPanel, name: string): inkWidget
 }
 
 declare interface ServerInfoController extends ListItemController {
@@ -55667,7 +55667,7 @@ declare interface GOGProfileGameController extends BaseGOGProfileController {
   ShowThanks(): void
   ShowLoading(): void
   ShowRewards(): void
-  ShowRegister(registerUrl: String, qrCodePNGBlob: number[]): void
+  ShowRegister(registerUrl: string, qrCodePNGBlob: number[]): void
   ShowRetryButton(show: Bool): void
 }
 
@@ -55678,7 +55678,7 @@ declare interface GogRewardsController extends inkLogicController {
 
 declare interface GogRewardEntryController extends inkLogicController {
 
-  UpdateRewardDetails(rewardTitle: String, rewardDescription: String, iconSlot: CName): void
+  UpdateRewardDetails(rewardTitle: string, rewardDescription: string, iconSlot: CName): void
 }
 
 declare interface GogErrorNotificationController extends inkLogicController {
@@ -55691,7 +55691,7 @@ declare interface GogRegisterController extends BaseGOGRegisterController {
   OnInitialize(): Bool
   OnUninitialize(): Bool
   OnLinkClicked(evt: inkPointerEvent): Bool
-  UpdateRegistrationData(registerUrl: String, qrCodePNGBlob: number[]): void
+  UpdateRegistrationData(registerUrl: string, qrCodePNGBlob: number[]): void
 }
 
 declare interface LinkClickedEvent extends Event {
@@ -55708,7 +55708,7 @@ declare interface MenuAccountLogicController extends inkLogicController {
   OnUninitialize(): Bool
   OnButtonRelease(evt: inkPointerEvent): Bool
   SetChangeAccountEnabled(enabled: Bool): void
-  SetPlayerName(playerName: String): void
+  SetPlayerName(playerName: string): void
   ChangeAccountRequest(): void
 }
 
@@ -55717,11 +55717,11 @@ declare interface LoadGameMenuGameController extends gameuiSaveHandlingControlle
   OnInitialize(): Bool
   OnUninitialize(): Bool
   OnButtonRelease(evt: inkPointerEvent): Bool
-  SetupLoadItems(saves: String[]): void
-  CreateLoadItem(index: number, label: String): void
+  SetupLoadItems(saves: string[]): void
+  CreateLoadItem(index: number, label: string): void
   OnRelease(e: inkPointerEvent): Bool
   OnSaveDeleted(result: Bool, idx: number): Bool
-  OnSavesReady(saves: String[]): Bool
+  OnSavesReady(saves: string[]): Bool
   OnSaveMetadataReady(info: SaveMetadataInfo): Bool
   OnSetMenuEventDispatcher(menuEventDispatcher: inkMenuEventDispatcher): Bool
 }
@@ -55730,7 +55730,7 @@ declare interface LoadListItem extends AnimatedListItemController {
 
   OnInitialize(): Bool
   SetMetadata(metadata: SaveMetadataInfo): void
-  SetInvalid(label: String): void
+  SetInvalid(label: string): void
   SetData(index: number, emptySlot?: Bool): void
   OnHoverOver(e: inkPointerEvent): Bool
   OnHoverOut(e: inkPointerEvent): Bool
@@ -55769,7 +55769,7 @@ declare interface NewGameMenuGameController extends PreGameSubMenuGameController
   OnInitialize(): Bool
   OnRunFunctionalTestMap(e: inkPointerEvent): Bool
   OnStartDefinition(e: inkPointerEvent): Bool
-  OnCategoryChanged(index: number, value: String): Bool
+  OnCategoryChanged(index: number, value: string): Bool
   OnBack(e: inkPointerEvent): Bool
   InitDynamicButtons(): void
   InitSelectors(): void
@@ -55799,13 +55799,13 @@ declare interface SaveGameMenuGameController extends gameuiSaveHandlingControlle
   OnInitialize(): Bool
   OnUninitialize(): Bool
   TryToCreateEmptySlot(): void
-  SetupLoadItems(saves: String[]): void
-  CreateLoadItem(index: number, label: String): void
+  SetupLoadItems(saves: string[]): void
+  CreateLoadItem(index: number, label: string): void
   OnSaveFile(e: inkPointerEvent): Bool
   OnSaveDeleted(result: Bool, idx: number): Bool
   OnOverrideSaveAccepted(): Bool
   OnSavingComplete(success: Bool, locks: gameSaveLock[]): Bool
-  OnSavesReady(saves: String[]): Bool
+  OnSavesReady(saves: string[]): Bool
   OnSaveMetadataReady(info: SaveMetadataInfo): Bool
   OnSetMenuEventDispatcher(menuEventDispatcher: inkMenuEventDispatcher): Bool
 }
@@ -55825,7 +55825,7 @@ declare interface SingleplayerMenuGameController extends MainMenuGameController 
   PopulateMenuItemList(): void
   OnListRelease(e: inkPointerEvent): Bool
   OnGlobalRelease(e: inkPointerEvent): Bool
-  OnSavesReady(saves: String[]): Bool
+  OnSavesReady(saves: string[]): Bool
   OnGogPressed(evt: inkPointerEvent): Bool
   HandleMenuItemActivate(data: PauseMenuListItemData): Bool
 }
@@ -55949,7 +55949,7 @@ declare interface MenuScenario_CharacterCustomization extends MenuScenario_PreGa
 
 declare interface QuestListController extends inkLogicController {
 
-  Setup(questType: gameJournalQuestType, questTypeLocTag: String): void
+  Setup(questType: gameJournalQuestType, questTypeLocTag: string): void
   CanAddQuest(questData: QuestDataWrapper): Bool
   AddQuest(questData: QuestDataWrapper, active: Bool): void
   OnButtonRelease(e: inkPointerEvent): Bool
@@ -55960,19 +55960,19 @@ declare interface QuestListController extends inkLogicController {
 
 declare interface QuestDataWrapper extends AJournalEntryWrapper {
 
-  Init(currQuest: JournalQuest, title: String, description: String, links: JournalEntry[], questObjectives: QuestObjectiveWrapper[], questStatus: gameJournalEntryState, isTracked: Bool, uniqueId: number, recommendedLevel: number, isNew: Bool, district: District_Record): void
+  Init(currQuest: JournalQuest, title: string, description: string, links: JournalEntry[], questObjectives: QuestObjectiveWrapper[], questStatus: gameJournalEntryState, isTracked: Bool, uniqueId: number, recommendedLevel: number, isNew: Bool, district: District_Record): void
   GetDistrict(): gamedataDistrict
   GetType(): gameJournalQuestType
-  GetId(): String
+  GetId(): string
   GetQuest(): JournalQuest
   GetStatus(): gameJournalEntryState
-  GetDescription(): String
+  GetDescription(): string
   GetLinks(): JournalEntry[]
   GetObjectives(): QuestObjectiveWrapper[]
-  GetTitle(): String
+  GetTitle(): string
   GetLevel(): number
   HasBriefing(): Bool
-  ToString(): String
+  ToString(): string
   Equals(questData: QuestDataWrapper): Bool
   Equals(questUniqueId: number): Bool
   IsTracked(): Bool
@@ -55992,7 +55992,7 @@ declare interface QuestObjectiveWrapper extends ABaseQuestObjectiveWrapper {
 
 declare interface QuestSubObjectiveWrapper extends ABaseQuestObjectiveWrapper {
 
-  ToString(): String
+  ToString(): string
 }
 
 declare interface QuestItemController extends inkButtonController {
@@ -56002,7 +56002,7 @@ declare interface QuestItemController extends inkButtonController {
   RefreshTrackedStyle(force?: Bool): void
   SetQuestData(currQuest: QuestDataWrapper): void
   MarkAsActive(): void
-  GetQuestStatus(): String
+  GetQuestStatus(): string
   HideNewIcon(): void
   GetObjectiveData(): ABaseQuestObjectiveWrapper
 }
@@ -56033,7 +56033,7 @@ declare interface questLogV2GameController extends gameuiMenuGameController {
   OnInitialize(): Bool
   OnPlayerAttach(playerPuppet: GameObject): Bool
   RefreshUI(): void
-  CreateQuestGroup(questType: gameJournalQuestType, questLOCKey: String): void
+  CreateQuestGroup(questType: gameJournalQuestType, questLOCKey: string): void
   BuildQuestList(): void
   BuildQuestDetails(): void
   CreateQuestObjectives(currQuestData: QuestDataWrapper): void
@@ -56058,7 +56058,7 @@ declare interface JournalWrapper extends ABaseWrapper {
   Init(gameInstance: GameInstance): void
   GetJournalManager(): JournalManager
   GetQuests(entries: JournalEntry[]): void
-  BuildQuestData_Recursive(currEntity: JournalEntry, description: String, questObjectives: QuestObjectiveWrapper[], links: JournalEntry[], foundTracked: Bool): void
+  BuildQuestData_Recursive(currEntity: JournalEntry, description: string, questObjectives: QuestObjectiveWrapper[], links: JournalEntry[], foundTracked: Bool): void
   BuildQuestData(currQuest: JournalQuest): QuestDataWrapper
   GetTrackedEntry(): JournalEntry
   GetTrackingStatus(entry: JournalEntry): Bool
@@ -56077,7 +56077,7 @@ declare interface ObjectiveController extends inkButtonController {
   RefreshTrackedStyle(): void
   Setup(data: ABaseQuestObjectiveWrapper, isOptional: Bool): void
   GetObjectiveData(): ABaseQuestObjectiveWrapper
-  GetObjectiveStatus(isOptional: Bool): String
+  GetObjectiveStatus(isOptional: Bool): string
   OnObjectiveClicked(controller: inkButtonController): Bool
   GetToTrack(): ABaseQuestObjectiveWrapper
 }
@@ -56097,10 +56097,10 @@ declare interface CyberwareInventoryMiniGrid extends inkLogicController {
   UpdateData(equipArea: gamedataEquipmentArea, playerEquipAreaInventory: InventoryItemData[], count?: number, screen?: CyberwareScreenType): void
   OnSlotSpawned(widget: inkWidget, userData: IScriptable): Bool
   UpdateTitles(count: number, screen: CyberwareScreenType, hasMods?: Bool): void
-  UpdateTitle(label: String): void
+  UpdateTitle(label: string): void
   GetInventoryItemDisplays(): InventoryItemDisplayController[]
   RemoveElements(limit: number): void
-  GetAreaHeader(area: gamedataEquipmentArea): String
+  GetAreaHeader(area: gamedataEquipmentArea): string
 }
 
 declare interface SlotUserData extends IScriptable {
@@ -56299,7 +56299,7 @@ declare interface RipperDocGameController extends gameuiMenuGameController {
 
 declare interface RipperdocIdPanel extends inkLogicController {
 
-  SetName(vendorName: String): void
+  SetName(vendorName: string): void
   SetMoney(money: number): void
   PlayIntoAnimation(): void
 }
@@ -56596,8 +56596,8 @@ declare interface CyberwareItemLogicController extends inkVirtualCompoundItemCon
 
 declare interface ItemFilterToggleController extends ToggleController {
 
-  GetLabelKey(): String
-  GetIcon(): String
+  GetLabelKey(): string
+  GetIcon(): string
 }
 
 declare interface TimeMenuGameController extends inkGameController {
@@ -56606,7 +56606,7 @@ declare interface TimeMenuGameController extends inkGameController {
   ToggleTimeSkip(enableTimeSkip: Bool): void
   OnUninitialize(): Bool
   SetupSelector(): void
-  OnHoursChanged(index: number, value: String): Bool
+  OnHoursChanged(index: number, value: string): Bool
   OnPressApply(e: inkPointerEvent): Bool
   OnPressBack(e: inkPointerEvent): Bool
   OnGlobalInput(e: inkPointerEvent): Bool
@@ -56637,7 +56637,7 @@ declare interface ItemQuantityPickerController extends inkGameController {
   OnInitialize(): Bool
   OnUninitialize(): Bool
   SetButtonHints(): void
-  AddButtonHints(actionName: CName, label: String): void
+  AddButtonHints(actionName: CName, label: string): void
   SetData(): void
   UpdatePriceText(): void
   UpdateWeight(): void
@@ -56659,7 +56659,7 @@ declare interface VendorConfirmationPopup extends inkGameController {
   OnInitialize(): Bool
   OnUninitialize(): Bool
   SetButtonHints(): void
-  AddButtonHints(actionName: CName, label: String): void
+  AddButtonHints(actionName: CName, label: string): void
   OnHandlePressInput(evt: inkPointerEvent): Bool
   OnOkClick(evt: inkPointerEvent): Bool
   OnCancelClick(evt: inkPointerEvent): Bool
@@ -56683,7 +56683,7 @@ declare interface VendorSellJunkPopup extends inkGameController {
   OnInitialize(): Bool
   OnUninitialize(): Bool
   SetButtonHints(): void
-  AddButtonHints(actionName: CName, label: String): void
+  AddButtonHints(actionName: CName, label: string): void
   OnHandlePressInput(evt: inkPointerEvent): Bool
   OnOkClick(controller: inkButtonController): Bool
   OnCancelClick(controller: inkButtonController): Bool
@@ -56717,7 +56717,7 @@ declare interface VendorHubMenuGameController extends gameuiMenuGameController {
   SetupMenuTabs(): void
   OnButtonRelease(evt: inkPointerEvent): Bool
   OnVendorUpdated(value: Variant): Bool
-  OnMenuChanged(index: number, value: String): Bool
+  OnMenuChanged(index: number, value: string): Bool
   NotifyActivePanel(item: HubVendorMenuItems): void
   OnSetMenuEventDispatcher(menuEventDispatcher: inkMenuEventDispatcher): Bool
   CloseVendor(): void
@@ -56737,7 +56737,7 @@ declare interface hudCameraController extends inkHUDGameController {
   OnZoomChange(curZoom: number): Bool
   OnChangeControlledDevice(value: EntityID): Bool
   ChangeCameraName(): void
-  GetEntityNameFromEntityID(obj: GameObject): String
+  GetEntityNameFromEntityID(obj: GameObject): string
   OnDelayedHUDInitializeEvent(evt: DelayedHUDInitializeEvent): Bool
   ResolveState(): void
 }
@@ -56790,7 +56790,7 @@ declare interface TextAnimOnTextChange extends inkLogicController {
 
   OnInitialize(): Bool
   OnUninitialize(): Bool
-  OnChangeTextToInject(str: String): Bool
+  OnChangeTextToInject(str: string): Bool
 }
 
 declare interface hudTurretController extends inkHUDGameController {
@@ -56979,7 +56979,7 @@ declare interface HudPhoneAvatarController extends HUDPhoneElement {
   StartAudiocall(contactToShow: JournalContact): void
   StartHolocall(contactToShow: JournalContact): void
   ChangeMinimized(minimized: Bool): void
-  SetStatusText(statusText: String): void
+  SetStatusText(statusText: string): void
   OnStateChanged(widget: inkWidget, oldState: CName, newState: CName): Bool
   RefreshView(contact: JournalContact, mode: EHudAvatarMode): void
   StopRootAnimation(): void
@@ -57148,7 +57148,7 @@ declare interface scannerBorderGameController extends inkProjectedHUDGameControl
   OnProgressChange(val: number): Bool
   ShouldShowScanner(): Bool
   GetOwner(): GameObject
-  OnProgressBarFluffTextChange(val: String): Bool
+  OnProgressBarFluffTextChange(val: string): Bool
   OnStateChanged(val: Variant): Bool
   OnScannedObject(val: EntityID): Bool
   OnScannerObjectStats(val: Variant): Bool
@@ -57187,7 +57187,7 @@ declare interface ScannerHintInkGameController extends inkGameController {
   GetOwner(): GameObject
   RegisterBlackboardCallbacks(): void
   OnShowMessege(value: Bool): Bool
-  OnMessegeUpdate(value: String): Bool
+  OnMessegeUpdate(value: string): Bool
   OnVisionModeChanged(value: number): Bool
 }
 
@@ -57262,9 +57262,9 @@ declare interface QuickHackDataEvent extends Event {
 
 declare interface ScannerDescription extends ScannerChunk {
 
-  GetDefaultDescription(): String
-  GetCustomDescriptions(): String[]
-  Set(defaultDesc: String, customDesc?: String[]): void
+  GetDefaultDescription(): string
+  GetCustomDescriptions(): string[]
+  Set(defaultDesc: string, customDesc?: string[]): void
   GetType(): ScannerDataType
 }
 
@@ -57414,11 +57414,11 @@ declare interface hudButtonReminderGameController extends inkHUDGameController {
   OnPlayerDetach(playerGameObject: GameObject): Bool
   RegisterPSMListeners(playerPuppet: GameObject): void
   UnregisterPSMListeners(playerPuppet: GameObject): void
-  OnRedrawText_1(argValue: String): void
+  OnRedrawText_1(argValue: string): void
   OnRedrawIcon_1(argValue: CName): void
-  OnRedrawText_2(argValue: String): void
+  OnRedrawText_2(argValue: string): void
   OnRedrawIcon_2(argValue: CName): void
-  OnRedrawText_3(argValue: String): void
+  OnRedrawText_3(argValue: string): void
   OnRedrawIcon_3(argValue: CName): void
   OnInteractingWithDevice(value: Bool): Bool
 }
@@ -57615,13 +57615,13 @@ declare interface DialogHubLogicController extends inkLogicController {
   OverrideInputButton(overrideButton: Bool): void
   WasTimed(): Bool
   SetupTimeBar(isActive: Bool, timedDuration: number, timedProgress: number): void
-  SetupTitle(title: String, isActive: Bool, isPossessed: Bool): void
+  SetupTitle(title: string, isActive: Bool, isPossessed: Bool): void
 }
 
 declare interface DialogChoiceLogicController extends inkLogicController {
 
   OnInitialize(): Bool
-  SetText(value: String, isFailed: Bool): void
+  SetText(value: string, isFailed: Bool): void
   SetDedicatedInput(value: CName): void
   SetIsPhoneLockActive(value: Bool): void
   SetType(value: ChoiceTypeWrapper): void
@@ -57885,7 +57885,7 @@ declare interface InventoryEquipmentSlot extends inkLogicController {
 
   OnInitialize(): Bool
   SetDisableSlot(disableSlot: Bool): void
-  Setup(itemData: InventoryItemData, equipmentArea: gamedataEquipmentArea, slotName?: String, slotIndex?: number, ownerEntity?: Entity): void
+  Setup(itemData: InventoryItemData, equipmentArea: gamedataEquipmentArea, slotName?: string, slotIndex?: number, ownerEntity?: Entity): void
   Show(): void
   Clear(): void
   RefreshUI(): void
@@ -57898,14 +57898,14 @@ declare interface InventoryEquipmentSlot extends inkLogicController {
   GetEquipmentArea(): gamedataEquipmentArea
   GetEquipmentAreaEnumToInt(): number
   GetSlotIndex(): number
-  GetSlotName(): String
+  GetSlotName(): string
   IsEmpty(): Bool
 }
 
 declare interface InventoryFilterButton extends BaseButtonView {
 
-  Setup(text: String, input: CName, framesDelay: number): void
-  Setup(text: String, input: CName): void
+  Setup(text: string, input: CName, framesDelay: number): void
+  Setup(text: string, input: CName): void
   PlayIntroAnimation(framesDelay: number): void
 }
 
@@ -57913,7 +57913,7 @@ declare interface LootingItemController extends inkLogicController {
 
   SetIcon(itemData: InventoryItemData): void
   SetData(itemData: ItemViewData, isCurrentlySelected: Bool): void
-  SetText(text: String): void
+  SetText(text: string): void
 }
 
 declare interface LootingScrollBlockController extends IScriptable {
@@ -57935,7 +57935,7 @@ declare interface InventoryItemDisplayCategoryArea extends inkLogicController {
 declare interface InventoryItemDisplayEquipmentArea extends inkLogicController {
 
   /** @noSelf **/
-  GetEquipmentAreaByName(categoryName: String): gamedataEquipmentArea
+  GetEquipmentAreaByName(categoryName: string): gamedataEquipmentArea
   GetNumberOfSlots(): number
   GetEquipmentAreas(): gamedataEquipmentArea[]
 }
@@ -58034,7 +58034,7 @@ declare interface gameuiInventoryGameController extends gameuiMenuGameController
   GetAttachmentDataForInventoryItem(itemData: InventoryItemData, boxData: InventoryComboBoxData[], allowUnequip: Bool): void
   GetAttachmentDataForCustomizeFromInventory(inspectedItemData: InventoryItemData, equipmentData: InventoryItemData[], boxData: InventoryComboBoxData[]): void
   OnSetMenuEventDispatcher(menuEventDispatcher: inkMenuEventDispatcher): Bool
-  GetSlotNameFromEqArea(area: gamedataEquipmentArea): String
+  GetSlotNameFromEqArea(area: gamedataEquipmentArea): string
   GetInventoryItemControllerFromTarget(evt: inkPointerEvent): InventoryItemDisplay
   GetEquipmentSlotControllerFromTarget(evt: inkPointerEvent): InventoryItemDisplayController
   IsAnEquipmentArea(equipmentArea: gamedataEquipmentArea): Bool
@@ -58042,7 +58042,7 @@ declare interface gameuiInventoryGameController extends gameuiMenuGameController
   GetAssociatedCategory(controller: InventoryItemDisplayController): InventoryItemDisplayController[]
   GetSide(controller: InventoryItemDisplayController): Bool
   GetTooltipPlacement(controller: InventoryItemDisplayController): gameuiETooltipPlacement
-  GetCategoryHeader(controller: InventoryItemDisplayController): String
+  GetCategoryHeader(controller: InventoryItemDisplayController): string
 }
 
 declare interface InventoryItemModeLogicController extends inkLogicController {
@@ -58116,7 +58116,7 @@ declare interface InventoryItemModeLogicController extends inkLogicController {
   DetermineUIMenuNotificationType(): UIMenuNotificationType
   SetInventoryItemTooltipHoverOver(itemData: InventoryItemData, target: inkWidget, skipCompare: Bool, iconErrorInfo: DEBUG_IconErrorInfo, display?: InventoryItemDisplayController): void
   ShowTooltipsForItemData(equippedItem: InventoryItemData, target: inkWidget, inspectedItemData: InventoryItemData, skipCompare: Bool, iconErrorInfo: DEBUG_IconErrorInfo, display?: InventoryItemDisplayController): void
-  OnEquipRequestTooltip(itemData: InventoryItemData, target: inkWidget, slotName: String): void
+  OnEquipRequestTooltip(itemData: InventoryItemData, target: inkWidget, slotName: string): void
   HideTooltips(): void
   SetInventoryItemButtonHintsHoverOver(displayingData: InventoryItemData, display?: InventoryItemDisplayController): void
   SetInventoryItemButtonHintsHoverOut(): void
@@ -58189,7 +58189,7 @@ declare interface InventoryStatsController extends inkLogicController {
 
 declare interface InventoryStatsEntryController extends inkLogicController {
 
-  Setup(icon: CName, label: String, value: number): void
+  Setup(icon: CName, label: string, value: number): void
   SetValue(value: number): void
 }
 
@@ -58243,7 +58243,7 @@ declare interface InventoryStatItemV2 extends inkLogicController {
   Setup(statViewData: StatViewData, framesDelay: number): void
   Setup(statViewData: StatViewData): void
   Setup(scannerStatDetails: ScannerStatDetails): void
-  Setup(statName: String, statValue: number, statType: gamedataStatType): void
+  Setup(statName: string, statValue: number, statType: gamedataStatType): void
   PlayIntroAnimation(framesDelay: number): void
 }
 
@@ -58266,7 +58266,7 @@ declare interface InventoryWeaponItemChooser extends InventoryGenericItemChooser
 declare interface InventoryWeaponSlot extends InventoryEquipmentSlot {
 
   OnInitialize(): Bool
-  Setup(itemData: InventoryItemData, equipmentArea: gamedataEquipmentArea, slotName?: String, slotIndex?: number, ownerEntity?: Entity): void
+  Setup(itemData: InventoryItemData, equipmentArea: gamedataEquipmentArea, slotName?: string, slotIndex?: number, ownerEntity?: Entity): void
   PlayIntroAnimation(framesDelay: number): void
   RefreshUI(): void
 }
@@ -58275,7 +58275,7 @@ declare interface InventoryWideItemDisplay extends InventoryItemDisplay {
 
   OnInitialize(): Bool
   SetAdditinalInfoType(infoType: ItemAdditionalInfoType): void
-  GetPriceText(): String
+  GetPriceText(): string
   UpdateAdditionalInfo(): void
   RefreshUI(): void
   UpdateItemStats(): void
@@ -58288,15 +58288,15 @@ declare interface InventoryWideItemDisplay extends InventoryItemDisplay {
 
 declare interface RipperdocFilterToggleController extends ToggleController {
 
-  GetLabelKey(): String
-  GetIcon(): String
+  GetLabelKey(): string
+  GetIcon(): string
 }
 
 declare interface ItemDisplayInventoryMiniGrid extends inkLogicController {
 
   OnInitialize(): Bool
   OnUninitialize(): Bool
-  SetupData(label: String, playerEquipAreaInventory: InventoryItemData[], equipArea?: gamedataEquipmentArea, displayContext?: ItemDisplayContext): void
+  SetupData(label: string, playerEquipAreaInventory: InventoryItemData[], equipArea?: gamedataEquipmentArea, displayContext?: ItemDisplayContext): void
   GetInventoryItemDisplays(): InventoryItemDisplayController[]
   RemoveElement(): void
 }
@@ -58365,7 +58365,7 @@ declare interface ItemInventoryMiniGrid extends inkLogicController {
 
   OnInitialize(): Bool
   OnUninitialize(): Bool
-  SetupData(label: String, playerEquipAreaInventory: InventoryItemData[], equipArea?: gamedataEquipmentArea): void
+  SetupData(label: string, playerEquipAreaInventory: InventoryItemData[], equipArea?: gamedataEquipmentArea): void
   SetGridWith(gridWidth: number): void
   GetInventoryItemDisplays(): InventoryItemDisplay[]
   RemoveElement(): void
@@ -58444,7 +58444,7 @@ declare interface StealthMappin extends RuntimeMappin {
   GetRarity(): gamedataNPCRarity
   GetStatusEffectCurrentPriority(): number
   GetStatusEffectTimeRemaining(): number
-  GetStatusEffectIconPath(): String
+  GetStatusEffectIconPath(): string
   UpdateObjectMarkerVisibility(canHaveObjectMarker: Bool, isVisible: Bool): void
   IsFriendlyFromHack(): Bool
   HasHackingStatusEffect(): Bool
@@ -58472,7 +58472,7 @@ declare interface RemotePlayerMappin extends RuntimeMappin {
 
 declare interface PingSystemMappin extends RuntimeMappin {
 
-  ResolveIconState(): String
+  ResolveIconState(): string
 }
 
 declare interface PingSystemMappinController extends BaseInteractionMappinController {
@@ -58640,13 +58640,13 @@ declare interface NameplateVisualsLogicController extends inkLogicController {
 declare interface UnitsLocalizationHelper extends IScriptable {
 
   /** @noSelf **/
-  LocalizeDistance(distance: number): String
+  LocalizeDistance(distance: number): string
 }
 
 declare interface BuildButtonItemController extends inkButtonDpadSupportedController {
 
   OnInitialize(): Bool
-  SetButtonDetails(argText: String, type: gamedataBuildType): void
+  SetButtonDetails(argText: string, type: gamedataBuildType): void
   GetAssociatedBuild(): gamedataBuildType
 }
 
@@ -58736,7 +58736,7 @@ declare interface MinimapPingSystemMappinController extends BaseMinimapMappinCon
 
 declare interface CpoCharacterButtonItemController extends inkButtonDpadSupportedController {
 
-  SetButtonDetails(text: String, characterRecordId: TweakDBID): void
+  SetButtonDetails(text: string, characterRecordId: TweakDBID): void
   GetCharacterRecordId(): TweakDBID
 }
 
@@ -58767,7 +58767,7 @@ declare interface CpoCharacterSelectionWidgetGameController extends inkGameContr
 
   OnInitialize(): Bool
   OnUninitialize(): Bool
-  CreateCharacterButton(parent: inkHorizontalPanel, argText: String, characterRecordId: TweakDBID): void
+  CreateCharacterButton(parent: inkHorizontalPanel, argText: string, characterRecordId: TweakDBID): void
   OnSelectCharacter(e: inkPointerEvent): void
   OnSelectCharacterEnter(e: inkPointerEvent): void
   OnSelectCharacterLeave(e: inkPointerEvent): void
@@ -58824,9 +58824,9 @@ declare interface SendScoreRequestAdvanced extends ScriptableSystemRequest {
 declare interface SideScrollerMiniGameScoreSystemAdvanced extends ScriptableSystem {
 
   OnAttach(): void
-  GetGameId(gameName: String): number
+  GetGameId(gameName: string): number
   OnSendScore(request: SendScoreRequestAdvanced): void
-  GetMaxScore(gameName: String): number
+  GetMaxScore(gameName: string): number
 }
 
 declare interface GridNoiseGenRule extends MinigameGenerationRule {
@@ -58891,15 +58891,15 @@ declare interface ScoreboardPlayer {
 
 declare interface ScoreboardEntityLogicController extends inkLogicController {
 
-  SetText(text: String): void
+  SetText(text: string): void
 }
 
 declare interface SideScrollerMiniGameScoreSystem extends ScriptableSystem {
 
   OnAttach(): void
-  GetGameId(gameName: String): number
+  GetGameId(gameName: string): number
   OnSendScore(request: SendScoreRequest): void
-  GetMaxScore(gameName: String): number
+  GetMaxScore(gameName: string): number
 }
 
 declare interface SendScoreRequest extends ScriptableSystemRequest {
@@ -58928,7 +58928,7 @@ declare interface QuadRacerLogicController extends MinigameLogicController {
 
   OnInitializeGameLogic(): void
   OnGameStateUpdateLogic(gameStateUpdateEvent: MiniGameStateUpdateEvent): void
-  PlayNotificationAnimation(text: String): void
+  PlayNotificationAnimation(text: string): void
   StopCurrentNotificationAnimation(): void
 }
 
@@ -59039,7 +59039,7 @@ declare interface LoopAnimationLogicController extends inkLogicController {
 
 declare interface AnimationLogicController extends inkLogicController {
 
-  OnChangeState(state: String): Bool
+  OnChangeState(state: string): Bool
 }
 
 declare interface MinigameDynObject extends inkLogicController {
@@ -59205,7 +59205,7 @@ declare interface CodexSystem extends ScriptableSystem {
   OnAttach(): void
   codexInit(): void
   IsRecordLocked(recordID: TweakDBID): Bool
-  GetCodexRecordPartContent(recordID: TweakDBID, partName: CName): String
+  GetCodexRecordPartContent(recordID: TweakDBID, partName: CName): string
   IsRecordPartLocked(recordID: TweakDBID, partName: CName): Bool
   GetCodex(): SCodexRecord[]
   GetCodexRecordParts(recordTweak: TweakDBID): SCodexRecordPart[]
@@ -59332,7 +59332,7 @@ declare interface QuestListGameController extends inkHUDGameController {
 
 declare interface QuestListHeaderLogicController extends inkLogicController {
 
-  SetLabel(text: String): void
+  SetLabel(text: string): void
 }
 
 declare interface RadialPointerController extends inkLogicController {
@@ -59367,7 +59367,7 @@ declare interface QuestTrackerObjectiveLogicController extends inkLogicControlle
   IsReadyToRemove(): Bool
   IsObjectiveEntry(): Bool
   GetObjectiveEntry(): JournalQuestObjective
-  SetData(objectiveTitle: String, isTracked: Bool, isOptional: Bool, currentCounter: number, totalCounter: number, objectiveEntry: JournalQuestObjective): void
+  SetData(objectiveTitle: string, isTracked: Bool, isOptional: Bool, currentCounter: number, totalCounter: number, objectiveEntry: JournalQuestObjective): void
   SetState(state: CName): void
   OnIntroAnimEnd(proxy: inkAnimProxy): Bool
   OnAnimEnd(proxy: inkAnimProxy): Bool
@@ -59403,7 +59403,7 @@ declare interface CyclableRadialSlot extends WeaponRadialSlot {
   IsCyclable(): Bool
   CanCycle(): Bool
   GetHotkey(): EHotkey
-  GetDebugInfo(info: String[]): void
+  GetDebugInfo(info: string[]): void
   SetCanCycle(_canCycle: Bool): void
   CycleStart(right: Bool): void
   CycleStop(): void
@@ -59617,7 +59617,7 @@ declare interface ItemTooltipModController extends inkLogicController {
 
 declare interface ItemTooltipModEntryController extends inkLogicController {
 
-  Setup(text: String): void
+  Setup(text: string): void
   Setup(data: MinimalItemTooltipModRecordData): void
   Setup(record: GameplayLogicPackageUIData_Record): void
   Setup(record: GameplayLogicPackageUIData_Record, itemData: gameItemData): void
@@ -59643,7 +59643,7 @@ declare interface SubtitlesGameController extends BaseSubtitlesGameController {
   CreateLine(lineSpawnData: LineSpawnData): void
   OnHideLine(lineData: subtitleLineMapEntry): void
   OnHideLineByData(lineData: subtitleLineMapEntry): void
-  OnShowSceneComment(value: String): Bool
+  OnShowSceneComment(value: string): Bool
   OnHideSceneComment(value: Bool): Bool
 }
 
@@ -59736,7 +59736,7 @@ declare interface ProgramTooltipController extends AGenericTooltipController {
   OnGlobalPress(evt: inkPointerEvent): Bool
   OnGlobalRelease(evt: inkPointerEvent): Bool
   SetData(tooltipData: ATooltipData): void
-  UpdateDetail(targetWidget: inkWidgetRef, key: String, value: number, diff: number): void
+  UpdateDetail(targetWidget: inkWidgetRef, key: string, value: number, diff: number): void
   UpdateDescription(): void
   GetHackCategory(): HackCategory_Record
   UpdateCategory(): void
@@ -59751,7 +59751,7 @@ declare interface ProgramTooltipController extends AGenericTooltipController {
 
 declare interface ProgramTooltipStatController extends inkLogicController {
 
-  SetData(localizedKey: String, value: number, diff: number): void
+  SetData(localizedKey: string, value: number, diff: number): void
   UpdateComparedValue(diffValue: number): void
 }
 
@@ -59881,7 +59881,7 @@ declare interface ItemTooltipBottomModule extends ItemTooltipModuleController {
 declare interface TooltipProgessBarController extends inkLogicController {
 
   SetProgressState(craftingMode: CraftingMode, isCraftable: Bool): void
-  AddButtonHints(actionName: CName, label: String): void
+  AddButtonHints(actionName: CName, label: string): void
   OnHold(evt: inkPointerEvent): Bool
   OnRelease(evt: inkPointerEvent): Bool
   OnUninitialize(): Bool
@@ -59985,7 +59985,7 @@ declare interface inkMotorcycleHUDGameController extends BaseVehicleHUDGameContr
   RemoveChunk(): void
   OnLeanAngleChanged(leanAngle: number): Bool
   OnCameraModeChanged(mode: Bool): Bool
-  CheckVehicleType(desiredType: String): Bool
+  CheckVehicleType(desiredType: string): Bool
 }
 
 declare interface vehicleDebugUIGameController extends BaseVehicleHUDGameController {
@@ -60094,7 +60094,7 @@ declare interface gametimeLogicController extends IVehicleModuleController {
   RegisterCallbacks(vehicle: VehicleObject, vehBB: IBlackboard, gameController: vehicleUIGameController): void
   UnregisterCallbacks(): void
   OnUninitialize(): Bool
-  OnGameTimeChanged(time: String): void
+  OnGameTimeChanged(time: string): void
 }
 
 declare interface instrumentPanelLogicController extends IVehicleModuleController {
@@ -60575,7 +60575,7 @@ declare interface CrouchIndicatorGameController extends inkHUDGameController {
   GetItemTypeIcon(): CName
   HelperFireModeIcon(type: gamedataTriggerMode): CName
   GetUnreservedAmmoQuantityByType(ammoID: ItemID): number
-  GetAmmoText(ammoCount: number, textLength: number): String
+  GetAmmoText(ammoCount: number, textLength: number): string
 }
 
 declare interface AltimeterController extends inkLogicController {
@@ -60722,7 +60722,7 @@ declare interface weaponRosterGameController extends inkHUDGameController {
   GetItemTypeIcon(): CName
   HelperFireModeIcon(type: gamedataTriggerMode): CName
   GetUnreservedAmmoQuantityByType(ammoID: ItemID): number
-  GetAmmoText(ammoCount: number, textLength: number): String
+  GetAmmoText(ammoCount: number, textLength: number): string
 }
 
 declare interface RadialMenuGameController extends inkHUDGameController {
@@ -60809,7 +60809,7 @@ declare interface BraindanceGameController extends inkHUDGameController {
   Intro(): void
   Outro(): void
   Hide(): void
-  GetTimeMS(seconds: number): String
+  GetTimeMS(seconds: number): string
 }
 
 declare interface BraindanceBarLogicController extends inkLogicController {
@@ -60873,7 +60873,7 @@ declare interface NarrativePlateGameController extends inkProjectedHUDGameContro
 
 declare interface NarrativePlateLogicController extends inkLogicController {
 
-  SetPlateText(text: String, caption: String): void
+  SetPlateText(text: string, caption: string): void
   SetVisible(visible: Bool): void
 }
 
@@ -61019,8 +61019,8 @@ declare interface DebugNpcNameplateGameController extends inkProjectedHUDGameCon
   OnDebugNpcStats(): Bool
   OnNameplateDataChanged(value: Variant): Bool
   OnScreenProjectionUpdate(projections: gameuiScreenProjectionsData): Bool
-  HelperUpdateText(argString1: String, argString2: String): void
-  GetNPCDebugNameplateStats(obj: GameObject, str_1: String, str_2: String): void
+  HelperUpdateText(argString1: string, argString2: string): void
+  GetNPCDebugNameplateStats(obj: GameObject, str_1: string, str_2: string): void
 }
 
 declare interface HotkeysWidgetController extends inkHUDGameController {
@@ -61167,11 +61167,11 @@ declare interface HUDProgressBarController extends inkHUDGameController {
   SetupBB(): void
   UnregisterFromBB(): void
   OnActivated(activated: Bool): Bool
-  OnHeaderChanged(header: String): Bool
+  OnHeaderChanged(header: string): Bool
   OnProgressChanged(progress: number): Bool
   UpdateProgressBarActive(active: Bool): void
   UpdateTimerProgress(value: number): void
-  UpdateTimerHeader(label: String): void
+  UpdateTimerHeader(label: string): void
   Intro(): void
   Outro(): void
   IntroEnded(): void
@@ -61314,7 +61314,7 @@ declare interface ProgressionWidgetGameController extends gameuiGenericNotificat
   UnregisterPSMListeners(playerObject: GameObject): void
   OnCombatStateChanged(value: number): Bool
   OnCharacterProficiencyUpdated(evt: ProficiencyProgressEvent): Bool
-  AddToNotificationQueue(value: number, remainingPointsToLevelUp: number, delta: number, notificationColorTheme: CName, notificationName: String, type: gamedataProficiencyType, currentLevel: number, isLevelMaxed: Bool): void
+  AddToNotificationQueue(value: number, remainingPointsToLevelUp: number, delta: number, notificationColorTheme: CName, notificationName: string, type: gamedataProficiencyType, currentLevel: number, isLevelMaxed: Bool): void
 }
 
 declare interface QuickhackDescriptionUpdate extends Event {
@@ -61330,7 +61330,7 @@ declare interface QuickhacksListItemController extends ListItemController {
   OnSelected(itemController: ListItemController): Bool
   OnDeselected(itemController: ListItemController): Bool
   UpdateState(): void
-  SetupTitleFromChunks(title: String, alternativeTitle: String): void
+  SetupTitleFromChunks(title: string, alternativeTitle: string): void
   OnUpdateAnimationState(e?: inkAnimProxy): Bool
   SetActionState(): void
   SetReductionArrowVisibility(): void
@@ -61389,7 +61389,7 @@ declare interface QuickhacksListGameController extends inkHUDGameController {
   IsCurrentSelectionOnStatPoolIndexes(): Bool
   IsCurrentSelectionOnStatPoolIndexes(index: number): Bool
   /** @noSelf **/
-  EActionInactivityResonToLocalizationString(value: EActionInactivityReson): String
+  EActionInactivityResonToLocalizationString(value: EActionInactivityReson): string
   OnQuickHackScreenOpen(evt: QuickHackScreenOpen): Bool
   OnQuickHackTimeDilationOverride(evt: QuickHackTimeDilationOverride): Bool
   OnQuickHackLockHacks(evt: QuickHackLockHacks): Bool
@@ -61406,12 +61406,12 @@ declare interface QuickhacksVulnerabilityLogicController extends inkLogicControl
 
 declare interface QuickHackTimeDilationOverride extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface QuickHackLockHacks extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface ProgressionNotification extends GenericNotificationController {
@@ -61743,7 +61743,7 @@ declare interface PassiveRoleCondition extends AIbehaviorexpressionScript {
   Activate(context: ScriptExecutionContext): void
   Deactivate(context: ScriptExecutionContext): void
   CalculateValue(context: ScriptExecutionContext): Variant
-  GetEditorSubCaption(): String
+  GetEditorSubCaption(): string
 }
 
 declare interface CheckDroppedThreat extends CheckThreat {
@@ -61770,7 +61770,7 @@ declare interface PassiveCommandCondition extends AIbehaviorexpressionScript {
   Activate(context: ScriptExecutionContext): void
   Deactivate(context: ScriptExecutionContext): void
   CalculateValue(context: ScriptExecutionContext): Variant
-  GetEditorSubCaption(): String
+  GetEditorSubCaption(): string
 }
 
 declare interface CompareArgumentsFloats extends CompareArguments {
@@ -61866,7 +61866,7 @@ declare interface AISignalCondition extends AIbehaviorconditionScript {
 
   GetSignalName(): CName
   GetSignalEvaluationOutcome(): Bool
-  GetEditorSubCaption(): String
+  GetEditorSubCaption(): string
   Activate(context: ScriptExecutionContext): void
   Deactivate(context: ScriptExecutionContext): void
   Check(context: ScriptExecutionContext): AIbehaviorConditionOutcomes
@@ -61917,7 +61917,7 @@ declare interface PassiveCannotMoveConditions extends PassiveAutonomousCondition
 declare interface CustomEventCondition extends AISignalCondition {
 
   GetSignalName(): CName
-  GetDescription(context: ScriptExecutionContext): String
+  GetDescription(context: ScriptExecutionContext): string
 }
 
 declare interface PriorityCheckEventCondition extends AISignalCondition {
@@ -61931,7 +61931,7 @@ declare interface HighestPrioritySignalCondition extends AIbehaviorexpressionScr
   Deactivate(context: ScriptExecutionContext): void
   CalculateValue(context: ScriptExecutionContext): Variant
   GetSignalHandler(context: ScriptExecutionContext): AISignalHandlerComponent
-  GetEditorSubCaption(): String
+  GetEditorSubCaption(): string
 }
 
 declare interface CheckEquippedWeapon extends AIItemHandlingCondition {
@@ -61970,7 +61970,7 @@ declare interface AIStackSignalCondition extends AIbehaviorStackScriptPassiveExp
   GetSignalHandler(context: ScriptExecutionContext): AISignalHandlerComponent
   /** @noSelf **/
   GetPuppet(context: ScriptExecutionContext): ScriptedPuppet
-  GetEditorSubCaption(): String
+  GetEditorSubCaption(): string
 }
 
 declare interface AIStatusEffectCondition extends AIbehaviorconditionScript {
@@ -61984,7 +61984,7 @@ declare interface AIGateSignalSender extends AIbehaviortaskStackScript {
   OnActivate(context: ScriptExecutionContext, signalId: number): void
   OnDeactivate(context: ScriptExecutionContext, signalId: number): void
   GetSignalLifeTime(): number
-  GetEditorSubCaption(): String
+  GetEditorSubCaption(): string
 }
 
 declare interface CheckCurrentStatusEffect extends AIStatusEffectCondition {
@@ -62540,7 +62540,7 @@ declare interface AIHitReactionTask extends AIbehaviortaskScript {
   InitialiseReaction(context: ScriptExecutionContext): void
   SendDataToHitReactionComponent(context: ScriptExecutionContext): void
   SendDataToAnimationGraph(context: ScriptExecutionContext): void
-  SpawnAttackGameEffect(context: ScriptExecutionContext, gameEffect: EffectRef, startPosition: Vector4, endPosition: Vector4, duration: number, colliderBoxSize: Vector4, statusEffect: String): void
+  SpawnAttackGameEffect(context: ScriptExecutionContext, gameEffect: EffectRef, startPosition: Vector4, endPosition: Vector4, duration: number, colliderBoxSize: Vector4, statusEffect: string): void
   HasDismemberedLeg(context: ScriptExecutionContext): Bool
   GetBCVOName(context: ScriptExecutionContext): CName
 }
@@ -62765,7 +62765,7 @@ declare interface KnockdownReactionTask extends AIHitReactionTask {
 
 declare interface CustomEventSender extends AISignalSenderTask {
 
-  GetEditorSubCaption(): String
+  GetEditorSubCaption(): string
   GetSignalLifeTime(): number
 }
 
@@ -63638,7 +63638,7 @@ declare interface IncrimentStimThreshold extends AIbehaviortaskScript {
 
 declare interface AIBackgroundCombatCommandParams extends ScriptedAICommandParams {
 
-  GetCommandName(): String
+  GetCommandName(): string
   CreateCommand(): AICommand
 }
 
@@ -63655,7 +63655,7 @@ declare interface AIAnimationTask extends AIbehaviortaskScript {
   Activate(context: ScriptExecutionContext): void
   Deactivate(context: ScriptExecutionContext): void
   Update(context: ScriptExecutionContext): AIbehaviorUpdateOutcome
-  GetDescription(context: ScriptExecutionContext): String
+  GetDescription(context: ScriptExecutionContext): string
 }
 
 declare interface SetTimestampToBehaviorAgrument extends AIbehaviortaskScript {
@@ -64098,8 +64098,8 @@ declare interface DebugInteractionObject extends GameObject {
   OnGameAttached(): Bool
   OnInteractionChoice(choiceEvent: InteractionChoiceEvent): Bool
   InitializeChoices(): void
-  CreateChoice(choiceName: String, data: number): InteractionChoice
-  ResolveFact(factName: String): void
+  CreateChoice(choiceName: string, data: number): InteractionChoice
+  ResolveFact(factName: string): void
 }
 
 declare interface DebugTextDrawer extends GameObject {
@@ -64134,7 +64134,7 @@ declare interface FakeFeature extends GameObject {
   RefreshChoices(): void
   InitializeChoices(): void
   UnInitializeChoices(): void
-  CreateChoice(choiceID: String, data: number): InteractionChoice
+  CreateChoice(choiceID: string, data: number): InteractionChoice
   ResolveChoice(choiceID: number): void
   ResolveFact(factData: SFactOperationData): void
   ResolveComponents(choiceID: number): void
@@ -64173,7 +64173,7 @@ declare interface StrikeExecutor_Debug_PrintStats extends StrikeExecutor_Debug {
 
   Process(ctx: EffectScriptContext, applierCtx: EffectExecutionScriptContext): Bool
   PrintStats(puppet: ScriptedPuppet): void
-  PrintStatGroupHeader(str: String, spaceFillSize: number): void
+  PrintStatGroupHeader(str: string, spaceFillSize: number): void
   PrintStats(obj: GameObject, stats: gamedataStatType[], spaceFillSize: number): void
   PrintStat(obj: GameObject, stat: gamedataStatType, spaceFillSize: number): void
   PrintStatPool(obj: GameObject, statPool: gamedataStatPoolType, spaceFillSize: number): void
@@ -64208,7 +64208,7 @@ declare interface NetworkMinigameVisualController extends inkLogicController {
   OnUninitialize(): Bool
   SetUp(data: NetworkMinigameData): void
   SetGridElementPicked(newData: NewTurnMinigameData): void
-  SetProgramCompleted(id: String, revealLocalizedName: Bool): void
+  SetProgramCompleted(id: string, revealLocalizedName: Bool): void
   ShowEndScreen(endData: EndScreenData): void
   OnGridOutroOver(e: inkAnimProxy): Bool
   GetLastCellSelected(): CellData
@@ -64265,10 +64265,10 @@ declare interface NetworkMinigameProgramListController extends inkLogicControlle
   SpawnSlot(data: ProgramData): NetworkMinigameProgramController
   GetDesignatedParent(data: ProgramData): inkWidgetRef
   UpdatePartialCompletionState(progressList: ProgramProgressData[]): void
-  ShowCompleted(id: String, revealLocalizedName: Bool): void
+  ShowCompleted(id: string, revealLocalizedName: Bool): void
   PlaySideBarAnim(): void
   ProcessListModified(shouldModify: Bool, playerProgramsAdded: ProgramData[], playerProgramsRemoved: ProgramData[]): void
-  FindSlotIndexByID(id: String): number
+  FindSlotIndexByID(id: string): number
 }
 
 declare interface NetworkMinigameBufferController extends inkLogicController {
@@ -64326,7 +64326,7 @@ declare interface NetworkInkGameController extends inkGameController {
   SetPlayerBlackboardInformation(value: Bool): void
   GetBlackboardDef(): NetworkBlackboardDef
   StartMinigame(): void
-  StartBreaching(networkName: String): void
+  StartBreaching(networkName: string): void
   SetActiveMiniGameRecord(): void
   OnDevicesCountChanged(value: number): Bool
   OnStopBreaching(target: inkWidget): Bool
@@ -64335,13 +64335,13 @@ declare interface NetworkInkGameController extends inkGameController {
   NewTurn(placementX: number, placementY: number, grid?: CellData[]): void
   CloseGame(): void
   GenerateGrid(grid: CellData[]): void
-  RegenerateGrid(grid: CellData[], symbols: String[], symbolProbabilities: number[]): void
-  SetSymbolProbabilities(prob: number[], arr: String[]): void
-  ReserveSymbols(symbols: String[]): void
+  RegenerateGrid(grid: CellData[], symbols: string[], symbolProbabilities: number[]): void
+  SetSymbolProbabilities(prob: number[], arr: string[]): void
+  ReserveSymbols(symbols: string[]): void
   GetPredefinedGrid(listCells: CellData[]): Bool
   GetPredefinedBasicAccess(program: ProgramData, programType: ProgramType, programEffect: ProgramEffect): Bool
   GetPredefinedProgram(programList: ProgramData[], programType: ProgramType, programEffect: ProgramEffect, cyberdeck: Bool): Bool
-  MakeProgram(programName: String, num: number, symbols: String[], probabilities: number[], programType: ProgramType, programEffect: ProgramEffect): ProgramData
+  MakeProgram(programName: string, num: number, symbols: string[], probabilities: number[], programType: ProgramType, programEffect: ProgramEffect): ProgramData
   InsertProgram(grid: CellData[], program: ProgramData, forceFirstRow: Bool): void
   GenerateTraps(grid: CellData[]): void
   GetRandomTraps(traps: ETrap[]): Bool
@@ -64351,14 +64351,14 @@ declare interface NetworkInkGameController extends inkGameController {
   CheckUploaded(program: ProgramData): Bool
   OnPressCell(e: inkWidget): Bool
   OnCloseGame(e: inkWidget): Bool
-  GenerateHexNumber2(): String
+  GenerateHexNumber2(): string
   GridPositionToList(x: number, y: number, dimension: number): number
-  CheckDirection(placementX: number, placementY: number): String
+  CheckDirection(placementX: number, placementY: number): string
   AppendListPrograms(arr1: ProgramData[], arr2: ProgramData[]): ProgramData[]
   ChooseRandomOption(probabilities: number[]): number
-  ArrayCellsToString(arr: ElementData[]): String
-  ArrayCellsToString(arr: ElementData[], num: number, fromNumber: Bool): String
-  ArrayCellsToString(arr: String[], num: number, fromNumber: Bool): String
+  ArrayCellsToString(arr: ElementData[]): string
+  ArrayCellsToString(arr: ElementData[], num: number, fromNumber: Bool): string
+  ArrayCellsToString(arr: string[], num: number, fromNumber: Bool): string
   GetCellFromPosition(arr: CellData[], x: number, y: number): CellData
   OnAction(action: ListenerAction, consumer: ListenerActionConsumer): Bool
   OnPressSkip(e: inkPointerEvent): Bool
@@ -64380,7 +64380,7 @@ declare interface CallActionWidgetController extends DeviceActionWidgetControlle
 declare interface StartCall extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   GetInkWidgetTweakDBID(): TweakDBID
 }
 
@@ -64526,7 +64526,7 @@ declare interface ArcadeMachineInkGameController extends DeviceInkGameController
   RegisterBlackboardCallbacks(blackboard: IBlackboard): void
   UnRegisterBlackboardCallbacks(blackboard: IBlackboard): void
   GetOwner(): ArcadeMachine
-  OnTimeToDepartChanged(value: String): Bool
+  OnTimeToDepartChanged(value: string): Bool
   StartGlitchingScreen(glitchData: GlitchData): void
   StopGlitchingScreen(): void
   PlayVideo(videoPath: ResRef, looped: Bool, audioEvent: CName): void
@@ -64740,7 +64740,7 @@ declare interface OpenWorldMapDeviceAction extends ActionBool {
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
   IsClearanceValid(clearance: Clearance): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface DoorInkGameController extends DeviceInkGameControllerBase {
@@ -64800,8 +64800,8 @@ declare interface DoorWidgetCustomData extends WidgetCustomData {
 
 declare interface InteractiveSignCustomData extends WidgetCustomData {
 
-  SetMessege(text: String): void
-  GetMessege(): String
+  SetMessege(text: string): void
+  GetMessege(): string
   SetShape(shape: SignShape): void
   GetShape(): SignShape
 }
@@ -64840,13 +64840,13 @@ declare interface ElevatorInkGameController extends DeviceInkGameControllerBase 
   UpdateActionWidgets(widgetsData: SActionWidgetPackage[]): void
   RefreshFloor(widget: inkWidget, widgetData: SActionWidgetPackage, floorNumber: number, maxFloors: number): void
   OnActionWidgetSpawned(widget: inkWidget, userData: IScriptable): Bool
-  SetCurrentFloorOnUI(floorName: String): void
+  SetCurrentFloorOnUI(floorName: string): void
   GetOwner(): LiftDevice
   RegisterBlackboardCallbacks(blackboard: IBlackboard): void
   UnRegisterBlackboardCallbacks(blackboard: IBlackboard): void
   OnPlayerScanned(value: Bool): Bool
   OnPausedChange(value: Bool): Bool
-  OnChangeFloor(value: String): Bool
+  OnChangeFloor(value: string): Bool
   Refresh(state: EDeviceStatus): void
 }
 
@@ -65008,7 +65008,7 @@ declare interface JukeboxControllerPS extends ScriptableDeviceComponentPS {
   OnPreviousStation(evt: PreviousStation): EntityNotificationType
   OnQuickHackDistraction(evt: QuickHackDistraction): EntityNotificationType
   InitializeStations(): void
-  CreateStation(SoundEvt: CName, ChannelName: String): RadioStationsMap
+  CreateStation(SoundEvt: CName, ChannelName: string): RadioStationsMap
   GetDeviceIconTweakDBID(): TweakDBID
   GetBackgroundTextureTweakDBID(): TweakDBID
   GetBlackboardDef(): JukeboxBlackboardDef
@@ -65159,7 +65159,7 @@ declare interface NcartTimetableControllerPS extends ScriptableDeviceComponentPS
   GetDepartFrequency(): number
   GetUiUpdateFrequency(): number
   GetCurrentTimeToDepart(): number
-  GetCurrentTimeToDepartAsString(): String
+  GetCurrentTimeToDepartAsString(): string
   UpdateCurrentTimeToDepart(): void
   ResetTimeToDepart(): void
   GetBlackboardDef(): NcartTimetableBlackboardDef
@@ -65202,9 +65202,9 @@ declare interface RadioControllerPS extends MediaDeviceControllerPS {
   OnQuickHackDistraction(evt: QuickHackDistraction): EntityNotificationType
   PushResaveData(data: RadioResaveData): void
   InitializeRadioStations(): void
-  CreateRadioStation(SoundEvt: CName, ChannelName: String, stationID: ERadioStationList): RadioStationsMap
+  CreateRadioStation(SoundEvt: CName, ChannelName: string, stationID: ERadioStationList): RadioStationsMap
   DetermineGameplayViability(context: GetActionsContext, hasActiveActions: Bool): Bool
-  GetDeviceIconPath(): String
+  GetDeviceIconPath(): string
   GetBackgroundTextureTweakDBID(): TweakDBID
   GetDeviceIconTweakDBID(): TweakDBID
   GetDeviceWidget(context: GetActionsContext): SDeviceWidgetPackage
@@ -65269,7 +65269,7 @@ declare interface OpenInteriorManager extends ActionBool {
   SetProperties(): void
   /** @noSelf **/
   IsDefaultConditionMet(device: ScriptableDeviceComponentPS, context: GetActionsContext): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface SmartWindowInkGameController extends ComputerInkGameController {
@@ -65453,7 +65453,7 @@ declare interface TerminalInkGameControllerBase extends MasterDeviceInkGameContr
   RegisterBlackboardCallbacks(blackboard: IBlackboard): void
   UnRegisterBlackboardCallbacks(blackboard: IBlackboard): void
   SetupTerminalTitle(): void
-  GetTerminalTitle(): String
+  GetTerminalTitle(): string
   InitializeMainLayout(): void
   IsMainLayoutInitialized(): Bool
   OnMainLayoutSpawned(widget: inkWidget, userData: IScriptable): Bool
@@ -65564,7 +65564,7 @@ declare interface ImageActionButtonLogicController extends DeviceActionWidgetCon
 
 declare interface TvChannelSpawnData extends IScriptable {
 
-  Initialize(channelName: CName, localizedName: String): void
+  Initialize(channelName: CName, localizedName: string): void
 }
 
 declare interface TvInkGameController extends DeviceInkGameControllerBase {
@@ -65581,8 +65581,8 @@ declare interface TvInkGameController extends DeviceInkGameControllerBase {
   SelectChannel(value: number, force?: Bool): void
   PlayVideo(videoPath: ResRef, looped: Bool, audioEvent: CName): void
   StopVideo(): void
-  SetChannellText(channelName: String): void
-  SetSecuredText(text: String): void
+  SetChannellText(channelName: string): void
+  SetSecuredText(text: string): void
   TurnOff(): void
   TurnOn(): void
   OnVideoFinished(target: inkVideo): Bool
@@ -65654,8 +65654,8 @@ declare interface InteractiveAdControllerPS extends ScriptableDeviceComponentPS 
 
   OnInstantiated(): Bool
   Initialize(): void
-  ActionCloseAd(ButtonName: String): CloseAd
-  ActionShowVendor(ButtonName: String): ShowVendor
+  ActionCloseAd(ButtonName: string): CloseAd
+  ActionShowVendor(ButtonName: string): ShowVendor
   GetActions(actions: DeviceAction[], context: GetActionsContext): Bool
   GetQuestActions(outActions: DeviceAction[], context: GetActionsContext): void
   OnCloseAd(evt: CloseAd): EntityNotificationType
@@ -65677,7 +65677,7 @@ declare interface ShowVendor extends ActionBool {
   SetProperties(): void
   /** @noSelf **/
   IsDefaultConditionMet(device: ScriptableDeviceComponentPS, context: GetActionsContext): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface InteractiveAdFinishedEvent extends Event {
@@ -66073,7 +66073,7 @@ declare interface BillboardDeviceControllerPS extends ScriptableDeviceComponentP
   IsUsingLights(): Bool
   IsUsingDeviceAppearence(): Bool
   GetLightsSettings(): EditableGameLightSettings[]
-  LogActionDetails(action: ScriptableDeviceAction, cachedStatus: BaseDeviceStatus, context?: String, status?: String, overrideStatus?: Bool): void
+  LogActionDetails(action: ScriptableDeviceAction, cachedStatus: BaseDeviceStatus, context?: string, status?: string, overrideStatus?: Bool): void
   GetBackgroundTextureTweakDBID(): TweakDBID
   GetDeviceIconTweakDBID(): TweakDBID
 }
@@ -66137,7 +66137,7 @@ declare interface Distraction extends ActionBool {
   SetProperties(): void
   /** @noSelf **/
   IsDefaultConditionMet(device: ScriptableDeviceComponentPS, context: GetActionsContext): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface CCTVCamera extends GameObject {
@@ -66561,7 +66561,7 @@ declare interface DeviceDynamicConnectionChange extends Event {
 
 declare interface ForceUIRefreshEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface gameDevicePSChanged extends Event {
@@ -66671,7 +66671,7 @@ declare interface QuestForceRoadBlockadeDeactivate extends ActionBool {
 
 declare interface QuickHackToggleBlockade extends ToggleBlockade {
 
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface RoadBlockTrap extends InteractiveMasterDevice {
@@ -66749,7 +66749,7 @@ declare interface EffectExecutor_PuppetForceVisionAppearance extends EffectExecu
   GetTargets(ctx: EffectScriptContext): ScriptedPuppet[]
   GetInvestigationSlots(ctx: EffectScriptContext): number
   IsSourceHighlighted(ctx: EffectScriptContext): Bool
-  GetEffectName(ctx: EffectScriptContext): String
+  GetEffectName(ctx: EffectScriptContext): string
   Init(ctx: EffectScriptContext): Bool
   Process(ctx: EffectScriptContext, applierCtx: EffectExecutionScriptContext): Bool
   ClearAllHighlights(source: GameObject, ctx: EffectScriptContext): void
@@ -66840,7 +66840,7 @@ declare interface EffectExecutor_MuteBubble extends EffectExecutor_Scripted {
 declare interface ActionNodeRef extends ScriptableDeviceAction {
 
   GetProperties(): DeviceActionProperty[]
-  GetCurrentDisplayString(): String
+  GetCurrentDisplayString(): string
 }
 
 declare interface EffectExecutor_Device extends EffectExecutor_Scripted {
@@ -66953,7 +66953,7 @@ declare interface SpiderbotBoolAction extends ActionBool {
 
   SetProperties(status: EDeviceStatus): void
   SetProperties(status: EDeviceStatus, nameOnTrue: CName, nameOnFalse: CName): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   /** @noSelf **/
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
@@ -66976,7 +66976,7 @@ declare interface ChangeMusicAction extends ActionBool {
 
   SetProperties(settings: MusicSettings): void
   SetProperties(settings: MusicSettings, nameOnTrue: TweakDBID): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   GetMusicSettings(): MusicSettings
   /** @noSelf **/
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
@@ -66989,7 +66989,7 @@ declare interface ChangeMusicAction extends ActionBool {
 declare interface Flush extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface PresetAction extends ActionBool {
@@ -67018,7 +67018,7 @@ declare interface EnterLadder extends ActionBool {
   GetPlayerStateMachine(requester: GameObject): IBlackboard
   /** @noSelf **/
   IsDefaultConditionMet(device: ScriptableDeviceComponentPS, context: GetActionsContext): Bool
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface KillTaggedTargetEvent extends Event {
@@ -67163,7 +67163,7 @@ declare interface DeviceDebuggerComponent extends ScriptableComponent {
   PerformDebug(): void
   DrawDbgLine(): void
   IsFactValid(): Bool
-  AddDebugBit(position: Vector4, text: String, color: Color): void
+  AddDebugBit(position: Vector4, text: string, color: Color): void
   GetColor(reverse?: Bool): Color
   ToggleDebuggerColor(): void
 }
@@ -67179,7 +67179,7 @@ declare interface FakeDoor extends GameObject {
 
 declare interface ResolveAllSkillchecksEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface DoorResaveData {
@@ -67209,7 +67209,7 @@ declare interface ElevatorFloorTerminalController extends TerminalController {
 
 declare interface ResetDoorState extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface DoorColliderEnableEvent extends Event {
@@ -67324,7 +67324,7 @@ declare interface ExplosiveTriggerDeviceControllerPS extends ExplosiveDeviceCont
 declare interface SpiderbotDisarmExplosiveDevice extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   /** @noSelf **/
   IsAvailable(device: ScriptableDeviceComponentPS): Bool
   /** @noSelf **/
@@ -67394,7 +67394,7 @@ declare interface C4ControllerPS extends ExplosiveDeviceControllerPS {
 declare interface ActivateC4 extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   /** @noSelf **/
   IsDefaultConditionMet(device: ScriptableDeviceComponentPS, context: GetActionsContext): Bool
   /** @noSelf **/
@@ -67404,7 +67404,7 @@ declare interface ActivateC4 extends ActionBool {
 declare interface DeactivateC4 extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   /** @noSelf **/
   IsDefaultConditionMet(device: ScriptableDeviceComponentPS, context: GetActionsContext): Bool
   /** @noSelf **/
@@ -67414,7 +67414,7 @@ declare interface DeactivateC4 extends ActionBool {
 declare interface DetonateC4 extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
   /** @noSelf **/
   IsDefaultConditionMet(device: ScriptableDeviceComponentPS, context: GetActionsContext): Bool
   /** @noSelf **/
@@ -67489,7 +67489,7 @@ declare interface HoloDeviceControllerPS extends ScriptableDeviceComponentPS {
   OnPlay(evt: TogglePlay): EntityNotificationType
   GetClearance(): Clearance
   IsPlaying(): Bool
-  LogActionDetails(action: ScriptableDeviceAction, cachedStatus: BaseDeviceStatus, context?: String, status?: String, overrideStatus?: Bool): void
+  LogActionDetails(action: ScriptableDeviceAction, cachedStatus: BaseDeviceStatus, context?: string, status?: string, overrideStatus?: Bool): void
 }
 
 declare interface Fridge extends InteractiveDevice {
@@ -67613,7 +67613,7 @@ declare interface MovableWallScreenControllerPS extends DoorControllerPS {
 
   OnInstantiated(): Bool
   Initialize(): void
-  GetDeviceIconPath(): String
+  GetDeviceIconPath(): string
 }
 
 declare interface SecretOpenAnimationEvent extends Event {
@@ -67645,7 +67645,7 @@ declare interface WallScreenControllerPS extends TVControllerPS {
   GetActions(actions: DeviceAction[], context: GetActionsContext): Bool
   OnToggleShow(evt: ToggleShow): EntityNotificationType
   IsShown(): Bool
-  GetDeviceIconPath(): String
+  GetDeviceIconPath(): string
 }
 
 declare interface ToggleShow extends ActionBool {
@@ -67714,7 +67714,7 @@ declare interface WindowBlindersControllerPS extends ScriptableDeviceComponentPS
   OnInstantiated(): Bool
   Initialize(): void
   GameAttached(): void
-  GetDeviceIconPath(): String
+  GetDeviceIconPath(): string
   IsOpen(): Bool
   IsTilted(): Bool
   IsClosed(): Bool
@@ -67747,7 +67747,7 @@ declare interface WindowBlindersData {
 declare interface ToggleTiltBlinders extends ActionBool {
 
   SetProperties(isTilted: Bool): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface SChannelEnumData {
@@ -67773,7 +67773,7 @@ declare interface WindowControllerPS extends DoorControllerPS {
   OnInstantiated(): Bool
   Initialize(): void
   GameAttached(): void
-  GetDeviceIconPath(): String
+  GetDeviceIconPath(): string
   OnActionDemolition(evt: ActionDemolition): EntityNotificationType
   GetDeviceIconTweakDBID(): TweakDBID
   GetBackgroundTextureTweakDBID(): TweakDBID
@@ -67999,7 +67999,7 @@ declare interface ElectricBoxControllerPS extends MasterControllerPS {
 declare interface ActionOverride extends ActionBool {
 
   SetProperties(): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface Fuse extends InteractiveMasterDevice {
@@ -68082,7 +68082,7 @@ declare interface FuseBoxControllerPS extends MasterControllerPS {
 declare interface SendSpiderbotToTogglePower extends ActionBool {
 
   SetProperties(status: EDeviceStatus): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface SendSpiderbotToOverloadDevice extends ActionBool {
@@ -68154,17 +68154,17 @@ declare interface SecurityAlarmController extends MasterController {
 
 declare interface ChangePresetEvent extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface EnableTimeCallbacks extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface DisableTimeCallbacks extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface SmartHouse extends InteractiveMasterDevice {
@@ -68459,12 +68459,12 @@ declare interface TriggerPlayerAreaCheck extends Event {
 
 declare interface QuestIllegalActionNotification extends QuestSecuritySystemInput {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface QuestCombatActionNotification extends QuestSecuritySystemInput {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface NewCycleEvent extends Event {
@@ -68495,7 +68495,7 @@ declare interface MovableDeviceController extends ScriptableDC {
 
 declare interface MovableDeviceControllerPS extends ScriptableDeviceComponentPS {
 
-  GetActionName(): String
+  GetActionName(): string
   GameAttached(): void
   GetActions(actions: DeviceAction[], context: GetActionsContext): Bool
   ActionMoveObstacle(interactionTweak: TweakDBID): MoveObstacle
@@ -68873,7 +68873,7 @@ declare interface SecurityLockerProperties {
 declare interface UseSecurityLocker extends ActionBool {
 
   SetProperties(shouldDeposit: Bool): void
-  GetTweakDBChoiceRecord(): String
+  GetTweakDBChoiceRecord(): string
 }
 
 declare interface Disarm extends Event {
@@ -68989,12 +68989,12 @@ declare interface InvisibleSceneStashControllerPS extends ScriptableDeviceCompon
 
 declare interface UndressPlayer extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface DressPlayer extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface CrossingLightController extends TrafficLightController {
@@ -69412,7 +69412,7 @@ declare interface DelaySpawning extends Event {
 
 declare interface VehicleDoorDetached extends ActionBool {
 
-  SetProperties(slotString: String, source?: Bool): void
+  SetProperties(slotString: string, source?: Bool): void
 }
 
 declare interface VendingTerminal extends InteractiveDevice {
@@ -69433,7 +69433,7 @@ declare interface VendingTerminal extends InteractiveDevice {
   OnSellItemToVendor(evt: SellItemToVendor): Bool
   OnDispenceItemFromVendor(evt: DispenceItemFromVendor): Bool
   OnVendingMachineFinishedEvent(evt: VendingMachineFinishedEvent): Bool
-  SendDataToUIBlackboard(TopText: String, BottomText: String): void
+  SendDataToUIBlackboard(TopText: string, BottomText: string): void
   DelayVendingMachineEvent(time: number, itemID: ItemID): void
   InitializeScreenDefinition(): void
 }
@@ -69499,7 +69499,7 @@ declare interface VentilationArea extends InteractiveMasterDevice {
   PlayGameEffect(): void
   StopGameEffect(): void
   GetEntitiesInArea(): Entity[]
-  ApplyStatusEffect(effectTDBID: String): void
+  ApplyStatusEffect(effectTDBID: string): void
   OnAreaEnter(evt: AreaEnteredEvent): Bool
   OnAreaExit(evt: AreaExitedEvent): Bool
   GetDefaultHighlight(): FocusForcedHighlightData
@@ -69533,7 +69533,7 @@ declare interface VentilationEffectorControllerPS extends ActivatedDeviceControl
 
 declare interface DispenseFreeItem extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface VirtualMasterDevice extends Device {
@@ -69567,17 +69567,17 @@ declare interface EffectObjectProvider_VentilationAreaEntities extends EffectObj
 declare interface ItemsLocalizationHelper extends IScriptable {
 
   /** @noSelf **/
-  GetAbbreviatedItemStatName(type: gamedataStatType): String
+  GetAbbreviatedItemStatName(type: gamedataStatType): string
 }
 
 declare interface UILocalizationKeys extends IScriptable {
 
   /** @noSelf **/
-  Common_EuroDollar(): String
+  Common_EuroDollar(): string
   /** @noSelf **/
-  Inventory_NoSuitableItems(): String
+  Inventory_NoSuitableItems(): string
   /** @noSelf **/
-  Inventory_NoSlots(): String
+  Inventory_NoSlots(): string
 }
 
 declare interface CustomSystemUIPS extends VirtualSystemPS {
@@ -70729,7 +70729,7 @@ declare interface LookAtPresetBaseEvents extends DefaultTransition {
   /** @noSelf **/
   AddLookat(scriptInterface: StateGameScriptInterface, recordID: TweakDBID, priority: number, lookAtEventsArray: LookAtAddEvent[], attachLeft: Bool, attachRight: Bool): void
   SetHandAttachAnimVars(scriptInterface: StateGameScriptInterface): void
-  AddAllLookAtsInList(scriptInterface: StateGameScriptInterface, presetNames: String[], priority: number, lookAtEventsArray: LookAtAddEvent[]): void
+  AddAllLookAtsInList(scriptInterface: StateGameScriptInterface, presetNames: string[], priority: number, lookAtEventsArray: LookAtAddEvent[]): void
   /** @noSelf **/
   RemoveAddedLookAts(scriptInterface: StateGameScriptInterface, lookAtEventsArray: LookAtAddEvent[]): void
   OnEnter(stateContext: StateContext, scriptInterface: StateGameScriptInterface): void
@@ -72558,7 +72558,7 @@ declare interface WeaponWheelEvents extends QuickSlotsHoldEvents {
 
 declare interface ReactionTransition extends DefaultTransition {
 
-  DrawDebugText(scriptInterface: StateGameScriptInterface, textLayerId: number, text: String): void
+  DrawDebugText(scriptInterface: StateGameScriptInterface, textLayerId: number, text: string): void
   ClearDebugText(scriptInterface: StateGameScriptInterface, textLayerId: number): void
 }
 
@@ -72775,9 +72775,9 @@ declare interface TimeDilationTransitions extends DefaultTransition {
   IsTargetChanged(stateContext: StateContext, scriptInterface: StateGameScriptInterface): Bool
   IsPlayerMovementDetected(stateContext: StateContext, scriptInterface: StateGameScriptInterface): Bool
   IsCameraRotated(stateContext: StateContext, scriptInterface: StateGameScriptInterface): Bool
-  GetBoolFromTimeSystemTweak(tweakDBPath: String, paramName: String): Bool
-  GetFloatFromTimeSystemTweak(tweakDBPath: String, paramName: String): number
-  GetCNameFromTimeSystemTweak(tweakDBPath: String, paramName: String): CName
+  GetBoolFromTimeSystemTweak(tweakDBPath: string, paramName: string): Bool
+  GetFloatFromTimeSystemTweak(tweakDBPath: string, paramName: string): number
+  GetCNameFromTimeSystemTweak(tweakDBPath: string, paramName: string): CName
 }
 
 declare interface TimeDilationEventsTransitions extends TimeDilationTransitions {
@@ -73418,12 +73418,12 @@ declare interface MeleeTargetingEvents extends MeleeEventsTransition {
 
 declare interface SceneForceWeaponAim extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface PauseBraindance extends Event {
 
-  GetFriendlyDescription(): String
+  GetFriendlyDescription(): string
 }
 
 declare interface DodgeDecisions extends LocomotionGroundDecisions {
@@ -73791,12 +73791,12 @@ declare interface ProjectileLauncherRound extends ItemObject {
   OnShootTarget(eventData: gameprojectileShootTargetEvent): Bool
   GeneralLaunchSetup(eventData: gameprojectileShootEvent): void
   CurvedLaunchToTarget(eventData: gameprojectileShootEvent, targetObject?: GameObject, targetComponent?: IPlacedComponent): void
-  GetFloat(param: String): number
-  GetInt(param: String): number
-  GetBool(param: String): Bool
-  GetCName(param: String): CName
-  GetString(param: String): String
-  GetVector3(param: String): Vector3
+  GetFloat(param: string): number
+  GetInt(param: string): number
+  GetBool(param: string): Bool
+  GetCName(param: string): CName
+  GetString(param: string): string
+  GetVector3(param: string): Vector3
   OnCollision(eventData: gameprojectileHitEvent): Bool
   ExecuteGameEffect(eventData?: gameprojectileHitEvent): void
   PlayAudio(): void
@@ -74376,7 +74376,7 @@ declare interface ChargeJumpEvents extends LocomotionAirEvents {
 
   OnEnter(stateContext: StateContext, scriptInterface: StateGameScriptInterface): void
   SetChargeJumpParameters(stateContext: StateContext, scriptInterface: StateGameScriptInterface, inputHoldTime: number): void
-  UpdateChargeJumpStats(stateContext: StateContext, scriptInterface: StateGameScriptInterface, upwardsGravity: number, downwardsGravity: number, nameSuffix: String): void
+  UpdateChargeJumpStats(stateContext: StateContext, scriptInterface: StateGameScriptInterface, upwardsGravity: number, downwardsGravity: number, nameSuffix: string): void
   OnExit(stateContext: StateContext, scriptInterface: StateGameScriptInterface): void
   OnForcedExit(stateContext: StateContext, scriptInterface: StateGameScriptInterface): void
 }
@@ -74392,7 +74392,7 @@ declare interface HoverJumpEvents extends LocomotionAirEvents {
   OnEnter(stateContext: StateContext, scriptInterface: StateGameScriptInterface): void
   OnUpdate(timeDelta: number, stateContext: StateContext, scriptInterface: StateGameScriptInterface): void
   CanHover(stateContext: StateContext, scriptInterface: StateGameScriptInterface): Bool
-  UpdateHoverJumpStats(stateContext: StateContext, scriptInterface: StateGameScriptInterface, upwardsGravity: number, downwardsGravity: number, nameSuffix: String): void
+  UpdateHoverJumpStats(stateContext: StateContext, scriptInterface: StateGameScriptInterface, upwardsGravity: number, downwardsGravity: number, nameSuffix: string): void
   AddUpwardsThrust(stateContext: StateContext, scriptInterface: StateGameScriptInterface, verticalImpulse: number): void
   OnExit(stateContext: StateContext, scriptInterface: StateGameScriptInterface): void
   OnForcedExit(stateContext: StateContext, scriptInterface: StateGameScriptInterface): void
@@ -74561,7 +74561,7 @@ declare interface StatusEffectDecisions extends LocomotionGroundDecisions {
   ToStand(stateContext: StateContext, scriptInterface: StateGameScriptInterface): Bool
   ToRegularFall(stateContext: StateContext, scriptInterface: StateGameScriptInterface): Bool
   HasMovementAffiliatedStatusEffect(stateContext: StateContext, scriptInterface: StateGameScriptInterface): Bool
-  GetStatusEffectName(stateContext: StateContext, scriptInterface: StateGameScriptInterface): String
+  GetStatusEffectName(stateContext: StateContext, scriptInterface: StateGameScriptInterface): string
 }
 
 declare interface KnockdownDecisions extends StatusEffectDecisions {
@@ -74578,7 +74578,7 @@ declare interface AICommandNodeFunction {
 declare interface AICommandNodeFunctionProvider extends IScriptable {
 
   /** @noSelf **/
-  Add(functions: AICommandNodeFunction[], nodeType: CName, category: CName, friendlyName: String, paramsType: CName, color: Color): void
+  Add(functions: AICommandNodeFunction[], nodeType: CName, category: CName, friendlyName: string, paramsType: CName, color: Color): void
   /** @noSelf **/
   CollectFunctions(): AICommandNodeFunction[]
 }
@@ -74602,7 +74602,7 @@ declare interface LifePath_ScriptConditionType extends BluelineConditionTypeBase
 
   Evaluate(playerObject: GameObject): Bool
   GetBluelinePart(playerObject: GameObject): BluelinePart
-  ToString(): String
+  ToString(): string
   GetPlayerDevelopmentSystem(): PlayerDevelopmentSystem
 }
 
@@ -74610,7 +74610,7 @@ declare interface Build_ScriptConditionType extends BluelineConditionTypeBase {
 
   Evaluate(playerObject: GameObject): Bool
   GetBluelinePart(playerObject: GameObject): BluelinePart
-  ToString(): String
+  ToString(): string
 }
 
 declare interface PaymentConditionTypeBase extends BluelineConditionTypeBase {
@@ -74628,7 +74628,7 @@ declare interface PaymentBalanced_ScriptConditionType extends PaymentConditionTy
 
   GetPaymentAmount(playerObject: GameObject): number
   GetBluelinePart(playerObject: GameObject): BluelinePart
-  ToString(): String
+  ToString(): string
 }
 
 declare interface PaymentFixedAmount_ScriptConditionType extends PaymentConditionTypeBase {
@@ -74636,7 +74636,7 @@ declare interface PaymentFixedAmount_ScriptConditionType extends PaymentConditio
   SetPayAmountValue(value: number): void
   GetPaymentAmount(playerObject: GameObject): number
   GetBluelinePart(playerObject: GameObject): BluelinePart
-  ToString(): String
+  ToString(): string
 }
 
 declare interface RandomizationDataEntry {
@@ -74704,7 +74704,7 @@ declare interface MeleeHitAnimEventExecutor extends EffectExecutor_Scripted {
   Process(ctx: EffectScriptContext, applierCtx: EffectExecutionScriptContext): Bool
   GetTargetWeapon(target: ScriptedPuppet): WeaponObject
   TriggerSingleStimuliOnHit(ctx: EffectScriptContext, applierCtx: EffectExecutionScriptContext, stimToSend: gamedataStimType): void
-  GetStimuliData(path: String, stimToProcess: StimuliEvent): void
+  GetStimuliData(path: string, stimToProcess: StimuliEvent): void
   IsMuted(ctx: EffectScriptContext, applierCtx: EffectExecutionScriptContext): Bool
 }
 
@@ -74759,7 +74759,7 @@ declare interface MarkingBubble extends EffectExecutor_Scripted {
 declare interface GameEffectExecutor_StimOnHit extends EffectExecutor_Scripted {
 
   Process(ctx: EffectScriptContext, applierCtx: EffectExecutionScriptContext): Bool
-  GetStimuliData(path: String, stimToProcess: StimuliEvent): void
+  GetStimuliData(path: string, stimToProcess: StimuliEvent): void
   IsMuted(ctx: EffectScriptContext, applierCtx: EffectExecutionScriptContext): Bool
 }
 
@@ -74906,7 +74906,7 @@ declare interface ForcedKnockdownDecisions extends KnockdownDecisions {
 
   EnterCondition(stateContext: StateContext, scriptInterface: StateGameScriptInterface): Bool
   HasForcedStatusEffect(stateContext: StateContext, scriptInterface: StateGameScriptInterface): Bool
-  GetForcedStatusEffectName(stateContext: StateContext, scriptInterface: StateGameScriptInterface): String
+  GetForcedStatusEffectName(stateContext: StateContext, scriptInterface: StateGameScriptInterface): string
 }
 
 declare interface ForcedKnockdownEvents extends KnockdownEvents {
@@ -75050,7 +75050,7 @@ declare interface sampleUILoadingBarController extends inkLogicController {
 declare interface sampleUIEventTestLogicController extends inkLogicController {
 
   OnInitialize(): Bool
-  ToggleVisibility(text: String): void
+  ToggleVisibility(text: string): void
   OnButtonClickEventTest(e: inkPointerEvent): void
   CallbackTest(widget: inkWidget): void
   OnButtonClickCallbackTest(e: inkPointerEvent): void
@@ -75194,7 +75194,7 @@ declare interface sampleStylesGameController extends inkGameController {
   OnInitialize(): Bool
   OnButton1StateChanged(controller: inkButtonController, oldState: inkEButtonState, newState: inkEButtonState): Bool
   OnButton2Pressed(e: inkPointerEvent): Bool
-  ButtonStateToString(state: inkEButtonState): String
+  ButtonStateToString(state: inkEButtonState): string
 }
 
 declare interface sampleScreenProjectionGameController extends inkProjectedHUDGameController {
@@ -75243,12 +75243,12 @@ declare interface SampleUITextSystemController extends inkGameController {
   InitControls(): void
   InitTextParams(): void
   UpdateNumberParam(value: number): void
-  UpdateStringParam(value: String): void
+  UpdateStringParam(value: string): void
   UpdateTimeParam(): void
   UpdateMeasurementSystem(system: EMeasurementSystem): void
   OnIncreaseNumberToInject(e: inkPointerEvent): Bool
   OnDecreaseNumberToInject(e: inkPointerEvent): Bool
-  OnChangeTextToInject(str: String): Bool
+  OnChangeTextToInject(str: string): Bool
   OnRefreshTime(e: inkPointerEvent): Bool
   OnSwitchToMetricSystem(e: inkPointerEvent): Bool
   OnSwitchToImperialSystem(e: inkPointerEvent): Bool
@@ -75262,7 +75262,7 @@ declare interface SampleUIMeasurementController extends inkLogicController {
   OnInitialize(): Bool
   SetMeasurementSystem(system: EMeasurementSystem): void
   UpdateTextWidgets(): void
-  FormatValue(value: number): String
+  FormatValue(value: number): string
   OnIncreaseValue(e: inkPointerEvent): Bool
   OnDecreaseValue(e: inkPointerEvent): Bool
 }
@@ -75270,7 +75270,7 @@ declare interface SampleUIMeasurementController extends inkLogicController {
 declare interface SampleUIButtons extends inkLogicController {
 
   OnInitialize(): Bool
-  SetText(text: String): void
+  SetText(text: string): void
   OnButtonClick(controller: inkButtonController): void
   OnButtonHoldComplete(controller: inkButtonController, cancelled: Bool): void
   OnToggle1Changed(controller: inkToggleController, isToggled: Bool): void
@@ -75297,7 +75297,7 @@ declare interface ImageSwappingController extends inkLogicController {
 declare interface TechQA_ImageSwappingButtonController extends inkLogicController {
 
   OnInitialize(): Bool
-  SetDescription(newDescription: String): void
+  SetDescription(newDescription: string): void
 }
 
 declare interface sampleImageChanger extends inkLogicController {
@@ -75425,7 +75425,7 @@ declare interface InspectionObject extends GameObject {
   OnRequestComponents(ri: EntityRequestComponentsInterface): Bool
   OnTakeControl(ri: EntityResolveComponentsInterface): Bool
   OnInteractionChoice(choiceEvent: InteractionChoiceEvent): Bool
-  CreateChoice(choiceName: String, data: number): InteractionChoice
+  CreateChoice(choiceName: string, data: number): InteractionChoice
 }
 
 declare interface SampleEntityWithCounterPS extends GameObjectPS {
@@ -75597,19 +75597,19 @@ declare interface WorkspotFunctionalTestsDebugListener extends IScriptable {
   GetWorkspotsSetupCount(): number
   GetWorkspotsStartedCount(): number
   GetWorkspotsFinishedCount(): number
-  GetAnimationStack(): String[]
-  GetLastPlayedAnimation(): String
-  GetAnimationPlayCount(animationName: String): number
-  GetSkippedAnimationStack(): String[]
-  GetLastSkippedAnimation(): String
-  GetMissingAnimationStack(): String[]
-  GetLastMissingAnimation(): String
+  GetAnimationStack(): string[]
+  GetLastPlayedAnimation(): string
+  GetAnimationPlayCount(animationName: string): number
+  GetSkippedAnimationStack(): string[]
+  GetLastSkippedAnimation(): string
+  GetMissingAnimationStack(): string[]
+  GetLastMissingAnimation(): string
   GetSkipOverflowsCount(): number
   GetTeleportRequestsCount(): number
   GetMovementRequestsCount(): number
   OnInstanceCreated(): Bool
   OnInstanceRemoved(): Bool
-  OnWorkspotSetup(path: String): Bool
+  OnWorkspotSetup(path: string): Bool
   OnWorkspotStarted(): Bool
   OnWorkspotFinished(): Bool
   OnAnimationChanged(animName: CName, workEntryID: WorkEntryId): Bool
