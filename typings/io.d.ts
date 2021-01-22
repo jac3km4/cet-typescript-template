@@ -6,13 +6,17 @@ declare interface IOModule {
     input(file: File): void
     output(file: File): void
     lines(file: File): Lines
-    read(): String | undefined
-    write(...args: WriteValues): String
-    close(file: File): void
 }
 
-declare interface File { }
+declare interface File {
+    read(): String | undefined
+    write(...args: WriteValues): String
+    lines(): Lines
+    flush(): void
+    close(): void
+}
 
+/** @luaIterator */
 type Lines = Iterable<String>;
 
 /** @vararg */
