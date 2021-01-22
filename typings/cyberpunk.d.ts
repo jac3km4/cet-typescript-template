@@ -18660,6 +18660,7 @@ declare interface CombatGadgetHelper extends IScriptable {
   SpawnPhysicalImpulse(source: GameObject, radius: number): void
 }
 
+/** @customConstructor Quaternion.new */
 declare class Quaternion {
   x: number
   y: number
