@@ -11,7 +11,7 @@ declare interface IOModule {
 
 declare interface File {
     read(): String | undefined
-    write(str: String, mode?: String): String
+    write(str: String, strOpt?: String): String
     lines(): Lines
     flush(): void
     close(): void
