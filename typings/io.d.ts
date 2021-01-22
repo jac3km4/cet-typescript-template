@@ -2,13 +2,13 @@ declare const io: IOModule;
 
 /** @noSelf **/
 declare interface IOModule {
-  open(path: String, mode?: "r"): ROFile;
-  open(path: String, mode?: "w" | "a"): WOFile;
-  open(path: String, mode?: "r+" | "w+" | "a+"): RWFile;
+  open(path: string, mode?: "r"): ROFile;
+  open(path: string, mode?: "w" | "a"): WOFile;
+  open(path: string, mode?: "r+" | "w+" | "a+"): RWFile;
 
   input(file: File): void;
   output(file: File): void;
-  lines(path: String): Lines;
+  lines(path: string): Lines;
 }
 
 declare interface File {
@@ -18,22 +18,26 @@ declare interface File {
 
 declare interface ROFile extends File {
   read(mode: "n"): number | undefined;
-  read(mode: "a"): String;
-  read(mode: "*l"): String | undefined;
-  read(count: number): String | undefined;
+  read(mode: "a"): string;
+  read(mode: "*l"): string | undefined;
+  read(count: number): string | undefined;
 
   lines(): Lines;
 }
 
 declare interface WOFile extends File {
-  write(...args: WriteValues): String;
+  write(...args: WriteValues): string;
   flush(): void;
 }
 
 declare interface RWFile extends ROFile, WOFile { }
 
 /** @luaIterator */
-type Lines = Iterable<String>;
+type Lines = Iterable<string>;
 
 /** @vararg */
+<<<<<<< HEAD
 type WriteValues = String[];
+=======
+type WriteValues = string[];
+>>>>>>> 329c30709dc9458812df56f617985ac47f6ff896
