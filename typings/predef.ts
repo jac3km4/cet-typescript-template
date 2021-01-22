@@ -23,12 +23,12 @@ declare class CRUID {
 
 /** @customConstructor Vector4.new */
 declare class Vector4 {
-  constructor(x: Float, y: Float, z: Float, w: Float);
+  constructor(x: Number, y: Number, z: Number, w: Number);
 }
 
 /** @customConstructor Quaternion.new */
 declare class Quaternion {
-  constructor(x: Float, y: Float, z: Float, w: Float);
+  constructor(x: Number, y: Number, z: Number, w: Number);
 }
 
 declare interface Uint8 { }
