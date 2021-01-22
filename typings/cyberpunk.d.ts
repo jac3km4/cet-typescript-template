@@ -12718,6 +12718,10 @@ declare interface Stim_Record extends TweakDBRecord {
 
 /** @customConstructor Vector4.new */
 declare class Vector4 {
+  x: number
+  y: number
+  z: number
+  w: number
   constructor(x: number, y: number, z: number, w: number)
   /** @noSelf **/
   Dot2D(a: Vector4, b: Vector4): number
@@ -18657,6 +18661,10 @@ declare interface CombatGadgetHelper extends IScriptable {
 }
 
 declare class Quaternion {
+  x: number
+  y: number
+  z: number
+  w: number
   constructor(x: number, y: number, z: number, w: number)
   /** @noSelf **/
   SetIdentity(quat: Quaternion): void
