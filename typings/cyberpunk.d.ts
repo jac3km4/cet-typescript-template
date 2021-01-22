@@ -12716,6 +12716,7 @@ declare interface Stim_Record extends TweakDBRecord {
   IsReactionStim(): Bool
 }
 
+/** @customConstructor Vector4.new */
 declare class Vector4 {
   constructor(x: number, y: number, z: number, w: number)
   /** @noSelf **/
