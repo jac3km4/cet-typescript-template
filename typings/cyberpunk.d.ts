@@ -2515,23 +2515,23 @@ declare interface GameObject extends GameEntity {
   OnChangeRewardSettingsEvent(evt: ChangeRewardSettingsEvent): Bool
   OnWillDieSoonEventEvent(evt: WillDieSoonEvent): Bool
   CheckIfPreventionShouldReact(damageDealers: GameObject[]): void
-  IsVehicle(): Bool
-  IsPuppet(): Bool
-  IsPlayer(): Bool
+  IsVehicle(): this is VehicleObject
+  IsPuppet(): this is ScriptedPuppet
+  IsPlayer(): this is PlayerPuppet
   IsReplacer(): Bool
   IsVRReplacer(): Bool
   IsJohnnyReplacer(): Bool
-  IsNPC(): Bool
-  IsContainer(): Bool
-  IsShardContainer(): Bool
-  IsDevice(): Bool
-  IsSensor(): Bool
-  IsTurret(): Bool
+  IsNPC(): this is NPCPuppet
+  IsContainer(): this is ContainerObjectSingleItem
+  IsShardContainer(): this is ShardCaseContainer
+  IsDevice(): this is Device
+  IsSensor(): this is SensorDevice
+  IsTurret(): this is TankTurret
   IsActive(): Bool
   IsPrevention(): Bool
-  IsDropPoint(): Bool
+  IsDropPoint(): this is DropPoint
   IsDrone(): Bool
-  IsItem(): Bool
+  IsItem(): this is ItemObject
   IsDead(): Bool
   IsDeadNoStatPool(): Bool
   UpdateAdditionalScanningData(): void
@@ -2725,6 +2725,7 @@ declare interface GameObject extends GameEntity {
   OnSetGlitchOnUIEvent(evt: SetGlitchOnUIEvent): Bool
   OnCustomUIAnimationEvent(evt: CustomUIAnimationEvent): Bool
   OnSmartGunLockEvent(evt: SmartGunLockEvent): Bool
+  ToString(): String
 }
 
 declare interface PersistentState extends IScriptable {
@@ -2982,6 +2983,8 @@ declare interface GameInstance {
   GetObjectPoolSystem(): ObjectPoolSystem
   /** @noSelf **/
   GetPersistencySystem(): GamePersistencySystem
+    /** @noSelf **/
+  GetPlayer(): PlayerPuppet
   /** @noSelf **/
   GetPlayerSystem(): PlayerSystem
   /** @noSelf **/
