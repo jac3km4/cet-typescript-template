@@ -21,16 +21,6 @@ declare class CRUID {
   constructor(str: String);
 }
 
-/** @customConstructor Vector4.new */
-declare class Vector4 {
-  constructor(x: Number, y: Number, z: Number, w: Number);
-}
-
-/** @customConstructor Quaternion.new */
-declare class Quaternion {
-  constructor(x: Number, y: Number, z: Number, w: Number);
-}
-
 declare interface Uint8 { }
 declare interface Uint16 { }
 declare interface Uint32 { }
