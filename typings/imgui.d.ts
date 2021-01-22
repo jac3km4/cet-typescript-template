@@ -6,9 +6,12 @@ declare interface ImGui {
   IsKeyDown(key: number): boolean
   IsKeyPressed(key: number, b: boolean): boolean
   PushStyleColor(col: ImGuiCol, r: number, g: number, b: number, a: number): void
-  Begin(name: string, b: boolean, flags: ImGuiWindowFlags): void
+  Begin(name: string, b: boolean, flags?: ImGuiWindowFlags): void
+  Button(str: string): boolean
+  Text(str: string): void
   SetWindowPos(x: number, y: number): void
-  SetWindowFontScale(n: number): void
+  SetNextWindowPos(x: number, y: number): void
+  SetWindowFontScale(number): void
   Spacing(): void
   TextColored(r: number, g: number, b: number, a: number, text: string): void
   Separator(): void

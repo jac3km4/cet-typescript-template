@@ -36,8 +36,4 @@ declare interface RWFile extends ROFile, WOFile { }
 type Lines = Iterable<string>;
 
 /** @vararg */
-<<<<<<< HEAD
-type WriteValues = String[];
-=======
 type WriteValues = string[];
->>>>>>> 329c30709dc9458812df56f617985ac47f6ff896
