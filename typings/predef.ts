@@ -8,17 +8,17 @@ declare const Game: Game;
 
 /** @customConstructor CName.new */
 declare class CName {
-  constructor(str: String);
+  constructor(str: string);
 }
 
 /** @customConstructor TweakDBID.new */
 declare class TweakDBID {
-  constructor(str: String);
+  constructor(str: string);
 }
 
 /** @customConstructor CRUID.new */
 declare class CRUID {
-  constructor(str: String);
+  constructor(str: string);
 }
 
 declare interface Uint8 { }
@@ -82,10 +82,10 @@ function float(value: number): Float {
 }
 
 /** @noSelf **/
-declare function registerForEvent(name: String, cb: (delta: number) => void): void;
+declare function registerForEvent(name: string, cb: (delta: number) => void): void;
 
 /** @noSelf **/
-declare function print(str: String): void;
+declare function print(str: string): void;
 
 /** @noSelf **/
 /** @tupleReturn */
