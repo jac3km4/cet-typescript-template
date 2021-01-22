@@ -2,18 +2,18 @@ declare const io: IOModule;
 
 /** @noSelf **/
 declare interface IOModule {
-    open(file: String, mode?: String): File
-    input(file: File): void
-    output(file: File): void
-    lines(file: File): Lines
+  open(file: String, mode?: String): File;
+  input(file: File): void;
+  output(file: File): void;
+  lines(file: File): Lines;
 }
 
 declare interface File {
-    read(): String | undefined
-    write(...args: WriteValues): String
-    lines(): Lines
-    flush(): void
-    close(): void
+  read(): String | undefined;
+  write(...args: WriteValues): String;
+  lines(): Lines;
+  flush(): void;
+  close(): void;
 }
 
 /** @luaIterator */
