@@ -90,3 +90,6 @@ declare function print(str: string): void;
 /** @noSelf **/
 /** @tupleReturn */
 declare function GetDisplayResolution(): [number, number];
+
+/** @noSelf **/
+declare function registerHotkey(id: string, name: string, cb: () => void): void;

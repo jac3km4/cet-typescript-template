@@ -3,3 +3,8 @@ node_modules/
 .vs
 data/
 .gitignore
+ProjectSettings.json
+slnx.sqlite
+VSWorkspaceState.json
+.suo
+new_jb.log
