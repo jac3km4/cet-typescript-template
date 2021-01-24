@@ -19,4 +19,4 @@ declare interface DB {
 }
 
 /** @luaIterator */
-type Rows = Iterable<string>;
+type Rows = Iterable<Array<string>>;
