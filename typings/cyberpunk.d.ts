@@ -16146,6 +16146,9 @@ declare interface WeaponObject extends ItemObject {
   OnUpdateDamageChangeEvent(evt: UpdateDamageChangeEvent): Bool
   OnMeleeHitEvent(evt: MeleeHitEvent): Bool
   OnAmmoStateChangeEvent(evt: AmmoStateChangeEvent): Bool
+
+  // VARIABLES //
+  id: TweakDBID
 }
 
 declare interface IFxPackage extends IScriptable {

@@ -22,12 +22,7 @@ declare class CRUID {
 }
 
 /** @noSelf **/
-declare class GetSingleton {
-  constructor(name: Singleton)
-  FromTDBID(tweakDBID: TweakDBID): ItemID
-}
-
-type Singleton = 'gameItemID' | 'gameTimeSystem' | 'inkMenuScenario' | 'gameObject' | 'gameGameAudioSystem' | 'gameDebugVisualizerSystem' | 'gameDelaySystem' | 'gameEffectSystem' | 'cpPlayerSystem' | 'questQuestsSystem' | 'gameStatsSystem' | 'gameStatPoolsSystem' | 'gametargetingTargetingSystem' | 'gameTransactionSystem' | 'gamePersistencySystem' | 'gameVisionModeSystem' | 'gameComponentPS' | 'gamePersistentID' | 'entEntity' | 'redEvent';
+declare function NewObject(className: string)
 
 declare interface Uint8 { }
 declare interface Uint16 { }
