@@ -3110,6 +3110,8 @@ declare interface GameInstance {
   GetNodeTransform(nodeRef: GlobalNodeRef, transform: Transform): Bool
   /** @noSelf **/
   AddtoInventory(name: string, count: number): void
+  /** @noSelf **/
+  EquipItemOnPlayer(name: string, slot: string): void
 }
 
 declare interface IActivityLogSystem extends IGameSystem {
