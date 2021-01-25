@@ -21,6 +21,9 @@ declare class CRUID {
   constructor(str: string);
 }
 
+/** @noSelf **/
+declare function NewObject(className: string)
+
 declare interface Uint8 { }
 declare interface Uint16 { }
 declare interface Uint32 { }
@@ -86,6 +89,12 @@ declare function registerForEvent(name: string, cb: (delta: number) => void): vo
 
 /** @noSelf **/
 declare function print(str: string): void;
+
+/** @noSelf **/
+declare function Dump(obj: any, detailed: boolean): string;
+
+/** @noSelf **/
+declare function DumpType(name:string, detailed:boolean): string;
 
 /** @noSelf **/
 /** @tupleReturn */

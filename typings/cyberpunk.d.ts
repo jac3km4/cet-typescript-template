@@ -3108,6 +3108,10 @@ declare interface GameInstance {
   FindEntityByID(entityId: EntityID): Entity
   /** @noSelf **/
   GetNodeTransform(nodeRef: GlobalNodeRef, transform: Transform): Bool
+  /** @noSelf **/
+  AddtoInventory(name: string, count: number): void
+  /** @noSelf **/
+  EquipItemOnPlayer(name: string, slot: string): void
 }
 
 declare interface IActivityLogSystem extends IGameSystem {
@@ -10296,6 +10300,9 @@ declare interface ItemID {
   IsOfTDBID(itemID: ItemID, tdbID: TweakDBID): Bool
   /** @noSelf **/
   IsQuery(itemID: ItemID): Bool
+
+  // VARIABLES //
+  id: TweakDBID
 }
 
 declare interface TransactionSystem extends ITransactionSystem {
