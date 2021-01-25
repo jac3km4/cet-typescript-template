@@ -4,7 +4,7 @@ const hotkey = 0x45;
 let width: number;
 let height: number;
 let drawPopup = false;
-let objectName: String | undefined;
+let objectName: string | undefined;
 
 registerForEvent("onInit", () => {
   let [w, h] = GetDisplayResolution();
