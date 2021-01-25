@@ -23,9 +23,11 @@ declare class CRUID {
 
 /** @noSelf **/
 declare class GetSingleton {
-  constructor(name: string)
+  constructor(name: Singleton)
   FromTDBID(tweakDBID: TweakDBID): ItemID
 }
+
+type Singleton = 'gameItemID' | 'gameTimeSystem';
 
 declare interface Uint8 { }
 declare interface Uint16 { }
