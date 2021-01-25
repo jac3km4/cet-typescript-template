@@ -2726,6 +2726,9 @@ declare interface GameObject extends GameEntity {
   OnCustomUIAnimationEvent(evt: CustomUIAnimationEvent): Bool
   OnSmartGunLockEvent(evt: SmartGunLockEvent): Bool
   ToString(): string
+
+  // VARIABLES
+  isDead: boolean
 }
 
 declare interface PersistentState extends IScriptable {
