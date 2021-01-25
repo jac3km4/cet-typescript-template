@@ -3108,6 +3108,8 @@ declare interface GameInstance {
   FindEntityByID(entityId: EntityID): Entity
   /** @noSelf **/
   GetNodeTransform(nodeRef: GlobalNodeRef, transform: Transform): Bool
+  /** @noSelf **/
+  AddtoInventory(name: string, count: number): void
 }
 
 declare interface IActivityLogSystem extends IGameSystem {
