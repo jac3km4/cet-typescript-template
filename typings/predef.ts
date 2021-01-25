@@ -21,6 +21,12 @@ declare class CRUID {
   constructor(str: string);
 }
 
+/** @noSelf **/
+declare class GetSingleton {
+  constructor(name: string)
+  FromTDBID(tweakDBID: TweakDBID): number
+}
+
 declare interface Uint8 { }
 declare interface Uint16 { }
 declare interface Uint32 { }
