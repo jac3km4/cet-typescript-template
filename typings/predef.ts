@@ -91,6 +91,12 @@ declare function registerForEvent(name: string, cb: (delta: number) => void): vo
 declare function print(str: string): void;
 
 /** @noSelf **/
+declare function Dump(obj: any, detailed: boolean): string;
+
+/** @noSelf **/
+declare function DumpType(name:string, detailed:boolean): string;
+
+/** @noSelf **/
 /** @tupleReturn */
 declare function GetDisplayResolution(): [number, number];
 
