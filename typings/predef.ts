@@ -24,7 +24,7 @@ declare class CRUID {
 /** @noSelf **/
 declare class GetSingleton {
   constructor(name: string)
-  FromTDBID(tweakDBID: TweakDBID): number
+  FromTDBID(tweakDBID: TweakDBID): ItemID
 }
 
 declare interface Uint8 { }
