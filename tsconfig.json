@@ -7,6 +7,7 @@
     "moduleResolution": "node",
     "types": [],
     "strict": false,
+    "jsx": "react-native"
   },
   "include": [
     "src/**/*",
@@ -19,7 +20,7 @@
         "name": "./plugins/cet.ts"
       }
     ],
-    "luaBundleEntry": "src/index.ts",
+    "luaBundleEntry": "src/index.tsx",
     "luaBundle": "dist/bundle.lua"
   }
 }
