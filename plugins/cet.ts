@@ -1,54 +1,51 @@
 import * as ts from "typescript";
 import * as tstl from "typescript-to-lua";
-import { scriptToEngineMap } from './mappings';
 
 const plugin: tstl.Plugin = {
   visitors: {
     [ts.SyntaxKind.CallExpression]: (node, context) => {
-      const result = context.superTransformExpression(node);
-      let typeChecker = context.program.getTypeChecker();
-
-      if (tstl.isMethodCallExpression(result) &&
-        tstl.isTableIndexExpression(result.prefixExpression) &&
-        tstl.isTableIndexExpression(result.prefixExpression.table) &&
-        tstl.isStringLiteral(result.prefixExpression.index) &&
-        tstl.isIdentifier(result.prefixExpression.table.table) &&
-        tstl.isStringLiteral(result.prefixExpression.table.index) &&
-        result.prefixExpression.table.table.text == "Game" &&
-        result.prefixExpression.table.index.value == "Raw"
-      ) {
-        let clazz = result.prefixExpression.index.value;
-        if (scriptToEngineMap[clazz]) {
-          clazz = scriptToEngineMap[clazz];
-        }
-
-        let signature = `${clazz}::${result.name.text};`;
-        for (const arg of node.arguments) {
-          const type = typeChecker.getTypeAtLocation(arg);
-          const typeName = typeChecker.typeToString(type);
-          if (type.isStringLiteral()) {
-            signature += "String"
-          } else if (type.isClassOrInterface()) {
-            signature += typeName;
-          } else if (typeName == "bool" || typeName == "true" || typeName == "false") {
-            signature += "Bool";
-          } else if (typeName == "number" || type.isNumberLiteral()) {
-            let pos = node.getSourceFile().getLineAndCharacterOfPosition(node.pos);
-            let name = node.getSourceFile().fileName;
-            throw new Error(`Do not pass numbers directly, you should use a wrapper instead: i32(${typeName}) at ${name}:${pos.line}:${pos.character}`)
-          } else {
-            let pos = node.getSourceFile().getLineAndCharacterOfPosition(node.pos);
-            let name = node.getSourceFile().fileName;
-            throw new Error(`Unsupported type ${typeName} at ${name}:${pos.line}:${pos.character}`)
-          }
-        }
-        const access = tstl.createTableIndexExpression(tstl.createIdentifier("Game"), tstl.createStringLiteral(signature), node);
-        return tstl.createCallExpression(access, result.params);
-      } else {
-        return result;
-      }
+      return createFunctionCall(node, context);
     },
-  },
-};
+  }
+}
+
+const createFunctionCall = (call: ts.CallExpression, context: tstl.TransformationContext) => {
+  let typeChecker = context.program.getTypeChecker();
+
+  const createStaticCall = (node: ts.Expression, name: string) => {
+    let expr = context.transformExpression(node);
+    let key = tstl.createStringLiteral(name);
+    let index = tstl.createTableIndexExpression(expr, key);
+    let args = [];
+    for (const arg of call.arguments) {
+      args.push(context.transformExpression(arg));
+    }
+    return tstl.createCallExpression(index, args);
+  }
+
+  if (ts.isCallExpression(call)) {
+    if (ts.isPropertyAccessExpression(call.expression)) {
+      let symbol = typeChecker.getTypeAtLocation(call.expression.expression).getSymbol();
+      let signature = typeChecker.getResolvedSignature(call);
+      let className = symbol.getJsDocTags().find(tag => tag.name == "realName");
+      let functionName = signature.getJsDocTags().find(tag => tag.name == "realName");
+      let isStatic = signature.getJsDocTags().find(tag => tag.name == "noSelf");
+
+      if (className?.text && functionName?.text && ts.isPropertyAccessExpression(call.expression.expression)) {
+        let signature = `${className.text}::${functionName.text}`;
+        return createStaticCall(call.expression.expression.expression, signature)
+      }
+      if (functionName?.text && isStatic) {
+        return createStaticCall(call.expression.expression, functionName.text)
+      }
+      if (functionName?.text) {
+        let access = ts.factory.createPropertyAccessExpression(call.expression.expression, functionName.text);
+        let res = ts.factory.createCallExpression(access, call.typeArguments, call.arguments)
+        return context.superTransformExpression(res)
+      }
+    }
+  }
+  return context.superTransformExpression(call);
+}
 
 export default plugin;

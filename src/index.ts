@@ -1,8 +1,6 @@
 
-Game.GetStatsDataSystem().SetDifficulty("VeryHard")
+Game.GetPlayerSystem()
+  .GetLocalPlayerMainGameObject()
+  .HasHighlight("BACKDOOR", "CLUE");
 
-let quality: gamedataQuality =
-  Game
-    .Raw
-    .RPGManager
-    .GetItemQuality(float(1));
+Game.GameObject.GetActiveWeapon(Game.GetPlayer())
