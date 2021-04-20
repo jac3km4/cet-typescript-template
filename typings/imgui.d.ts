@@ -11,7 +11,7 @@ declare interface ImGui {
   Text(str: string): void
   SetWindowPos(x: number, y: number): void
   SetNextWindowPos(x: number, y: number): void
-  SetWindowFontScale(number): void
+  SetWindowFontScale(n: number): void
   Spacing(): void
   TextColored(r: number, g: number, b: number, a: number, text: string): void
   Separator(): void
