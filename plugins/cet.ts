@@ -3,12 +3,8 @@ import * as tstl from "typescript-to-lua";
 
 const plugin: tstl.Plugin = {
   visitors: {
-    [ts.SyntaxKind.CallExpression]: (node, context) => {
-      return processCall(node, context);
-    },
-    [ts.SyntaxKind.NewExpression]: (node, conext) => {
-      return processConstructor(node, conext)
-    }
+    [ts.SyntaxKind.CallExpression]: (node, context) => processCall(node, context),
+    [ts.SyntaxKind.NewExpression]: (node, conext) => processConstructor(node, conext)
   }
 }
 
@@ -26,54 +22,66 @@ const processConstructor = (expr: ts.NewExpression, context: tstl.Transformation
 }
 
 const processCall = (call: ts.CallExpression, context: tstl.TransformationContext) => {
-  let typeChecker = context.program.getTypeChecker();
-
-  const createStaticCall = (node: ts.Expression, name: string) => {
-    let expr = context.transformExpression(node);
-    let key = tstl.createStringLiteral(name);
-    let index = tstl.createTableIndexExpression(expr, key);
-    let args = [];
-    for (const arg of call.arguments) {
-      args.push(context.transformExpression(arg));
-    }
-    return tstl.createCallExpression(index, args);
-  }
-
-  const createNativeCall = (className: string, name: string) => {
-    let getSingletion = tstl.createCallExpression(tstl.createIdentifier('GetSingletion'), [tstl.createStringLiteral(className)]);
-    let args = [];
-    for (const arg of call.arguments) {
-      args.push(context.transformExpression(arg));
-    }
-    return tstl.createMethodCallExpression(getSingletion, tstl.createIdentifier(name), args);
-  }
-
   if (ts.isPropertyAccessExpression(call.expression)) {
-    let symbol = typeChecker.getTypeAtLocation(call.expression.expression).getSymbol();
-    let signature = typeChecker.getResolvedSignature(call);
-    let staticName = symbol.getJsDocTags().find(tag => tag.name == "staticName");
-    let mangledName = signature.getJsDocTags().find(tag => tag.name == "mangledName");
-    let isStatic = signature.getJsDocTags().find(tag => tag.name == "static");
-    let isNative = signature.getJsDocTags().find(tag => tag.name == "native");
+    const typeChecker = context.program.getTypeChecker();
 
-    if (staticName?.text && mangledName?.text && ts.isPropertyAccessExpression(call.expression.expression)) {
+    const callContext = call.expression.expression;
+    const classSymbol = typeChecker.getTypeAtLocation(callContext).getSymbol();
+    const funSignature = typeChecker.getResolvedSignature(call);
+
+    const singletonName = classSymbol.getJsDocTags().find(tag => tag.name == "singletonName");
+    const mangledFunName = funSignature.getJsDocTags().find(tag => tag.name == "mangledName");
+    const isStatic = funSignature.getJsDocTags().find(tag => tag.name == "static");
+    const isNative = funSignature.getJsDocTags().find(tag => tag.name == "native");
+    const isOverload = typeChecker.getTypeAtLocation(call.expression).getCallSignatures().length > 1;
+
+    if (ts.isPropertyAccessExpression(callContext) && singletonName?.text && mangledFunName?.text && isStatic) {
       if (isNative) {
-        return createNativeCall(staticName.text, mangledName.text)
+        // native static methods: GetSingleton("WorldPosition"):SetVector4(pos, vec4)
+        const getSingleton = createGetSingletion(singletonName.text);
+        const args = call.arguments.map(arg => context.transformExpression(arg));
+        return tstl.createMethodCallExpression(getSingleton, tstl.createIdentifier(mangledFunName.text), args)
       } else {
-        let signature = `${staticName.text}::${mangledName.text}`;
-        return createStaticCall(call.expression.expression.expression, signature)
+        // non-native static methods: Game["gameObject::GetActiveWeapon;GameObject"](obj)
+        const expr = context.transformExpression(callContext.expression);
+        const signature = `${singletonName.text}::${mangledFunName.text}`;
+        const index = tstl.createTableIndexExpression(expr, tstl.createStringLiteral(signature));
+        const args = call.arguments.map(arg => context.transformExpression(arg));
+        return tstl.createCallExpression(index, args);
       }
     }
-    if (mangledName?.text && isStatic) {
-      return createStaticCall(call.expression.expression, mangledName.text)
+    if (mangledFunName?.text && isStatic) {
+      // global static methods: Game["GetPlayer;GameInstance"]()
+      const expr = context.transformExpression(callContext);
+      const index = tstl.createTableIndexExpression(expr, tstl.createStringLiteral(mangledFunName.text));
+      const args = call.arguments.map(arg => context.transformExpression(arg));
+      return tstl.createCallExpression(index, args);
     }
-    if (mangledName?.text) {
-      let access = ts.factory.createPropertyAccessExpression(call.expression.expression, mangledName.text);
+    if (mangledFunName?.text && isOverload && !isStatic) {
+      // overloaded instance methods: GetSingletion("gameObject")["HasHighlight;EFocusForcedHighlightTypeEFocusOutlineType"](self, a, b)
+      const clazz = typeChecker.getTypeAtLocation(funSignature.getDeclaration().parent);
+      const singletonName = clazz.getSymbol().getJsDocTags().find(tag => tag.name == "singletonName");
+      if (singletonName?.text) {
+        const getSingletion = createGetSingletion(singletonName.text);
+        const index = tstl.createTableIndexExpression(getSingletion, tstl.createStringLiteral(mangledFunName.text));
+        const self: ts.Expression = callContext;
+        const args = [self].concat(call.arguments).map(arg => context.transformExpression(arg));
+        return tstl.createCallExpression(index, args);
+      }
+    }
+    if (mangledFunName?.text) {
+      // normal instance methods: player:GetSenses()
+      let access = ts.factory.createPropertyAccessExpression(callContext, mangledFunName.text);
       let res = ts.factory.createCallExpression(access, call.typeArguments, call.arguments)
       return context.superTransformExpression(res)
     }
   }
   return context.superTransformExpression(call);
+}
+
+const createGetSingletion = (name: string) => {
+  const literal = tstl.createStringLiteral(name);
+  return tstl.createCallExpression(tstl.createIdentifier("GetSingletion"), [literal])
 }
 
 export default plugin;

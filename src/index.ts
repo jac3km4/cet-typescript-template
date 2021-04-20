@@ -1,7 +1,6 @@
 
-Game.GetPlayerSystem()
-  .GetLocalPlayerMainGameObject()
-  .HasHighlight("BACKDOOR", "CLUE");
+Game.GetPlayer().HasHighlight("BACKDOOR", "CLUE");
+Game.GetPlayer().GetSenses();
 
 Game.GameObject.GetActiveWeapon(Game.GetPlayer());
 
