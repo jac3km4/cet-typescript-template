@@ -1,3 +1,4 @@
+/*eslint no-undef: "off"*/
 
 Game.GetPlayer().HasHighlight("BACKDOOR", "CLUE");
 Game.GetPlayer().GetSenses();
